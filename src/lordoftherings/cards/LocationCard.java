@@ -33,4 +33,8 @@ public class LocationCard extends EncounterCard {
     public PlayerCardType getCardType() {
         return PlayerCardType.LOCATION;
     }
+
+    public String getTitle() {
+        return cardModel.geTitle();
+    }
 }

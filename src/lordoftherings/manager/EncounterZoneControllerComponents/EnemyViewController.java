@@ -40,10 +40,8 @@ public class EnemyViewController implements Actionable{
         view = new EnemyView(this, x, y);
         cardView = cardVC.makeView(0, 0);
         cardView.addMouseListener(new ActionableMouseListener(bas, this));
-        cardView.setVisible(true);
         view.add(cardView);
         damageView = damageVC.makeView(0, 250);
-        damageView.setVisible(true);
         view.add(damageView);
         view.addMouseMotionListener(bas.createMouseFollower());
         view.setVisible(true);

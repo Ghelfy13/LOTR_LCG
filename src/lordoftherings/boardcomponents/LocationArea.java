@@ -33,6 +33,15 @@ public class LocationArea {
         return listOfLocations.get(index);
     }
     
+    public boolean findLocation(Location wanted){
+        for(int i = 0; i < listOfLocations.size(); ++i){
+            if(listOfLocations.get(i) == wanted){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public int getSizeOfList(){
         return listOfLocations.size();
     }

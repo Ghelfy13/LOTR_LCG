@@ -16,8 +16,10 @@ import java.io.IOException;
 import javax.swing.JFrame;
 import lordoftherings.DeckComponents.EncounterBuild;
 import lordoftherings.DeckComponents.EncounterDeckBuild;
+import lordoftherings.cardmodel.LocationCardModel;
 import lordoftherings.transaction_managers.GameManager;
 import lordoftherings.characters.Enemy;
+import lordoftherings.characters.Location;
 import lordoftherings.gui.GameManagerView;
 import lordoftherings.manager.BoardControllerComponents.GameManagerViewController;
 
@@ -31,6 +33,15 @@ public class LordOfTheRings {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
+        
+        Identification LocationID = new Identification(ExpansionName.CORE, 113);
+        LocationCardModel firstLocation = new LocationCardModel(
+        "Banks of the Anduin", 
+        EncounterType.LOCATION, 
+        new String[]{"Riverland"}, 
+        LocationID, 
+        1,
+        3);
         
         Identification OrcsID = new Identification (ExpansionName.CORE, 3);
         EnemyCardModel firstEnemy = new EnemyCardModel(
@@ -81,13 +92,17 @@ public class LordOfTheRings {
         EncounterDeckBuild encounterDB = new EncounterDeckBuild();
         EncounterBuild enemyBuild = new EncounterBuild(encounterDB, null);
         Enemy enemy = new Enemy(firstEnemy.createCard());
+        Location location = new Location(firstLocation.createCard());
         
         
         GameManager manager = new GameManager(mockBuildArray, enemyBuild);
         Board newBoard = manager.getBoard();
         newBoard.getPlayerZoneAt(0).addResourcesToHero(0, 6);
         newBoard.getEncounterZone().addNumOfCardsToDeck(firstEnemy, 5);
+        newBoard.getEncounterZone().addNumOfCardsToDeck(firstLocation, 3);
         newBoard.getPlayerZoneAt(0).getEngagementArea().addEnemy(enemy);
+        newBoard.getEncounterZone().getStagingArea().addLocation(location);
+        newBoard.getEncounterZone().getStagingArea().addLocationToActiveLocation(location);
         
         final int PANE_WIDTH = 2500;
         final int PANE_HEIGHT = 1300;

@@ -4,7 +4,9 @@ package lordoftherings.manager.EncounterZoneControllerComponents;
 
 import lordoftherings.boardcomponents.ActiveLocationArea;
 import lordoftherings.boardcomponents.StagingArea;
+import lordoftherings.characters.Location;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
+import lordoftherings.gui.EncounterZoneComponents.LocationView;
 import lordoftherings.manager.actionComponents.BoardActiveState;
 
 /**
@@ -14,24 +16,47 @@ import lordoftherings.manager.actionComponents.BoardActiveState;
 public class ActiveLocationViewController {
     private StagingArea area;
     private ActiveLocationView view;
-    private ActiveLocationArea currentLocation;
+    private ActiveLocationArea activeZone;
     private BoardActiveState bas;
+    private LocationViewController locationVC;
+    private Location currentLocation;
+    private LocationView locationView;
+    public static final int X_POSITION = 7;
     
-    
-    public ActiveLocationViewController(BoardActiveState bas, ActiveLocationArea currentLocation){
+    public ActiveLocationViewController(BoardActiveState bas, ActiveLocationArea locationArea){
         this.bas = bas;
-        this.currentLocation = currentLocation;
+        this.activeZone= locationArea;
+        this.currentLocation = locationArea.getActiveLocation();
+        this.locationVC = new LocationViewController(currentLocation, bas);
     }
     
     public ActiveLocationView makeView(int x, int y){
         view = new ActiveLocationView(x, y);
+        locationView = locationVC.makeView(X_POSITION, 0);
+        view.add(locationView);
         view.addMouseMotionListener(bas.createMouseFollower());
-        //TODO: Add view of currentLocation to this view
         view.setVisible(true);
         return view;
     }
     
     public void updateView(){
-        //TODO
+        if(activeZone.getActiveLocation() != null){
+            if(currentLocation != activeZone.getActiveLocation()){
+                view.remove(locationView);
+                currentLocation = activeZone.getActiveLocation();
+                locationVC = new LocationViewController(currentLocation, bas);
+                locationView = locationVC.makeView(X_POSITION, 0);
+                view.add(locationView);
+            }else{
+                locationVC.updateView();
+            }
+            view.revalidate();
+            view.repaint();
+        }
+        
+    }
+    
+    public LocationView getView(){//Can return null;
+        return locationView;
     }
 }

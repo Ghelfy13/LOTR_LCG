@@ -4,6 +4,7 @@ package lordoftherings.boardcomponents;
 
 import lordoftherings.cards.EnemyCard;
 import lordoftherings.characters.Enemy;
+import lordoftherings.characters.Location;
 
 
 /**
@@ -23,6 +24,14 @@ public class StagingArea {
     
     public EnemyArea getEnemyArea(){
         return enemyZone;
+    }
+    
+    public void addLocation(Location newLocation){
+        locationZone.addLocation(newLocation);
+    }
+    
+    public void addLocationToActiveLocation(Location newActiveLocation){
+        activeLocationZone.setActiveLocation(newActiveLocation);
     }
     
     public void removeEnemyAt(int index){

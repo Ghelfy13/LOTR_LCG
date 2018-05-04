@@ -21,6 +21,7 @@ public class EnemyAreaViewController {
     private HashMap<Enemy, EnemyViewController> controllerMap;
     private BoardActiveState bas;
     public final static int Y_COORDINATE = 0;
+    public final static int ALLY_WIDTH = 255;
     
     
     public EnemyAreaViewController(BoardActiveState bas, EnemyArea area){
@@ -35,7 +36,7 @@ public class EnemyAreaViewController {
             Enemy currentEnemy = area.getListOfEnemies().get(i);
             EnemyViewController currentController = new EnemyViewController(bas,currentEnemy);
             controllerMap.put(currentEnemy, currentController);
-            EnemyView newView = currentController.makeView(i*255, Y_COORDINATE);
+            EnemyView newView = currentController.makeView(i*ALLY_WIDTH, Y_COORDINATE);
             view.add(newView);
         }
         view.setVisible(true);

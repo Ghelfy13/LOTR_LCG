@@ -44,7 +44,11 @@ public class LocationCardModel extends EncounterCardModel{
     }
 
     @Override
-    public EncounterCard createCard() {
+    public LocationCard createCard() {
         return new LocationCard(this);
+    }
+
+    public String geTitle() {
+        return title;
     }
 }
