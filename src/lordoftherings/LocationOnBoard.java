@@ -12,5 +12,6 @@ public enum LocationOnBoard {
     FIELD,
     DISCARDPILE,
     UNSET, 
-    ENCOUNTER_ZONE
+    ENCOUNTER_ZONE,
+    ACTIVE_LOCATION_ZONE
 }

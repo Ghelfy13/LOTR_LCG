@@ -5,23 +5,29 @@ package lordoftherings.cards;
 import lordoftherings.PlayerCardType;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.cardmodel.EncounterCardModel;
+import lordoftherings.cardmodel.LocationCardModel;
 
 /**
  *
  * @author Amanda
  */
-public class LocationCard extends EncounterCard {
 
+public class LocationCard extends EncounterCard {
+    private LocationCardModel cardModel;
+    
+    public LocationCard(LocationCardModel model){
+        this.cardModel = model;
+    }
+    
     @Override
     public EncounterCardModel getModel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return cardModel;
     }
 
     @Override
     public void afterOnWhenRevealed(Board board) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //TODO
     }
-    //TODO
 
     @Override
     public PlayerCardType getCardType() {

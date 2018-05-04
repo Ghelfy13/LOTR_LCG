@@ -5,36 +5,46 @@ package lordoftherings.cardmodel;
 import lordoftherings.EncounterType;
 import lordoftherings.Identification;
 import lordoftherings.cards.EncounterCard;
+import lordoftherings.cards.LocationCard;
 
 /**
  *
  * @author Amanda
  */
 public class LocationCardModel extends EncounterCardModel{
-    //TODO
+    private int threat;
+    private int questPoints;
     
-    public LocationCardModel(String title, EncounterType type, String[] traits, Identification cardID) {
+    public LocationCardModel(String title, EncounterType type, String[] traits,
+            Identification cardID, int threat, int questPoints) {
         super(title, type, traits, cardID);
+        this.threat = threat;
+        this.questPoints = questPoints;
+    }
+    
+    public int getQuestPoints(){
+        return questPoints;
     }
 
     @Override
     public String identify() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return title.toUpperCase()+ "\n" + "\n" + "Encounter Type: " + type + "\n" 
+                + "Traits: " + identifyTraits() + "Threat Value: "
+                + threat + "\n" + "Quest Points:  " + questPoints + "\n";
     }
 
     @Override
-    public int getThreat() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getThreat(){
+        return threat;
     }
 
     @Override
     public Identification getCardID() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return cardID;
     }
 
     @Override
     public EncounterCard createCard() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new LocationCard(this);
     }
-    //TODO
 }
