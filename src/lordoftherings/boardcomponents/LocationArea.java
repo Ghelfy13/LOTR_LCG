@@ -3,6 +3,8 @@
 package lordoftherings.boardcomponents;
 
 import java.util.ArrayList;
+import lordoftherings.LocationOnBoard;
+import lordoftherings.cards.LocationCard;
 import lordoftherings.characters.Location;
 
 
@@ -19,6 +21,7 @@ public class LocationArea {
     
     public void addLocation(Location newLocation){
         listOfLocations.add(newLocation);
+        newLocation.setLocationOnBoard(LocationOnBoard.ENCOUNTER_ZONE);
     }
     
     public void removeLocation(Location wantedLocation){
@@ -40,6 +43,15 @@ public class LocationArea {
             }
         }
         return false;
+    }
+    
+    public Location findLocationByCard(LocationCard card){
+        for (int i = 0; i < listOfLocations.size(); ++i){
+            if(listOfLocations.get(i).getCard() == card){
+                return listOfLocations.get(i);
+            }
+        }
+        return null;
     }
     
     public int getSizeOfList(){

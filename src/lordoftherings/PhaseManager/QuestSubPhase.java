@@ -9,5 +9,6 @@ package lordoftherings.PhaseManager;
 public enum QuestSubPhase implements SubPhase{
     COMMIT_CHARACTERS,
     ENCOUNTER_DECK_REVEAL,
-    RESOLVE_QUEST
+    RESOLVE_QUEST,
+    SELECT_ACTIVE_LOCATION
 }

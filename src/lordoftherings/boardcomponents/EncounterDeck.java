@@ -5,6 +5,7 @@ package lordoftherings.boardcomponents;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Random;
 import lordoftherings.DeckComponents.EncounterDeckBuild;
 import lordoftherings.LocationOnBoard;
 import lordoftherings.cardmodel.EncounterCardModel;
@@ -44,5 +45,17 @@ public class EncounterDeck {
             return enemyDeck.remove(0);
         }
         return null;
+    }
+    
+     public void shuffle(){
+        Random random = new Random();
+        int sizeOfDeck = enemyDeck.size();
+        for(int i = 0; i < sizeOfDeck; ++i){
+            int position = random.nextInt(40);
+            EncounterCard cardAtI = enemyDeck.get(i);
+            EncounterCard cardAtRandom = enemyDeck.get(position);
+            enemyDeck.set(position, cardAtI);
+            enemyDeck.set(i, cardAtRandom);
+        }
     }
 }

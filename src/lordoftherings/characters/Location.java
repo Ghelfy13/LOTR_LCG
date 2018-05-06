@@ -2,7 +2,10 @@
 
 package lordoftherings.characters;
 
+import java.util.ArrayList;
 import lordoftherings.LocationOnBoard;
+import lordoftherings.actions.Action;
+import lordoftherings.boardcomponents.Board;
 import lordoftherings.cards.LocationCard;
 
 /**
@@ -12,7 +15,6 @@ import lordoftherings.cards.LocationCard;
 public class Location {
     private int numOfTokens;
     private LocationCard card;
-    private LocationOnBoard whereOnBoard = LocationOnBoard.UNSET;
     
     public Location(LocationCard card){
         this.card = card;
@@ -24,7 +26,7 @@ public class Location {
     }
     
     public LocationOnBoard getLocationOnBoard(){
-        return whereOnBoard;
+        return card.getLocation();
     }
     
     public int getThreat(){
@@ -32,7 +34,7 @@ public class Location {
     }
     
     public void setLocationOnBoard(LocationOnBoard newBoardLocation){
-        whereOnBoard = newBoardLocation;
+       card.setLocation(newBoardLocation, -5);
     }
     
     public void addTokens(int num){
@@ -45,6 +47,10 @@ public class Location {
     
     public LocationCard getCard(){
         return card;
+    }
+    
+    public void getActions(ArrayList<Action> listOfActions, Board board, int askingID){
+        card.getActions(listOfActions, board, askingID);
     }
             
 }

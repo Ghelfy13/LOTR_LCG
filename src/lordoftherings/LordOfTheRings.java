@@ -102,7 +102,7 @@ public class LordOfTheRings {
         newBoard.getEncounterZone().addNumOfCardsToDeck(firstLocation, 3);
         newBoard.getPlayerZoneAt(0).getEngagementArea().addEnemy(enemy);
         newBoard.getEncounterZone().getStagingArea().addLocation(location);
-        newBoard.getEncounterZone().getStagingArea().addLocationToActiveLocation(location);
+        //newBoard.getEncounterZone().getStagingArea().addLocationToActiveLocation(location);
         
         final int PANE_WIDTH = 2500;
         final int PANE_HEIGHT = 1300;

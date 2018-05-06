@@ -4,7 +4,6 @@ package lordoftherings.cardmodel;
 
 import lordoftherings.EncounterType;
 import lordoftherings.Identification;
-import lordoftherings.cards.EncounterCard;
 import lordoftherings.cards.LocationCard;
 
 /**

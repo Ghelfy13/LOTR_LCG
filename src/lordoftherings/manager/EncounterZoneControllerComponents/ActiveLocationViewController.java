@@ -27,34 +27,42 @@ public class ActiveLocationViewController {
         this.bas = bas;
         this.activeZone= locationArea;
         this.currentLocation = locationArea.getActiveLocation();
-        this.locationVC = new LocationViewController(currentLocation, bas);
+        if(currentLocation != null){
+           this.locationVC = new LocationViewController(currentLocation, bas); 
+        }
+        
     }
     
     public ActiveLocationView makeView(int x, int y){
         view = new ActiveLocationView(x, y);
-        locationView = locationVC.makeView(X_POSITION, 0);
-        view.add(locationView);
+        if(locationVC != null){
+            locationView = locationVC.makeView(X_POSITION, 0);
+            view.add(locationView);
+        }
         view.addMouseMotionListener(bas.createMouseFollower());
         view.setVisible(true);
         return view;
     }
     
     public void updateView(){
-        if(activeZone.getActiveLocation() != null){
-            if(currentLocation != activeZone.getActiveLocation()){
-                view.remove(locationView);
+        if(currentLocation != activeZone.getActiveLocation()){
+            if(activeZone.getActiveLocation() != null){
                 currentLocation = activeZone.getActiveLocation();
                 locationVC = new LocationViewController(currentLocation, bas);
                 locationView = locationVC.makeView(X_POSITION, 0);
                 view.add(locationView);
             }else{
-                locationVC.updateView(X_POSITION, 0);
+                view.removeAll();
             }
-            view.revalidate();
-            view.repaint();
+            
+        }else if(currentLocation == activeZone.getActiveLocation() && currentLocation != null){
+            locationVC.updateView(X_POSITION, 0);
         }
-        
+        view.revalidate();
+        view.repaint();
     }
+        
+    
     
     public LocationView getView(){//Can return null;
         return locationView;

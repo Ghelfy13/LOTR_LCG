@@ -2,6 +2,7 @@
 
 package lordoftherings.boardcomponents;
 
+import lordoftherings.LocationOnBoard;
 import lordoftherings.characters.Location;
 
 /**
@@ -17,6 +18,11 @@ public class ActiveLocationArea {
     
     public void setActiveLocation(Location newLocation){
         activeLocation = newLocation;
+        newLocation.setLocationOnBoard(LocationOnBoard.ACTIVE_LOCATION_ZONE);
+    }
+    
+    public boolean isEmpty(){
+        return activeLocation == null;
     }
     
     public Location getActiveLocation(){//can return null;
