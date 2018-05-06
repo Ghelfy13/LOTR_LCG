@@ -29,8 +29,6 @@ public class QuestPhaseManager implements PhaseManager{
             case RESOLVE_QUEST:
                 board.resolveQuest();
                 return;
-            case SELECT_ACTIVE_LOCATION:
-                return;
             default:
                 return;
         }
@@ -48,7 +46,7 @@ public class QuestPhaseManager implements PhaseManager{
                     board.getPlayerZoneAt(i).unsetCommittedCharacters();
                 } 
                return;
-            case SELECT_ACTIVE_LOCATION:
+            default:
                 return;
         }
     }
@@ -61,9 +59,7 @@ public class QuestPhaseManager implements PhaseManager{
             case ENCOUNTER_DECK_REVEAL:
                 return board.getQuestPhaseManager().setSubPhase(QuestSubPhase.RESOLVE_QUEST);
             case RESOLVE_QUEST:
-                return board.getQuestPhaseManager().setSubPhase(QuestSubPhase.SELECT_ACTIVE_LOCATION);
-            case SELECT_ACTIVE_LOCATION:
-                return board.getEncounterPhaseManager();
+                return board.getTravelPhaseManager().setSubPhase(TravelSubPhase.SELECT_ACTIVE_LOCATION);
             default:
                 return null;
         }

@@ -18,12 +18,12 @@ import lordoftherings.PhaseManager.RefreshPhaseManager;
 import lordoftherings.PhaseManager.ResourcePhaseManager;
 import lordoftherings.PhaseManager.ResourceSubPhase;
 import lordoftherings.PhaseManager.SubPhase;
+import lordoftherings.PhaseManager.TravelPhaseManager;
 import lordoftherings.PlayerCardType;
 import lordoftherings.cards.EnemyCard;
 import lordoftherings.characters.GameCharacter;
 import lordoftherings.characters.Enemy;
 import lordoftherings.characters.Hero;
-import lordoftherings.characters.Location;
 import lordoftherings.transaction_managers.CharacterQueryHandle;
 import lordoftherings.transaction_managers.CharacterQueryRequirements;
 import lordoftherings.transaction_managers.ClearSuspensionHandler;
@@ -47,6 +47,7 @@ public class Board {
     private PlanningPhaseManager planningPM;
     private GamePhase currentGamePhase;
     private QuestPhaseManager questPM;
+    private TravelPhaseManager travelPM;
     private EncounterPhaseManager encounterPM;
     private RefreshPhaseManager refreshPM;
     private CombatPhaseManager combatPM;
@@ -68,6 +69,7 @@ public class Board {
         currentPhaseManager.onStartSubPhase(this);
         this.planningPM = new PlanningPhaseManager();
         this.questPM = new QuestPhaseManager();
+        this.travelPM = new TravelPhaseManager();
         this.encounterPM = new EncounterPhaseManager();
         this.refreshPM = new RefreshPhaseManager();
         this.combatPM = new CombatPhaseManager();
@@ -156,6 +158,10 @@ public class Board {
     
     public QuestPhaseManager getQuestPhaseManager() {
         return questPM;
+    }
+    
+    public TravelPhaseManager getTravelPhaseManager(){
+        return travelPM;
     }
     
     public EncounterPhaseManager getEncounterPhaseManager(){

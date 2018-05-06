@@ -3,7 +3,7 @@
 package lordoftherings.actions;
 
 import lordoftherings.LocationOnBoard;
-import lordoftherings.PhaseManager.QuestSubPhase;
+import lordoftherings.PhaseManager.TravelSubPhase;
 import lordoftherings.boardcomponents.ActiveLocationArea;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.boardcomponents.StagingArea;
@@ -40,7 +40,7 @@ public class SelectActiveLocationAction extends Action{
 
     @Override
     public void updateActionState(int askingID, Board boardState) {
-        if(boardState.getCurrentSubPhase() == QuestSubPhase.SELECT_ACTIVE_LOCATION &&
+        if(boardState.getCurrentSubPhase() == TravelSubPhase.SELECT_ACTIVE_LOCATION &&
                 askingID == boardState.getCurrentPlayerNum() &&
                 desiredCard.getLocation() == LocationOnBoard.ENCOUNTER_ZONE){
             if(boardState.getEncounterZone().getStagingArea().getActiveLocationArea().isEmpty()){
