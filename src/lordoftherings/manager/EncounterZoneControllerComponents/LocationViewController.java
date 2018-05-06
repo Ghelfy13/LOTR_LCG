@@ -57,11 +57,6 @@ public class LocationViewController implements Actionable{
         return view;
     }
     
-    public void updateView(){
-        cardVC.updateView();
-        tokenVC.updateView(location.getNumOfTokens());
-    }
-
     @Override
     public void onSetActionable() {
         cardView.setBorder(BoardActiveState.ACTIVE_BORDER);

@@ -55,6 +55,9 @@ public class StagingArea {
         for( int i = 0; i < enemyZone.getNumOfEnemies(); ++i){
             threat += enemyZone.getEnemyAt(i).getThreat();
         }
+        for(int i = 0; i < locationZone.getSizeOfList(); ++i){
+            threat += locationZone.getLocationAt(i).getThreat();
+        }
         return threat;
     }
     

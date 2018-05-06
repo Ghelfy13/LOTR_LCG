@@ -12,8 +12,11 @@ import lordoftherings.manager.EncounterZoneControllerComponents.EnemyViewControl
  */
 public class EnemyView extends JPanel{
     
+    public static final int ENEMY_WIDTH = 200;
+    public static final int ENEMY_HEIGHT = 275;
+    
     public EnemyView(EnemyViewController controller, int x, int y){
-        setBounds(x, y, 255, 275);
+        setBounds(x, y, ENEMY_WIDTH, ENEMY_HEIGHT);
         setLayout(null);
         setOpaque(true);
         setBackground(Color.ORANGE);

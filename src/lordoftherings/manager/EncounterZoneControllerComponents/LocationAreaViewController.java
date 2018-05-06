@@ -20,7 +20,8 @@ public class LocationAreaViewController {
     private LocationAreaView view;
     private BoardActiveState bas;
     private HashMap<Location, LocationViewController> controllerMap;
-    public static final int LOCATION_WIDTH = 255;
+    public static final int LOCATION_WIDTH = 200;
+    public static final int LOCATION_HEIGHT = 275;
     
     public LocationAreaViewController(LocationArea area, BoardActiveState bas){
         this.area = area;
@@ -41,7 +42,8 @@ public class LocationAreaViewController {
         return view;
     }
     
-    public void updateView(){
+    public void updateView(int x){
+        view.setBounds(x, 0, area.getSizeOfList()*LOCATION_WIDTH, LOCATION_HEIGHT);
         HashSet<Location> locationsToRemove = new HashSet<>();
         for(Map.Entry<Location, LocationViewController> entry: controllerMap.entrySet()){
             if(!area.findLocation(entry.getKey())){

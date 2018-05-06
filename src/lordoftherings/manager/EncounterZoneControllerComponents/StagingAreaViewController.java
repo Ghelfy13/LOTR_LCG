@@ -7,7 +7,9 @@ import lordoftherings.boardcomponents.StagingArea;
 import lordoftherings.characters.Enemy;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.EncounterZoneComponents.EnemyAreaView;
+import lordoftherings.gui.EncounterZoneComponents.EnemyView;
 import lordoftherings.gui.EncounterZoneComponents.LocationAreaView;
+import lordoftherings.gui.EncounterZoneComponents.LocationView;
 import lordoftherings.gui.EncounterZoneComponents.StagingAreaView;
 import lordoftherings.manager.actionComponents.BoardActiveState;
 
@@ -38,10 +40,10 @@ public class StagingAreaViewController {
     
     public StagingAreaView makeView(int x, int y){
         view = new StagingAreaView(x, y, bas.createMouseFollower());
-        EnemyAreaView enemyView = enemyAreaVC.makeView(200, 0);
+        EnemyAreaView enemyView = enemyAreaVC.makeView(LocationView.LOCATION_WIDTH, 0);
         int enemyLen = enemyView.getLengthOfEnemyArea();
         view.add(enemyView);
-        LocationAreaView locationView = locationAreaVC.makeView(200 + enemyLen, 0);
+        LocationAreaView locationView = locationAreaVC.makeView(LocationView.LOCATION_WIDTH + enemyLen, 0);
         view.add(locationView);
         ActiveLocationView activeLocationView = activeLocationVC.makeView(0, 0);
         view.add(activeLocationView);
@@ -50,8 +52,8 @@ public class StagingAreaViewController {
     }
     
     public void updateView(){
-        enemyAreaVC.updateView();
-        locationAreaVC.updateView();
+        enemyAreaVC.updateView(LocationView.LOCATION_WIDTH);
+        locationAreaVC.updateView(LocationView.LOCATION_WIDTH + EnemyView.ENEMY_WIDTH*stage.getEnemyArea().getNumOfEnemies());
         activeLocationVC.updateView();
     }
        

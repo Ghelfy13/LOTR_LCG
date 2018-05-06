@@ -27,6 +27,10 @@ public class Location {
         return whereOnBoard;
     }
     
+    public int getThreat(){
+        return card.getModel().getThreat();
+    }
+    
     public void setLocationOnBoard(LocationOnBoard newBoardLocation){
         whereOnBoard = newBoardLocation;
     }

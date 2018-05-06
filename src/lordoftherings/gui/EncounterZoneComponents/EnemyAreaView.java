@@ -14,9 +14,8 @@ public class EnemyAreaView extends JPanel{
     private int length;
     
     public EnemyAreaView(int x, int y, int numOfEnemies, MouseMotionListener mmListener){
-        //length = numOfEnemies*250;
-        length = 250*5;//TODO: GO BACK TO CALCULATION VIEW
-        setBounds(x, y, length, 275);
+        length = numOfEnemies*EnemyView.ENEMY_WIDTH;
+        setBounds(x, y, length, EnemyView.ENEMY_HEIGHT);
         setLayout(null);
         setOpaque(true);
         setBackground(Color.LIGHT_GRAY);

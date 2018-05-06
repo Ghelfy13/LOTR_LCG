@@ -48,7 +48,7 @@ public class ActiveLocationViewController {
                 locationView = locationVC.makeView(X_POSITION, 0);
                 view.add(locationView);
             }else{
-                locationVC.updateView();
+                locationVC.updateView(X_POSITION, 0);
             }
             view.revalidate();
             view.repaint();
