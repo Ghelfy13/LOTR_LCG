@@ -5,26 +5,26 @@ package lordoftherings.gui.query_components;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextArea;
+import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 
 /**
  *
  * @author Amanda
  */
 public class QueryHeroCardView extends JTextArea{
-    private static final int CARD_HEIGHT = 250;
-    private static final int CARD_WIDTH = 180;
-    
+       
     public QueryHeroCardView(String heroInfo, boolean isTapped){
         this.setRows(11);
         this.setColumns(1);
         this.insert(heroInfo, 0);
-        Font cardFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 14);
+        Font cardFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 12);
         this.setFont(cardFont);
         this.setBackground(Color.LIGHT_GRAY);
         if(isTapped){
-            setBounds(0, CARD_HEIGHT - CARD_WIDTH, CARD_HEIGHT, CARD_WIDTH);
+            setBounds(0, HandCardView.CARD_HEIGHT - HandCardView.CARD_WIDTH, 
+                    HandCardView.CARD_HEIGHT, HandCardView.CARD_WIDTH);
         }else{
-            setBounds(0, 0, CARD_WIDTH, CARD_HEIGHT);
+            setBounds(0, 0, HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
         }
         
     }

@@ -10,6 +10,7 @@ import lordoftherings.characters.Ally;
 import lordoftherings.gui.PlayerZoneComponents.AllyCardView;
 import lordoftherings.gui.PlayerZoneComponents.AllyDamageView;
 import lordoftherings.gui.PlayerZoneComponents.AllyView;
+import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.manager.actionComponents.ActionableMouseListener;
 import lordoftherings.manager.actionComponents.BoardActiveState;
 
@@ -26,7 +27,6 @@ public class AllyViewController implements Actionable {
     private AllyDamageView damageView;
     private AllyCardView cardView;
     private BoardActiveState bas;
-    public static final int CARD_LENGTH = 250;
     
     
     public AllyViewController(Ally passedInAlly, AllyZoneViewController allyZoneVC, BoardActiveState bas){
@@ -46,7 +46,7 @@ public class AllyViewController implements Actionable {
         cardView.addMouseListener(new ActionableMouseListener(bas, this));
         view.add(cardView);
         cardView.setVisible(true);
-        damageView = new AllyDamageView(0, CARD_LENGTH, 0);
+        damageView = new AllyDamageView(0, HandCardView.CARD_HEIGHT, 0);
         view.add(damageView);
         damageView.setVisible(true);
         view.setVisible(true);

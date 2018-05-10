@@ -9,6 +9,7 @@ import java.awt.Point;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.PhaseManager.GamePhase;
 import lordoftherings.gui.BoardView;
+import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.EncounterZoneComponents.EncounterZoneView;
 import lordoftherings.gui.PhaseView;
 import lordoftherings.gui.PlayerZoneComponents.PlayerZoneView;
@@ -52,7 +53,7 @@ public class BoardViewController implements GlobalViewController {
         view.add(activeState.getAvailableActions());
         view.addMouseMotionListener(activeState.createMouseFollower());
         PlayerZoneView playerView = playerZoneVC.makeView(
-                DISTANCE_FROM_FRAME, EncounterZoneView.ZONE_HEIGHT + DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE);
+                DISTANCE_FROM_FRAME, ActiveLocationView.CARD_COUNTER_HEIGHT + DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE);
         view.add(playerView);
         phaseVC = new PhaseViewController(this);
         PhaseView phaseView = phaseVC.makeView(width - PhaseView.PHASE_BUTTON_WIDTH, y);

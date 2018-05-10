@@ -10,6 +10,7 @@ import lordoftherings.boardcomponents.AllyArea;
 import lordoftherings.characters.Ally;
 import lordoftherings.gui.query_components.QueryAllyView;
 import lordoftherings.gui.query_components.QueryAllyZoneView;
+import lordoftherings.manager.PlayerZoneControllerCompoents.AllyZoneViewController;
 import lordoftherings.transaction_managers.CharacterQueryHandle;
 
 /**
@@ -42,7 +43,7 @@ public class QueryAllyZoneViewController {
             if(handle.getMatcher().matches(currentAlly)){
                 allyVC = new QueryAllyViewController(currentAlly, this, charQAS);
                 controllerMap.put(currentAlly, allyVC);
-                QueryAllyView allyView = allyVC.makeView(i*255, 0);
+                QueryAllyView allyView = allyVC.makeView(i*AllyZoneViewController.CARDS_AND_SPACE, 0);
                 allyView.setVisible(true);
                 view.add(allyView);
             }
@@ -67,7 +68,7 @@ public class QueryAllyZoneViewController {
             Ally existingAlly = allyZone.getAllyAt(i);
             if(!controllerMap.containsKey(existingAlly)){
                 QueryAllyViewController allyVC = new QueryAllyViewController(existingAlly, this, charQAS);
-                QueryAllyView newAllyView = allyVC.makeView(i*255, 0);
+                QueryAllyView newAllyView = allyVC.makeView(i*AllyZoneViewController.CARDS_AND_SPACE, 0);
                 view.add(newAllyView);
                 controllerMap.put(existingAlly, allyVC);
             }else{

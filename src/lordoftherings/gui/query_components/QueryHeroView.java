@@ -4,17 +4,18 @@ package lordoftherings.gui.query_components;
 
 import java.awt.Color;
 import javax.swing.JPanel;
+import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
+import lordoftherings.gui.EncounterZoneComponents.EncounterDiscardPileView;
+import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 
 /**
  *
  * @author Amanda
  */
 public class QueryHeroView extends JPanel{
-    public static final int AREA_WIDTH = 255;
-    public static final int AREA_LENGTH = 275;
-    
+       
     public QueryHeroView(int x, int y){
-        setBounds(x, y, AREA_WIDTH, AREA_LENGTH);
+        setBounds(x, y, HandCardView.CARD_HEIGHT, ActiveLocationView.CARD_COUNTER_HEIGHT);
         setLayout(null);
         Color backgroundColor = new Color(0x10,0x66,0x1b);
         setBackground(backgroundColor);

@@ -24,17 +24,20 @@ public class EncounterZone {
     private StagingArea stage;
     private Board board;
 
-    public EncounterZone(EncounterBuild questInfo, Board board){
+    public EncounterZone(EncounterBuild encounterSet, Board board){
         encounterDiscard = new EncounterDiscardPile();
         stage = new StagingArea();
-        this.encounterDeck = new EncounterDeck(questInfo.getEnemyDeck());
-        // TODO: distinguish quest set build from quest cards in the board.
-        this.quests = questInfo.getQuestDeck();
+        this.encounterDeck = new EncounterDeck(encounterSet.getEnemyDeck());
+        this.quests = new QuestSet(encounterSet.getQuestDeck());
         this.board = board;
     }
 
     public EncounterDeck getEncounterDeck() {
         return encounterDeck;
+    }
+    
+    public QuestSet getQuestSet(){
+        return quests;
     }
     
     public StagingArea getStagingArea(){

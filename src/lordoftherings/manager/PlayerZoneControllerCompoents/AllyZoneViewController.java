@@ -15,12 +15,13 @@ import lordoftherings.manager.actionComponents.BoardActiveState;
  *
  * @author Amanda
  */
-class AllyZoneViewController{
+public class AllyZoneViewController{
     private AllyArea myAllyArea;
     private CharacterAreaViewController characterAreaVC;
     private AllyZoneView view;
     private HashMap<Ally, AllyViewController> controllerMap;
     private BoardActiveState bas;
+    public static final int CARDS_AND_SPACE = 205;
     
     public AllyZoneViewController(CharacterAreaViewController charAreaVC, AllyArea allyZone, BoardActiveState bas){
         this.characterAreaVC = charAreaVC;
@@ -37,7 +38,7 @@ class AllyZoneViewController{
             Ally card = myAllyArea.getAllyAt(i);
             AllyViewController allyViewController = new AllyViewController(myAllyArea.getAllyAt(i), this, bas);
             controllerMap.put(card, allyViewController);
-            AllyView allyView = allyViewController.makeView(i*255 , 0);
+            AllyView allyView = allyViewController.makeView(i*CARDS_AND_SPACE, 0);
             view.add(allyView);   
         }
         view.setVisible(true);
@@ -64,12 +65,12 @@ class AllyZoneViewController{
             Ally existingAlly = myAllyArea.getAllyAt(i);
             if(!controllerMap.containsKey(existingAlly)){
                 AllyViewController allyVC = new AllyViewController(existingAlly, this, bas);
-                AllyView newAllyView = allyVC.makeView(i*255, 0);
+                AllyView newAllyView = allyVC.makeView(i*CARDS_AND_SPACE, 0);
                 view.add(newAllyView);
                 controllerMap.put(existingAlly, allyVC);
             }else{
                 AllyViewController allyVC = controllerMap.get(existingAlly);
-                allyVC.updateView(i*255, 0);
+                allyVC.updateView(i*CARDS_AND_SPACE, 0);
             }
         }
         view.revalidate();

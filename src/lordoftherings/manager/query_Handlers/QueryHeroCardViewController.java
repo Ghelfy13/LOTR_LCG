@@ -14,8 +14,8 @@ public class QueryHeroCardViewController {
     private Hero myHero;
     private String heroInfo;
     private QueryHeroCardView cardView;
-    private static final int CARD_HEIGHT = 250;
-    private static final int CARD_WIDTH = 180;
+    private static final int CARD_HEIGHT = 200;
+    private static final int CARD_WIDTH = 144;
     private CharacterQueryActiveState charQAS;
        
     public QueryHeroCardViewController(Hero myHero, CharacterQueryActiveState charQAS){

@@ -2,8 +2,6 @@
 
 package lordoftherings.DeckComponents;
 
-import lordoftherings.boardcomponents.QuestSet;
-import lordoftherings.cards.QuestCard;
 
 /**
  *
@@ -11,10 +9,10 @@ import lordoftherings.cards.QuestCard;
  */
 public class EncounterBuild {
     private EncounterDeckBuild enemyDeck;
-    private QuestSet quests;
+    private QuestSetBuild quests;
       
     
-    public EncounterBuild(EncounterDeckBuild enemyDeck, QuestSet quests){
+    public EncounterBuild(EncounterDeckBuild enemyDeck, QuestSetBuild quests){
         this.enemyDeck = enemyDeck;
         this.quests = quests;
     }
@@ -23,17 +21,10 @@ public class EncounterBuild {
         return enemyDeck;
     }
     
-    public QuestSet getQuestDeck(){
+    public QuestSetBuild getQuestDeck(){
         return quests;
     }
     
-    public void addQuest(QuestCard newQuest){
-        quests.addQuest(newQuest);
-    }
-    
-    public QuestCard removeQuest(QuestCard wantedQuest){
-        quests.removeQuest(wantedQuest);
-        return wantedQuest;
-    }
+   
     
 }

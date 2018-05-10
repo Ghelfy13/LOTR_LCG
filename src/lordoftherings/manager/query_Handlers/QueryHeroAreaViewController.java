@@ -20,7 +20,7 @@ class QueryHeroAreaViewController {
     private QueryHeroAreaView view;
     private QueryHeroViewController heroVC;
     private CharacterQueryActiveState charQAS;
-    private static final int HERO_VIEW_WIDTH = 255;
+    private static final int HERO_VIEW_WIDTH = 200;
     private HashMap<Hero, QueryHeroViewController> controllerMap;
     
     public QueryHeroAreaViewController(QueryCharacterAreaViewController charAreaVC, HeroArea heroZone, CharacterQueryActiveState charQAS){
@@ -40,7 +40,7 @@ class QueryHeroAreaViewController {
             if(handle.getMatcher().matches(current)){
                 heroVC = new QueryHeroViewController(current, this, charQAS);
                 controllerMap.put(current, heroVC);
-                view.add(heroVC.makeView(current.getPositionInHeroArea()*HERO_VIEW_WIDTH, 0));
+                view.add(heroVC.makeView(current.getPositionInHeroArea()*(HERO_VIEW_WIDTH + 5), 0));
             }
         }
         view.setVisible(true);

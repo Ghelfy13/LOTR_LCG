@@ -11,17 +11,15 @@ import javax.swing.JTextArea;
  * @author Amanda
  */
 public class DiscardCardView extends JTextArea{
-    private static final int CARD_WIDTH = 180;
-    private static final int CARD_HEIGHT = 250;
-    
+        
     public DiscardCardView(int x, int y, String info){
-        setBounds(x, y, CARD_WIDTH, CARD_HEIGHT);
+        setBounds(x, y, HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
         setText(info);
         setOpaque(true);
         setLayout(null);
         setEditable(false);
         setBackground(Color.LIGHT_GRAY);
-        Font cardFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 14);
+        Font cardFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 12);
         setFont(cardFont);
     }
 }

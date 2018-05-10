@@ -2,10 +2,26 @@
 
 package lordoftherings.DeckComponents;
 
+import lordoftherings.boardcomponents.QuestSet;
+
 /**
  *
  * @author Amanda
  */
-class EncounterSetBuild {
-    //TODO
+public class EncounterSetBuild {
+    private EncounterDeckBuild enemyDeckBuild;
+    private QuestSet questCollection;
+    
+    public EncounterSetBuild(EncounterDeckBuild enemyBuild, QuestSet quests){
+        this.enemyDeckBuild = enemyBuild;
+        this.questCollection = quests;
+    }
+    
+    public QuestSet getQuestSet(){
+        return questCollection;
+    }
+    
+    public EncounterDeckBuild getEncounterDeckBuild(){
+        return enemyDeckBuild;
+    }
 }

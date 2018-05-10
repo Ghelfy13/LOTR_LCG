@@ -21,7 +21,7 @@ public class HeroZoneViewController {
     private HeroZoneView view;
     private HeroViewController heroVC;
     private BoardActiveState bas;
-    private static final int HERO_VIEW_WIDTH = 255;
+    private static final int HERO_VIEW_WIDTH = 200;
     private HashMap<Hero, HeroViewController> controllerMap;
     
     
@@ -43,7 +43,7 @@ public class HeroZoneViewController {
             heroVC = new HeroViewController(hero, characterVC, bas);
             hero.setPositionInHeroArea(num);
             controllerMap.put(hero, heroVC);
-            view.add(heroVC.makeView(num*HERO_VIEW_WIDTH, 0));
+            view.add(heroVC.makeView(num*(HERO_VIEW_WIDTH +5), 0));
             ++num;
         }
         view.setVisible(true);

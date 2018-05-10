@@ -15,8 +15,8 @@ public class HeroCardViewController {
     private String heroInfo;
     private BoardActiveState bas;
     private HeroCardView view;
-    private static final int CARD_HEIGHT = 250;
-    private static final int CARD_WIDTH = 180;
+    private static final int CARD_HEIGHT = 200;
+    private static final int CARD_WIDTH = 144;
     
     public HeroCardViewController(Hero myHero, BoardActiveState bas){
         this.myHero = myHero;

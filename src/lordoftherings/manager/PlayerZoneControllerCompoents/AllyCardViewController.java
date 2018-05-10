@@ -16,8 +16,8 @@ class AllyCardViewController{
     private AllyViewController allyVC;
     private AllyCardView view;
     private BoardActiveState bas;
-    private static final int CARD_HEIGHT = 250;
-    private static final int CARD_WIDTH = 180;
+    private static final int CARD_HEIGHT = 200;
+    private static final int CARD_WIDTH = 144;
     
     public AllyCardViewController(Ally wantedCard, AllyViewController allyVC, BoardActiveState bas){
         this.card = wantedCard.getCard();

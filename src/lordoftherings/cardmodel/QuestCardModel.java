@@ -2,9 +2,8 @@
 
 package lordoftherings.cardmodel;
 
-import java.util.ArrayList;
 import lordoftherings.Identification;
-import lordoftherings.DeckComponents.QuestScenarioSymbol;
+import lordoftherings.DeckComponents.ScenarioSymbol;
 
 /**
  *
@@ -12,22 +11,25 @@ import lordoftherings.DeckComponents.QuestScenarioSymbol;
  */
 public class QuestCardModel {
     protected String title;
-    protected QuestScenarioSymbol symbol;
-    protected ArrayList<String> encounterInfo;
+    protected ScenarioSymbol symbol;
+    protected String[] encounterInfo;//list of symbols of cards to be in deck
+    protected String setInfo;//describes goal of quest
     protected String scenarioTitle;
     protected Identification cardID;
     protected int questPoints;
     
     public QuestCardModel(
         String title,
-        QuestScenarioSymbol symbol,
-        ArrayList<String> encounterInfo,
+        ScenarioSymbol symbol,
+        String [] encounterInfo,
+        String setInfo,
         String scenarioTitle,
         Identification cardID,
         int questPoints){
         this.title = title;
         this.symbol = symbol;
         this.encounterInfo = encounterInfo;
+        this.setInfo = setInfo;
         this.scenarioTitle = scenarioTitle;
         this.cardID = cardID;
         this.questPoints = questPoints;
@@ -37,11 +39,11 @@ public class QuestCardModel {
         return title;
     }
     
-    public QuestScenarioSymbol getSymbol(){
+    public ScenarioSymbol getSymbol(){
         return symbol;
     }
     
-    public ArrayList<String> getEncounterInfo(){
+    public String[] getEncounterInfo(){
         return encounterInfo;
     }
     
@@ -57,21 +59,5 @@ public class QuestCardModel {
         return questPoints;
     }
     
-    public void setSymbol(QuestScenarioSymbol newSymbol){
-        symbol = newSymbol;
-    }
-    
-    public void addEncounterInfo(String newInfo){
-        encounterInfo.add(newInfo);
-    }
-    
-    public String removeInfoAt(int infoIndex){
-        String wantedInfo = encounterInfo.get(infoIndex);
-        encounterInfo.remove(infoIndex);
-        return wantedInfo;
-    }
-    
-    public void setQuestPoints(int questingValue){
-        questPoints = questingValue;
-    }
+   
 }

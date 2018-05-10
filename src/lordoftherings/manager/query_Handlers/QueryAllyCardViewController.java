@@ -17,7 +17,9 @@ public class QueryAllyCardViewController {
     private QueryAllyCardView view;
     private CharacterQueryActiveState charQAS;
     
-    public QueryAllyCardViewController(Ally currentAlly, QueryAllyViewController allyVC, CharacterQueryActiveState charQAS){
+    public QueryAllyCardViewController(Ally currentAlly, 
+            QueryAllyViewController allyVC,
+            CharacterQueryActiveState charQAS){
         this.card = currentAlly.getCard();
         this.allyVC = allyVC;
         view = null;

@@ -10,6 +10,7 @@ import lordoftherings.characters.Enemy;
 import lordoftherings.gui.EncounterZoneComponents.EnemyCardView;
 import lordoftherings.gui.EncounterZoneComponents.EnemyDamageView;
 import lordoftherings.gui.EncounterZoneComponents.EnemyView;
+import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.manager.actionComponents.Actionable;
 import lordoftherings.manager.actionComponents.ActionableMouseListener;
 import lordoftherings.manager.actionComponents.BoardActiveState;
@@ -28,7 +29,6 @@ public class EnemyViewController implements Actionable{
     private EnemyView view;
     private Enemy enemy;
     private BoardActiveState bas;
-    public static final int ENEMY_CARD_HEIGHT = 250;
     
     public EnemyViewController(BoardActiveState bas, Enemy card){
         this.enemy = card;
@@ -42,7 +42,7 @@ public class EnemyViewController implements Actionable{
         cardView = cardVC.makeView(0, 0);
         cardView.addMouseListener(new ActionableMouseListener(bas, this));
         view.add(cardView);
-        damageView = damageVC.makeView(0, ENEMY_CARD_HEIGHT);
+        damageView = damageVC.makeView(0, HandCardView.CARD_HEIGHT);
         view.add(damageView);
         view.addMouseMotionListener(bas.createMouseFollower());
         view.setVisible(true);

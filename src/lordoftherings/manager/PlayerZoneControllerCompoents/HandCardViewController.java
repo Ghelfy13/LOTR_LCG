@@ -32,8 +32,6 @@ public class HandCardViewController implements Actionable{
         view = new HandCardView(this, card.getIdentity(),x,y);
         view.addMouseMotionListener(bas.createMouseFollower());
         view.setEditable(false);
-        Font cardFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 14);
-        view.setFont(cardFont);
         view.setVisible(true);
         return view;
     }

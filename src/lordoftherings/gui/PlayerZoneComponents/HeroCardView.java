@@ -11,16 +11,14 @@ import javax.swing.JTextArea;
  * @author Amanda
  */
 public class HeroCardView extends JTextArea{
-    private static final int CARD_HEIGHT = 250;
-    private static final int CARD_WIDTH = 180;
-    
+       
     public HeroCardView(String heroInfo, int x, int y){
         this.setRows(11);
         this.setColumns(1);
         this.insert(heroInfo, 0);
-        Font cardFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 14);
+        Font cardFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 12);
         this.setFont(cardFont);
         this.setBackground(Color.LIGHT_GRAY);
-        setBounds(x, y, CARD_WIDTH, CARD_HEIGHT);
+        setBounds(x, y, HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
     }
 }

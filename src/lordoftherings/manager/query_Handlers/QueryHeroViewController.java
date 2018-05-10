@@ -21,7 +21,7 @@ public class QueryHeroViewController implements Selectable<GameCharacter>{
     private Hero myHero;
     private QueryHeroView view;
     private CharacterQueryActiveState charQAS;
-    private static final int CARD_LENGTH = 250;
+    private static final int CARD_LENGTH = 200;
     private boolean isSelected;
     
     public QueryHeroViewController(Hero passedInHero, QueryHeroAreaViewController areaController, CharacterQueryActiveState charQAS){

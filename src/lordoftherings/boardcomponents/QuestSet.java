@@ -2,34 +2,30 @@
 
 package lordoftherings.boardcomponents;
 
+import lordoftherings.DeckComponents.QuestSetBuild;
 import lordoftherings.cards.QuestCard;
-import java.util.ArrayList;
 
 /**
  *
  * @author Amanda
  */
 public class QuestSet {
-    private ArrayList<QuestCard> questDeck;
+    private QuestCard[] questSet;
     
-    public QuestSet(){
-        questDeck = new ArrayList<>();
+    public QuestSet(QuestSetBuild setComponents){
+        questSet = new QuestCard[setComponents.getSizeOfSet()];
+        for(int i = 0; i < questSet.length; ++i){
+            QuestCard card = new QuestCard(setComponents.getCardModelAt(i));
+            questSet[i] = card;
+        }
     }
     
-    public QuestSet(ArrayList<QuestCard> newQuestDeck){
-        questDeck = newQuestDeck;
+    public QuestCard getQuestCardAt(int i){
+        return questSet[i];
     }
     
-    public void addQuest(QuestCard newQuest){
-        questDeck.add(newQuest);
+    public int getSizeOfSet(){
+        return questSet.length;
     }
     
-    public ArrayList<QuestCard> getQuestSet(){
-        return questDeck;
-    }
-    
-    public QuestCard removeQuest(QuestCard wantedQuest){
-        questDeck.remove(wantedQuest);
-        return wantedQuest;
-    }
 }

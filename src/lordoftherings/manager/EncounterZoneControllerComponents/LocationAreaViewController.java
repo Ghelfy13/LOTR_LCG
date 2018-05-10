@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Map;
 import lordoftherings.boardcomponents.LocationArea;
 import lordoftherings.characters.Location;
+import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.EncounterZoneComponents.LocationAreaView;
 import lordoftherings.gui.EncounterZoneComponents.LocationView;
 import lordoftherings.manager.actionComponents.BoardActiveState;
@@ -20,8 +21,6 @@ public class LocationAreaViewController {
     private LocationAreaView view;
     private BoardActiveState bas;
     private HashMap<Location, LocationViewController> controllerMap;
-    public static final int LOCATION_WIDTH = 200;
-    public static final int LOCATION_HEIGHT = 275;
     
     public LocationAreaViewController(LocationArea area, BoardActiveState bas){
         this.area = area;
@@ -35,7 +34,8 @@ public class LocationAreaViewController {
             Location current = area.getLocationAt(i);
             LocationViewController locationVC = new LocationViewController(area.getLocationAt(i), bas);
             controllerMap.put(current, locationVC);
-            LocationView locationV = locationVC.makeView(i*LOCATION_WIDTH, 0);
+            LocationView locationV = locationVC.makeView(
+                    i*ActiveLocationView.PARENT_WIDTH, 0);
             view.add(locationV);
         }
         view.setVisible(true);
@@ -43,7 +43,8 @@ public class LocationAreaViewController {
     }
     
     public void updateView(int x){
-        view.setBounds(x, 0, area.getSizeOfList()*LOCATION_WIDTH, LOCATION_HEIGHT);
+        view.setBounds(x, 0, area.getSizeOfList()*ActiveLocationView.PARENT_WIDTH,
+                ActiveLocationView.CARD_COUNTER_HEIGHT);
         HashSet<Location> locationsToRemove = new HashSet<>();
         for(Map.Entry<Location, LocationViewController> entry: controllerMap.entrySet()){
             if(!area.findLocation(entry.getKey())){
@@ -60,12 +61,13 @@ public class LocationAreaViewController {
             if(!controllerMap.containsKey(current)){
                 LocationViewController controller = new LocationViewController(current, bas);
                 controllerMap.put(current, controller);
-                LocationView locationView = controller.makeView(i*LOCATION_WIDTH, 0);
+                LocationView locationView = controller.makeView(
+                        i*ActiveLocationView.PARENT_WIDTH, 0);
                 view.add(locationView);
             }
             else{
                 LocationViewController controller = controllerMap.get(current);
-                controller.updateView(i*LOCATION_WIDTH, 0);
+                controller.updateView(i*ActiveLocationView.PARENT_WIDTH, 0);
             }
         }
         view.revalidate();

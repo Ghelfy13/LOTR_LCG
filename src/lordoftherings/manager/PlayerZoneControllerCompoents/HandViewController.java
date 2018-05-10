@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Map;
 import lordoftherings.boardcomponents.Hand;
 import lordoftherings.cards.PlayerCard;
+import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.gui.PlayerZoneComponents.HandView;
 import lordoftherings.manager.actionComponents.BoardActiveState;
@@ -20,7 +21,6 @@ public class HandViewController{
     private PlayerZoneViewController playerVC;
     private HashMap<PlayerCard, HandCardViewController> controllerMap;
     private HandView view;
-    private static final int CARD_Y_VALUE = 10;
     private BoardActiveState bas;
     
     public HandViewController(PlayerZoneViewController playerViewController, Hand playersHand, BoardActiveState bas){
@@ -39,7 +39,7 @@ public class HandViewController{
         for(int i = 0; i < size; ++i){
             PlayerCard card = playersHand.getCardAt(i);
             HandCardViewController controller = new HandCardViewController(this, card, bas);
-            HandCardView cardView = controller.makeView(200*i, CARD_Y_VALUE);
+            HandCardView cardView = controller.makeView(ActiveLocationView.PARENT_WIDTH*i, 0);
             view.add(cardView);
             controllerMap.put(card, controller);
         }
@@ -64,12 +64,12 @@ public class HandViewController{
             PlayerCard card = playersHand.getCardAt(i);
             if(!controllerMap.containsKey(card)){
                 HandCardViewController controller = new HandCardViewController(this, card, bas);
-                HandCardView newCardView = controller.makeView(200*i, CARD_Y_VALUE);
+                HandCardView newCardView = controller.makeView(ActiveLocationView.PARENT_WIDTH*i, 0);
                 view.add(newCardView);
                 controllerMap.put(card, controller);
             } else{
                 HandCardViewController cardController = controllerMap.get(card);
-                cardController.updateView(200*i, CARD_Y_VALUE);
+                cardController.updateView(ActiveLocationView.PARENT_WIDTH*i, 0);
             }
         }
         view.revalidate();

@@ -13,10 +13,14 @@ import lordoftherings.cardmodel.HeroCardModel;
 import lordoftherings.cardmodel.AllyCardModel;
 import java.awt.Color;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import lordoftherings.DeckComponents.EncounterBuild;
 import lordoftherings.DeckComponents.EncounterDeckBuild;
+import lordoftherings.DeckComponents.QuestSetBuild;
+import lordoftherings.DeckComponents.ScenarioSymbol;
 import lordoftherings.cardmodel.LocationCardModel;
+import lordoftherings.cardmodel.QuestCardModel;
 import lordoftherings.transaction_managers.GameManager;
 import lordoftherings.characters.Enemy;
 import lordoftherings.characters.Location;
@@ -79,6 +83,15 @@ public class LordOfTheRings {
           0,
           1,
           3);
+        Identification QuestID = new Identification(ExpansionName.CORE, 122);
+        QuestCardModel firstQuest = new QuestCardModel(
+                "A Chosen Path: Beorn's Path",
+                ScenarioSymbol.PASSAGE_THROUGH_MIRKWOOD,
+                new String []{"Dol Guldur Orcs, Passage through Mirkwood, Spiders of Mirkwood"},
+                "If players defeat Ungoliant's Spawn, they win the game automatically.",
+                "Passage through Mirkwood",
+                QuestID,
+                10);
         
         DeckBuild mockDeck = new DeckBuild();
         mockDeck.add(second, 4);
@@ -90,7 +103,9 @@ public class LordOfTheRings {
         mockBuildArray[0] = mockBuild;
         
         EncounterDeckBuild encounterDB = new EncounterDeckBuild();
-        EncounterBuild enemyBuild = new EncounterBuild(encounterDB, null);
+        QuestSetBuild questSB = new QuestSetBuild();
+        questSB.addQuestCard(firstQuest);
+        EncounterBuild enemyBuild = new EncounterBuild(encounterDB, questSB);
         Enemy enemy = new Enemy(firstEnemy.createCard());
         Location location = new Location(firstLocation.createCard());
         

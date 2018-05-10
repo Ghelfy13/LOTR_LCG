@@ -10,7 +10,9 @@ import lordoftherings.manager.BoardControllerComponents.GameManagerViewControlle
 import lordoftherings.transaction_managers.CancelHandler;
 import lordoftherings.transaction_managers.CharacterQueryHandle;
 import lordoftherings.characters.GameCharacter;
+import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.query_components.QueryPlayerZoneView;
+import lordoftherings.manager.BoardControllerComponents.BoardViewController;
 import lordoftherings.manager.actionComponents.GlobalViewController;
 
 /**
@@ -43,7 +45,9 @@ public class CharacterQueryViewController implements CancellableQueryViewControl
         view.addMouseMotionListener(charQAS.createMouseFollower());
         CharacterQueryMessageView messageView = messageVC.makeView(1995, 0, description);
         view.add(messageView);
-        QueryPlayerZoneView playerZoneView = playerZoneVC.makeView(10, 320);
+        QueryPlayerZoneView playerZoneView = playerZoneVC.makeView(
+                BoardViewController.DISTANCE_FROM_FRAME, 
+                ActiveLocationView.CARD_COUNTER_HEIGHT + BoardViewController.DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE);
         playerZoneView.setVisible(true);
         view.add(playerZoneView);
         view.setVisible(true);

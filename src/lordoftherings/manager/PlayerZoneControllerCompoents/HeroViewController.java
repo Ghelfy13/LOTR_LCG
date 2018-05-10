@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.characters.Hero;
+import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.gui.PlayerZoneComponents.HeroCardView;
 import lordoftherings.gui.PlayerZoneComponents.HeroPoolView;
 import lordoftherings.gui.PlayerZoneComponents.HeroView;
@@ -44,7 +45,7 @@ public class HeroViewController implements Actionable{
         view.add(cardView);
         cardView.setVisible(true);
         heroPoolVC = new HeroPoolViewController(this);
-        HeroPoolView poolView = heroPoolVC.makeView(0, 250, wantedHero.getNumOfResources());
+        HeroPoolView poolView = heroPoolVC.makeView(0, HandCardView.CARD_HEIGHT, wantedHero.getNumOfResources());
         poolView.setVisible(true);
         view.add(poolView);
         view.setVisible(true);

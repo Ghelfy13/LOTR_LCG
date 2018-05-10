@@ -5,17 +5,17 @@ package lordoftherings.gui.PlayerZoneComponents;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import lordoftherings.gui.EncounterZoneComponents.EncounterDiscardPileView;
 
 /**
  *
  * @author Amanda
  */
 public class DiscardPileView extends JPanel{
-    private static final int CARD_WIDTH = 180;
-    private static final int CARD_HEIGHT = 250;
-    
+      
     public DiscardPileView(int x, int y){
-        setBounds(x, y, CARD_WIDTH +10, CARD_HEIGHT + 10);
+        setBounds(x, y, HandCardView.CARD_WIDTH + EncounterDiscardPileView.CARD_BORDER,
+                HandCardView.CARD_HEIGHT + EncounterDiscardPileView.CARD_BORDER);
         setOpaque(true);
         setLayout(null);
         Color background = new Color(164, 117, 170);

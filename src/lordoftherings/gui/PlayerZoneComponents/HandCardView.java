@@ -14,8 +14,8 @@ import lordoftherings.manager.PlayerZoneControllerCompoents.HandCardViewControll
  * @author Amanda
  */
 public class HandCardView extends JTextArea {
-    private static final int CARD_HEIGHT = 250;
-    private static final int CARD_WIDTH = 180;
+    public static final int CARD_HEIGHT = 200;
+    public static final int CARD_WIDTH = 144;
     
     public HandCardView(HandCardViewController cardVC, String cardInfo, int x, int y){
         this.setRows(11);
@@ -23,7 +23,7 @@ public class HandCardView extends JTextArea {
         this.insert(cardInfo, 0);
         this.setEditable(false);
         setBounds(x, y, CARD_WIDTH, CARD_HEIGHT);
-        Font cardFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 14);
+        Font cardFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 12);
         setFont(cardFont);
         setBackground(Color.lightGray);
         BoardActiveState bas = cardVC.getBoardActiveStateController();

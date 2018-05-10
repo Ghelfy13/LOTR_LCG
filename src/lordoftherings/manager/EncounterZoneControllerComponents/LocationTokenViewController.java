@@ -24,5 +24,7 @@ public class LocationTokenViewController {
     
     public void updateView(int numOfTokens){
         tokenView.setText("Tokens: " + numOfTokens);
+        tokenView.revalidate();
+        tokenView.repaint();
     }
 }

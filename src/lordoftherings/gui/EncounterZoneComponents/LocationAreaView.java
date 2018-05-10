@@ -5,6 +5,7 @@ package lordoftherings.gui.EncounterZoneComponents;
 import java.awt.Color;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JPanel;
+import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 
 /**
  *
@@ -14,8 +15,8 @@ public class LocationAreaView extends JPanel{
     private int length;
     
     public LocationAreaView (int x, int y, int numOfLocations, MouseMotionListener mmListener){
-        length = numOfLocations*200;
-        setBounds(x, y, length, 275);
+        length = numOfLocations*(HandCardView.CARD_WIDTH +EncounterDiscardPileView.CARD_BORDER);
+        setBounds(x, y, length, ActiveLocationView.CARD_COUNTER_HEIGHT);
         setLayout(null);
         setOpaque(true);
         setBackground(Color.CYAN);

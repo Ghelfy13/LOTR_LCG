@@ -16,11 +16,12 @@ import lordoftherings.manager.actionComponents.FocusableMouseListener;
  * @author Amanda
  */
 public class ActionView extends JButton{
+    public static final int BOX_DIMENSIONS = 50;
     
     public ActionView(BoardActiveState boardAS, ActionViewController controller, Action playableAction, int x, int y){
         //TODO: ActionImageManager gets playableActions icon and this will be set on the button
         //TODO: Look at DeckView for reference on how to clean this up
-        setBounds(x, y, 50 , 50);
+        setBounds(x, y, BOX_DIMENSIONS, BOX_DIMENSIONS);
         setHorizontalAlignment(SwingConstants.CENTER);
         setVerticalAlignment(SwingConstants.CENTER);
         setLayout(null);

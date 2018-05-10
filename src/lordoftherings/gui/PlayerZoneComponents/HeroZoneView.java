@@ -2,7 +2,9 @@
 
 package lordoftherings.gui.PlayerZoneComponents;
 
+import java.awt.Color;
 import javax.swing.JPanel;
+import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 
 /**
  *
@@ -12,9 +14,10 @@ public class HeroZoneView extends JPanel{
     private int length;
     
     public HeroZoneView(int x, int y, int numOfHeros){
-        length = numOfHeros*255;
-        setBounds(x, y, length ,275);
-        setOpaque(false);
+        length = numOfHeros*205;
+        setBounds(x, y, length ,ActiveLocationView.CARD_COUNTER_HEIGHT);
+        setOpaque(true);
+        setBackground(Color.CYAN);
         setLayout(null);
     }
     

@@ -6,7 +6,7 @@ package lordoftherings.DeckComponents;
  *
  * @author Amanda
  */
-public enum EncounterSet {
+public enum EncounterSetTitles {
     SPIDERS_OF_MIRKWOOD,
     WILDERLANDS,
     DOL_GULDUR_ORCS,

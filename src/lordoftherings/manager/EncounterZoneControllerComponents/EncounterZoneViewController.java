@@ -9,6 +9,7 @@ import lordoftherings.gui.EncounterZoneComponents.EncounterZoneView;
 import lordoftherings.gui.EncounterZoneComponents.StagingAreaThreatTitleView;
 import lordoftherings.gui.EncounterZoneComponents.StagingAreaThreatView;
 import lordoftherings.gui.EncounterZoneComponents.StagingAreaView;
+import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.manager.PlayerZoneControllerCompoents.PlayerZoneViewController;
 import lordoftherings.manager.actionComponents.BoardActiveState;
 
@@ -47,7 +48,7 @@ public class EncounterZoneViewController {
         EncounterDeckParentView deckView = enemyDeckVC.makeView(
                 bas.createMouseFollower(), PlayerZoneViewController.DECK_X, DISTANCE_FROM_FRAME);
         EncounterDiscardPileView discardView = enemyDPileVC.makeView(0, DISTANCE_FROM_FRAME);
-        StagingAreaView stageView = stagingVC.makeView(EncounterDeckParentView.CARD_WIDTH + DISTANCE_BT_DECK_AND_STAGE + 190, 0);
+        StagingAreaView stageView = stagingVC.makeView(HandCardView.CARD_WIDTH + DISTANCE_BT_DECK_AND_STAGE + 190, 0);
         StagingAreaThreatTitleView threatTitleView = threatTitleVC.makeView(1825, 75);
         StagingAreaThreatView threatView = threatVC.makeView(1825, 125);
         view.add(threatTitleView);
@@ -68,7 +69,6 @@ public class EncounterZoneViewController {
         stagingVC.updateView();
         threatTitleVC.updateView();
         threatVC.updateView();
-        //TODO
         enemyDPileVC.updateView();
         //questSetVC.updateView();
         

@@ -4,6 +4,8 @@ package lordoftherings.gui.query_components;
 
 import java.awt.Color;
 import javax.swing.JPanel;
+import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
+import lordoftherings.gui.EncounterZoneComponents.EncounterZoneView;
 
 /**
  *
@@ -12,7 +14,7 @@ import javax.swing.JPanel;
 public class QueryCharacterAreaView extends JPanel {
     
     public QueryCharacterAreaView(int x, int y){
-        this.setBounds(x, y, 1600, 375);
+        this.setBounds(x, y, EncounterZoneView.ZONE_WIDTH, ActiveLocationView.CARD_COUNTER_HEIGHT);
         Color backgroundColor = new Color(0x10,0x66,0x1b);
         //setBackground(Color.white);
         //this.setBackground(backgroundColor);

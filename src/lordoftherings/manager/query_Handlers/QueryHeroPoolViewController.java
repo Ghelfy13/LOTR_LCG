@@ -20,7 +20,7 @@ public class QueryHeroPoolViewController {
     
     public QueryHeroPoolView makeView(int x, int y, int resources, int damage){
         poolView = new QueryHeroPoolView(x, y, resources, damage);
-        Font cardFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 16);
+        Font cardFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 12);
         poolView.setFont(cardFont);
         poolView.setVisible(true);
         return poolView;

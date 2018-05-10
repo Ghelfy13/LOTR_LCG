@@ -11,10 +11,12 @@ import lordoftherings.cards.QuestCard;
 public class Quest {
     private QuestCard sireCard;
     private int travelTokens;
+    private boolean isCompleted;
     
     public Quest(QuestCard newQuest){
         this.sireCard = newQuest;
         travelTokens = 0;
+        isCompleted = false;
     }
     
     public QuestCard getQuestCard(){
@@ -35,5 +37,12 @@ public class Quest {
         }else{
             travelTokens -= numOfTokens;
         }
+    }
+    
+    public boolean haveEnoughTokens(){
+        if(travelTokens >= sireCard.getQuestPoints()){
+            isCompleted  = true;
+        }
+        return isCompleted;
     }
 }

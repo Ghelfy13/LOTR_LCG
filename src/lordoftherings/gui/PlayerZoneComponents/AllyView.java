@@ -10,8 +10,8 @@ import javax.swing.JPanel;
  * @author Amanda
  */
 public class AllyView extends JPanel {
-    public static final int VIEW_WIDTH = 255;
-    public static final int VIEW_HEIGHT = 275;
+    public static final int VIEW_WIDTH = 205;
+    public static final int VIEW_HEIGHT = 225;
     
     public AllyView(int x, int y){
         setBounds(x, y, VIEW_WIDTH, VIEW_HEIGHT);

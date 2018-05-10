@@ -21,6 +21,14 @@ public class QuestCard {
         ownerID = -4;
     }
     
+    public String getTitle(){
+        return questModel.getTitle();
+    }
+    
+    public int getQuestPoints(){
+        return questModel.getQuestPoints();
+    }
+    
     public QuestCardModel getModel(){
         return questModel;
     }

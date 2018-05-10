@@ -1,6 +1,7 @@
 //Copyright Amanda V. Harris 2018-present. All Rights Reserved.
 
 package lordoftherings;
+
 import lordoftherings.cardmodel.PlayerCardModel;
 import java.util.Comparator;
 /**

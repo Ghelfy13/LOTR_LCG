@@ -9,6 +9,8 @@ import lordoftherings.gui.query_components.QueryAllyView;
 import lordoftherings.manager.PlayerZoneControllerCompoents.AllyViewController;
 import lordoftherings.manager.actionComponents.Selectable;
 import lordoftherings.characters.GameCharacter;
+import lordoftherings.gui.PlayerZoneComponents.AllyView;
+import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.manager.actionComponents.SelectableMouseListener;
 
 /**
@@ -40,7 +42,7 @@ public class QueryAllyViewController implements Selectable<GameCharacter>{
         cardView.addMouseListener(new SelectableMouseListener(charQAS, this));
         view.add(cardView);
         cardView.setVisible(true);
-        damageView = new QueryAllyDamageView(0, AllyViewController.CARD_LENGTH, 0);
+        damageView = new QueryAllyDamageView(0, HandCardView.CARD_HEIGHT, 0);
         damageView.setVisible(true);
         view.add(damageView);
         view.setVisible(true);

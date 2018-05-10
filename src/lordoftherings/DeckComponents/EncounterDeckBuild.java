@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.TreeMap;
 import lordoftherings.EnemyCardIdentificationComparator;
 import lordoftherings.cardmodel.EncounterCardModel;
-import lordoftherings.cardmodel.EnemyCardModel;
 
 /**
  *
@@ -16,7 +15,6 @@ import lordoftherings.cardmodel.EnemyCardModel;
  */
 public class EncounterDeckBuild {
     private TreeMap<EncounterCardModel, Integer> enemyDeck;
-    private ArrayList<EncounterSetBuild> setBuild;
     private int deckSize;
     
     public EncounterDeckBuild(){
@@ -26,4 +24,5 @@ public class EncounterDeckBuild {
     public Iterator<Map.Entry<EncounterCardModel, Integer>> iterator() {
         return enemyDeck.entrySet().iterator();
     }
+    
 }

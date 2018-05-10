@@ -20,8 +20,6 @@ public class HeroPoolViewController {
     
     public HeroPoolView makeView(int x, int y, int resources){
         view = new HeroPoolView(x, y, resources, 0);
-        Font cardFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 16);
-        view.setFont(cardFont);
         view.setVisible(true);
         return view;
     }

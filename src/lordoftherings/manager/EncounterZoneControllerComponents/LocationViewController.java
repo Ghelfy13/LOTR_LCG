@@ -9,6 +9,7 @@ import lordoftherings.characters.Location;
 import lordoftherings.gui.EncounterZoneComponents.LocationCardView;
 import lordoftherings.gui.EncounterZoneComponents.LocationTokenView;
 import lordoftherings.gui.EncounterZoneComponents.LocationView;
+import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.manager.actionComponents.Actionable;
 import lordoftherings.manager.actionComponents.ActionableMouseListener;
 import lordoftherings.manager.actionComponents.BoardActiveState;
@@ -38,7 +39,7 @@ public class LocationViewController implements Actionable{
         cardView = cardVC.makeView(0,0);
         cardView.addMouseListener(new ActionableMouseListener(bas, this));
         view.add(cardView);
-        tokenView = tokenVC.makeView(0, 250);
+        tokenView = tokenVC.makeView(0, HandCardView.CARD_HEIGHT);
         view.add(tokenView);
         view.addMouseMotionListener(bas.createMouseFollower());
         view.setVisible(true);

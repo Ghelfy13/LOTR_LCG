@@ -5,17 +5,16 @@ package lordoftherings.gui.EncounterZoneComponents;
 import java.awt.Color;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JPanel;
+import lordoftherings.gui.PlayerZoneComponents.EngagementAreaView;
 
 /**
  *
  * @author Amanda
  */
 public class StagingAreaView extends JPanel{
-    public static final int STAGING_AREA_WIDTH = 270 * 5;
-    public static final int STAGING_AREA_HEIGHT = 300;
-    
+        
     public StagingAreaView(int x, int y, MouseMotionListener mmListener){
-        setBounds(x, y, STAGING_AREA_WIDTH, STAGING_AREA_HEIGHT);
+        setBounds(x, y, EngagementAreaView.AREA_WIDTH, ActiveLocationView.CARD_COUNTER_HEIGHT);
         setLayout(null);
         setOpaque(true);
         setBackground(Color.WHITE);

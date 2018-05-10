@@ -22,8 +22,8 @@ import lordoftherings.manager.actionComponents.FocusableMouseListener;
 public class DeckView extends JLabel{
     
     public DeckView(DeckViewController controller){
-        super(cardBackImage(180, 250));
-        this.setBounds(250,300,180,250);
+        super(cardBackImage(HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT));
+        this.setBounds(250,300,HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
         BoardActiveState bas = controller.getBoardActiveStateController();
         this.addMouseListener(new FocusableMouseListener(bas,controller));
     }

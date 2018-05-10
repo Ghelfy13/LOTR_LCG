@@ -16,9 +16,9 @@ public class AllyCardView extends JTextArea{
         this.setRows(11);
         this.setColumns(1);
         this.insert(heroInfo, 0);
-        Font cardFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 14);
+        Font cardFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 12);
         this.setFont(cardFont);
         this.setBackground(Color.LIGHT_GRAY);
-        setBounds(x, y, 180, 250);
+        setBounds(x, y, HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
     }
 }

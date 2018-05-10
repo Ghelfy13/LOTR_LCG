@@ -3,6 +3,7 @@
 package lordoftherings.gui.query_components;
 
 import javax.swing.JPanel;
+import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 
 /**
  *
@@ -12,8 +13,8 @@ public class QueryHeroAreaView extends JPanel{
     private int length;
     
     public QueryHeroAreaView(int x, int y, int numOfHeros){
-        length = numOfHeros*255;
-        setBounds(x, y, length, 275);
+        length = numOfHeros*200;
+        setBounds(x, y, length, ActiveLocationView.CARD_COUNTER_HEIGHT);
         setOpaque(false);
         setLayout(null);
     }

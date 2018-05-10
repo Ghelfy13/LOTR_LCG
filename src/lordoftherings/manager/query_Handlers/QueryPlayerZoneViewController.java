@@ -3,6 +3,8 @@
 package lordoftherings.manager.query_Handlers;
 
 import lordoftherings.boardcomponents.PlayerZone;
+import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
+import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.gui.query_components.QueryCharacterAreaView;
 import lordoftherings.gui.query_components.QueryPlayerZoneView;
 import lordoftherings.manager.PlayerZoneControllerCompoents.PlayerZoneViewController;
@@ -36,7 +38,9 @@ public class QueryPlayerZoneViewController {
     public QueryPlayerZoneView makeView(int x, int y){
         zoneView = new QueryPlayerZoneView(x, y);
         zoneView.addMouseMotionListener(charQAS.createMouseFollower());
-        QueryCharacterAreaView charAreaView = charAreaVC.makeView(PlayerZoneViewController.DECK_X + 180 + 20, 305);
+        QueryCharacterAreaView charAreaView = charAreaVC.makeView(
+                PlayerZoneViewController.DECK_X + HandCardView.CARD_WIDTH + 20, 
+                305);
         zoneView.add(charAreaView);
         charAreaView.setVisible(true);
         zoneView.setVisible(true);

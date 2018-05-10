@@ -21,7 +21,7 @@ public class ActiveLocationViewController {
     private LocationViewController locationVC;
     private Location currentLocation;
     private LocationView locationView;
-    public static final int X_POSITION = 7;
+    public static final int X_POSITION = 8;
     
     public ActiveLocationViewController(BoardActiveState bas, ActiveLocationArea locationArea){
         this.bas = bas;

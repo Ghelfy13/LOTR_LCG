@@ -8,6 +8,7 @@ import lordoftherings.gui.PlayerZoneComponents.CharacterAreaView;
 import lordoftherings.gui.PlayerZoneComponents.DeckViewParent;
 import lordoftherings.gui.PlayerZoneComponents.DiscardPileView;
 import lordoftherings.gui.PlayerZoneComponents.EngagementAreaView;
+import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.gui.PlayerZoneComponents.HandView;
 import lordoftherings.gui.PlayerZoneComponents.PlayerZoneView;
 import lordoftherings.gui.PlayerZoneComponents.QuestValueTitleView;
@@ -59,11 +60,12 @@ public class PlayerZoneViewController {
         playerView.addMouseMotionListener(bas.createMouseFollower());
         DeckViewParent myDeck = deckvc.makeView(DECK_X, 610);
         playerView.add(myDeck);
-        HandView myHand = handvc.makeView(DECK_X + 180 + 20, 610);
+        HandView myHand = handvc.makeView(DECK_X + HandCardView.CARD_WIDTH + 20, 610);
         playerView.add(myHand);
-        CharacterAreaView charView = charAreaVC.makeView(DECK_X + 180 + 20, 305);
+        CharacterAreaView charView = charAreaVC.makeView(
+                DECK_X + HandCardView.CARD_WIDTH + 20, 305);
         playerView.add(charView);
-        EngagementAreaView engageAreaView = engageAreaVC.makeView(DECK_X + 180 + 20, 0);
+        EngagementAreaView engageAreaView = engageAreaVC.makeView(DECK_X + HandCardView.CARD_WIDTH + 20, 0);
         playerView.add(engageAreaView);
         ThreatDialTitleView threatTitleView = threatTitleVC.makeView(1800, 800);
         playerView.add(threatTitleView);

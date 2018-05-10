@@ -39,10 +39,10 @@ public class QueryCharacterAreaViewController {
     public QueryCharacterAreaView makeView(int x, int y){
         charAreaView = new QueryCharacterAreaView(x, y);
         charAreaView.addMouseMotionListener(charQAS.createMouseFollower());
-        QueryHeroAreaView areaView = heroAreaVC.makeView(0, 0);
-        areaView.setVisible(true);
-        charAreaView.add(areaView);
-        QueryAllyZoneView allyView = allyAreaVC.makeView(areaView.getLength() + 40, 0);
+        QueryHeroAreaView heroAreaView = heroAreaVC.makeView(0, 0);
+        heroAreaView.setVisible(true);
+        charAreaView.add(heroAreaView);
+        QueryAllyZoneView allyView = allyAreaVC.makeView(heroAreaView.getLength(), 0);
         allyView.setVisible(true);
         charAreaView.add(allyView);
         return charAreaView;

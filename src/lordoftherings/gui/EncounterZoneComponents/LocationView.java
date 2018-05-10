@@ -4,17 +4,16 @@ package lordoftherings.gui.EncounterZoneComponents;
 
 import java.awt.Color;
 import javax.swing.JPanel;
+import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 
 /**
  *
  * @author Amanda
  */
 public class LocationView extends JPanel{
-    public static final int LOCATION_WIDTH = 200;
-    public static final int LOCATION_HEIGHT = 275;
-    
+        
     public LocationView(int x, int y){
-        setBounds(x, y, LOCATION_WIDTH, LOCATION_HEIGHT);
+        setBounds(x, y, ActiveLocationView.PARENT_WIDTH, ActiveLocationView.CARD_COUNTER_HEIGHT);
         setOpaque(false);
         setLayout(null);
     }

@@ -17,7 +17,7 @@ public class DeckViewParent extends JPanel{
     public DeckViewParent(DeckViewController controller){
         view = new DeckView(controller);
         this.add(view);
-        this.setBounds(250,300,180,250);
+        this.setBounds(250,300,HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
         this.setOpaque(false);
         BoardActiveState bas = controller.getBoardActiveStateController();
         this.addMouseListener(new FocusableMouseListener(bas,controller));
