@@ -15,7 +15,7 @@ public class LocationAreaView extends JPanel{
     private int length;
     
     public LocationAreaView (int x, int y, int numOfLocations, MouseMotionListener mmListener){
-        length = numOfLocations*(HandCardView.CARD_WIDTH +EncounterDiscardPileView.CARD_BORDER);
+        length = numOfLocations*(ActiveLocationView.PARENT_WIDTH);
         setBounds(x, y, length, ActiveLocationView.CARD_COUNTER_HEIGHT);
         setLayout(null);
         setOpaque(true);
