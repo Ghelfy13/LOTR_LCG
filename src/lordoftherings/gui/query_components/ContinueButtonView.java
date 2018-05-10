@@ -6,6 +6,8 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import lordoftherings.gui.EncounterZoneComponents.StagingAreaThreatTitleView;
+import lordoftherings.gui.PlayerZoneComponents.QuestValueView;
 
 /**
  *
@@ -20,8 +22,7 @@ public class ContinueButtonView extends JButton {
         setVerticalAlignment(SwingConstants.CENTER);
         setLayout(null);
         setOpaque(true);
-        Font phaseFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 30);
-        setFont(phaseFont);
+        setFont(QuestValueView.QUEST_FONT);
         if(canContinue){
            setBackground(Color.LIGHT_GRAY); 
         }

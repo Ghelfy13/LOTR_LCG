@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import lordoftherings.gui.EncounterZoneComponents.StagingAreaThreatTitleView;
 
 /**
  *
@@ -21,7 +22,6 @@ public class ThreatDialTitleView extends JLabel{
         setBackground(Color.GREEN);
         setVerticalAlignment(SwingConstants.CENTER);
         setHorizontalAlignment(SwingConstants.CENTER);
-        Font threatFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 25);
-        setFont(threatFont);
+        setFont(StagingAreaThreatTitleView.THREAT_FONT);
     }
 }

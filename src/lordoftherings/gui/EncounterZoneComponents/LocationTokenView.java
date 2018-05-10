@@ -6,6 +6,7 @@ import java.awt.Color;
 import static java.awt.Component.CENTER_ALIGNMENT;
 import java.awt.Font;
 import javax.swing.JTextArea;
+import lordoftherings.gui.PlayerZoneComponents.AllyCardView;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 
 /**
@@ -19,8 +20,7 @@ public class LocationTokenView extends JTextArea{
         this.insert("Tokens: " + tokenNum, 0);
         this.setEditable(false);
         this.setAlignmentX(CENTER_ALIGNMENT);
-        Font cardFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 12);
-        this.setFont(cardFont);
+        this.setFont(AllyCardView.CARD_FONT);
         this.setBackground(Color.yellow);
     }
 }

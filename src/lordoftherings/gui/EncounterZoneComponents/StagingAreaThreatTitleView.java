@@ -11,6 +11,7 @@ import javax.swing.SwingConstants;
  * @author Amanda
  */
 public class StagingAreaThreatTitleView extends JLabel{
+    public static final Font THREAT_FONT = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 24);
     
     public StagingAreaThreatTitleView(int x, int y){
         setText("THREAT");
@@ -20,7 +21,6 @@ public class StagingAreaThreatTitleView extends JLabel{
         setOpaque(true);
         setVerticalAlignment(SwingConstants.CENTER);
         setHorizontalAlignment(SwingConstants.CENTER);
-        Font threatFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 24);
-        setFont(threatFont);
+        setFont(THREAT_FONT);
     }
 }

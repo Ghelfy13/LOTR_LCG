@@ -7,6 +7,7 @@ import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
+import lordoftherings.gui.AvailableActionsView;
 
 /**
  *
@@ -22,8 +23,7 @@ public class CharacterQueryMessageView extends JTextArea{
         setOpaque(true);
         setAlignmentX(CENTER_ALIGNMENT);
         setAlignmentY(CENTER_ALIGNMENT);
-        Font queryFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 36);
-        setFont(queryFont);
+        setFont(AvailableActionsView.MESSAGE_FONT);
         setLineWrap(true);
         Border queryBorder = BorderFactory.createMatteBorder(5,5,5,5,Color.BLACK);
         setBorder(queryBorder);

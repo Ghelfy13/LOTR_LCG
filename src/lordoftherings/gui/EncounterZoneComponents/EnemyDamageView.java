@@ -5,6 +5,7 @@ package lordoftherings.gui.EncounterZoneComponents;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextArea;
+import lordoftherings.gui.PlayerZoneComponents.AllyCardView;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 
 /**
@@ -19,8 +20,7 @@ public class EnemyDamageView extends JTextArea{
         this.insert("Damage: " + damage, 0);
         this.setEditable(false);
         this.setAlignmentX(CENTER_ALIGNMENT);
-        Font cardFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 12);
-        this.setFont(cardFont);
+        this.setFont(AllyCardView.CARD_FONT);
         this.setBackground(Color.yellow);
     }
 }

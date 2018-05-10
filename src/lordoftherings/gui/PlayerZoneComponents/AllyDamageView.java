@@ -18,8 +18,7 @@ public class AllyDamageView extends JTextArea {
         this.setBounds(x, y, HandCardView.CARD_WIDTH, EnemyDamageView.DAMAGE_HEIGHT);
         this.setAlignmentX(CENTER_ALIGNMENT);
         this.setEditable(false);
-        Font cardFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 12);
-        this.setFont(cardFont);
+        this.setFont(AllyCardView.CARD_FONT);
         this.setBackground(Color.yellow);
     }
 }

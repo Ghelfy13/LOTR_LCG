@@ -19,7 +19,6 @@ public class DiscardCardView extends JTextArea{
         setLayout(null);
         setEditable(false);
         setBackground(Color.LIGHT_GRAY);
-        Font cardFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 12);
-        setFont(cardFont);
+        setFont(AllyCardView.CARD_FONT);
     }
 }

@@ -5,6 +5,7 @@ package lordoftherings.gui.EncounterZoneComponents;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextArea;
+import lordoftherings.gui.PlayerZoneComponents.AllyCardView;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.manager.EncounterZoneControllerComponents.LocationCardViewController;
 
@@ -18,8 +19,7 @@ public class LocationCardView extends JTextArea {
         this.setRows(11);
         this.setColumns(1);
         this.insert(locationInfo, 0);
-        Font cardFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 12);
-        this.setFont(cardFont);
+        this.setFont(AllyCardView.CARD_FONT);
         this.setEditable(false);
         this.setBackground(Color.LIGHT_GRAY);
         setBounds(x, y, HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);

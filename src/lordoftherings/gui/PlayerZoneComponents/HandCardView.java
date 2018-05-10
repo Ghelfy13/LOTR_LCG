@@ -23,8 +23,7 @@ public class HandCardView extends JTextArea {
         this.insert(cardInfo, 0);
         this.setEditable(false);
         setBounds(x, y, CARD_WIDTH, CARD_HEIGHT);
-        Font cardFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 12);
-        setFont(cardFont);
+        setFont(AllyCardView.CARD_FONT);
         setBackground(Color.lightGray);
         BoardActiveState bas = cardVC.getBoardActiveStateController();
         // TODO: remove if

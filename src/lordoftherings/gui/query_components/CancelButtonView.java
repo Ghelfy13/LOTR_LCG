@@ -3,9 +3,9 @@
 package lordoftherings.gui.query_components;
 
 import java.awt.Color;
-import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import lordoftherings.gui.PlayerZoneComponents.QuestValueView;
 
 /**
  *
@@ -20,8 +20,7 @@ public class CancelButtonView extends JButton{
         setVerticalAlignment(SwingConstants.CENTER);
         setLayout(null);
         setOpaque(true);
-        Font phaseFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 30);
-        setFont(phaseFont);
+        setFont(QuestValueView.QUEST_FONT);
         if(canCancel){
             setBackground(Color.LIGHT_GRAY);
         }

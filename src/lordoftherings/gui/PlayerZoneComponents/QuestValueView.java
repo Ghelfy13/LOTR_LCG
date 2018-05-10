@@ -12,6 +12,7 @@ import javax.swing.SwingConstants;
  * @author Amanda
  */
 public class QuestValueView extends JLabel{
+    public static final Font QUEST_FONT = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 30);
     
     public QuestValueView(int x, int y){
         setBounds(x, y, 200, 50);
@@ -19,8 +20,8 @@ public class QuestValueView extends JLabel{
         setOpaque(true);
         setText("" + 0);
         setBackground(Color.CYAN);
-        Font threatFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 30);
-        setFont(threatFont);
+        
+        setFont(QUEST_FONT);
         setVerticalAlignment(SwingConstants.CENTER);
         setHorizontalAlignment(SwingConstants.CENTER);
     }

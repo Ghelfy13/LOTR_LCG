@@ -19,8 +19,7 @@ public class ThreatDialView extends JLabel{
         setOpaque(true);
         setText("" + initialThreat);
         setBackground(Color.GREEN);
-        Font threatFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 30);
-        setFont(threatFont);
+        setFont(QuestValueView.QUEST_FONT);
         setVerticalAlignment(SwingConstants.CENTER);
         setHorizontalAlignment(SwingConstants.CENTER);
     }

@@ -2,7 +2,6 @@
 
 package lordoftherings.manager.PlayerZoneControllerCompoents;
 
-import java.awt.Font;
 import lordoftherings.gui.PlayerZoneComponents.HeroPoolView;
 
 /**
