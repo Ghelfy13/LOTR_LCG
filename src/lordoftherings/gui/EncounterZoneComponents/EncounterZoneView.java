@@ -10,7 +10,7 @@ import javax.swing.JPanel;
  * @author Amanda
  */
 public class EncounterZoneView extends JPanel {
-    public static final int ZONE_WIDTH = 1800;
+    public static final int ZONE_WIDTH = 2000;
     
     public EncounterZoneView(int x, int y){
         setBounds( x, y, ZONE_WIDTH , ActiveLocationView.CARD_COUNTER_HEIGHT);

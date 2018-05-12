@@ -49,8 +49,8 @@ public class EncounterZoneViewController {
                 bas.createMouseFollower(), PlayerZoneViewController.DECK_X, DISTANCE_FROM_FRAME);
         EncounterDiscardPileView discardView = enemyDPileVC.makeView(0, DISTANCE_FROM_FRAME);
         StagingAreaView stageView = stagingVC.makeView(HandCardView.CARD_WIDTH + DISTANCE_BT_DECK_AND_STAGE + 190, 0);
-        StagingAreaThreatTitleView threatTitleView = threatTitleVC.makeView(1825, 75);
-        StagingAreaThreatView threatView = threatVC.makeView(1825, 125);
+        StagingAreaThreatTitleView threatTitleView = threatTitleVC.makeView(1800, 0);
+        StagingAreaThreatView threatView = threatVC.makeView(1800, 50);
         view.add(threatTitleView);
         view.add(threatView);
         view.add(deckView);
