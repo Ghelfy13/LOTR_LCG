@@ -17,8 +17,7 @@ public class EnemyView extends JPanel{
         setBounds(x, y, ActiveLocationView.PARENT_WIDTH,
                 ActiveLocationView.CARD_COUNTER_HEIGHT);
         setLayout(null);
-        setOpaque(true);
-        setBackground(Color.ORANGE);
+        setOpaque(false);
         
     }
 }

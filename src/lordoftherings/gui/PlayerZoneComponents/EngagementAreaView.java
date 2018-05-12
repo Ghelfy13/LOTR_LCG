@@ -17,7 +17,6 @@ public class EngagementAreaView extends JPanel{
     public EngagementAreaView(int x, int y, int numOfEnemies){
         setBounds(x, y, AREA_WIDTH, ActiveLocationView.CARD_COUNTER_HEIGHT);
         setLayout(null);
-        setOpaque(true);
-        setBackground(Color.PINK);
+        setOpaque(false);
     }
 }

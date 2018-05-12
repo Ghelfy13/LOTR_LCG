@@ -2,10 +2,8 @@
 
 package lordoftherings.gui.EncounterZoneComponents;
 
-import java.awt.Color;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JPanel;
-import lordoftherings.gui.PlayerZoneComponents.AllyView;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 
 /**
@@ -19,8 +17,7 @@ public class EnemyAreaView extends JPanel{
         length = numOfEnemies*ActiveLocationView.PARENT_WIDTH;
         setBounds(x, y, length, HandCardView.CARD_HEIGHT);
         setLayout(null);
-        setOpaque(true);
-        setBackground(Color.LIGHT_GRAY);
+        setOpaque(false);
         this.addMouseMotionListener(mmListener);
     }
     

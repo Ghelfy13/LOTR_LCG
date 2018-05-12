@@ -18,8 +18,7 @@ public class LocationAreaView extends JPanel{
         length = numOfLocations*(ActiveLocationView.PARENT_WIDTH);
         setBounds(x, y, length, ActiveLocationView.CARD_COUNTER_HEIGHT);
         setLayout(null);
-        setOpaque(true);
-        setBackground(Color.CYAN);
+        setOpaque(false);
         this.addMouseMotionListener(mmListener);
     }
     

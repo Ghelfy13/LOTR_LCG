@@ -2,9 +2,7 @@
 
 package lordoftherings.gui.EncounterZoneComponents;
 
-import java.awt.Color;
 import javax.swing.JPanel;
-import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 
 /**
  *

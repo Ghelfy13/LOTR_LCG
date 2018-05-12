@@ -16,8 +16,7 @@ public class HeroZoneView extends JPanel{
     public HeroZoneView(int x, int y, int numOfHeros){
         length = numOfHeros*205;
         setBounds(x, y, length ,ActiveLocationView.CARD_COUNTER_HEIGHT);
-        setOpaque(true);
-        setBackground(Color.CYAN);
+        setOpaque(false);
         setLayout(null);
     }
     

@@ -17,8 +17,6 @@ public class HeroView extends JPanel{
         setBounds(x, y, HandCardView.CARD_HEIGHT,
                 ActiveLocationView.CARD_COUNTER_HEIGHT);
         setLayout(null);
-        Color backgroundColor = new Color(0x10,0x66,0x1b);
-        setBackground(Color.WHITE);
-        setOpaque(true);
+        setOpaque(false);
     }
 }

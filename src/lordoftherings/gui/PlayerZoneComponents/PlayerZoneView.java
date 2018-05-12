@@ -16,9 +16,6 @@ public class PlayerZoneView extends JPanel {
     public PlayerZoneView(int x, int y){
         setLayout(null);
         setBounds(x, y, ZONE_WIDTH, ZONE_HEIGHT);
-        setOpaque(true);
-        Color backgroundColor = new Color(0x10,0x66,0x1b);
-        //setBackground(backgroundColor);
-        setBackground(Color.WHITE);
+        setOpaque(false);
     }
 }
