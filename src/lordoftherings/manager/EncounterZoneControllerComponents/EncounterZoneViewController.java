@@ -28,7 +28,7 @@ public class EncounterZoneViewController {
     private StagingAreaThreatViewController threatVC;
     private StagingAreaThreatTitleViewController threatTitleVC;
     public static final int DISTANCE_FROM_FRAME = 10;
-    public static final int DISTANCE_BT_DECK_AND_STAGE = 35;
+    public static final int DISTANCE_BT_DECK_AND_STAGE = 10;
     
     
     public EncounterZoneViewController(BoardActiveState boardAS, EncounterZone zone){

@@ -16,7 +16,7 @@ import lordoftherings.manager.actionComponents.BoardActiveState;
  *
  * @author Amanda
  */
-public class LocationAreaViewController {
+public class LocationAreaViewController{
     private LocationArea area;
     private LocationAreaView view;
     private BoardActiveState bas;

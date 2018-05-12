@@ -24,7 +24,7 @@ import lordoftherings.manager.BoardControllerComponents.BoardViewController;
  * @author Amanda
  */
 public class PlayerZoneViewController {
-    public static final int DECK_X = 210;
+    public static final int DECK_X = 180;
     public static final int DECK_Y = 30;
     private BoardViewController bvc;
     private PlayerZone playerZone;
@@ -39,6 +39,9 @@ public class PlayerZoneViewController {
     private QuestValueViewController questValueVC;
     private QuestValueTitleViewController questTitleVC;
     private DiscardPileViewController dpvc; 
+    public static final int Y_HAND_VALUE = 695;
+    public static final int ENGAGEMENT_Y_VALUE = 200;
+    public static final int DISTANCE_BT_FIELDS = 50;
     
     public PlayerZoneViewController(BoardViewController bvc, PlayerZone pz, BoardActiveState bas){
         this.bvc = bvc;
@@ -58,14 +61,14 @@ public class PlayerZoneViewController {
     public PlayerZoneView makeView(int x, int y){
         playerView = new PlayerZoneView(x,y);
         playerView.addMouseMotionListener(bas.createMouseFollower());
-        DeckViewParent myDeck = deckvc.makeView(DECK_X, 610);
+        DeckViewParent myDeck = deckvc.makeView(DECK_X, Y_HAND_VALUE);
         playerView.add(myDeck);
-        HandView myHand = handvc.makeView(DECK_X + HandCardView.CARD_WIDTH + 20, 610);
+        HandView myHand = handvc.makeView(DECK_X + HandCardView.CARD_WIDTH + 20, Y_HAND_VALUE);
         playerView.add(myHand);
         CharacterAreaView charView = charAreaVC.makeView(
-                DECK_X + HandCardView.CARD_WIDTH + 20, 305);
+                DECK_X + HandCardView.CARD_WIDTH + 20, ENGAGEMENT_Y_VALUE + HandCardView.CARD_HEIGHT + DISTANCE_BT_FIELDS);
         playerView.add(charView);
-        EngagementAreaView engageAreaView = engageAreaVC.makeView(DECK_X + HandCardView.CARD_WIDTH + 20, 0);
+        EngagementAreaView engageAreaView = engageAreaVC.makeView(DECK_X + HandCardView.CARD_WIDTH + 20, ENGAGEMENT_Y_VALUE);
         playerView.add(engageAreaView);
         ThreatDialTitleView threatTitleView = threatTitleVC.makeView(1800, 800);
         playerView.add(threatTitleView);
@@ -73,9 +76,9 @@ public class PlayerZoneViewController {
         playerView.add(threatDialView);
         QuestValueTitleView questTitleView = questTitleVC.makeView(1800, 650);
         playerView.add(questTitleView);
-        QuestValueView questValue = questValueVC.makeView(1800, 700);
+        QuestValueView questValue = questValueVC.makeView(1800, Y_HAND_VALUE);
         playerView.add(questValue);
-        DiscardPileView dPileView = dpvc.makeView(0, 610);
+        DiscardPileView dPileView = dpvc.makeView(0, Y_HAND_VALUE -10);
         playerView.add(dPileView);
         playerView.setVisible(true);
         return playerView;
