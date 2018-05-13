@@ -39,8 +39,7 @@ public class PlayerZoneViewController {
     private QuestValueViewController questValueVC;
     private QuestValueTitleViewController questTitleVC;
     private DiscardPileViewController dpvc; 
-    public static final int Y_HAND_VALUE = 695;
-    public static final int ENGAGEMENT_Y_VALUE = 200;
+    public static final int Y_HAND_VALUE = 495;
     public static final int DISTANCE_BT_FIELDS = 50;
     
     public PlayerZoneViewController(BoardViewController bvc, PlayerZone pz, BoardActiveState bas){
@@ -66,17 +65,17 @@ public class PlayerZoneViewController {
         HandView myHand = handvc.makeView(DECK_X + HandCardView.CARD_WIDTH + 20, Y_HAND_VALUE);
         playerView.add(myHand);
         CharacterAreaView charView = charAreaVC.makeView(
-                DECK_X + HandCardView.CARD_WIDTH + 20, ENGAGEMENT_Y_VALUE + HandCardView.CARD_HEIGHT + DISTANCE_BT_FIELDS);
+                DECK_X + HandCardView.CARD_WIDTH + 20, HandCardView.CARD_HEIGHT + DISTANCE_BT_FIELDS);
         playerView.add(charView);
-        EngagementAreaView engageAreaView = engageAreaVC.makeView(DECK_X + HandCardView.CARD_WIDTH + 20, ENGAGEMENT_Y_VALUE);
+        EngagementAreaView engageAreaView = engageAreaVC.makeView(DECK_X + HandCardView.CARD_WIDTH + 20, 0);
         playerView.add(engageAreaView);
-        ThreatDialTitleView threatTitleView = threatTitleVC.makeView(1800, 800);
+        ThreatDialTitleView threatTitleView = threatTitleVC.makeView(1800, Y_HAND_VALUE + 100);
         playerView.add(threatTitleView);
-        ThreatDialView threatDialView = threatDialVC.makeView(1800,850);
+        ThreatDialView threatDialView = threatDialVC.makeView(1800, Y_HAND_VALUE + 150);
         playerView.add(threatDialView);
-        QuestValueTitleView questTitleView = questTitleVC.makeView(1800, 650);
+        QuestValueTitleView questTitleView = questTitleVC.makeView(1800, Y_HAND_VALUE);
         playerView.add(questTitleView);
-        QuestValueView questValue = questValueVC.makeView(1800, Y_HAND_VALUE);
+        QuestValueView questValue = questValueVC.makeView(1800, Y_HAND_VALUE - 50);
         playerView.add(questValue);
         DiscardPileView dPileView = dpvc.makeView(0, Y_HAND_VALUE -10);
         playerView.add(dPileView);

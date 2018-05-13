@@ -8,6 +8,7 @@ import lordoftherings.cards.EncounterCard;
 import lordoftherings.cards.EnemyCard;
 import lordoftherings.characters.Enemy;
 import java.util.ArrayList;
+import lordoftherings.DeckComponents.Quest;
 import lordoftherings.LocationOnBoard;
 import lordoftherings.PhaseManager.GamePhase;
 
@@ -23,6 +24,7 @@ public class EncounterZone {
     private QuestSet quests;
     private StagingArea stage;
     private Board board;
+    private ActiveQuest activeQuest;
 
     public EncounterZone(EncounterBuild encounterSet, Board board){
         encounterDiscard = new EncounterDiscardPile();
@@ -30,6 +32,7 @@ public class EncounterZone {
         this.encounterDeck = new EncounterDeck(encounterSet.getEnemyDeck());
         this.quests = new QuestSet(encounterSet.getQuestDeck());
         this.board = board;
+        this.activeQuest = new ActiveQuest(new Quest(quests.getNextQuest()));
     }
 
     public EncounterDeck getEncounterDeck() {
@@ -38,6 +41,10 @@ public class EncounterZone {
     
     public QuestSet getQuestSet(){
         return quests;
+    }
+    
+    public Quest getActiveQuest(){
+        return activeQuest.getQuest();
     }
     
     public StagingArea getStagingArea(){

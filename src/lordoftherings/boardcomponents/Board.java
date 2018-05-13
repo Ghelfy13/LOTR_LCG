@@ -199,8 +199,12 @@ public class Board {
             for(int i = 0; i < playerZones.length; ++i){
                 playerZones[i].increaseThreatBy(threatPoints - questPoints);
             }
-        }else{
-            //TODO: ADD EXCESS TO CURRENT LOCATION/QUEST
+        }else if(questPoints > threatPoints){
+            if(encounterZone.getStagingArea().getActiveLocationArea() != null){
+                //TODO;
+            }else{
+                encounterZone.getActiveQuest().addTravelTokens(questPoints - threatPoints);
+            }
         }
     }
     

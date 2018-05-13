@@ -33,7 +33,7 @@ public class BoardViewController implements GlobalViewController {
     private SubPhaseViewController subPhaseVC;
     private GameManagerViewController gameMVC;
     public static final int DISTANCE_FROM_FRAME = 10;
-    public static final int DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE = 45;
+    public static final int DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE = 245;
     
     public BoardViewController(Board newBoard, GameManagerViewController managerVC){
         this.myBoard = newBoard;

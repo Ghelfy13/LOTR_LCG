@@ -4,7 +4,7 @@ package lordoftherings.manager.EncounterZoneControllerComponents;
 
 import lordoftherings.boardcomponents.ActiveLocationArea;
 import lordoftherings.boardcomponents.StagingArea;
-import lordoftherings.characters.Location;
+import lordoftherings.boardcomponents.Location;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.EncounterZoneComponents.LocationView;
 import lordoftherings.manager.actionComponents.BoardActiveState;

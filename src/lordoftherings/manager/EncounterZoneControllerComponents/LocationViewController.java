@@ -5,9 +5,9 @@ package lordoftherings.manager.EncounterZoneControllerComponents;
 import java.util.ArrayList;
 import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
-import lordoftherings.characters.Location;
+import lordoftherings.boardcomponents.Location;
 import lordoftherings.gui.EncounterZoneComponents.LocationCardView;
-import lordoftherings.gui.EncounterZoneComponents.LocationTokenView;
+import lordoftherings.gui.EncounterZoneComponents.TokenView;
 import lordoftherings.gui.EncounterZoneComponents.LocationView;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.manager.actionComponents.Actionable;
@@ -21,17 +21,17 @@ import lordoftherings.manager.actionComponents.BoardActiveState;
 public class LocationViewController implements Actionable{
     private LocationView view;
     private LocationCardViewController cardVC;
-    private LocationTokenViewController tokenVC;
+    private TokenViewController tokenVC;
     private Location location;
     private BoardActiveState bas;
     private LocationCardView cardView;
-    private LocationTokenView tokenView;
+    private TokenView tokenView;
     
     public LocationViewController(Location location, BoardActiveState bas){
         this.location = location;
         this.bas = bas;
         cardVC = new LocationCardViewController(location.getCard(), bas);
-        tokenVC = new LocationTokenViewController();
+        tokenVC = new TokenViewController();
     }
     
     public LocationView makeView(int x, int y){

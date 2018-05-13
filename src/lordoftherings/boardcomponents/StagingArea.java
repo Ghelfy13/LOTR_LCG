@@ -5,7 +5,6 @@ package lordoftherings.boardcomponents;
 import lordoftherings.LocationOnBoard;
 import lordoftherings.cards.EnemyCard;
 import lordoftherings.characters.Enemy;
-import lordoftherings.characters.Location;
 
 
 /**

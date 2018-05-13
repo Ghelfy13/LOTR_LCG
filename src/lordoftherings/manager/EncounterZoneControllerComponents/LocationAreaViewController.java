@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import lordoftherings.boardcomponents.LocationArea;
-import lordoftherings.characters.Location;
+import lordoftherings.boardcomponents.Location;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.EncounterZoneComponents.LocationAreaView;
 import lordoftherings.gui.EncounterZoneComponents.LocationView;

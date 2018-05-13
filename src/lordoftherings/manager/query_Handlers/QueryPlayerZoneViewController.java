@@ -40,7 +40,7 @@ public class QueryPlayerZoneViewController {
         zoneView.addMouseMotionListener(charQAS.createMouseFollower());
         QueryCharacterAreaView charAreaView = charAreaVC.makeView(
                 PlayerZoneViewController.DECK_X + HandCardView.CARD_WIDTH + 20, 
-                PlayerZoneViewController.ENGAGEMENT_Y_VALUE + HandCardView.CARD_HEIGHT + 
+                HandCardView.CARD_HEIGHT + 
                 PlayerZoneViewController.DISTANCE_BT_FIELDS);
         zoneView.add(charAreaView);
         charAreaView.setVisible(true);

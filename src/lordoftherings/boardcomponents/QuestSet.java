@@ -2,6 +2,7 @@
 
 package lordoftherings.boardcomponents;
 
+import lordoftherings.DeckComponents.Quest;
 import lordoftherings.DeckComponents.QuestSetBuild;
 import lordoftherings.cards.QuestCard;
 
@@ -11,6 +12,7 @@ import lordoftherings.cards.QuestCard;
  */
 public class QuestSet {
     private QuestCard[] questSet;
+    private QuestCard currentQuest;
     
     public QuestSet(QuestSetBuild setComponents){
         questSet = new QuestCard[setComponents.getSizeOfSet()];
@@ -26,6 +28,21 @@ public class QuestSet {
     
     public int getSizeOfSet(){
         return questSet.length;
+    }
+    
+    public QuestCard getNextQuest(){//can return null
+        if(currentQuest == null){
+            currentQuest = questSet[0];
+            return currentQuest;
+        }
+        for(int i = 0; i < questSet.length; ++i){
+            if(questSet[i] == currentQuest && i != questSet.length){
+                currentQuest = questSet[i];
+                return currentQuest;
+            }
+        }
+        currentQuest = null;
+        return currentQuest;
     }
     
 }

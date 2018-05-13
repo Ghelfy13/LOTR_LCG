@@ -2,22 +2,22 @@
 
 package lordoftherings.manager.EncounterZoneControllerComponents;
 
-import lordoftherings.gui.EncounterZoneComponents.LocationTokenView;
+import lordoftherings.gui.EncounterZoneComponents.TokenView;
 
 /**
  *
  * @author Amanda
  */
-public class LocationTokenViewController {
-    private LocationTokenView tokenView;
+public class TokenViewController {
+    private TokenView tokenView;
     private int tokenCount;
     
-    public LocationTokenViewController(){
+    public TokenViewController(){
         tokenCount = 0;
     }
     
-    public LocationTokenView makeView(int x, int y){
-        tokenView = new LocationTokenView(x, y, tokenCount);
+    public TokenView makeView(int x, int y){
+        tokenView = new TokenView(x, y, tokenCount);
         tokenView.setVisible(true);
         return tokenView;
     }

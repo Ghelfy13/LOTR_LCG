@@ -11,16 +11,16 @@ import lordoftherings.gui.PlayerZoneComponents.HandCardView;
  *
  * @author Amanda
  */
-public class EnemyCardView extends JTextArea{
+public class QuestCardView extends JTextArea{
     
-    public EnemyCardView(String enemyInfo, int x, int y){
+    public QuestCardView(String enemyInfo, int x, int y){
         this.setRows(11);
         this.setColumns(1);
         this.insert(enemyInfo, 0);
         this.setFont(AllyCardView.CARD_FONT);
+        this.setLineWrap(true);
         this.setEditable(false);
         this.setBackground(Color.LIGHT_GRAY);
-        setBounds(x, y, HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
-        
+        setBounds(x, y, HandCardView.CARD_HEIGHT, HandCardView.CARD_WIDTH);
     }
 }

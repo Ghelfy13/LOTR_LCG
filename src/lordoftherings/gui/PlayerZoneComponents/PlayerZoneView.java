@@ -11,7 +11,7 @@ import javax.swing.JPanel;
  */
 public class PlayerZoneView extends JPanel {
     public final int ZONE_WIDTH = 2400;
-    public final int ZONE_HEIGHT = 900;
+    public final int ZONE_HEIGHT = 700;
     
     public PlayerZoneView(int x, int y){
         setLayout(null);

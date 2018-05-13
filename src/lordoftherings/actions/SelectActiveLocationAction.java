@@ -8,7 +8,7 @@ import lordoftherings.boardcomponents.ActiveLocationArea;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.boardcomponents.StagingArea;
 import lordoftherings.cards.LocationCard;
-import lordoftherings.characters.Location;
+import lordoftherings.boardcomponents.Location;
 
 /**
  *

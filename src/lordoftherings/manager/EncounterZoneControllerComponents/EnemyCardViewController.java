@@ -27,7 +27,7 @@ public class EnemyCardViewController{
     }
     
     public EnemyCardView makeView(int x, int y){
-        view = new EnemyCardView(this, enemyInfo, x, y);
+        view = new EnemyCardView(enemyInfo, x, y);
         view.addMouseMotionListener(bas.createMouseFollower());
         view.setVisible(true);
         return view;

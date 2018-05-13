@@ -3,9 +3,9 @@
 package lordoftherings.gui.EncounterZoneComponents;
 
 import java.awt.Color;
-import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import lordoftherings.gui.PlayerZoneComponents.QuestValueView;
 
 /**
  *
@@ -21,7 +21,7 @@ public class StagingAreaThreatView extends JLabel{
         setOpaque(true);
         setVerticalAlignment(SwingConstants.CENTER);
         setHorizontalAlignment(SwingConstants.CENTER);
-        setFont(StagingAreaThreatTitleView.THREAT_FONT);
+        setFont(QuestValueView.QUEST_FONT);
     }
     
 }

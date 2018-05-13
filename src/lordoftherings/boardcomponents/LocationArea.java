@@ -5,7 +5,6 @@ package lordoftherings.boardcomponents;
 import java.util.ArrayList;
 import lordoftherings.LocationOnBoard;
 import lordoftherings.cards.LocationCard;
-import lordoftherings.characters.Location;
 
 
 /**

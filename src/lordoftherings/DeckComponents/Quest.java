@@ -45,4 +45,8 @@ public class Quest {
         }
         return isCompleted;
     }
+    
+    public String getInformation(){
+         return sireCard.getModel().identify();
+    }
 }

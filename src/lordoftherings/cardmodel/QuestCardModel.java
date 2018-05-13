@@ -59,5 +59,25 @@ public class QuestCardModel {
         return questPoints;
     }
     
+    public String identifyTraits(){
+        StringBuilder myString = new StringBuilder();
+        int length = encounterInfo.length;
+        for(int i = 0; i < length; ++i){
+            if( i == length -1){
+                myString.append(encounterInfo[i] + '\n');
+            }else{
+                myString.append(encounterInfo[i] + ", ");
+            }
+        }
+        return myString.toString();
+    }
+    
+    public String identify(){
+        return title.toUpperCase()+ "\n" + 
+                scenarioTitle  + "\n" + "\n" +
+                "Traits: " + identifyTraits() + "\n" +
+                "Quest Points: " + questPoints + "\n";
+    }
+    
    
 }

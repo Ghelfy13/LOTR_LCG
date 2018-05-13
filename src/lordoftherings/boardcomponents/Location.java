@@ -1,6 +1,6 @@
 //Copyright Amanda V. Harris 2018-present. All Rights Reserved.
 
-package lordoftherings.characters;
+package lordoftherings.boardcomponents;
 
 import java.util.ArrayList;
 import lordoftherings.LocationOnBoard;

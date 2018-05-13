@@ -23,7 +23,7 @@ import lordoftherings.cardmodel.LocationCardModel;
 import lordoftherings.cardmodel.QuestCardModel;
 import lordoftherings.transaction_managers.GameManager;
 import lordoftherings.characters.Enemy;
-import lordoftherings.characters.Location;
+import lordoftherings.boardcomponents.Location;
 import lordoftherings.gui.GameManagerView;
 import lordoftherings.manager.BoardControllerComponents.GameManagerViewController;
 

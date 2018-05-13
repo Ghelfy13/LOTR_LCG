@@ -3,7 +3,6 @@
 package lordoftherings.boardcomponents;
 
 import lordoftherings.LocationOnBoard;
-import lordoftherings.characters.Location;
 
 /**
  *
