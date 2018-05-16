@@ -25,7 +25,7 @@ public class LocationCard extends EncounterCard {
     }
     
     @Override
-    public EncounterCardModel getModel() {
+    public LocationCardModel getModel() {
         return cardModel;
     }
 

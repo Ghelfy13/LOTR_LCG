@@ -25,6 +25,10 @@ public class Location {
         return numOfTokens;
     }
     
+    public int getQuestPoints(){
+        return card.getModel().getQuestPoints();
+    }
+    
     public LocationOnBoard getLocationOnBoard(){
         return card.getLocation();
     }

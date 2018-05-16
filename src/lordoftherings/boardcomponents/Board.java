@@ -195,15 +195,25 @@ public class Board {
         for(int i = 0; i < playerZones.length; ++i){
             questPoints += playerZones[i].getCurrentQuestingTotal();
         }
-        if(threatPoints > questPoints){
+        int numOfTokens = questPoints - threatPoints;
+        if(numOfTokens < 0){
             for(int i = 0; i < playerZones.length; ++i){
                 playerZones[i].increaseThreatBy(threatPoints - questPoints);
             }
-        }else if(questPoints > threatPoints){
-            if(encounterZone.getStagingArea().getActiveLocationArea() != null){
-                //TODO;
+        }else{
+            ActiveLocationArea locationZone = encounterZone.getStagingArea().getActiveLocationArea();
+            if(locationZone.isEmpty()){
+                encounterZone.getActiveQuest().addTravelTokens(numOfTokens);
             }else{
-                encounterZone.getActiveQuest().addTravelTokens(questPoints - threatPoints);
+                int tokensNeededForLocation = locationZone.getQuestPoints() - 
+                        locationZone.getNumOfTokensOnActiveLocation();
+                int leftOverTokens = numOfTokens - tokensNeededForLocation ;
+                if(leftOverTokens > 0){
+                    locationZone.getActiveLocation().addTokens(tokensNeededForLocation);
+                    encounterZone.getActiveQuest().addTravelTokens(leftOverTokens);
+                }else{
+                    locationZone.getActiveLocation().addTokens(numOfTokens);
+                }
             }
         }
     }

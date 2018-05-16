@@ -31,4 +31,18 @@ public class ActiveLocationArea {
     public void unsetActiveLocation(){
         activeLocation = null;
     }
+    
+    public int getNumOfTokensOnActiveLocation(){
+        if(activeLocation != null){
+            return activeLocation.getNumOfTokens();
+        }
+        return 0;
+    }
+    
+    public int getQuestPoints(){
+        if(activeLocation != null){
+            return activeLocation.getQuestPoints();
+        }
+        return 0;
+    }
 }
