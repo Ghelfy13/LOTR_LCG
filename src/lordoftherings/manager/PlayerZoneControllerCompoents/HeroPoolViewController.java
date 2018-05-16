@@ -26,7 +26,7 @@ public class HeroPoolViewController {
     public void updateView(){
         int numOfResources = heroVC.getResourceOnHero();
         int numOfDamage = heroVC.getDamage();
-        view.setText("Resources: " + numOfResources + " Damage: " + numOfDamage);
+        view.setText("Resources: " + numOfResources + "  Damage: " + numOfDamage);
         view.revalidate();
         view.repaint();
     }

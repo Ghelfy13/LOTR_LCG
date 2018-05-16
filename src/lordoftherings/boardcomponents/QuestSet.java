@@ -2,7 +2,6 @@
 
 package lordoftherings.boardcomponents;
 
-import lordoftherings.DeckComponents.Quest;
 import lordoftherings.DeckComponents.QuestSetBuild;
 import lordoftherings.cards.QuestCard;
 

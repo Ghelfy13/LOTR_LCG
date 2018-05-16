@@ -29,7 +29,7 @@ public class QueryHeroPoolViewController {
     public void updateView(){
         int numOfResources = controller.getResourceOnHero();
         int numOfDamage = controller.getDamage();
-        poolView.setText("Resources: " + numOfResources + " Damage: " + numOfDamage);
+        poolView.setText("Resources: " + numOfResources + "  Damage: " + numOfDamage);
         poolView.revalidate();
         poolView.repaint();
     }

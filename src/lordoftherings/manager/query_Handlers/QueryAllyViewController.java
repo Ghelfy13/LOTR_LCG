@@ -38,7 +38,7 @@ public class QueryAllyViewController implements Selectable<GameCharacter>{
     public QueryAllyView makeView(int x, int y){
         view = new QueryAllyView(x, y);
         view.addMouseMotionListener(charQAS.createMouseFollower());
-        QueryAllyCardView cardView = cardVC.makeView(0, 0);
+        QueryAllyCardView cardView = cardVC.makeView(currentAlly.isExhausted());
         cardView.addMouseListener(new SelectableMouseListener(charQAS, this));
         view.add(cardView);
         cardView.setVisible(true);

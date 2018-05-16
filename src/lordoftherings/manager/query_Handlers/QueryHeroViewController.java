@@ -24,7 +24,8 @@ public class QueryHeroViewController implements Selectable<GameCharacter>{
     private static final int CARD_LENGTH = 200;
     private boolean isSelected;
     
-    public QueryHeroViewController(Hero passedInHero, QueryHeroAreaViewController areaController, CharacterQueryActiveState charQAS){
+    public QueryHeroViewController(Hero passedInHero, 
+            QueryHeroAreaViewController areaController, CharacterQueryActiveState charQAS){
         this.areaController = areaController;
         this.myHero = passedInHero;
         cardController = new QueryHeroCardViewController(myHero, charQAS);
@@ -41,7 +42,8 @@ public class QueryHeroViewController implements Selectable<GameCharacter>{
         cardView.addMouseListener(new SelectableMouseListener<>(charQAS, this));
         cardView.setVisible(true);
         view.add(cardView);
-        QueryHeroPoolView poolView = poolController.makeView(0, CARD_LENGTH, myHero.getNumOfResources(), myHero.getDamage());
+        QueryHeroPoolView poolView = poolController.makeView(
+                0, CARD_LENGTH, myHero.getNumOfResources(), myHero.getDamage());
         poolView.setVisible(true);
         view.add(poolView);
         view.setVisible(true);

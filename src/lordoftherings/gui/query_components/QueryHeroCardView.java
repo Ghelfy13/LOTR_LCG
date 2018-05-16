@@ -3,7 +3,6 @@
 package lordoftherings.gui.query_components;
 
 import java.awt.Color;
-import java.awt.Font;
 import javax.swing.JTextArea;
 import lordoftherings.gui.PlayerZoneComponents.AllyCardView;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;

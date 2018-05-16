@@ -26,8 +26,8 @@ public class QueryAllyCardViewController {
         this.charQAS = charQAS;
     }
     
-    public QueryAllyCardView makeView(int x, int y){
-        view = new QueryAllyCardView(card.getIdentity(), x, y);
+    public QueryAllyCardView makeView(boolean isExhausted){
+        view = new QueryAllyCardView(card.getIdentity(), isExhausted);
         view.addMouseMotionListener(charQAS.createMouseFollower());
         view.setVisible(true);
         return view;

@@ -24,7 +24,8 @@ public class QueryAllyZoneViewController {
     private HashMap<Ally, QueryAllyViewController> controllerMap;
     private CharacterQueryActiveState charQAS;
     
-    public QueryAllyZoneViewController(AllyArea allyZone, QueryCharacterAreaViewController charAreaVC, CharacterQueryActiveState charQAS){
+    public QueryAllyZoneViewController(AllyArea allyZone, 
+            QueryCharacterAreaViewController charAreaVC, CharacterQueryActiveState charQAS){
         this.allyZone = allyZone;
         this.charAreaVC = charAreaVC;
         view = null;

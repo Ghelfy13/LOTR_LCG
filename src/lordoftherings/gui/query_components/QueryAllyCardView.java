@@ -3,7 +3,6 @@
 package lordoftherings.gui.query_components;
 
 import java.awt.Color;
-import java.awt.Font;
 import javax.swing.JTextArea;
 import lordoftherings.gui.PlayerZoneComponents.AllyCardView;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
@@ -14,13 +13,18 @@ import lordoftherings.gui.PlayerZoneComponents.HandCardView;
  */
 public class QueryAllyCardView extends JTextArea {
     
-    public QueryAllyCardView(String heroInfo, int x, int y){
+    public QueryAllyCardView(String allyInfo, boolean isTapped){
         this.setRows(11);
         this.setColumns(1);
-        this.insert(heroInfo, 0);
+        this.insert(allyInfo, 0);
         this.setFont(AllyCardView.CARD_FONT);
         this.setBackground(Color.LIGHT_GRAY);
-        setBounds(x, y, HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
+        if(isTapped){
+            setBounds(0, HandCardView.CARD_HEIGHT - HandCardView.CARD_WIDTH, 
+                    HandCardView.CARD_HEIGHT, HandCardView.CARD_WIDTH);
+        }else{
+            setBounds(0, 0, HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
+        }
         this.setEditable(false);
     }
 }

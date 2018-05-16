@@ -12,9 +12,10 @@ import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
  */
 public class HeroZoneView extends JPanel{
     private int length;
+    public static final int ENEMY_SPACE_LENGTH = 205;
     
     public HeroZoneView(int x, int y, int numOfHeros){
-        length = numOfHeros*205;
+        length = numOfHeros*ENEMY_SPACE_LENGTH;
         setBounds(x, y, length ,ActiveLocationView.CARD_COUNTER_HEIGHT);
         setOpaque(false);
         setLayout(null);

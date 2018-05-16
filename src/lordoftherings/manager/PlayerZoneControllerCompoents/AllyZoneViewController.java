@@ -23,7 +23,8 @@ public class AllyZoneViewController{
     private BoardActiveState bas;
     public static final int CARDS_AND_SPACE = 205;
     
-    public AllyZoneViewController(CharacterAreaViewController charAreaVC, AllyArea allyZone, BoardActiveState bas){
+    public AllyZoneViewController(CharacterAreaViewController charAreaVC,
+            AllyArea allyZone, BoardActiveState bas){
         this.characterAreaVC = charAreaVC;
         this.myAllyArea = allyZone;
         this.view = null;
@@ -36,7 +37,8 @@ public class AllyZoneViewController{
         view.addMouseMotionListener(bas.createMouseFollower());
         for(int i = 0; i < myAllyArea.getSize(); ++i){
             Ally card = myAllyArea.getAllyAt(i);
-            AllyViewController allyViewController = new AllyViewController(myAllyArea.getAllyAt(i), this, bas);
+            AllyViewController allyViewController = new AllyViewController(
+                    myAllyArea.getAllyAt(i), this, bas);
             controllerMap.put(card, allyViewController);
             AllyView allyView = allyViewController.makeView(i*CARDS_AND_SPACE, 0);
             view.add(allyView);   

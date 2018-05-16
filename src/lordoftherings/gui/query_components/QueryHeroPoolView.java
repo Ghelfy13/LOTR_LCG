@@ -16,7 +16,7 @@ import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 public class QueryHeroPoolView extends JTextArea{
     
     public QueryHeroPoolView (int x, int y, int resources, int damage){
-        super("Resources: " + resources + " Damage: " +damage);
+        super("Resources: " + resources + "  Damage: " +damage);
         this.setBounds(x, y, HandCardView.CARD_WIDTH, EnemyDamageView.DAMAGE_HEIGHT);
         this.setFont(AllyCardView.CARD_FONT);
         this.setEditable(false);
