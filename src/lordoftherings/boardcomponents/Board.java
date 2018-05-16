@@ -5,6 +5,7 @@ package lordoftherings.boardcomponents;
 import java.util.ArrayList;
 import lordoftherings.DeckComponents.PlayerDeckBuild;
 import lordoftherings.DeckComponents.EncounterBuild;
+import lordoftherings.DeckComponents.Quest;
 import lordoftherings.Matcher.HeroMatcher;
 import lordoftherings.Matcher.Matcher;
 import lordoftherings.Matcher.ReadyMatcher;
@@ -214,7 +215,24 @@ public class Board {
                 }else{
                     locationZone.getActiveLocation().addTokens(numOfTokens);
                 }
+                checkTokensOnCurrentLocation();
             }
+            checkTokensOnQuest();
+        }
+        
+    }
+    
+    public void checkTokensOnQuest(){
+        Quest currentQuest = encounterZone.getActiveQuest();
+        if(currentQuest.haveEnoughTokens()){
+            encounterZone.getQuestSet().getNextQuest();
+        }
+    }
+    
+    public void checkTokensOnCurrentLocation(){
+         Location currentLocation = encounterZone.getStagingArea().getActiveLocationArea().getActiveLocation();
+         if(currentLocation.getNumOfTokens() >= currentLocation.getQuestPoints()){
+            encounterZone.moveCurrentLocationToDiscardPile();
         }
     }
     

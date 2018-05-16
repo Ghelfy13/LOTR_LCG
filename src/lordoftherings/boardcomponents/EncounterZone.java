@@ -51,6 +51,12 @@ public class EncounterZone {
         return stage;
     }
     
+    public void moveCurrentLocationToDiscardPile(){
+        encounterDiscard.addCardToPile(stage.getActiveLocationArea().
+                getActiveLocation().getCard());
+        stage.getActiveLocationArea().unsetActiveLocation();
+    }
+    
     public void addEnemyToStagingArea(EnemyCard card){
         Enemy newEnemy = new Enemy(card);
         stage.getEnemyArea().addEnemyToList(newEnemy);
