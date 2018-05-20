@@ -26,7 +26,6 @@ public class EngagementAreaViewController {
     
     private BoardActiveState bas;
     private EngagedEnemyArea area;
-    private BoardViewController boardVC;
     private EngagementAreaView view;
     private HashMap<Enemy, EnemyViewController> controllerMap;
     public static Border ATTACKING_BORDER = BorderFactory.createMatteBorder(5, 5, 5, 5, Color.RED);
@@ -35,9 +34,8 @@ public class EngagementAreaViewController {
     public static CompoundBorder DEFENDING_ACTIVE_BORDER = new CompoundBorder(BoardActiveState.ACTIVE_BORDER, DEFENDING_BORDER);
     
     
-    public EngagementAreaViewController(BoardActiveState bas, EngagedEnemyArea zone, BoardViewController boardVC){
+    public EngagementAreaViewController(BoardActiveState bas, EngagedEnemyArea zone){
         this.bas = bas;
-        this.boardVC = boardVC;
         this.area = zone;
         this.controllerMap = new HashMap<>();
     }

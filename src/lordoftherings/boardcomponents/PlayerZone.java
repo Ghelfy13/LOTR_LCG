@@ -20,6 +20,7 @@ public class PlayerZone {
     private int ownerID;
     private ThreatDial currentThreat;
     private Board board;
+    private boolean playerIsAlive;
     
     
     public PlayerZone(PlayerDeckBuild playerDeckAndHeros, int ownerID, Board board){
@@ -30,6 +31,20 @@ public class PlayerZone {
         this.ownerID = ownerID;
         this.currentThreat = new ThreatDial(field.getInitinalThreat(), ownerID, this);
         this.board = board;
+        this.playerIsAlive = true;
+    }
+    
+    public boolean isPlayerAlive(){
+        return playerIsAlive;
+    }
+    
+    public boolean herosStillAlive(){
+        HeroArea area = field.getCharacterZone().getHeroArea();
+        if(area.isEmpty()){
+            playerIsAlive = false;
+            return false;
+        }
+        return true;
     }
     
     public Field getField(){
@@ -136,6 +151,7 @@ public class PlayerZone {
     public void moveCharacterToDiscardPile(PlayerCard deadCard){
         dPile.addCard(deadCard);
         deadCard.setLocation(ownerID, LocationOnBoard.DISCARDPILE);
+        
     }
     
     public void cleanUpCharacterArea(){

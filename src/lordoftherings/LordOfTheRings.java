@@ -91,7 +91,7 @@ public class LordOfTheRings {
                 "If players defeat Ungoliant's Spawn, they win the game automatically.",
                 "Passage through Mirkwood",
                 QuestID,
-                10);
+                2);
         
         DeckBuild mockDeck = new DeckBuild();
         mockDeck.add(second, 4);

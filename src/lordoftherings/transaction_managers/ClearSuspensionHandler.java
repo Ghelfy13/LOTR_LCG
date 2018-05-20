@@ -22,7 +22,7 @@ public class ClearSuspensionHandler extends CancelHandler{
 
     @Override
     protected void dispatchCancel() {
-        board.clearSuspension();
+        board.removeRecentSuspension();
     }
     
 }

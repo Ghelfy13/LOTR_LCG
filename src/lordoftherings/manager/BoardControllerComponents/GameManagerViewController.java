@@ -2,11 +2,14 @@
 
 package lordoftherings.manager.BoardControllerComponents;
 
+import java.awt.Point;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.gui.BoardView;
+import lordoftherings.gui.EndOfGameView;
 import lordoftherings.gui.GameManagerView;
 import lordoftherings.gui.GlassPaneView;
 import lordoftherings.gui.query_components.CharacterQueryView;
+import lordoftherings.manager.actionComponents.GlobalViewController;
 import lordoftherings.manager.query_Handlers.GuiCharacterQueryHandler;
 import lordoftherings.manager.query_Handlers.CharacterQueryViewController;
 import lordoftherings.transaction_managers.CharacterQueryHandle;
@@ -16,12 +19,13 @@ import lordoftherings.transaction_managers.GameManager;
  *
  * @author Amanda
  */
-public class GameManagerViewController {
+public class GameManagerViewController implements GlobalViewController{
     private GameManager manager;
     private GameManagerView view;
     private BoardViewController boardVC;
     private GlassPaneView glassPane;
     private CharacterQueryViewController charQueryVC;
+    private EndOfGameViewController endOfGameVC;
     
     public GameManagerViewController(GameManager manager){
         this.manager = manager;
@@ -29,13 +33,15 @@ public class GameManagerViewController {
         this.boardVC = new BoardViewController(manager.getBoard(), this);
         this.glassPane = null;
         this.charQueryVC = null;
-        
+        this.endOfGameVC = new EndOfGameViewController(manager.getBoard());
     }
     
     public GameManagerView makeView(int x, int y){
         view = new GameManagerView(x, y);
         glassPane = new GlassPaneView(GameManagerView.WINDOW_WIDTH, GameManagerView.WINDOW_LENGTH);
         BoardView boardV = boardVC.makeView(x, y, GameManagerView.WINDOW_WIDTH, GameManagerView.WINDOW_LENGTH);
+        EndOfGameView endView = endOfGameVC.makeView();
+        view.add(endView);
         glassPane.setVisible(false);
         view.add(glassPane, new Integer(1));
         view.add(boardV, new Integer(0));
@@ -45,6 +51,11 @@ public class GameManagerViewController {
     
     public void updateView(){
         boardVC.updateView();
+        if(manager.getBoard().hasGameEnded()){
+            setGlassPaneToVisible();
+            glassPane.updateView();
+            endOfGameVC.updateView();
+        }
         glassPane.updateView();
         view.revalidate();
         view.repaint();
@@ -75,6 +86,11 @@ public class GameManagerViewController {
     
     public Board getBoard(){
         return manager.getBoard();
+    }
+
+    @Override
+    public Point getMousePosition() {
+        return view.getMousePosition();
     }
     
 }

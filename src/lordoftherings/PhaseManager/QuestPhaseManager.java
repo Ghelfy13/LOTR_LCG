@@ -28,6 +28,7 @@ public class QuestPhaseManager implements PhaseManager{
                 return;
             case RESOLVE_QUEST:
                 board.resolveQuest();
+                board.hasGameEnded();
                 return;
             default:
                 return;

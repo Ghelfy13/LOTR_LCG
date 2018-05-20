@@ -53,7 +53,8 @@ public class Board {
     private RefreshPhaseManager refreshPM;
     private CombatPhaseManager combatPM;
     private GameManager gameManager;
-    private boolean isSuspended;
+    private boolean hasPlayerWon;
+    private ArrayList<SuspensionType> currentSuspensions;
     
     
     public Board(PlayerDeckBuild[] playerBuild, EncounterBuild encounterInfo, GameManager manager){
@@ -75,7 +76,8 @@ public class Board {
         this.refreshPM = new RefreshPhaseManager();
         this.combatPM = new CombatPhaseManager();
         this.gameManager = manager;
-        this.isSuspended = false;
+        this.hasPlayerWon = false;
+        this.currentSuspensions = new ArrayList<>();
     }
     
     public PlayerZone getPlayerZoneAt(int index){
@@ -226,22 +228,45 @@ public class Board {
         Quest currentQuest = encounterZone.getActiveQuest();
         if(currentQuest.haveEnoughTokens()){
             encounterZone.getQuestSet().getNextQuest();
+            hasGameEnded();
         }
     }
     
     public void checkTokensOnCurrentLocation(){
-         Location currentLocation = encounterZone.getStagingArea().getActiveLocationArea().getActiveLocation();
+         Location currentLocation = encounterZone.getStagingArea().
+                 getActiveLocationArea().getActiveLocation();
          if(currentLocation.getNumOfTokens() >= currentLocation.getQuestPoints()){
             encounterZone.moveCurrentLocationToDiscardPile();
         }
     }
     
-    public void clearSuspension(){
-        isSuspended = false;
+    public boolean hasGameEnded(){
+        if(encounterZone.getQuestSet().hasCompletedQuests()){
+            hasPlayerWon = true;
+            currentSuspensions.add(SuspensionType.WON);
+            return true;
+        }
+        for(int i = 0; i < playerZones.length; ++i){
+            if(playerZones[i].herosStillAlive() && 
+                    playerZones[i].getCurrentThreat()<50){
+                hasPlayerWon = false;
+                return false;
+            }
+        }
+        currentSuspensions.add(SuspensionType.LOST);
+        return true;
+    }
+    
+    public boolean getPlayerStatus(){
+        return hasPlayerWon;
+    }
+    
+    public void removeRecentSuspension(){
+        currentSuspensions.remove(currentSuspensions.size() -1);
     }
     
     public void startAttackWithEnemy(Enemy attacker){
-        isSuspended = true;
+        currentSuspensions.add(SuspensionType.DEFEND);
         Matcher<GameCharacter> ready = new ReadyMatcher();
         CharacterQueryRequirements requirements = new CharacterQueryRequirements(ready, 0, 1);
         gameManager.handleCharacterQuery(new CharacterQueryHandle(
@@ -253,7 +278,7 @@ public class Board {
     }
     
     public void startPlayerAttackOnEnemy(Enemy target){
-        isSuspended = true;
+        currentSuspensions.add(SuspensionType.ATTACK);
         Matcher<GameCharacter> ready = new ReadyMatcher();
         CharacterQueryRequirements requirements = new CharacterQueryRequirements(ready, 1, Integer.MAX_VALUE);
         gameManager.handleCharacterQuery(new CharacterQueryHandle(
@@ -276,7 +301,7 @@ public class Board {
         for(int i = 0; i < getNumOfPlayerZones(); ++i){
             getPlayerZoneAt(i).cleanUpEngagedEnemyArea();
         }
-        clearSuspension();
+        removeRecentSuspension();
         target.setAttackedStatus(true);
     }
     public void resolveAttackWithDefenders(Enemy attacker, ArrayList<GameCharacter> defenders) {
@@ -300,7 +325,7 @@ public class Board {
         for(int i = 0; i < getNumOfPlayerZones(); ++i){
             getPlayerZoneAt(i).cleanUpCharacterArea();
         }
-        clearSuspension();
+        removeRecentSuspension();
         attacker.setEnemyToNotAttacking();
     }
 
@@ -314,7 +339,7 @@ public class Board {
         for(int i = 0; i < getNumOfPlayerZones(); ++i){
             getPlayerZoneAt(i).cleanUpCharacterArea();
         }
-        clearSuspension();
+        removeRecentSuspension();
         attacker.setEnemyToNotAttacking();
     }
     

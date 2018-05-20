@@ -3,7 +3,6 @@
 package lordoftherings.gui;
 
 import java.awt.Color;
-import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import lordoftherings.gui.PlayerZoneComponents.QuestValueView;

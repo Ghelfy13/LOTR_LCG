@@ -49,7 +49,7 @@ public class PlayerZoneViewController {
         handvc = new HandViewController(this, pz.getHand(), bas);
         charAreaVC = new CharacterAreaViewController(this, pz.getCharZone(), bas);
         deckvc = new DeckViewController(this, pz.getDeck(), bas);
-        this.engageAreaVC = new EngagementAreaViewController(bas, pz.getEngagementArea(), bvc);
+        this.engageAreaVC = new EngagementAreaViewController(bas, pz.getEngagementArea());
         this.threatDialVC = new ThreatDialViewController(pz);
         this.threatTitleVC = new ThreatDialTitleViewController(pz);
         this.questTitleVC = new QuestValueTitleViewController(this);

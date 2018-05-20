@@ -29,6 +29,10 @@ public class HeroArea {
         return myHeros.size();
     }
     
+    public boolean isEmpty(){
+        return myHeros.isEmpty();
+    }
+    
     public int getNumOfInitialHeros(){
         return numOfInitialHeros;
     }

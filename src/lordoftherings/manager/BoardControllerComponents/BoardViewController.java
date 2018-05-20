@@ -11,6 +11,7 @@ import lordoftherings.PhaseManager.GamePhase;
 import lordoftherings.gui.BoardView;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.EncounterZoneComponents.EncounterZoneView;
+import lordoftherings.gui.EndOfGameView;
 import lordoftherings.gui.PhaseView;
 import lordoftherings.gui.PlayerZoneComponents.PlayerZoneView;
 import lordoftherings.gui.ProgressPhaseButtonView;
@@ -31,7 +32,7 @@ public class BoardViewController implements GlobalViewController {
     private ProgressPhaseButtonViewController phaseButtonController;
     private EncounterZoneViewController encounterZoneVC;
     private SubPhaseViewController subPhaseVC;
-    private GameManagerViewController gameMVC;
+    private GameManagerViewController gameManagerVC;
     public static final int DISTANCE_FROM_FRAME = 10;
     public static final int DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE = 245;
     
@@ -39,12 +40,12 @@ public class BoardViewController implements GlobalViewController {
         this.myBoard = newBoard;
         this.phaseVC = new PhaseViewController(this);
         this.view = null;
-        this.activeState = new BoardActiveState(this);
+        this.activeState = new BoardActiveState(managerVC);
         this.currentPhase = GamePhase.RESOURCE;
         this.encounterZoneVC = new EncounterZoneViewController(activeState, myBoard.getEncounterZone());
         this.playerZoneVC = new PlayerZoneViewController(this, myBoard.getPlayerZoneAt(0), activeState);
         this.subPhaseVC = new SubPhaseViewController(this);
-        this.gameMVC = managerVC;
+        this.gameManagerVC = managerVC;
     }
     
     public BoardView makeView(int x, int y, int width, int height){
@@ -58,10 +59,10 @@ public class BoardViewController implements GlobalViewController {
         phaseVC = new PhaseViewController(this);
         PhaseView phaseView = phaseVC.makeView(width - PhaseView.PHASE_BUTTON_WIDTH, y);
         view.add(phaseView);
-        phaseButtonController = new ProgressPhaseButtonViewController(this);
+        phaseButtonController = new ProgressPhaseButtonViewController(gameManagerVC);
         ProgressPhaseButtonView phaseButtonView = phaseButtonController.makeView(
                 width - (ProgressPhaseButtonView.PROGRESS_BUTTON_WIDTH + PhaseView.PHASE_BUTTON_WIDTH), y);
-        ProgressPhaseActionListener ppActionListener = new ProgressPhaseActionListener(this);
+        ProgressPhaseActionListener ppActionListener = new ProgressPhaseActionListener(gameManagerVC, this);
         phaseButtonView.addActionListener(ppActionListener);
         view.add(phaseButtonView);
         EncounterZoneView enemyZoneView = encounterZoneVC.makeView(DISTANCE_FROM_FRAME, DISTANCE_FROM_FRAME);
@@ -102,8 +103,6 @@ public class BoardViewController implements GlobalViewController {
         playerZoneVC.updateView();
         encounterZoneVC.updateView();
         subPhaseVC.updateView();
-        
-        //TODO: UPDATE OTHER VIEWS
     }
     
     public Board getBoard(){

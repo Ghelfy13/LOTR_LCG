@@ -57,6 +57,7 @@ public class CharacterArea {
                 playerZone.moveCharacterToDiscardPile(current.getCard());
             }
         }
+        
     }
     
     public void addListOfAllies(ArrayList<AllyCard> list){

@@ -8,7 +8,7 @@ import javax.swing.border.Border;
 import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.gui.AvailableActionsView;
-import lordoftherings.manager.BoardControllerComponents.BoardViewController;
+import lordoftherings.manager.BoardControllerComponents.GameManagerViewController;
 
 
 /**
@@ -16,16 +16,16 @@ import lordoftherings.manager.BoardControllerComponents.BoardViewController;
  * @author Amanda
  */
 public class BoardActiveState extends FocusableActiveState {
-    private BoardViewController boardVC;
+    private GameManagerViewController gameManagerVC;
     private Actionable currentActionable;
     private AvailableActionsViewController availableActionsVC;
     private AvailableActionsView actionsView;
     public static final Border ACTIVE_BORDER = BorderFactory.createMatteBorder(5,5,5,5,Color.YELLOW);
     public static final Border INACTIVE_BORDER = BorderFactory.createEmptyBorder();
     
-    public BoardActiveState(BoardViewController boardVC) {
-        super(boardVC);
-        this.boardVC = boardVC;
+    public BoardActiveState(GameManagerViewController gameManagerVC) {
+        super(gameManagerVC);
+        this.gameManagerVC = gameManagerVC;
         currentActionable = null;
         availableActionsVC = new AvailableActionsViewController(this);
         actionsView = availableActionsVC.makeView(2250, 100);
@@ -55,15 +55,15 @@ public class BoardActiveState extends FocusableActiveState {
     }
     
     public Board getBoard(){
-        return boardVC.getBoard();
+        return gameManagerVC.getBoard();
     }
 
     public void executeAction(Action desiredAction) {
         if(!desiredAction.isExecutable()){
             return;
         }
-        desiredAction.execute(0, boardVC.getBoard());
+        desiredAction.execute(0, gameManagerVC.getBoard());
         unsetFocusable(getCurrentFocusable());
-        boardVC.updateView();
+        gameManagerVC.updateView();
     }
 }

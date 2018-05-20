@@ -27,7 +27,7 @@ public class GlassPaneView  extends JPanel implements MouseListener,
         
     }
     
-    public void setVisible(boolean visible, String words){
+    public void setVisible(boolean visible){
         if(visible){
             requestFocus();
         }

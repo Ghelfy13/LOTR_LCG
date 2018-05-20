@@ -12,9 +12,11 @@ import lordoftherings.cards.QuestCard;
 public class QuestSet {
     private QuestCard[] questSet;
     private QuestCard currentQuest;
+    private boolean completedQuests;
     
     public QuestSet(QuestSetBuild setComponents){
         questSet = new QuestCard[setComponents.getSizeOfSet()];
+        completedQuests = false;
         for(int i = 0; i < questSet.length; ++i){
             QuestCard card = new QuestCard(setComponents.getCardModelAt(i));
             questSet[i] = card;
@@ -29,9 +31,17 @@ public class QuestSet {
         return questSet.length;
     }
     
+    public boolean hasCompletedQuests(){
+        return completedQuests;
+    }
+    
     public QuestCard getNextQuest(){//can return null
         if(currentQuest == null){
             currentQuest = questSet[0];
+            return currentQuest;
+        }
+        else if(currentQuest == questSet[questSet.length -1]){
+            completedQuests = true;
             return currentQuest;
         }
         for(int i = 0; i < questSet.length; ++i){

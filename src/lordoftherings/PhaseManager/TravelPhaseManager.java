@@ -30,7 +30,7 @@ public class TravelPhaseManager implements PhaseManager{
 
     @Override
     public PhaseManager getNextPhase(Board board) {
-        return board.getEncounterPhaseManager();
+        return board.getEncounterPhaseManager().setSubPhase(EncounterSubPhase.ENGAGE_ENEMY);
     }
 
     @Override

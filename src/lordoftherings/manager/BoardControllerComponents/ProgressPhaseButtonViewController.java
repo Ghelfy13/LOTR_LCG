@@ -10,11 +10,11 @@ import lordoftherings.gui.ProgressPhaseButtonView;
  * @author Amanda
  */
 public class ProgressPhaseButtonViewController {
-    private BoardViewController boardVC;
     private ProgressPhaseButtonView phaseButtonView;
+    private GameManagerViewController gameManagerVC;
     
-    public ProgressPhaseButtonViewController(BoardViewController boardVC){
-        this.boardVC = boardVC;
+    public ProgressPhaseButtonViewController(GameManagerViewController gameManagerVC){
+        this.gameManagerVC = gameManagerVC;
     }
     
     public ProgressPhaseButtonView makeView(int x, int y){
@@ -24,7 +24,7 @@ public class ProgressPhaseButtonViewController {
     }
     
     public void updateView(){
-        if(!boardVC.getBoard().canProgressPhase()){
+        if(!gameManagerVC.getBoard().canProgressPhase()){
             phaseButtonView.setBackground(Color.LIGHT_GRAY);
         }else{
             phaseButtonView.setBackground(Color.CYAN);
