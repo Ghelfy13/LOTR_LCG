@@ -92,6 +92,15 @@ public class LordOfTheRings {
                 "Passage through Mirkwood",
                 QuestID,
                 2);
+        Identification QuestID2 = new Identification(ExpansionName.CORE, 120);
+        QuestCardModel secondQuest = new QuestCardModel(
+                "A Fork in the Road",
+                ScenarioSymbol.PASSAGE_THROUGH_MIRKWOOD,
+                new String [] {"Dol Guldur Orcs, Passage through Mirkwood, Spiders of Mirkwood"},
+                "When you defeat this stage, proceed to Beorn's Path.",
+                "Passage through Mirkwood",
+                QuestID2,
+                2);
         
         DeckBuild mockDeck = new DeckBuild();
         mockDeck.add(second, 4);
@@ -104,6 +113,7 @@ public class LordOfTheRings {
         
         EncounterDeckBuild encounterDB = new EncounterDeckBuild();
         QuestSetBuild questSB = new QuestSetBuild();
+        questSB.addQuestCard(secondQuest);
         questSB.addQuestCard(firstQuest);
         EncounterBuild enemyBuild = new EncounterBuild(encounterDB, questSB);
         Enemy enemy = new Enemy(firstEnemy.createCard());

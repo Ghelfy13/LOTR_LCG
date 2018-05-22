@@ -13,6 +13,7 @@ public class QuestSet {
     private QuestCard[] questSet;
     private QuestCard currentQuest;
     private boolean completedQuests;
+    private int numOfQuestsLeft;
     
     public QuestSet(QuestSetBuild setComponents){
         questSet = new QuestCard[setComponents.getSizeOfSet()];
@@ -21,6 +22,7 @@ public class QuestSet {
             QuestCard card = new QuestCard(setComponents.getCardModelAt(i));
             questSet[i] = card;
         }
+        numOfQuestsLeft = questSet.length;
     }
     
     public QuestCard getQuestCardAt(int i){
@@ -31,6 +33,10 @@ public class QuestSet {
         return questSet.length;
     }
     
+    public int getNumOfQuestsLeft(){
+        return numOfQuestsLeft;
+    }
+    
     public boolean hasCompletedQuests(){
         return completedQuests;
     }
@@ -38,18 +44,17 @@ public class QuestSet {
     public QuestCard getNextQuest(){//can return null
         if(currentQuest == null){
             currentQuest = questSet[0];
-            return currentQuest;
-        }
-        else if(currentQuest == questSet[questSet.length -1]){
-            completedQuests = true;
+            --numOfQuestsLeft;
             return currentQuest;
         }
         for(int i = 0; i < questSet.length; ++i){
             if(questSet[i] == currentQuest && i != questSet.length){
                 currentQuest = questSet[i];
+                --numOfQuestsLeft;
                 return currentQuest;
             }
         }
+        completedQuests = true;
         currentQuest = null;
         return currentQuest;
     }

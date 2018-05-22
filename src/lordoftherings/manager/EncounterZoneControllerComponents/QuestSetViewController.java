@@ -28,13 +28,17 @@ public class QuestSetViewController implements Focusable{
         setView = new QuestSetView(bas, this, 0,0);
         parentView.add(setView);
         parentView.addMouseMotionListener(bas.createMouseFollower());
-        parentView.setVisible(true);
+        if(questSet.getNumOfQuestsLeft()== 0){
+            parentView.setVisible(false);
+        }else{
+           parentView.setVisible(true); 
+        }
         return parentView;
     }
     
     public void updateView(){
-        if(questSet.getSizeOfSet() == 0){
-            setView.setVisible(false);
+        if(questSet.getNumOfQuestsLeft() == 0){
+            parentView.setVisible(false);
         }
         parentView.revalidate();
         parentView.repaint();
@@ -42,10 +46,10 @@ public class QuestSetViewController implements Focusable{
 
     @Override
     public String getViewingText() {
-        if(questSet.getSizeOfSet() == 1){
+        if(questSet.getNumOfQuestsLeft() == 1){
             return "1 quest remains";
         }
-        return questSet.getSizeOfSet() + " quests remain";
+        return questSet.getNumOfQuestsLeft() + " quests remain";
     }
     
 }
