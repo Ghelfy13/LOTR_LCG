@@ -88,7 +88,7 @@ public class PlayerZoneViewController {
     }
     
     public GamePhase getCurrentPhase(){
-        return bvc.getBoard().getCurrentPhase();
+        return bvc.getBoard().getPhaseManagerGovenor().getCurrentPhase();
     }
     
     public int getQuestingTotal(){

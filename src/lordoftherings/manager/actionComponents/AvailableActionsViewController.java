@@ -34,6 +34,7 @@ public class AvailableActionsViewController{
     
     public AvailableActionsView updateView(int x, int y){
         Actionable currentActionable = boardAS.getCurrentActionable();
+        view.setLocation(x, y);
         if(currentActionable == null){
             listOfActions.clear();
             view.removeAll();

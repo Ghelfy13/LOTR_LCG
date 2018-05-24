@@ -34,7 +34,7 @@ public class ResourcePhaseManager implements PhaseManager{
 
     @Override
     public PhaseManager getNextPhase(Board board) {
-        return board.getPlanningPhaseManager();
+        return board.getPhaseManagerGovenor().getPlanningPhaseManager();
     }
 
     @Override

@@ -27,14 +27,16 @@ public class PlayerAttacksEnemy extends Action{
 
     @Override
     public boolean execute(int askingID, Board boardState) {
-        Enemy target = boardState.getPlayerZoneAt(boardState.getCurrentPlayerNum()).getEngagementArea().findEnemyByCard(targetedEnemy);
+        Enemy target = boardState.getPlayerZoneAt(boardState.getCurrentPlayerNum()).
+                getEngagementArea().findEnemyByCard(targetedEnemy);
         boardState.startPlayerAttackOnEnemy(target);
         return true;
     }
 
     @Override
     public void updateActionState(int askingID, Board boardState) {
-        Enemy target = boardState.getPlayerZoneAt(boardState.getCurrentPlayerNum()).getEngagementArea().findEnemyByCard(targetedEnemy);
+        Enemy target = boardState.getPlayerZoneAt(boardState.getCurrentPlayerNum()).
+                getEngagementArea().findEnemyByCard(targetedEnemy);
         if(target == null){
             state = ActionState.NOTAVAILABLE;
             return;
@@ -43,8 +45,11 @@ public class PlayerAttacksEnemy extends Action{
             state = ActionState.NOTAVAILABLE;
             return;
         }
-        if(askingID == boardState.getCurrentPlayerNum() && boardState.getCurrentPhase() == GamePhase.COMBAT
-                && boardState.getCurrentSubPhase() == CombatSubPhase.RESOLVE_PLAYER_ATTACKS && target.getLocationOnBoard() == LocationOnBoard.FIELD){
+        if(askingID == boardState.getCurrentPlayerNum() && boardState.
+                getPhaseManagerGovenor().getCurrentPhase() == GamePhase.COMBAT
+                && boardState.getPhaseManagerGovenor().getCurrentSubPhase() == 
+                CombatSubPhase.RESOLVE_PLAYER_ATTACKS && 
+                target.getLocationOnBoard() == LocationOnBoard.FIELD){
             if(!target.hasBeenAttacked()){
                 state = ActionState.EXECUTABLE;
             }else{

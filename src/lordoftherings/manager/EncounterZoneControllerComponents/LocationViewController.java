@@ -3,6 +3,7 @@
 package lordoftherings.manager.EncounterZoneControllerComponents;
 
 import java.util.ArrayList;
+import javax.swing.JComponent;
 import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.boardcomponents.Location;
@@ -54,10 +55,7 @@ public class LocationViewController implements Actionable{
         view.repaint();
     }
     
-    public LocationView getView(){
-        return view;
-    }
-    
+        
     @Override
     public void onSetActionable() {
         cardView.setBorder(BoardActiveState.ACTIVE_BORDER);
@@ -76,6 +74,11 @@ public class LocationViewController implements Actionable{
     @Override
     public String getViewingText() {
         return location.getCard().getTitle();
+    }
+
+    @Override
+    public JComponent getView(){
+        return view;
     }
     
 }

@@ -16,7 +16,7 @@ public class SubPhaseViewController {
     
     public SubPhaseViewController(BoardViewController boardVC){
         this.boardVC= boardVC;
-        this.phase = boardVC.getBoard().getCurrentSubPhase();
+        this.phase = boardVC.getBoard().getPhaseManagerGovenor().getCurrentSubPhase();
     }
     
     public SubPhaseView makeView(int x, int y){

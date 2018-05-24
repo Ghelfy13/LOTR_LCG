@@ -54,11 +54,13 @@ public class RefreshPhaseManager implements PhaseManager{
     public PhaseManager getNextPhase(Board board) {
         switch (subPhase){
             case REFRESH_CARDS:
-                return board.getRefreshPhaseManager().setSubPhase(RefreshSubPhase.INCREASE_THREAT);
+                return board.getPhaseManagerGovenor().getRefreshPhaseManager().
+                        setSubPhase(RefreshSubPhase.INCREASE_THREAT);
             case INCREASE_THREAT:
-                return board.getRefreshPhaseManager().setSubPhase(RefreshSubPhase.PASS_FIRST_PLAYER_TOKEN);
+                return board.getPhaseManagerGovenor().getRefreshPhaseManager().
+                        setSubPhase(RefreshSubPhase.PASS_FIRST_PLAYER_TOKEN);
             case PASS_FIRST_PLAYER_TOKEN:
-                return board.getResourcePhaseManager();
+                return board.getPhaseManagerGovenor().getResourcePhaseManager();
             default:
                 return null;
         }

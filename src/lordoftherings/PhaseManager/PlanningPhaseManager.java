@@ -23,7 +23,8 @@ public class PlanningPhaseManager implements PhaseManager{
 
     @Override
     public PhaseManager getNextPhase(Board board) {
-        return board.getQuestPhaseManager().setSubPhase(QuestSubPhase.COMMIT_CHARACTERS);
+        return board.getPhaseManagerGovenor().
+                getQuestPhaseManager().setSubPhase(QuestSubPhase.COMMIT_CHARACTERS);
     }
 
     @Override

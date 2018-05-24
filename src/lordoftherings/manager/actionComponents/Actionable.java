@@ -3,6 +3,7 @@
 package lordoftherings.manager.actionComponents;
 
 import java.util.ArrayList;
+import javax.swing.JComponent;
 import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
 
@@ -14,4 +15,5 @@ public interface Actionable extends Focusable{
     void onSetActionable();
     void onUnsetActionable();
     void getActions(ArrayList<Action> listOfActions, int askingID, Board boardState);
+    JComponent getView();
 }

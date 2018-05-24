@@ -28,20 +28,25 @@ public class EnemyAttacksAction extends Action{
 
     @Override
     public boolean execute(int askingID, Board boardState) {
-        Enemy aggitatedEnemy = boardState.getPlayerZoneAt(boardState.getCurrentPlayerNum()).getEngagementArea().findEnemyByCard(card);
+        Enemy aggitatedEnemy = boardState.getPlayerZoneAt(boardState.getCurrentPlayerNum()).
+                getEngagementArea().findEnemyByCard(card);
         boardState.startAttackWithEnemy(aggitatedEnemy);
         return true;
     }
 
     @Override
     public void updateActionState(int askingID, Board boardState) {
-        Enemy aggitatedEnemy = boardState.getPlayerZoneAt(boardState.getCurrentPlayerNum()).getEngagementArea().findEnemyByCard(card);
+        Enemy aggitatedEnemy = boardState.getPlayerZoneAt(boardState.getCurrentPlayerNum()).
+                getEngagementArea().findEnemyByCard(card);
         if(aggitatedEnemy == null){
             state = ActionState.NOTAVAILABLE;
             return;
         }
-        if(askingID == boardState.getCurrentPlayerNum() && boardState.getCurrentPhase() == GamePhase.COMBAT
-                && boardState.getCurrentSubPhase() == CombatSubPhase.RESOLVE_ENEMY_ATTACKS && aggitatedEnemy.getLocationOnBoard() == LocationOnBoard.FIELD){
+        if(askingID == boardState.getCurrentPlayerNum() &&
+                boardState.getPhaseManagerGovenor().getCurrentPhase() == GamePhase.COMBAT
+                && boardState.getPhaseManagerGovenor().getCurrentSubPhase() == 
+                CombatSubPhase.RESOLVE_ENEMY_ATTACKS && aggitatedEnemy.getLocationOnBoard() == 
+                LocationOnBoard.FIELD){
             if(aggitatedEnemy.isEnemyStillAttacking()){
                 state = ActionState.EXECUTABLE;
             }else{

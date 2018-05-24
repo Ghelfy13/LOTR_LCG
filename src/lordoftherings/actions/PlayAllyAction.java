@@ -46,8 +46,9 @@ public class PlayAllyAction extends Action{
         PlayerZone playerArea = boardState.getPlayerZoneAt(cardToPlay.getController());
         if(cardToPlay.getLocation() == LocationOnBoard.HAND &&
            askingID == cardToPlay.getController() &&
-           boardState.getCurrentPhase() == GamePhase.PLANNING && 
-           boardState.getCurrentSubPhase() == PlanningSubPhase.PLAY_ALLIES_AND_ATTACHMENTS &&
+           boardState.getPhaseManagerGovenor().getCurrentPhase() == GamePhase.PLANNING && 
+           boardState.getPhaseManagerGovenor().getCurrentSubPhase() == 
+                PlanningSubPhase.PLAY_ALLIES_AND_ATTACHMENTS &&
            boardState.isCurrentPlayer(askingID)){
            if(playerArea.getField().canAfford(cardToPlay)){
                 state = ActionState.EXECUTABLE;

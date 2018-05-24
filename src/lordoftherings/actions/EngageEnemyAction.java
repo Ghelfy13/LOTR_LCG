@@ -44,8 +44,8 @@ public class EngageEnemyAction extends Action{
     @Override
     public void updateActionState(int askingID, Board boardState) {
         if(askingID == boardState.getCurrentPlayerNum() && desiredCard.getLocation() == LocationOnBoard.ENCOUNTER_ZONE
-                && boardState.getCurrentPhase() == GamePhase.ENCOUNTER &&
-                boardState.getCurrentSubPhase() == EncounterSubPhase.ENGAGE_ENEMY){
+                && boardState.getPhaseManagerGovenor().getCurrentPhase() == GamePhase.ENCOUNTER &&
+                boardState.getPhaseManagerGovenor().getCurrentSubPhase() == EncounterSubPhase.ENGAGE_ENEMY){
             PlayerZone zone = boardState.getPlayerZoneAt(boardState.getCurrentPlayerNum());
             if(!zone.hasEngagedEnemy()){
                 state = ActionState.EXECUTABLE;

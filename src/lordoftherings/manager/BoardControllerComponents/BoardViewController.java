@@ -11,7 +11,6 @@ import lordoftherings.PhaseManager.GamePhase;
 import lordoftherings.gui.BoardView;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.EncounterZoneComponents.EncounterZoneView;
-import lordoftherings.gui.EndOfGameView;
 import lordoftherings.gui.PhaseView;
 import lordoftherings.gui.PlayerZoneComponents.PlayerZoneView;
 import lordoftherings.gui.ProgressPhaseButtonView;
@@ -75,11 +74,11 @@ public class BoardViewController implements GlobalViewController {
     }
     
     public String getCurrentSubPhase(){
-        return myBoard.getCurrentSubPhase().toString();
+        return myBoard.getPhaseManagerGovenor().getCurrentSubPhase().toString();
     }
    
     public String getCurrentPhase(){
-        return myBoard.getCurrentPhase().toString();
+        return myBoard.getPhaseManagerGovenor().getCurrentPhase().toString();
     }
 
     @Override
@@ -88,7 +87,7 @@ public class BoardViewController implements GlobalViewController {
     }
 
     public void updatePhase() {
-        myBoard.advancePhase();
+        myBoard.getPhaseManagerGovenor().advancePhase();
         updateView();
     }
     

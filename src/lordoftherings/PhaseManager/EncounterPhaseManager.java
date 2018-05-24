@@ -36,10 +36,12 @@ public class EncounterPhaseManager implements PhaseManager{
     public PhaseManager getNextPhase(Board board) {
         
         if(subPhase == EncounterSubPhase.ENGAGE_ENEMY){
-            return board.getEncounterPhaseManager().setSubPhase(EncounterSubPhase.ENGAGEMENT_CHECKS);
+            return board.getPhaseManagerGovenor().getEncounterPhaseManager().
+                    setSubPhase(EncounterSubPhase.ENGAGEMENT_CHECKS);
         }
         else if(subPhase == EncounterSubPhase.ENGAGEMENT_CHECKS){
-            return board.getCombatPhaseManager().setSubPhase(CombatSubPhase.RESOLVE_ENEMY_ATTACKS);
+            return board.getPhaseManagerGovenor().getCombatPhaseManager().
+                    setSubPhase(CombatSubPhase.RESOLVE_ENEMY_ATTACKS);
         }
         throw new RuntimeException();
     }

@@ -4,6 +4,7 @@ package lordoftherings.manager.PlayerZoneControllerCompoents;
 
 import lordoftherings.manager.actionComponents.Actionable;
 import java.util.ArrayList;
+import javax.swing.JComponent;
 import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.characters.Ally;
@@ -61,10 +62,6 @@ public class AllyViewController implements Actionable {
         view.repaint();
     }
     
-    public AllyView getView(){
-        return view;
-    }
-
     @Override
     public String getViewingText() {
         return wantedAlly.getCard().getTitle();
@@ -95,5 +92,10 @@ public class AllyViewController implements Actionable {
     @Override
     public void getActions(ArrayList<Action> listOfActions, int askingID, Board boardState) {
         wantedAlly.getCard().getActions(listOfActions, boardState, askingID);
+    }
+
+    @Override
+    public JComponent getView() {
+        return view;
     }
 }

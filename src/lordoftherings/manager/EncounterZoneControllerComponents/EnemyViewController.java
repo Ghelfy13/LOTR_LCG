@@ -3,6 +3,7 @@
 package lordoftherings.manager.EncounterZoneControllerComponents;
 
 import java.util.ArrayList;
+import javax.swing.JComponent;
 import lordoftherings.LocationOnBoard;
 import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
@@ -51,10 +52,6 @@ public class EnemyViewController implements Actionable{
     
     public BoardActiveState getBAS(){
         return bas;
-    }
-    
-    public EnemyView getView(){
-        return view;
     }
     
     public void updateView(int newX, int newY){
@@ -107,5 +104,10 @@ public class EnemyViewController implements Actionable{
     @Override
     public String getViewingText() {
         return enemy.getCard().getTitle();
+    }
+
+    @Override
+    public JComponent getView() {
+        return view;
     }
 }

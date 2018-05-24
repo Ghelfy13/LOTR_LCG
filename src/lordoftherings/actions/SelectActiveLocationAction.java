@@ -40,7 +40,7 @@ public class SelectActiveLocationAction extends Action{
 
     @Override
     public void updateActionState(int askingID, Board boardState) {
-        if(boardState.getCurrentSubPhase() == TravelSubPhase.SELECT_ACTIVE_LOCATION &&
+        if(boardState.getPhaseManagerGovenor().getCurrentSubPhase() == TravelSubPhase.SELECT_ACTIVE_LOCATION &&
                 askingID == boardState.getCurrentPlayerNum() &&
                 desiredCard.getLocation() == LocationOnBoard.ENCOUNTER_ZONE){
             if(boardState.getEncounterZone().getStagingArea().getActiveLocationArea().isEmpty()){

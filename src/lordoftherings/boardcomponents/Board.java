@@ -9,17 +9,7 @@ import lordoftherings.DeckComponents.Quest;
 import lordoftherings.Matcher.HeroMatcher;
 import lordoftherings.Matcher.Matcher;
 import lordoftherings.Matcher.ReadyMatcher;
-import lordoftherings.PhaseManager.CombatPhaseManager;
-import lordoftherings.PhaseManager.EncounterPhaseManager;
-import lordoftherings.PhaseManager.GamePhase;
-import lordoftherings.PhaseManager.PhaseManager;
-import lordoftherings.PhaseManager.PlanningPhaseManager;
-import lordoftherings.PhaseManager.QuestPhaseManager;
-import lordoftherings.PhaseManager.RefreshPhaseManager;
-import lordoftherings.PhaseManager.ResourcePhaseManager;
-import lordoftherings.PhaseManager.ResourceSubPhase;
-import lordoftherings.PhaseManager.SubPhase;
-import lordoftherings.PhaseManager.TravelPhaseManager;
+import lordoftherings.PhaseManager.PhaseManagerGovenor;
 import lordoftherings.PlayerCardType;
 import lordoftherings.cards.EnemyCard;
 import lordoftherings.characters.GameCharacter;
@@ -40,44 +30,27 @@ import lordoftherings.transaction_managers.Uncancellable;
  */
 public class Board {
     private EncounterZone encounterZone;
-    private PhaseManager currentPhaseManager;
     private PlayerDeckBuild [] deckBuilds;
     private PlayerZone[] playerZones;
     private int currentPlayerNum;
-    private ResourcePhaseManager resourcePM;
-    private PlanningPhaseManager planningPM;
-    private GamePhase currentGamePhase;
-    private QuestPhaseManager questPM;
-    private TravelPhaseManager travelPM;
-    private EncounterPhaseManager encounterPM;
-    private RefreshPhaseManager refreshPM;
-    private CombatPhaseManager combatPM;
     private GameManager gameManager;
     private boolean hasPlayerWon;
     private ArrayList<SuspensionType> currentSuspensions;
+    private PhaseManagerGovenor pmGovenor;
     
     
     public Board(PlayerDeckBuild[] playerBuild, EncounterBuild encounterInfo, GameManager manager){
         this.encounterZone = new EncounterZone(encounterInfo, this);
         this.deckBuilds = playerBuild;
-        this.currentGamePhase = GamePhase.RESOURCE;
         int size = deckBuilds.length;
         this.playerZones = new PlayerZone[size];
         for(int i = 0; i < size; ++i){
             playerZones[i] = new PlayerZone(deckBuilds[i], i, this);
         }
-        this.resourcePM = new ResourcePhaseManager();
-        this.currentPhaseManager = resourcePM.setSubPhase(ResourceSubPhase.ADD_RESOURCES_AND_DRAW);
-        currentPhaseManager.onStartSubPhase(this);
-        this.planningPM = new PlanningPhaseManager();
-        this.questPM = new QuestPhaseManager();
-        this.travelPM = new TravelPhaseManager();
-        this.encounterPM = new EncounterPhaseManager();
-        this.refreshPM = new RefreshPhaseManager();
-        this.combatPM = new CombatPhaseManager();
         this.gameManager = manager;
         this.hasPlayerWon = false;
         this.currentSuspensions = new ArrayList<>();
+        this.pmGovenor = new PhaseManagerGovenor(this);
     }
     
     public PlayerZone getPlayerZoneAt(int index){
@@ -88,14 +61,14 @@ public class Board {
         return playerZones.length;
     }
     
-    public SubPhase getCurrentSubPhase(){
-        return currentPhaseManager.getSubPhase();
-    }
-    
     public void increaseEveryPlayersThreatBy(int num){
         for(int i = 0; i < playerZones.length; ++i){
             playerZones[i].increaseThreatBy(num);
         }
+    }
+    
+    public PhaseManagerGovenor getPhaseManagerGovenor(){
+        return pmGovenor;
     }
     
     public PlayerZone[] getPlayerZones(){
@@ -118,10 +91,6 @@ public class Board {
         return getPlayerZoneAt(currentPlayerNum);
     }
     
-    public GamePhase getCurrentPhase(){
-        return currentPhaseManager.getPhase();
-    }
-    
     public int getCurrentPlayerNum(){
         return currentPlayerNum;
     }
@@ -132,43 +101,6 @@ public class Board {
     
     public boolean isCurrentPlayer(int playerNum){
         return currentPlayerNum == playerNum;
-    }
-    
-    public boolean canProgressPhase(){
-        return currentPhaseManager.canProgress(this);
-    }
-    
-    public void advancePhase(){
-        if(!currentPhaseManager.canProgress(this)){
-            return;
-        }
-        currentPhaseManager.onEndSubPhase(this);
-        currentPhaseManager = currentPhaseManager.getNextPhase(this);
-        currentPhaseManager.onStartSubPhase(this);
-    }
-    
-    public ResourcePhaseManager getResourcePhaseManager(){
-        return resourcePM;
-    }
-    
-    public PlanningPhaseManager getPlanningPhaseManager() {
-        return planningPM;
-    }
-    
-    public CombatPhaseManager getCombatPhaseManager(){
-        return combatPM;
-    }
-    
-    public QuestPhaseManager getQuestPhaseManager() {
-        return questPM;
-    }
-    
-    public TravelPhaseManager getTravelPhaseManager(){
-        return travelPM;
-    }
-    
-    public EncounterPhaseManager getEncounterPhaseManager(){
-        return encounterPM;
     }
     
     public void addResourcesToHerosAndDraw(){
@@ -186,10 +118,6 @@ public class Board {
     
     public void addEnemyToStagingArea(EnemyCard card){
         encounterZone.addEnemyToStagingArea(card);
-    }
-
-    public RefreshPhaseManager getRefreshPhaseManager() {
-        return refreshPM;
     }
 
     public void resolveQuest() {

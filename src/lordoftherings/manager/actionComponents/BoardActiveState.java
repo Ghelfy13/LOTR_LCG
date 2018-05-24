@@ -3,6 +3,7 @@
 package lordoftherings.manager.actionComponents;
 
 import java.awt.Color;
+import java.awt.Point;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import lordoftherings.actions.Action;
@@ -36,14 +37,16 @@ public class BoardActiveState extends FocusableActiveState {
         unsetActionable();
         currentActionable = newActionable;
         currentActionable.onSetActionable();
-        actionsView = availableActionsVC.updateView(2250, 100);
+        Point locationOnScreen = currentActionable.getView().getLocationOnScreen();
+        actionsView = availableActionsVC.updateView(locationOnScreen.x + 20, locationOnScreen.y + 160);
     }
     
     public void unsetActionable(){
         if(currentActionable == null) return;
+        Point locationOnScreen = currentActionable.getView().getLocationOnScreen();
         currentActionable.onUnsetActionable();
         currentActionable = null;
-        actionsView = availableActionsVC.updateView(2250, 100);
+        actionsView = availableActionsVC.updateView(locationOnScreen.x + 20, locationOnScreen.y + 160);
     }
     
     public AvailableActionsView getAvailableActions(){

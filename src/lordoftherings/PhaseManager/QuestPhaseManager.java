@@ -56,11 +56,14 @@ public class QuestPhaseManager implements PhaseManager{
     public PhaseManager getNextPhase(Board board) {
         switch (subPhase){
             case COMMIT_CHARACTERS:
-                return board.getQuestPhaseManager().setSubPhase(QuestSubPhase.ENCOUNTER_DECK_REVEAL);
+                return board.getPhaseManagerGovenor().getQuestPhaseManager().
+                        setSubPhase(QuestSubPhase.ENCOUNTER_DECK_REVEAL);
             case ENCOUNTER_DECK_REVEAL:
-                return board.getQuestPhaseManager().setSubPhase(QuestSubPhase.RESOLVE_QUEST);
+                return board.getPhaseManagerGovenor().getQuestPhaseManager().
+                        setSubPhase(QuestSubPhase.RESOLVE_QUEST);
             case RESOLVE_QUEST:
-                return board.getTravelPhaseManager().setSubPhase(TravelSubPhase.SELECT_ACTIVE_LOCATION);
+                return board.getPhaseManagerGovenor().getTravelPhaseManager().
+                        setSubPhase(TravelSubPhase.SELECT_ACTIVE_LOCATION);
             default:
                 return null;
         }

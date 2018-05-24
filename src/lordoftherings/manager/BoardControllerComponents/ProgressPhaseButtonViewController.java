@@ -24,7 +24,7 @@ public class ProgressPhaseButtonViewController {
     }
     
     public void updateView(){
-        if(!gameManagerVC.getBoard().canProgressPhase()){
+        if(!gameManagerVC.getBoard().getPhaseManagerGovenor().canProgressPhase()){
             phaseButtonView.setBackground(Color.LIGHT_GRAY);
         }else{
             phaseButtonView.setBackground(Color.CYAN);

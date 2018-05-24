@@ -45,9 +45,11 @@ public class CombatPhaseManager implements PhaseManager{
     public PhaseManager getNextPhase(Board board) {
         if(canProgress(board)){
             if(subPhase == CombatSubPhase.RESOLVE_ENEMY_ATTACKS){
-                return board.getCombatPhaseManager().setSubPhase(CombatSubPhase.RESOLVE_PLAYER_ATTACKS);
+                return board.getPhaseManagerGovenor().getCombatPhaseManager().
+                        setSubPhase(CombatSubPhase.RESOLVE_PLAYER_ATTACKS);
             }else{
-                return board.getRefreshPhaseManager().setSubPhase(RefreshSubPhase.REFRESH_CARDS);
+                return board.getPhaseManagerGovenor().getRefreshPhaseManager().
+                        setSubPhase(RefreshSubPhase.REFRESH_CARDS);
             }
         }else{
             throw new RuntimeException();

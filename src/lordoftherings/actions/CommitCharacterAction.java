@@ -38,7 +38,9 @@ public class CommitCharacterAction extends Action{
     public void updateActionState(int askingID, Board boardState) {
         CharacterArea charArea = boardState.getPlayerZoneAt(wantedCard.getController()).getCharZone();
         GameCharacter character = charArea.getCharacterForCard(wantedCard);
-        if(boardState.getCurrentPhase() == GamePhase.QUEST && boardState.getCurrentSubPhase() == QuestSubPhase.COMMIT_CHARACTERS &&
+        if(boardState.getPhaseManagerGovenor().getCurrentPhase() == 
+                GamePhase.QUEST && boardState.getPhaseManagerGovenor().getCurrentSubPhase() == 
+                QuestSubPhase.COMMIT_CHARACTERS &&
                 character != null && !character.isCommitted() && !character.isExhausted()){
             state = ActionState.EXECUTABLE;
         }else{

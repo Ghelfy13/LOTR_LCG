@@ -4,6 +4,7 @@ package lordoftherings.manager.PlayerZoneControllerCompoents;
 
 import lordoftherings.manager.actionComponents.Actionable;
 import java.util.ArrayList;
+import javax.swing.JComponent;
 import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.cards.PlayerCard;
@@ -35,9 +36,6 @@ public class HandCardViewController implements Actionable{
         return view;
     }
     
-    public HandCardView getView(){
-        return view;
-    }
     public BoardActiveState getBoardActiveStateController(){
         return bas;
     }
@@ -68,6 +66,11 @@ public class HandCardViewController implements Actionable{
     @Override
     public void getActions(ArrayList<Action> listOfActions, int askingID, Board boardState) {
         card.getActions(listOfActions, boardState, askingID);
+    }
+
+    @Override
+    public JComponent getView() {
+        return view;
     }
     
 }

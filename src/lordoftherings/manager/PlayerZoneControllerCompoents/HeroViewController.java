@@ -5,6 +5,7 @@ package lordoftherings.manager.PlayerZoneControllerCompoents;
 import lordoftherings.manager.actionComponents.Actionable;
 import lordoftherings.manager.actionComponents.ActionableMouseListener;
 import java.util.ArrayList;
+import javax.swing.JComponent;
 import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.characters.Hero;
@@ -98,8 +99,9 @@ public class HeroViewController implements Actionable{
     public void getActions(ArrayList<Action> listOfActions, int askingID, Board boardState) {
         wantedHero.getCard().getActions(listOfActions, boardState, askingID);
     }
-    
-    public HeroView getView(){
+
+    @Override
+    public JComponent getView() {
         return view;
     }
 }

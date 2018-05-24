@@ -86,7 +86,7 @@ public class EncounterZone {
     }
 
     public GamePhase getCurrentPhase() {
-        return board.getCurrentPhase();
+        return board.getPhaseManagerGovenor().getCurrentPhase();
     }
     
     public EncounterDiscardPile getEnemyDiscardPile(){
