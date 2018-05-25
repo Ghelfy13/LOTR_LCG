@@ -19,14 +19,16 @@ public abstract class EventCardModel extends PlayerCardModel{
     PlayerCardType type,
     String [] trait,
     Identification cardID,
-    int cost){
-        super(title, sphere, type, trait, cardID);
+    int cost,
+    String effect){
+        super(title, sphere, type, trait, cardID, effect);
         this.cost = cost;
     }
     
     @Override
     public String identify(){
-         String info = title + '\n' +"Sphere of Influence: " + sphereOfInfluence + '\n' + "Type: " + type + '\n' + "Cost: " + cost;
+         String info = title + '\n' +"Sphere of Influence: " + sphereOfInfluence + 
+                 '\n' + "Type: " + type + '\n' + "Cost: " + cost + '\n' + '\n' + effect;
          return info;
     }
     

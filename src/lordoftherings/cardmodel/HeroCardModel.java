@@ -26,7 +26,8 @@ public class HeroCardModel extends CharacterCardModel{
         int defense,
         int hitPoints,
         int threatCost, 
-        int resourcePool){
+        int resourcePool,
+        String effect){
         super(
             title,
             sphereOfInfluence,
@@ -36,8 +37,8 @@ public class HeroCardModel extends CharacterCardModel{
             willPower,
             attack,
             defense,
-            hitPoints);
-        
+            hitPoints,
+            effect);
          this.threatCost = threatCost;
          this.resourcePool = resourcePool;
      }
@@ -48,8 +49,11 @@ public class HeroCardModel extends CharacterCardModel{
      
     @Override
     public String identify(){
-         String info = title.toUpperCase() + '\n'+'\n' +"Sphere: " + sphereOfInfluence + '\n' + "Type: " + type + '\n' + "WillPower: " + willPower + '\n' 
-                 + "Attack Power: " + attack + '\n' + "Defense: " + defense + '\n' + "HitPoints: " + hitPoints + '\n' + "ThreatCost: " + threatCost + '\n';
+         String info = title.toUpperCase() + '\n'+'\n' +"Sphere: " + 
+                 sphereOfInfluence + '\n' + "Type: " + type + '\n' + 
+                 "WillPower: " + willPower + '\n' + "Attack Power: " + attack + 
+                 '\n' + "Defense: " + defense + '\n' + "HitPoints: " + 
+                 hitPoints + '\n' + "ThreatCost: " + threatCost + '\n' + '\n' + effect;
          return info;
      }
      
@@ -62,5 +66,10 @@ public class HeroCardModel extends CharacterCardModel{
      public HeroCard createCard(){
          return HeroCard.get(this);
      }
+
+    @Override
+    public String getEffect() {
+        return effect;
+    }
     
 }

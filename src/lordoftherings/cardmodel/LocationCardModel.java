@@ -15,8 +15,8 @@ public class LocationCardModel extends EncounterCardModel{
     private int questPoints;
     
     public LocationCardModel(String title, EncounterType type, String[] traits,
-            Identification cardID, int threat, int questPoints) {
-        super(title, type, traits, cardID);
+            Identification cardID, int threat, int questPoints, String effect) {
+        super(title, type, traits, cardID, effect);
         this.threat = threat;
         this.questPoints = questPoints;
     }
@@ -29,7 +29,7 @@ public class LocationCardModel extends EncounterCardModel{
     public String identify() {
         return title.toUpperCase()+ "\n" + "\n" + "Encounter Type: " + type + "\n" 
                 + "Traits: " + identifyTraits() + "Threat Value: "
-                + threat + "\n" + "Quest Points:  " + questPoints + "\n";
+                + threat + "\n" + "Quest Points:  " + questPoints + "\n" + '\n' + effect;
     }
 
     @Override
@@ -49,5 +49,10 @@ public class LocationCardModel extends EncounterCardModel{
 
     public String geTitle() {
         return title;
+    }
+
+    @Override
+    public String getEffect() {
+        return effect;
     }
 }

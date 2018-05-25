@@ -18,7 +18,11 @@ public class AllyCardView extends JTextArea{
         this.setColumns(1);
         this.insert(heroInfo, 0);
         this.setFont(CARD_FONT);
+        this.setLineWrap(true);
+        this.setWrapStyleWord(true);
+        this.setEditable(false);
         this.setBackground(Color.LIGHT_GRAY);
         setBounds(x, y, HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
+        
     }
 }

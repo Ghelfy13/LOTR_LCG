@@ -26,8 +26,9 @@ public abstract class CharacterCardModel extends PlayerCardModel{
         int willPower,
         int attack,
         int defense,
-        int hitPoints){
-        super(title, sphereOfInfluence, type, trait, cardID);
+        int hitPoints,
+        String effect){
+        super(title, sphereOfInfluence, type, trait, cardID, effect);
         this.willPower = willPower;
         this.attack = attack;
         this.defense = defense;
@@ -52,4 +53,7 @@ public abstract class CharacterCardModel extends PlayerCardModel{
     
     @Override
     public abstract CharacterCard createCard();
+    
+    @Override
+    public abstract String getEffect();
 }

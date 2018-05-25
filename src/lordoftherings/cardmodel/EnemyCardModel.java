@@ -26,8 +26,9 @@ public class EnemyCardModel extends EncounterCardModel{
     int threat,
     int attack,
     int defense,
-    int hitPoints){
-        super(title, type, traits, cardID);
+    int hitPoints,
+    String effect){
+        super(title, type, traits, cardID, effect);
         this.engagementCost = engagementCost;
         this.threat = threat;
         this.attack = attack;
@@ -65,8 +66,11 @@ public class EnemyCardModel extends EncounterCardModel{
     
     @Override
     public String identify(){
-        return title.toUpperCase()+ "\n" + "\n" + "Encounter Type: " + type + "\n" + "Traits: " + identifyTraits() + "Engagement Cost: " + engagementCost + "\n" + "Threat Value: " + threat + "\n" + "Attack: " + attack + "\n"
-                + "Defense: " + defense + "\n" + "Hit Points: " + hitPoints + "\n";
+        return title.toUpperCase()+ "\n" + "\n" + "Encounter Type: " + type +
+                "\n" + "Traits: " + identifyTraits() + "Engagement Cost: " + 
+                engagementCost + "\n" + "Threat Value: " + threat + "\n" +
+                "Attack: " + attack + "\n" + "Defense: " + defense + "\n" +
+                "Hit Points: " + hitPoints + "\n" + '\n' + effect ;
     }
     
     @Override
@@ -82,5 +86,10 @@ public class EnemyCardModel extends EncounterCardModel{
     public EnemyCard createCard() {
         EnemyCard card = new EnemyCard(this);
         return card;
+    }
+
+    @Override
+    public String getEffect() {
+        return effect;
     }
 }

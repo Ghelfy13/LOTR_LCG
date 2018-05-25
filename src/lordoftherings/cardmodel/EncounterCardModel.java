@@ -14,13 +14,19 @@ public abstract class EncounterCardModel {
     protected String title;
     protected EncounterType type;
     protected String[] traits;
-    public Identification cardID;
+    protected Identification cardID;
+    protected String effect;
     
-    public EncounterCardModel(String title, EncounterType type, String [] traits, Identification cardID){
+    public EncounterCardModel(String title, 
+            EncounterType type, 
+            String [] traits, 
+            Identification cardID,
+            String effect){
         this.title = title;
         this.type = type;
         this.traits = traits;
         this.cardID = cardID;
+        this.effect = effect;
     }
     
     protected String identifyTraits(){
@@ -43,4 +49,6 @@ public abstract class EncounterCardModel {
     public abstract Identification getCardID();
     
     public abstract EncounterCard createCard();
+    
+    public abstract String getEffect();
 }

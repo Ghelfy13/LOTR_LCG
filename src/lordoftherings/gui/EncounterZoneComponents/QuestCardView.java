@@ -19,6 +19,7 @@ public class QuestCardView extends JTextArea{
         this.insert(enemyInfo, 0);
         this.setFont(AllyCardView.CARD_FONT);
         this.setLineWrap(true);
+        this.setWrapStyleWord(true);
         this.setEditable(false);
         this.setBackground(Color.LIGHT_GRAY);
         setBounds(x, y, HandCardView.CARD_HEIGHT, HandCardView.CARD_WIDTH);

@@ -13,7 +13,6 @@ import lordoftherings.cardmodel.HeroCardModel;
 import lordoftherings.cardmodel.AllyCardModel;
 import java.awt.Color;
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.swing.JFrame;
 import lordoftherings.DeckComponents.EncounterBuild;
 import lordoftherings.DeckComponents.EncounterDeckBuild;
@@ -36,7 +35,7 @@ public class LordOfTheRings {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         
         Identification LocationID = new Identification(ExpansionName.CORE, 113);
         LocationCardModel firstLocation = new LocationCardModel(
@@ -45,7 +44,8 @@ public class LordOfTheRings {
         new String[]{"Riverland"}, 
         LocationID, 
         1,
-        3);
+        3,
+        "");
         
         Identification OrcsID = new Identification (ExpansionName.CORE, 3);
         EnemyCardModel firstEnemy = new EnemyCardModel(
@@ -57,7 +57,8 @@ public class LordOfTheRings {
             2,
             3,
             2,
-            1);
+            1,
+            "");
         Identification AragornID = new Identification(ExpansionName.CORE, 1);
         HeroCardModel first = new HeroCardModel(
                 "Aragorn",
@@ -70,7 +71,8 @@ public class LordOfTheRings {
                 2,
                 5,
                 12,
-                0);
+                0,
+                "");
         Identification DaughterID = new Identification(ExpansionName.CORE, 23);
         AllyCardModel second = new AllyCardModel(
           "Daughter of Nimrodel",
@@ -82,7 +84,8 @@ public class LordOfTheRings {
           0,
           0,
           1,
-          3);
+          3,
+            "Can heal 2 damage on other Characters when untapped");
         Identification QuestID = new Identification(ExpansionName.CORE, 122);
         QuestCardModel firstQuest = new QuestCardModel(
                 "A Chosen Path: Beorn's Path",

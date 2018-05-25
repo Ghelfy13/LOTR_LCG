@@ -3,7 +3,6 @@
 package lordoftherings.gui.PlayerZoneComponents;
 
 import java.awt.Color;
-import java.awt.Font;
 import javax.swing.JTextArea;
 import lordoftherings.manager.actionComponents.ActionableMouseListener;
 import lordoftherings.manager.actionComponents.BoardActiveState;
@@ -25,6 +24,8 @@ public class HandCardView extends JTextArea {
         setBounds(x, y, CARD_WIDTH, CARD_HEIGHT);
         setFont(AllyCardView.CARD_FONT);
         setBackground(Color.lightGray);
+        setLineWrap(true);
+        setWrapStyleWord(true);
         BoardActiveState bas = cardVC.getBoardActiveStateController();
         // TODO: remove if
         if (cardVC != null) {

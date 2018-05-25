@@ -24,7 +24,8 @@ public class AllyCardModel extends CharacterCardModel {
         int attack,
         int defense,
         int hitPoints,
-        int cost){
+        int cost,
+        String effect){
         super(
             title,
             sphereOfInfluence,
@@ -34,14 +35,18 @@ public class AllyCardModel extends CharacterCardModel {
             willPower,
             attack,
             defense,
-            hitPoints);
+            hitPoints,
+            effect);
         this.cost = cost;
     }
     
     @Override
     public String identify(){
-         String info = title.toUpperCase() + '\n' + '\n'+ "Sphere: " + sphereOfInfluence + '\n' + "Type: " + type + '\n' + "WillPower: " + willPower + '\n' 
-                 + "Attack Power: " + attack + '\n' + "Defense: " + defense + '\n' + "HitPoints: " + hitPoints + '\n';
+         String info = title.toUpperCase() + '\n' + '\n'+ "Sphere: " + 
+                 sphereOfInfluence + '\n' + "Type: " + type + '\n' + 
+                 "WillPower: " + willPower + '\n' + "Attack Power: " + 
+                 attack + '\n' + "Defense: " + defense + '\n' + "HitPoints: " + 
+                 hitPoints + '\n' + effect;
          return info;
      }
     
@@ -53,6 +58,11 @@ public class AllyCardModel extends CharacterCardModel {
     @Override
     public AllyCard createCard(){
         return AllyCard.get(this);
+    }
+
+    @Override
+    public String getEffect() {
+        return effect;
     }
    
 }

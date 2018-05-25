@@ -17,18 +17,21 @@ public abstract class PlayerCardModel {
     protected PlayerCardType type;
     protected String [] trait;
     protected Identification cardID;
+    protected String effect;
     
     protected PlayerCardModel(
         String title, 
         SphereOfInfluence sphereOfInfluence,
         PlayerCardType type, 
         String [] trait, 
-        Identification cardID){
+        Identification cardID,
+        String effect){
         this.title = title;
         this.sphereOfInfluence = sphereOfInfluence;
         this.type = type;
         this.trait = trait;
         this.cardID = cardID;
+        this.effect = effect;
     }
     
     public Identification getCardID(){
@@ -44,4 +47,6 @@ public abstract class PlayerCardModel {
     public String getTitle() {
         return title;
     }
+    
+    public abstract String getEffect();
 }
