@@ -2,15 +2,15 @@
 
 package lordoftherings.boardcomponents;
 
-import lordoftherings.DeckComponents.EncounterBuild;
+import lordoftherings.deckcomponents.EncounterBuild;
 import lordoftherings.cardmodel.EncounterCardModel;
 import lordoftherings.cards.EncounterCard;
 import lordoftherings.cards.EnemyCard;
 import lordoftherings.characters.Enemy;
 import java.util.ArrayList;
-import lordoftherings.DeckComponents.Quest;
+import lordoftherings.deckcomponents.Quest;
 import lordoftherings.LocationOnBoard;
-import lordoftherings.PhaseManager.GamePhase;
+import lordoftherings.phasemanager.GamePhase;
 
 /**
  *

@@ -2,7 +2,7 @@
 
 package lordoftherings.manager.EncounterZoneControllerComponents;
 
-import lordoftherings.DeckComponents.Quest;
+import lordoftherings.deckcomponents.Quest;
 import lordoftherings.boardcomponents.EncounterZone;
 import lordoftherings.gui.EncounterZoneComponents.EncounterDeckParentView;
 import lordoftherings.gui.EncounterZoneComponents.EncounterDiscardPileView;

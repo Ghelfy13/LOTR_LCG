@@ -2,9 +2,11 @@
 
 package lordoftherings.cardmodel;
 
+import java.util.ArrayList;
 import lordoftherings.Identification;
 import lordoftherings.PlayerCardType;
-import lordoftherings.DeckComponents.SphereOfInfluence;
+import lordoftherings.deckcomponents.SphereOfInfluence;
+import lordoftherings.effects.Effect;
 
 /**
  *
@@ -20,8 +22,9 @@ public abstract class EventCardModel extends PlayerCardModel{
     String [] trait,
     Identification cardID,
     int cost,
-    String effect){
-        super(title, sphere, type, trait, cardID, effect);
+    String effect,
+    ArrayList<Effect> list){
+        super(title, sphere, type, trait, cardID, effect, list);
         this.cost = cost;
     }
     

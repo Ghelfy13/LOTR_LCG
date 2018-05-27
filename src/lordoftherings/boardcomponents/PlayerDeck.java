@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
-import lordoftherings.DeckComponents.DeckBuild;
+import lordoftherings.deckcomponents.DeckBuild;
 import lordoftherings.LocationOnBoard;
 /**
  *

@@ -3,7 +3,7 @@
 package lordoftherings.actions;
 
 import lordoftherings.LocationOnBoard;
-import lordoftherings.PhaseManager.TravelSubPhase;
+import lordoftherings.phasemanager.TravelSubPhase;
 import lordoftherings.boardcomponents.ActiveLocationArea;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.boardcomponents.StagingArea;

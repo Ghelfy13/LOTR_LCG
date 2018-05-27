@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
-import lordoftherings.DeckComponents.EncounterDeckBuild;
+import lordoftherings.deckcomponents.EncounterDeckBuild;
 import lordoftherings.LocationOnBoard;
 import lordoftherings.cardmodel.EncounterCardModel;
 import lordoftherings.cards.EncounterCard;

@@ -2,7 +2,7 @@
 
 package lordoftherings.boardcomponents;
 
-import lordoftherings.DeckComponents.Quest;
+import lordoftherings.deckcomponents.Quest;
 
 /**
  *

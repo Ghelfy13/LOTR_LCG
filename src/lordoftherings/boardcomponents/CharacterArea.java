@@ -66,7 +66,7 @@ public class CharacterArea {
         }
     }
     
-    public GameCharacter getCharacterForCard(CharacterCard card) {
+    public GameCharacter getCharacterFromCard(CharacterCard card) {
         GameCharacter character = findHero(card);
         if (character != null) {
             return character;

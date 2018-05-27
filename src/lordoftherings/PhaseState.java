@@ -2,7 +2,7 @@
 
 package lordoftherings;
 
-import lordoftherings.PhaseManager.GamePhase;
+import lordoftherings.phasemanager.GamePhase;
 import lordoftherings.boardcomponents.Board;
 
 /**

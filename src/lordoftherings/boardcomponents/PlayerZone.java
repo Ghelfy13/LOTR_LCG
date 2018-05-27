@@ -5,7 +5,7 @@ import lordoftherings.cards.AllyCard;
 import lordoftherings.cards.PlayerCard;
 import java.util.ArrayList;
 import lordoftherings.characters.Ally;
-import lordoftherings.DeckComponents.PlayerDeckBuild;
+import lordoftherings.deckcomponents.PlayerDeckBuild;
 import lordoftherings.LocationOnBoard;
 import lordoftherings.characters.Hero;
 /**

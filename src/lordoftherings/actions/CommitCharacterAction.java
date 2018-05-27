@@ -2,8 +2,8 @@
 
 package lordoftherings.actions;
 
-import lordoftherings.PhaseManager.GamePhase;
-import lordoftherings.PhaseManager.QuestSubPhase;
+import lordoftherings.phasemanager.GamePhase;
+import lordoftherings.phasemanager.QuestSubPhase;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.boardcomponents.CharacterArea;
 import lordoftherings.cards.CharacterCard;
@@ -28,7 +28,7 @@ public class CommitCharacterAction extends Action{
     @Override
     public boolean execute(int askingID, Board boardState) {
         CharacterArea charArea = boardState.getPlayerZoneAt(wantedCard.getController()).getCharZone();
-        GameCharacter character = charArea.getCharacterForCard(wantedCard);
+        GameCharacter character = charArea.getCharacterFromCard(wantedCard);
         character.commit();
         character.exhaust();
         return true;
@@ -37,7 +37,7 @@ public class CommitCharacterAction extends Action{
     @Override
     public void updateActionState(int askingID, Board boardState) {
         CharacterArea charArea = boardState.getPlayerZoneAt(wantedCard.getController()).getCharZone();
-        GameCharacter character = charArea.getCharacterForCard(wantedCard);
+        GameCharacter character = charArea.getCharacterFromCard(wantedCard);
         if(boardState.getPhaseManagerGovenor().getCurrentPhase() == 
                 GamePhase.QUEST && boardState.getPhaseManagerGovenor().getCurrentSubPhase() == 
                 QuestSubPhase.COMMIT_CHARACTERS &&

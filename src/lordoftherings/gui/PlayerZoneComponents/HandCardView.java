@@ -13,7 +13,7 @@ import lordoftherings.manager.PlayerZoneControllerCompoents.HandCardViewControll
  * @author Amanda
  */
 public class HandCardView extends JTextArea {
-    public static final int CARD_HEIGHT = 200;
+    public static final int CARD_HEIGHT = 210;
     public static final int CARD_WIDTH = 144;
     
     public HandCardView(HandCardViewController cardVC, String cardInfo, int x, int y){

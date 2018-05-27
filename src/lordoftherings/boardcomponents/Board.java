@@ -3,15 +3,16 @@
 package lordoftherings.boardcomponents;
 
 import java.util.ArrayList;
-import lordoftherings.DeckComponents.PlayerDeckBuild;
-import lordoftherings.DeckComponents.EncounterBuild;
-import lordoftherings.DeckComponents.Quest;
-import lordoftherings.Matcher.HeroMatcher;
-import lordoftherings.Matcher.Matcher;
-import lordoftherings.Matcher.ReadyMatcher;
-import lordoftherings.PhaseManager.PhaseManagerGovenor;
+import lordoftherings.deckcomponents.PlayerDeckBuild;
+import lordoftherings.deckcomponents.EncounterBuild;
+import lordoftherings.deckcomponents.Quest;
+import lordoftherings.matcher.HeroMatcher;
+import lordoftherings.matcher.Matcher;
+import lordoftherings.matcher.ReadyMatcher;
+import lordoftherings.phasemanager.PhaseManagerGovenor;
 import lordoftherings.PlayerCardType;
 import lordoftherings.cards.EnemyCard;
+import lordoftherings.characters.Ally;
 import lordoftherings.characters.GameCharacter;
 import lordoftherings.characters.Enemy;
 import lordoftherings.characters.Hero;
@@ -23,6 +24,7 @@ import lordoftherings.transaction_managers.ResolveEnemyAttackHandler;
 import lordoftherings.transaction_managers.ResolvePlayerAttackHandler;
 import lordoftherings.transaction_managers.ResolveUndefendedEnemyAttackHandler;
 import lordoftherings.transaction_managers.Uncancellable;
+import lordoftherings.transaction_managers.ExhaustToHealHandler;
 
 /**
  *
@@ -328,5 +330,4 @@ public class Board {
         return lowestThreat;
     }
 
-       
 }

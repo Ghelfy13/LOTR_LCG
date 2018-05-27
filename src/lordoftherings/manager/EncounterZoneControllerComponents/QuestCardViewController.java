@@ -2,7 +2,7 @@
 
 package lordoftherings.manager.EncounterZoneControllerComponents;
 
-import lordoftherings.DeckComponents.Quest;
+import lordoftherings.deckcomponents.Quest;
 import lordoftherings.cards.QuestCard;
 import lordoftherings.gui.EncounterZoneComponents.QuestCardView;
 import lordoftherings.manager.actionComponents.BoardActiveState;

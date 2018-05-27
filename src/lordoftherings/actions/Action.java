@@ -26,12 +26,6 @@ public abstract class Action {
         return state == ActionState.EXECUTABLE;
     }
     
-    /**
-     *
-     * @param askingID
-     * @param boardState
-     * @return
-     */
     public abstract boolean execute(int askingID, Board boardState);
     public abstract void updateActionState(int askingID, Board boardState);
 

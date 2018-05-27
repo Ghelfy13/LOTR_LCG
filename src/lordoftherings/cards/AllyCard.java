@@ -15,20 +15,17 @@ import lordoftherings.cardmodel.AllyCardModel;
  * @author Amanda
  */
 public class AllyCard extends CharacterCard{
-    private AllyCardModel allyModel;
     private PlayAllyAction playAlly;
     
     private AllyCard(AllyCardModel allyModel){
-        this.allyModel = allyModel;
+        super(allyModel);
     }
     
-    private AllyCard(LocationOnBoard cardLocation, int ownerID, int controllerID, AllyCardModel allyModel){
-        super(cardLocation, ownerID, controllerID);
-        this.allyModel = allyModel;
-    }
-    
-    public int getCost(){
-        return allyModel.getCost();
+    private AllyCard(LocationOnBoard cardLocation, 
+            int ownerID, 
+            int controllerID, 
+            AllyCardModel allyModel){
+        super(cardLocation, ownerID, controllerID, allyModel);
     }
     
     public static AllyCard get(AllyCardModel model){
@@ -41,11 +38,6 @@ public class AllyCard extends CharacterCard{
     public void instantiateActions(){
         super.instantiateActions();
         this.playAlly = new PlayAllyAction(this);
-    }
-    
-    @Override
-    public AllyCardModel getCardModel(){
-        return allyModel;
     }
     
     @Override
@@ -62,4 +54,5 @@ public class AllyCard extends CharacterCard{
     public PlayerCardType getCardType() {
         return PlayerCardType.ALLY;
     }
+    
 }

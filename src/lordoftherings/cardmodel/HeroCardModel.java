@@ -2,10 +2,12 @@
 
 package lordoftherings.cardmodel;
 
+import java.util.ArrayList;
 import lordoftherings.cards.HeroCard;
 import lordoftherings.Identification;
 import lordoftherings.PlayerCardType;
-import lordoftherings.DeckComponents.SphereOfInfluence;
+import lordoftherings.deckcomponents.SphereOfInfluence;
+import lordoftherings.effects.Effect;
 
 /**
  *
@@ -27,7 +29,8 @@ public class HeroCardModel extends CharacterCardModel{
         int hitPoints,
         int threatCost, 
         int resourcePool,
-        String effect){
+        String effect,
+        ArrayList<Effect> list){
         super(
             title,
             sphereOfInfluence,
@@ -38,7 +41,8 @@ public class HeroCardModel extends CharacterCardModel{
             attack,
             defense,
             hitPoints,
-            effect);
+            effect,
+            list);
          this.threatCost = threatCost;
          this.resourcePool = resourcePool;
      }

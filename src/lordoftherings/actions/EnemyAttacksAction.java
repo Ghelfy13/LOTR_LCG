@@ -3,8 +3,8 @@
 package lordoftherings.actions;
 
 import lordoftherings.LocationOnBoard;
-import lordoftherings.PhaseManager.CombatSubPhase;
-import lordoftherings.PhaseManager.GamePhase;
+import lordoftherings.phasemanager.CombatSubPhase;
+import lordoftherings.phasemanager.GamePhase;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.cards.EnemyCard;
 import lordoftherings.characters.Enemy;

@@ -2,7 +2,7 @@
 
 package lordoftherings.manager.BoardControllerComponents;
 
-import lordoftherings.PhaseManager.SubPhase;
+import lordoftherings.phasemanager.SubPhase;
 import lordoftherings.gui.SubPhaseView;
 
 /**

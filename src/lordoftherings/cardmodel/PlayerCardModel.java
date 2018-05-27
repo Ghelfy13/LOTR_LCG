@@ -2,10 +2,12 @@
 
 package lordoftherings.cardmodel;
 
+import java.util.ArrayList;
 import lordoftherings.Identification;
 import lordoftherings.cards.PlayerCard;
 import lordoftherings.PlayerCardType;
-import lordoftherings.DeckComponents.SphereOfInfluence;
+import lordoftherings.deckcomponents.SphereOfInfluence;
+import lordoftherings.effects.Effect;
 
 /**
  *
@@ -18,6 +20,7 @@ public abstract class PlayerCardModel {
     protected String [] trait;
     protected Identification cardID;
     protected String effect;
+    protected ArrayList<Effect> listOfEffects;
     
     protected PlayerCardModel(
         String title, 
@@ -25,13 +28,15 @@ public abstract class PlayerCardModel {
         PlayerCardType type, 
         String [] trait, 
         Identification cardID,
-        String effect){
+        String effect,
+        ArrayList<Effect> list){
         this.title = title;
         this.sphereOfInfluence = sphereOfInfluence;
         this.type = type;
         this.trait = trait;
         this.cardID = cardID;
         this.effect = effect;
+        this.listOfEffects = list;
     }
     
     public Identification getCardID(){
@@ -49,4 +54,8 @@ public abstract class PlayerCardModel {
     }
     
     public abstract String getEffect();
+    
+    public ArrayList<Effect> getListOfEffects(){
+        return listOfEffects;
+    }
 }

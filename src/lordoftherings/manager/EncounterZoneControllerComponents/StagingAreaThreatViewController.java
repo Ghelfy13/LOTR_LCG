@@ -2,7 +2,7 @@
 
 package lordoftherings.manager.EncounterZoneControllerComponents;
 
-import lordoftherings.PhaseManager.GamePhase;
+import lordoftherings.phasemanager.GamePhase;
 import lordoftherings.boardcomponents.EncounterZone;
 import lordoftherings.gui.EncounterZoneComponents.StagingAreaThreatView;
 import lordoftherings.boardcomponents.StagingArea;

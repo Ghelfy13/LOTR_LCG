@@ -3,7 +3,7 @@
 package lordoftherings.transaction_managers;
 
 import lordoftherings.characters.GameCharacter;
-import lordoftherings.Matcher.Matcher;
+import lordoftherings.matcher.Matcher;
 import java.util.ArrayList;
 
 /**

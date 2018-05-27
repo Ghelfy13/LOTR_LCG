@@ -7,7 +7,7 @@ import lordoftherings.manager.EncounterZoneControllerComponents.EncounterZoneVie
 import lordoftherings.manager.PlayerZoneControllerCompoents.PlayerZoneViewController;
 import java.awt.Point;
 import lordoftherings.boardcomponents.Board;
-import lordoftherings.PhaseManager.GamePhase;
+import lordoftherings.phasemanager.GamePhase;
 import lordoftherings.gui.BoardView;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.EncounterZoneComponents.EncounterZoneView;

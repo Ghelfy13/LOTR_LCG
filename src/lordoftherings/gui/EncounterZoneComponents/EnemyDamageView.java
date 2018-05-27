@@ -13,7 +13,7 @@ import lordoftherings.gui.PlayerZoneComponents.HandCardView;
  * @author Amanda
  */
 public class EnemyDamageView extends JTextArea{
-    public static final int DAMAGE_HEIGHT = 25;
+    public static final int DAMAGE_HEIGHT = 18;
     
     public EnemyDamageView(int x, int y, int damage){
         this.setBounds(x, y, HandCardView.CARD_WIDTH, DAMAGE_HEIGHT);

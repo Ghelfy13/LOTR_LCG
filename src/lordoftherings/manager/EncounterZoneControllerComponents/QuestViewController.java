@@ -5,7 +5,7 @@
  */
 package lordoftherings.manager.EncounterZoneControllerComponents;
 
-import lordoftherings.DeckComponents.Quest;
+import lordoftherings.deckcomponents.Quest;
 import lordoftherings.gui.EncounterZoneComponents.QuestCardView;
 import lordoftherings.gui.EncounterZoneComponents.QuestTokenView;
 import lordoftherings.gui.EncounterZoneComponents.QuestView;

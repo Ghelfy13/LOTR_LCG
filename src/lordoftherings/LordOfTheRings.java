@@ -3,26 +3,27 @@
 
 package lordoftherings;
 
-import lordoftherings.DeckComponents.ExpansionName;
-import lordoftherings.DeckComponents.SphereOfInfluence;
-import lordoftherings.DeckComponents.DeckBuild;
-import lordoftherings.DeckComponents.PlayerDeckBuild;
+import lordoftherings.deckcomponents.ExpansionName;
+import lordoftherings.deckcomponents.SphereOfInfluence;
+import lordoftherings.deckcomponents.DeckBuild;
+import lordoftherings.deckcomponents.PlayerDeckBuild;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.cardmodel.EnemyCardModel;
 import lordoftherings.cardmodel.HeroCardModel;
 import lordoftherings.cardmodel.AllyCardModel;
 import java.awt.Color;
-import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.JFrame;
-import lordoftherings.DeckComponents.EncounterBuild;
-import lordoftherings.DeckComponents.EncounterDeckBuild;
-import lordoftherings.DeckComponents.QuestSetBuild;
-import lordoftherings.DeckComponents.ScenarioSymbol;
+import lordoftherings.deckcomponents.EncounterBuild;
+import lordoftherings.deckcomponents.EncounterDeckBuild;
+import lordoftherings.deckcomponents.QuestSetBuild;
+import lordoftherings.deckcomponents.ScenarioSymbol;
 import lordoftherings.cardmodel.LocationCardModel;
 import lordoftherings.cardmodel.QuestCardModel;
 import lordoftherings.transaction_managers.GameManager;
 import lordoftherings.characters.Enemy;
 import lordoftherings.boardcomponents.Location;
+import lordoftherings.effects.Effect;
 import lordoftherings.gui.GameManagerView;
 import lordoftherings.manager.BoardControllerComponents.GameManagerViewController;
 
@@ -72,7 +73,8 @@ public class LordOfTheRings {
                 5,
                 12,
                 0,
-                "");
+                "",
+                new ArrayList<>());
         Identification DaughterID = new Identification(ExpansionName.CORE, 23);
         AllyCardModel second = new AllyCardModel(
           "Daughter of Nimrodel",
@@ -85,7 +87,8 @@ public class LordOfTheRings {
           0,
           1,
           3,
-            "Can heal 2 damage on other Characters when untapped");
+            "Exhaust Daughter of Nimrodel to heal up to 2 damage on any 1 hero",
+            new ArrayList<>());
         Identification QuestID = new Identification(ExpansionName.CORE, 122);
         QuestCardModel firstQuest = new QuestCardModel(
                 "A Chosen Path: Beorn's Path",

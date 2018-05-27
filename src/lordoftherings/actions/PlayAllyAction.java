@@ -7,10 +7,10 @@ import lordoftherings.boardcomponents.Board;
 import lordoftherings.cards.AllyCard;
 import lordoftherings.cards.PlayerCard;
 import java.util.ArrayList;
-import lordoftherings.PhaseManager.GamePhase;
+import lordoftherings.phasemanager.GamePhase;
 import lordoftherings.characters.Hero;
 import lordoftherings.LocationOnBoard;
-import lordoftherings.PhaseManager.PlanningSubPhase;
+import lordoftherings.phasemanager.PlanningSubPhase;
 
 /**
  *

@@ -14,22 +14,29 @@ import lordoftherings.cardmodel.CharacterCardModel;
  * @author Amanda
  */
 public abstract class CharacterCard extends PlayerCard{
-    CommitCharacterAction commitAction;
+    private CommitCharacterAction commitAction;
+    private CharacterCardModel model;
     
-    public CharacterCard(){}
-    
-    public CharacterCard(LocationOnBoard cardLocation, int ownerID, int controllerID){
-        super(cardLocation, ownerID, controllerID);
+    public CharacterCard(CharacterCardModel model){
+        super(model);
     }
     
-    @Override
+    public CharacterCard(LocationOnBoard cardLocation, 
+            int ownerID, 
+            int controllerID,
+            CharacterCardModel model){
+        super(cardLocation, ownerID, controllerID, model);
+    }
+    
     public void instantiateActions(){
         super.instantiateActions();
         commitAction = new CommitCharacterAction(this);
     }
     
     @Override
-    public abstract CharacterCardModel getCardModel();
+    public CharacterCardModel getCardModel(){
+        return model;
+    }
     
     @Override
     public void getActions(ArrayList <Action> listOfActions, Board boardState, int askingID){

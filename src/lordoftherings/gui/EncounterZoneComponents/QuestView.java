@@ -14,7 +14,7 @@ import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 public class QuestView extends JPanel{
     
     public QuestView(int x, int y){
-        setBounds(x, y, HandCardView.CARD_HEIGHT, ActiveLocationView.PARENT_WIDTH + 5);
+        setBounds(x, y, HandCardView.CARD_HEIGHT, HandCardView.CARD_WIDTH + EnemyDamageView.DAMAGE_HEIGHT);
         setLayout(null);
         setOpaque(true);
         

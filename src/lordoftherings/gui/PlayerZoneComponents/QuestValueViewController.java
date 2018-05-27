@@ -2,7 +2,7 @@
 
 package lordoftherings.gui.PlayerZoneComponents;
 
-import lordoftherings.PhaseManager.GamePhase;
+import lordoftherings.phasemanager.GamePhase;
 import lordoftherings.manager.PlayerZoneControllerCompoents.PlayerZoneViewController;
 
 /**

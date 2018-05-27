@@ -17,11 +17,15 @@ public class HeroCard extends CharacterCard {
     private HeroCardModel myHero;
     
     private HeroCard(HeroCardModel myHero){
+        super(myHero);
         this.myHero = myHero;
     }
     
-    private HeroCard(LocationOnBoard cardLocation, int ownerID, int controllerID, HeroCardModel myHero){
-        super(cardLocation, ownerID, controllerID);
+    private HeroCard(LocationOnBoard cardLocation,
+            int ownerID, 
+            int controllerID, 
+            HeroCardModel myHero){
+        super(cardLocation, ownerID, controllerID, myHero);
         this.myHero = myHero;
     }
     
