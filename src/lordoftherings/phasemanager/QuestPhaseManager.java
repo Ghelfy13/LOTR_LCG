@@ -10,9 +10,11 @@ import lordoftherings.boardcomponents.Board;
  */
 public class QuestPhaseManager implements PhaseManager{
     private QuestSubPhase subPhase;
+    private boolean isActionable;
     
     public QuestPhaseManager(){
         this.subPhase = QuestSubPhase.ENCOUNTER_DECK_REVEAL;
+        this.isActionable = false;
     }
     
     public QuestPhaseManager setSubPhase(QuestSubPhase phase){
@@ -25,11 +27,19 @@ public class QuestPhaseManager implements PhaseManager{
         switch (subPhase){
             case ENCOUNTER_DECK_REVEAL:
                 board.drawFromEncounterDeck();
-                return;
+                isActionable = false;
+                break;
             case RESOLVE_QUEST:
                 board.resolveQuest();
                 board.hasGameEnded();
-                return;
+                isActionable = false;
+                break;
+            case PLAYER_ACTIONS:
+                isActionable = true;
+                break;
+            case COUNTER_ACTIONS:
+                isActionable = true;
+                break;
             default:
                 return;
         }
@@ -60,8 +70,14 @@ public class QuestPhaseManager implements PhaseManager{
                         setSubPhase(QuestSubPhase.ENCOUNTER_DECK_REVEAL);
             case ENCOUNTER_DECK_REVEAL:
                 return board.getPhaseManagerGovenor().getQuestPhaseManager().
+                        setSubPhase(QuestSubPhase.COUNTER_ACTIONS);
+            case COUNTER_ACTIONS:
+                return board.getPhaseManagerGovenor().getQuestPhaseManager().
                         setSubPhase(QuestSubPhase.RESOLVE_QUEST);
             case RESOLVE_QUEST:
+                return board.getPhaseManagerGovenor().getQuestPhaseManager().
+                        setSubPhase(QuestSubPhase.PLAYER_ACTIONS);
+            case PLAYER_ACTIONS:
                 return board.getPhaseManagerGovenor().getTravelPhaseManager().
                         setSubPhase(TravelSubPhase.SELECT_ACTIVE_LOCATION);
             default:
@@ -82,6 +98,11 @@ public class QuestPhaseManager implements PhaseManager{
     @Override
     public boolean canProgress(Board board) {
         return true;
+    }
+
+    @Override
+    public boolean isActionable() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

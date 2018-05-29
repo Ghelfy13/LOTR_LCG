@@ -24,6 +24,7 @@ import lordoftherings.transaction_managers.GameManager;
 import lordoftherings.characters.Enemy;
 import lordoftherings.boardcomponents.Location;
 import lordoftherings.effects.Effect;
+import lordoftherings.effects.HealEffect;
 import lordoftherings.gui.GameManagerView;
 import lordoftherings.manager.BoardControllerComponents.GameManagerViewController;
 
@@ -60,6 +61,9 @@ public class LordOfTheRings {
             2,
             1,
             "");
+        HealEffect healHero = new HealEffect();
+        ArrayList<Effect> list = new ArrayList<>();
+        list.add(healHero);
         Identification AragornID = new Identification(ExpansionName.CORE, 1);
         HeroCardModel first = new HeroCardModel(
                 "Aragorn",
@@ -74,7 +78,7 @@ public class LordOfTheRings {
                 12,
                 0,
                 "",
-                new ArrayList<>());
+                list);
         Identification DaughterID = new Identification(ExpansionName.CORE, 23);
         AllyCardModel second = new AllyCardModel(
           "Daughter of Nimrodel",
@@ -87,8 +91,8 @@ public class LordOfTheRings {
           0,
           1,
           3,
-            "Exhaust Daughter of Nimrodel to heal up to 2 damage on any 1 hero",
-            new ArrayList<>());
+          "Exhaust Daughter of Nimrodel to heal up to 2 damage on any 1 hero",
+          list);
         Identification QuestID = new Identification(ExpansionName.CORE, 122);
         QuestCardModel firstQuest = new QuestCardModel(
                 "A Chosen Path: Beorn's Path",

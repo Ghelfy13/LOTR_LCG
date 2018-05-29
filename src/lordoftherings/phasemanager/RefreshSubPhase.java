@@ -9,5 +9,6 @@ package lordoftherings.phasemanager;
 public enum RefreshSubPhase implements SubPhase{
     REFRESH_CARDS,
     INCREASE_THREAT,
-    PASS_FIRST_PLAYER_TOKEN
+    PASS_FIRST_PLAYER_TOKEN,
+    PLAYER_ACTIONS
 }

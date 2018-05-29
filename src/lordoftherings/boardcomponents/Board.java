@@ -12,10 +12,10 @@ import lordoftherings.matcher.ReadyMatcher;
 import lordoftherings.phasemanager.PhaseManagerGovenor;
 import lordoftherings.PlayerCardType;
 import lordoftherings.cards.EnemyCard;
-import lordoftherings.characters.Ally;
 import lordoftherings.characters.GameCharacter;
 import lordoftherings.characters.Enemy;
 import lordoftherings.characters.Hero;
+import lordoftherings.effects.HealEffect;
 import lordoftherings.transaction_managers.CharacterQueryHandle;
 import lordoftherings.transaction_managers.CharacterQueryRequirements;
 import lordoftherings.transaction_managers.ClearSuspensionHandler;
@@ -24,7 +24,6 @@ import lordoftherings.transaction_managers.ResolveEnemyAttackHandler;
 import lordoftherings.transaction_managers.ResolvePlayerAttackHandler;
 import lordoftherings.transaction_managers.ResolveUndefendedEnemyAttackHandler;
 import lordoftherings.transaction_managers.Uncancellable;
-import lordoftherings.transaction_managers.ExhaustToHealHandler;
 
 /**
  *
@@ -39,6 +38,7 @@ public class Board {
     private boolean hasPlayerWon;
     private ArrayList<SuspensionType> currentSuspensions;
     private PhaseManagerGovenor pmGovenor;
+    
     
     
     public Board(PlayerDeckBuild[] playerBuild, EncounterBuild encounterInfo, GameManager manager){

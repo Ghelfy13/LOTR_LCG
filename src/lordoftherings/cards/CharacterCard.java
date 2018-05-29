@@ -15,17 +15,14 @@ import lordoftherings.cardmodel.CharacterCardModel;
  */
 public abstract class CharacterCard extends PlayerCard{
     private CommitCharacterAction commitAction;
-    private CharacterCardModel model;
     
-    public CharacterCard(CharacterCardModel model){
-        super(model);
+    public CharacterCard(){
     }
     
     public CharacterCard(LocationOnBoard cardLocation, 
             int ownerID, 
-            int controllerID,
-            CharacterCardModel model){
-        super(cardLocation, ownerID, controllerID, model);
+            int controllerID){
+        super(cardLocation, ownerID, controllerID);
     }
     
     public void instantiateActions(){
@@ -34,12 +31,11 @@ public abstract class CharacterCard extends PlayerCard{
     }
     
     @Override
-    public CharacterCardModel getCardModel(){
-        return model;
-    }
+    public abstract CharacterCardModel getCardModel();
     
     @Override
     public void getActions(ArrayList <Action> listOfActions, Board boardState, int askingID){
+        super.getActions(listOfActions, boardState, askingID);
         commitAction.updateActionState(askingID, boardState);
         if(commitAction.isAvailable()){
             listOfActions.add(commitAction);

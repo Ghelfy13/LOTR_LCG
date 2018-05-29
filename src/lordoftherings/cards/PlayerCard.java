@@ -21,21 +21,18 @@ public abstract class PlayerCard{
     private int ownerID;    
     private int controllerID;
     private ArrayList<EffectAction> effectActions;
-    private PlayerCardModel model;
     
     
-    public PlayerCard(PlayerCardModel model){
-        this.model = model;
+    public PlayerCard(){
         cardLocation = LocationOnBoard.UNSET;
         ownerID = ID_UNSET;
         controllerID = ID_UNSET;
+        effectActions = new ArrayList<>();
     }
     
     public PlayerCard(LocationOnBoard cardLocation, 
             int ownerID, 
-            int controllerID,
-            PlayerCardModel model){
-        this.model = model;
+            int controllerID){
         this.cardLocation = cardLocation;
         this.ownerID = ownerID;
         this.controllerID = controllerID;
@@ -73,9 +70,11 @@ public abstract class PlayerCard{
     }
     
     public void instantiateActions(){
-        ArrayList<Effect> effectList = getCardModel().getListOfEffects();
-        for(int i = 0; i < effectList.size(); ++i){
-            effectActions.add(effectList.get(i).getAction(this));
+        if(getCardModel().getListOfEffects() != null){
+            ArrayList<Effect> effectList = getCardModel().getListOfEffects();
+            for(int i = 0; i < effectList.size(); ++i){
+                effectActions.add(effectList.get(i).getAction(this));
+            }
         }
     }
     
@@ -83,9 +82,7 @@ public abstract class PlayerCard{
         return;
     }
     
-    public PlayerCardModel getCardModel(){
-        return model;
-    }
+    public abstract PlayerCardModel getCardModel();
     
     public abstract PlayerCardType getCardType();
 

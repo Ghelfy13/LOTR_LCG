@@ -7,5 +7,6 @@ package lordoftherings.phasemanager;
  * @author Amanda
  */
 public enum ResourceSubPhase implements SubPhase{
-    ADD_RESOURCES_AND_DRAW
+    ADD_RESOURCES_AND_DRAW,
+    PLAYER_ACTIONS
 }

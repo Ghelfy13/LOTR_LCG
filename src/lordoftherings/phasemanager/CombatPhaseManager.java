@@ -11,9 +11,11 @@ import lordoftherings.boardcomponents.EngagedEnemyArea;
  */
 public class CombatPhaseManager implements PhaseManager{
     private CombatSubPhase subPhase;
+    private boolean isActionable;
     
     public CombatPhaseManager(){
-        subPhase = CombatSubPhase.RESOLVE_ENEMY_ATTACKS;
+        subPhase = CombatSubPhase.PREPARATION_ACTIONS;
+        isActionable = true;
     }
     
     public CombatPhaseManager setSubPhase(CombatSubPhase subPhase){
@@ -23,11 +25,17 @@ public class CombatPhaseManager implements PhaseManager{
     
     @Override
     public void onStartSubPhase(Board board) {
-        for(int i = 0; i < board.getNumOfPlayerZones(); ++i){
-            if(subPhase == CombatSubPhase.RESOLVE_ENEMY_ATTACKS){
-                board.getPlayerZoneAt(i).getEngagementArea().setEnemiesToAttacking();
-            }else if(subPhase == CombatSubPhase.RESOLVE_PLAYER_ATTACKS){
-                board.getPlayerZoneAt(i).getEngagementArea().setEnemiesToDefending();
+        if(subPhase == CombatSubPhase.PREPARATION_ACTIONS || 
+                subPhase == CombatSubPhase.PLAYER_ACTIONS){
+            isActionable = true;
+        }else if(subPhase != CombatSubPhase.PLAYER_ACTIONS){
+            isActionable = false;
+            for(int i = 0; i < board.getNumOfPlayerZones(); ++i){
+                if(subPhase == CombatSubPhase.RESOLVE_ENEMY_ATTACKS){
+                    board.getPlayerZoneAt(i).getEngagementArea().setEnemiesToAttacking();
+                }else if(subPhase == CombatSubPhase.RESOLVE_PLAYER_ATTACKS){
+                    board.getPlayerZoneAt(i).getEngagementArea().setEnemiesToDefending();
+                }
             }
         }
     }
@@ -44,16 +52,24 @@ public class CombatPhaseManager implements PhaseManager{
     @Override
     public PhaseManager getNextPhase(Board board) {
         if(canProgress(board)){
-            if(subPhase == CombatSubPhase.RESOLVE_ENEMY_ATTACKS){
-                return board.getPhaseManagerGovenor().getCombatPhaseManager().
-                        setSubPhase(CombatSubPhase.RESOLVE_PLAYER_ATTACKS);
-            }else{
-                return board.getPhaseManagerGovenor().getRefreshPhaseManager().
-                        setSubPhase(RefreshSubPhase.REFRESH_CARDS);
+            switch (subPhase) {
+                case PREPARATION_ACTIONS:
+                    return board.getPhaseManagerGovenor().getCombatPhaseManager().
+                            setSubPhase(CombatSubPhase.RESOLVE_ENEMY_ATTACKS);
+                case RESOLVE_ENEMY_ATTACKS:
+                    return board.getPhaseManagerGovenor().getCombatPhaseManager().
+                            setSubPhase(CombatSubPhase.RESOLVE_PLAYER_ATTACKS);
+                case RESOLVE_PLAYER_ATTACKS:
+                    return board.getPhaseManagerGovenor().getCombatPhaseManager().
+                            setSubPhase(CombatSubPhase.PLAYER_ACTIONS);
+                case PLAYER_ACTIONS:
+                    return board.getPhaseManagerGovenor().getRefreshPhaseManager().
+                            setSubPhase(RefreshSubPhase.REFRESH_CARDS);
+                default:
+                    break;
             }
-        }else{
-            throw new RuntimeException();
         }
+        return this;
     }
 
     @Override
@@ -74,6 +90,11 @@ public class CombatPhaseManager implements PhaseManager{
         }else {
             return true;
         }
+    }
+
+    @Override
+    public boolean isActionable() {
+        return isActionable;
     }
     
 }

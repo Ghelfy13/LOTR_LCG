@@ -17,7 +17,6 @@ public class HeroCard extends CharacterCard {
     private HeroCardModel myHero;
     
     private HeroCard(HeroCardModel myHero){
-        super(myHero);
         this.myHero = myHero;
     }
     
@@ -25,7 +24,7 @@ public class HeroCard extends CharacterCard {
             int ownerID, 
             int controllerID, 
             HeroCardModel myHero){
-        super(cardLocation, ownerID, controllerID, myHero);
+        super(cardLocation, ownerID, controllerID);
         this.myHero = myHero;
     }
     

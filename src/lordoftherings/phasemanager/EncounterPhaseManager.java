@@ -10,18 +10,29 @@ import lordoftherings.boardcomponents.Board;
  */
 public class EncounterPhaseManager implements PhaseManager{
     private EncounterSubPhase subPhase;
+    private boolean isActionable;
     
     public EncounterPhaseManager(){
         subPhase = EncounterSubPhase.ENGAGE_ENEMY;
+        isActionable = false;
     }
 
     @Override
     public void onStartSubPhase(Board board) {
-        if(subPhase == EncounterSubPhase.ENGAGE_ENEMY){
-            int numOfPlayerZones = board.getNumOfPlayerZones();
-            for(int i = 0; i < numOfPlayerZones; ++i){
-                board.getPlayerZoneAt(i).setEngagedEnemyYet(false);
-            }
+        if(null != subPhase)switch (subPhase) {
+            case ENGAGE_ENEMY:
+                isActionable = false;
+                int numOfPlayerZones = board.getNumOfPlayerZones();
+                for(int i = 0; i < numOfPlayerZones; ++i){
+                    board.getPlayerZoneAt(i).setEngagedEnemyYet(false);
+                }   break;
+            case PLAYER_ACTIONS:
+            case PREPARATION_ACTIONS:
+                isActionable = true;
+                break;
+            default:
+                isActionable = false;
+                break;
         }
     }
 
@@ -34,16 +45,23 @@ public class EncounterPhaseManager implements PhaseManager{
 
     @Override
     public PhaseManager getNextPhase(Board board) {
-        
-        if(subPhase == EncounterSubPhase.ENGAGE_ENEMY){
-            return board.getPhaseManagerGovenor().getEncounterPhaseManager().
-                    setSubPhase(EncounterSubPhase.ENGAGEMENT_CHECKS);
+        if(null != subPhase)switch (subPhase) {
+            case ENGAGE_ENEMY:
+                return board.getPhaseManagerGovenor().getEncounterPhaseManager().
+                        setSubPhase(EncounterSubPhase.PREPARATION_ACTIONS);
+            case PREPARATION_ACTIONS:
+                return board.getPhaseManagerGovenor().getEncounterPhaseManager().
+                        setSubPhase(EncounterSubPhase.ENGAGEMENT_CHECKS);
+            case ENGAGEMENT_CHECKS:
+                return board.getPhaseManagerGovenor().getEncounterPhaseManager().
+                        setSubPhase(EncounterSubPhase.PLAYER_ACTIONS);
+            case PLAYER_ACTIONS:
+                return board.getPhaseManagerGovenor().getCombatPhaseManager().
+                        setSubPhase(CombatSubPhase.PREPARATION_ACTIONS);
+            default:
+                break;
         }
-        else if(subPhase == EncounterSubPhase.ENGAGEMENT_CHECKS){
-            return board.getPhaseManagerGovenor().getCombatPhaseManager().
-                    setSubPhase(CombatSubPhase.RESOLVE_ENEMY_ATTACKS);
-        }
-        throw new RuntimeException();
+        return this;
     }
     
     public EncounterPhaseManager setSubPhase(EncounterSubPhase newSubPhase){
@@ -64,6 +82,11 @@ public class EncounterPhaseManager implements PhaseManager{
     @Override
     public boolean canProgress(Board board) {
         return true;
+    }
+
+    @Override
+    public boolean isActionable() {
+        return isActionable;
     }
     
 }

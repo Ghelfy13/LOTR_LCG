@@ -7,5 +7,6 @@ package lordoftherings.phasemanager;
  * @author Amanda
  */
 public enum TravelSubPhase implements SubPhase {
-    SELECT_ACTIVE_LOCATION
+    SELECT_ACTIVE_LOCATION,
+    PLAYER_ACTIONS
 }

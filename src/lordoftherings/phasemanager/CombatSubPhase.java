@@ -8,6 +8,8 @@ package lordoftherings.phasemanager;
  */
 public enum CombatSubPhase implements SubPhase{
     //SHADOWCARDS_DEALT,
+    PREPARATION_ACTIONS,
     RESOLVE_ENEMY_ATTACKS,
-    RESOLVE_PLAYER_ATTACKS
+    RESOLVE_PLAYER_ATTACKS,
+    PLAYER_ACTIONS
 }

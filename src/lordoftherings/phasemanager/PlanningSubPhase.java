@@ -7,5 +7,6 @@ package lordoftherings.phasemanager;
  * @author Amanda
  */
 public enum PlanningSubPhase implements SubPhase{
-    PLAY_ALLIES_AND_ATTACHMENTS
+    PLAY_ALLIES_AND_ATTACHMENTS,
+    PLAYER_ACTIONS
 }

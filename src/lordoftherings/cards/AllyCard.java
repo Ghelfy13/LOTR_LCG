@@ -9,6 +9,7 @@ import lordoftherings.actions.Action;
 import lordoftherings.actions.PlayAllyAction;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.cardmodel.AllyCardModel;
+import lordoftherings.cardmodel.CharacterCardModel;
 
 /**
  *
@@ -16,16 +17,18 @@ import lordoftherings.cardmodel.AllyCardModel;
  */
 public class AllyCard extends CharacterCard{
     private PlayAllyAction playAlly;
+    private AllyCardModel model;
     
     private AllyCard(AllyCardModel allyModel){
-        super(allyModel);
+        model = allyModel;
     }
     
     private AllyCard(LocationOnBoard cardLocation, 
             int ownerID, 
             int controllerID, 
             AllyCardModel allyModel){
-        super(cardLocation, ownerID, controllerID, allyModel);
+        super(cardLocation, ownerID, controllerID);
+        model = allyModel;
     }
     
     public static AllyCard get(AllyCardModel model){
@@ -53,6 +56,11 @@ public class AllyCard extends CharacterCard{
     @Override
     public PlayerCardType getCardType() {
         return PlayerCardType.ALLY;
+    }
+
+    @Override
+    public CharacterCardModel getCardModel() {
+        return model;
     }
     
 }

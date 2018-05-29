@@ -10,9 +10,11 @@ import lordoftherings.boardcomponents.Board;
  */
 public class RefreshPhaseManager implements PhaseManager{
     private RefreshSubPhase subPhase;
+    private boolean isActionable;
     
     public RefreshPhaseManager(){
         subPhase = RefreshSubPhase.REFRESH_CARDS;
+        isActionable = false;
     }
     
     public RefreshPhaseManager setSubPhase(RefreshSubPhase phase){
@@ -24,10 +26,12 @@ public class RefreshPhaseManager implements PhaseManager{
     public void onStartSubPhase(Board board) {
         switch (subPhase){
             case REFRESH_CARDS:
-                return;
             case INCREASE_THREAT:
-                return;
             case PASS_FIRST_PLAYER_TOKEN:
+                isActionable = false;
+                return;
+            case PLAYER_ACTIONS:
+                isActionable = true;
                 return;
         }
         
@@ -45,6 +49,7 @@ public class RefreshPhaseManager implements PhaseManager{
                 board.increaseEveryPlayersThreatBy(1);
                 return;
             case PASS_FIRST_PLAYER_TOKEN:
+            case PLAYER_ACTIONS:
                 return;
         }
         
@@ -60,7 +65,11 @@ public class RefreshPhaseManager implements PhaseManager{
                 return board.getPhaseManagerGovenor().getRefreshPhaseManager().
                         setSubPhase(RefreshSubPhase.PASS_FIRST_PLAYER_TOKEN);
             case PASS_FIRST_PLAYER_TOKEN:
-                return board.getPhaseManagerGovenor().getResourcePhaseManager();
+                return board.getPhaseManagerGovenor().getRefreshPhaseManager().
+                        setSubPhase(RefreshSubPhase.PLAYER_ACTIONS);
+            case PLAYER_ACTIONS:
+                return board.getPhaseManagerGovenor().getResourcePhaseManager().
+                        setSubPhase(ResourceSubPhase.ADD_RESOURCES_AND_DRAW);
             default:
                 return null;
         }
@@ -79,6 +88,11 @@ public class RefreshPhaseManager implements PhaseManager{
     @Override
     public boolean canProgress(Board board) {
         return true;
+    }
+
+    @Override
+    public boolean isActionable() {
+        return isActionable;
     }
     
 }

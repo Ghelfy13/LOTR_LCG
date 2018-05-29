@@ -8,5 +8,7 @@ package lordoftherings.phasemanager;
  */
 public enum EncounterSubPhase implements SubPhase{
     ENGAGE_ENEMY,
-    ENGAGEMENT_CHECKS
+    PREPARATION_ACTIONS,
+    ENGAGEMENT_CHECKS,
+    PLAYER_ACTIONS
 }

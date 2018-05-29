@@ -10,15 +10,20 @@ import lordoftherings.boardcomponents.Board;
  */
 public class ResourcePhaseManager implements PhaseManager{
     private ResourceSubPhase subPhase;
+    private boolean isActionable;
     
     public ResourcePhaseManager(){
         this.subPhase = ResourceSubPhase.ADD_RESOURCES_AND_DRAW;
+        isActionable = true;
     }
     
     @Override
     public void onStartSubPhase(Board board) {
         if(subPhase == ResourceSubPhase.ADD_RESOURCES_AND_DRAW){
             board.addResourcesToHerosAndDraw();
+            isActionable = false;
+        }else if(subPhase == ResourceSubPhase.PLAYER_ACTIONS){
+            isActionable = true;
         }
     }
     
@@ -34,7 +39,12 @@ public class ResourcePhaseManager implements PhaseManager{
 
     @Override
     public PhaseManager getNextPhase(Board board) {
-        return board.getPhaseManagerGovenor().getPlanningPhaseManager();
+        if(subPhase == ResourceSubPhase.ADD_RESOURCES_AND_DRAW){
+            return board.getPhaseManagerGovenor().getResourcePhaseManager().
+                    setSubPhase(ResourceSubPhase.PLAYER_ACTIONS);
+        }else{
+            return board.getPhaseManagerGovenor().getPlanningPhaseManager();
+        }
     }
 
     @Override
@@ -50,7 +60,11 @@ public class ResourcePhaseManager implements PhaseManager{
     @Override
     public boolean canProgress(Board board) {
         return true;
-        //TODO
+    }
+
+    @Override
+    public boolean isActionable() {
+        return isActionable;
     }
     
 }

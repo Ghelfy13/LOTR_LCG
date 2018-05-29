@@ -10,9 +10,11 @@ import lordoftherings.boardcomponents.Board;
  */
 public class TravelPhaseManager implements PhaseManager{
     private TravelSubPhase subPhase;
+    private boolean isActionable;
     
     public TravelPhaseManager(){
         subPhase = TravelSubPhase.SELECT_ACTIVE_LOCATION;
+        isActionable = false;
     }
     
     public TravelPhaseManager setSubPhase(TravelSubPhase subPhase){
@@ -22,6 +24,11 @@ public class TravelPhaseManager implements PhaseManager{
 
     @Override
     public void onStartSubPhase(Board board) {
+        if(subPhase == TravelSubPhase.SELECT_ACTIVE_LOCATION){
+            isActionable = false;
+        }else if(subPhase == TravelSubPhase.PLAYER_ACTIONS){
+            isActionable = true;
+        }
     }
 
     @Override
@@ -30,6 +37,10 @@ public class TravelPhaseManager implements PhaseManager{
 
     @Override
     public PhaseManager getNextPhase(Board board) {
+        if(subPhase == TravelSubPhase.SELECT_ACTIVE_LOCATION){
+            return board.getPhaseManagerGovenor().getTravelPhaseManager().
+                    setSubPhase(TravelSubPhase.PLAYER_ACTIONS);
+        }
         return board.getPhaseManagerGovenor().getEncounterPhaseManager().
                 setSubPhase(EncounterSubPhase.ENGAGE_ENEMY);
     }
@@ -47,6 +58,11 @@ public class TravelPhaseManager implements PhaseManager{
     @Override
     public boolean canProgress(Board board) {
         return true;
+    }
+
+    @Override
+    public boolean isActionable() {
+        return isActionable;
     }
     
 }
