@@ -27,7 +27,7 @@ public class AvailableActionsViewController{
     }
     
     public AvailableActionsView makeView(int x, int y){
-        view = new AvailableActionsView(x, y);
+        view = new AvailableActionsView(x, y, 1);
         updateView(x, y);
         return view;
     }
@@ -50,7 +50,8 @@ public class AvailableActionsViewController{
                 ActionViewController actionVC = new ActionViewController(currentAction, this);
                 int calculatedX = 25;
                 int calculatedY = 25;
-                ActionView actionV = actionVC.makeView(calculatedX, calculatedY);
+                ActionView actionV = actionVC.makeView(calculatedX + 
+                        ActionView.BOX_DIMENSIONS*i, calculatedY);
                 view.add(actionV);
                 actionV.setVisible(true);
             }

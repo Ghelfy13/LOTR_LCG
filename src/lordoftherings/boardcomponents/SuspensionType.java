@@ -10,5 +10,6 @@ public enum SuspensionType {
     WON,
     LOST,
     ATTACK,
-    DEFEND
+    DEFEND,
+    EFFECT
 }

@@ -31,8 +31,10 @@ public class ActionView extends JButton{
         this.addActionListener(executor);
         if(playableAction.isExecutable()){
             setBackground(Color.BLACK);
-        }else{
+        }else if(playableAction.isAvailable()){
             setBackground(Color.white);
+        }else{
+            setBackground(Color.ORANGE);
         }
     }
 }

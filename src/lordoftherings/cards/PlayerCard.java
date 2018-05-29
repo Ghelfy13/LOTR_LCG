@@ -79,7 +79,12 @@ public abstract class PlayerCard{
     }
     
     public void getActions(ArrayList <Action> listOfActions, Board boardState, int askingID){
-        return;
+        for(int i = 0; i < effectActions.size(); ++i){
+            effectActions.get(i).updateActionState(askingID, boardState);
+            if(effectActions.get(i).isAvailable()){
+                listOfActions.add(effectActions.get(i));
+            }
+        }
     }
     
     public abstract PlayerCardModel getCardModel();

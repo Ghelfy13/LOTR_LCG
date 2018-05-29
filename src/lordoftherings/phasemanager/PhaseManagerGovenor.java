@@ -42,6 +42,10 @@ public class PhaseManagerGovenor {
         return currentPhaseManager.getPhase();
     }
      
+    public boolean isCurrentPhaseActionable(){
+        return currentPhaseManager.isActionable();
+    }
+     
      public boolean canProgressPhase(){
         return currentPhaseManager.canProgress(board);
     }

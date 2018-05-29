@@ -22,6 +22,6 @@ public interface PhaseManager {
     
     boolean canProgress(Board board);
     
-    boolean isActionable();
+    public boolean isActionable();
     
 }

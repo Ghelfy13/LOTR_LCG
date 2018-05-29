@@ -13,7 +13,7 @@ public class QuestPhaseManager implements PhaseManager{
     private boolean isActionable;
     
     public QuestPhaseManager(){
-        this.subPhase = QuestSubPhase.ENCOUNTER_DECK_REVEAL;
+        this.subPhase = QuestSubPhase.COMMIT_CHARACTERS;
         this.isActionable = false;
     }
     
@@ -25,6 +25,8 @@ public class QuestPhaseManager implements PhaseManager{
     @Override
     public void onStartSubPhase(Board board) {
         switch (subPhase){
+            case COMMIT_CHARACTERS:
+                isActionable = true;
             case ENCOUNTER_DECK_REVEAL:
                 board.drawFromEncounterDeck();
                 isActionable = false;
@@ -102,7 +104,7 @@ public class QuestPhaseManager implements PhaseManager{
 
     @Override
     public boolean isActionable() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return isActionable;
     }
     
 }

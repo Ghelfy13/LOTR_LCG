@@ -15,7 +15,6 @@ import lordoftherings.cards.EnemyCard;
 import lordoftherings.characters.GameCharacter;
 import lordoftherings.characters.Enemy;
 import lordoftherings.characters.Hero;
-import lordoftherings.effects.HealEffect;
 import lordoftherings.transaction_managers.CharacterQueryHandle;
 import lordoftherings.transaction_managers.CharacterQueryRequirements;
 import lordoftherings.transaction_managers.ClearSuspensionHandler;
@@ -328,6 +327,18 @@ public class Board {
             }
         }
         return lowestThreat;
+    }
+    
+    public void handleCharacterQuery(CharacterQueryHandle handle, String description){
+        gameManager.handleCharacterQuery(handle, description);
+    }
+    
+    public void addSuspension(SuspensionType suspension){
+        currentSuspensions.add(suspension);
+    }
+    
+    public void removeTopSuspension(){
+        currentSuspensions.remove(currentSuspensions.size()-1);
     }
 
 }

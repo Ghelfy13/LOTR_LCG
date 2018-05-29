@@ -61,7 +61,7 @@ public class LordOfTheRings {
             2,
             1,
             "");
-        HealEffect healHero = new HealEffect();
+        HealEffect healHero = new HealEffect(2);
         ArrayList<Effect> list = new ArrayList<>();
         list.add(healHero);
         Identification AragornID = new Identification(ExpansionName.CORE, 1);
@@ -78,7 +78,7 @@ public class LordOfTheRings {
                 12,
                 0,
                 "",
-                list);
+                new ArrayList<Effect>());
         Identification DaughterID = new Identification(ExpansionName.CORE, 23);
         AllyCardModel second = new AllyCardModel(
           "Daughter of Nimrodel",
@@ -137,7 +137,6 @@ public class LordOfTheRings {
         newBoard.getEncounterZone().addNumOfCardsToDeck(firstLocation, 3);
         newBoard.getPlayerZoneAt(0).getEngagementArea().addEnemy(enemy);
         newBoard.getEncounterZone().getStagingArea().addLocation(location);
-        //newBoard.getEncounterZone().getStagingArea().addLocationToActiveLocation(location);
         
         final int PANE_WIDTH = 2500;
         final int PANE_HEIGHT = 1300;

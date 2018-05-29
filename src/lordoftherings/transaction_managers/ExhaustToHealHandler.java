@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.characters.Ally;
 import lordoftherings.characters.GameCharacter;
+import lordoftherings.characters.Hero;
 
 /**
  *
@@ -15,15 +16,19 @@ public class ExhaustToHealHandler implements ResultHandler<ArrayList<GameCharact
     
     private Board board;
     private Ally healer;
+    private int healingPower;
     
-    public ExhaustToHealHandler(Board board, Ally healer){
+    public ExhaustToHealHandler(Board board, Ally healer, int healingPower){
         this.board = board;
         this.healer = healer;
+        this.healingPower = healingPower;
     }
 
     @Override
     public void handle(ArrayList<GameCharacter> result) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Hero damagedHero = (Hero) result.get(0);
+        damagedHero.removeDamage(healingPower);
+        healer.exhaust();
     }
     
 }
