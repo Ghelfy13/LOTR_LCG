@@ -13,7 +13,7 @@ import lordoftherings.cards.CharacterCard;
 import lordoftherings.cards.PlayerCard;
 import lordoftherings.characters.Ally;
 import lordoftherings.characters.GameCharacter;
-import lordoftherings.matcher.HeroMatcher;
+import lordoftherings.matcher.DamagedHeroMatcher;
 import lordoftherings.transaction_managers.CharacterQueryHandle;
 import lordoftherings.transaction_managers.CharacterQueryRequirements;
 import lordoftherings.transaction_managers.ClearSuspensionHandler;
@@ -35,7 +35,7 @@ public class HealEffect implements Effect{
         board.addSuspension(SuspensionType.EFFECT);
         CharacterCard charCard = (CharacterCard) card;
         Ally healer = board.getPlayerZoneAt(card.getController()).getCharZone().findAlly(charCard);
-        HeroMatcher damagedHero = new HeroMatcher();
+        DamagedHeroMatcher damagedHero = new DamagedHeroMatcher();
         CharacterQueryRequirements requirements = 
                 new CharacterQueryRequirements(damagedHero, 1,1);
         board.handleCharacterQuery(

@@ -63,7 +63,7 @@ public class PlanningPhaseManager implements PhaseManager{
         return isActionable;
     }
 
-    private PhaseManager setSubPhase(PlanningSubPhase planningSubPhase) {
+    public PhaseManager setSubPhase(PlanningSubPhase planningSubPhase) {
         subPhase = planningSubPhase;
         return this;
     }

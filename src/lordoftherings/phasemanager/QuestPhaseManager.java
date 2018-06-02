@@ -14,7 +14,7 @@ public class QuestPhaseManager implements PhaseManager{
     
     public QuestPhaseManager(){
         this.subPhase = QuestSubPhase.COMMIT_CHARACTERS;
-        this.isActionable = false;
+        this.isActionable = true;
     }
     
     public QuestPhaseManager setSubPhase(QuestSubPhase phase){
@@ -27,6 +27,7 @@ public class QuestPhaseManager implements PhaseManager{
         switch (subPhase){
             case COMMIT_CHARACTERS:
                 isActionable = true;
+                break;
             case ENCOUNTER_DECK_REVEAL:
                 board.drawFromEncounterDeck();
                 isActionable = false;

@@ -14,11 +14,6 @@ import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 public class QueryAllyCardView extends JTextArea {
     
     public QueryAllyCardView(String allyInfo, boolean isTapped){
-        this.setRows(11);
-        this.setColumns(1);
-        this.insert(allyInfo, 0);
-        this.setFont(AllyCardView.CARD_FONT);
-        this.setBackground(Color.LIGHT_GRAY);
         if(isTapped){
             setBounds(0, HandCardView.CARD_HEIGHT - HandCardView.CARD_WIDTH, 
                     HandCardView.CARD_HEIGHT, HandCardView.CARD_WIDTH);
@@ -26,5 +21,11 @@ public class QueryAllyCardView extends JTextArea {
             setBounds(0, 0, HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
         }
         this.setEditable(false);
+        this.insert(allyInfo,0);
+        this.setLineWrap(true);
+        this.setWrapStyleWord(true);
+        this.setFont(AllyCardView.CARD_FONT);
+        this.setBackground(Color.LIGHT_GRAY);
+        
     }
 }

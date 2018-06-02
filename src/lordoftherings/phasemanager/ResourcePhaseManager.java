@@ -43,7 +43,7 @@ public class ResourcePhaseManager implements PhaseManager{
             return board.getPhaseManagerGovenor().getResourcePhaseManager().
                     setSubPhase(ResourceSubPhase.PLAYER_ACTIONS);
         }else{
-            return board.getPhaseManagerGovenor().getPlanningPhaseManager();
+            return board.getPhaseManagerGovenor().getPlanningPhaseManager().setSubPhase(PlanningSubPhase.PLAY_ALLIES_AND_ATTACHMENTS);
         }
     }
 
