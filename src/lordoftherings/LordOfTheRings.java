@@ -23,8 +23,11 @@ import lordoftherings.cardmodel.QuestCardModel;
 import lordoftherings.transaction_managers.GameManager;
 import lordoftherings.characters.Enemy;
 import lordoftherings.boardcomponents.Location;
+import lordoftherings.cardmodel.EventCardModel;
+import lordoftherings.cards.PlayerCard;
 import lordoftherings.effects.Effect;
 import lordoftherings.effects.HealEffect;
+import lordoftherings.effects.ReadyAllyToDiscardCardEffect;
 import lordoftherings.gui.GameManagerView;
 import lordoftherings.manager.BoardControllerComponents.GameManagerViewController;
 
@@ -64,6 +67,11 @@ public class LordOfTheRings {
         HealEffect healHero = new HealEffect(2);
         ArrayList<Effect> list = new ArrayList<>();
         list.add(healHero);
+        
+        ReadyAllyToDiscardCardEffect discardToReady = new ReadyAllyToDiscardCardEffect();
+        ArrayList<Effect> list2 = new ArrayList<>();
+        list2.add(discardToReady);
+        
         Identification AragornID = new Identification(ExpansionName.CORE, 1);
         HeroCardModel first = new HeroCardModel(
                 "Aragorn",
@@ -79,6 +87,18 @@ public class LordOfTheRings {
                 0,
                 "",
                 new ArrayList<Effect>());
+        
+        Identification EverVigilantID = new Identification(ExpansionName.CORE, 20);
+        EventCardModel everVigilant = new EventCardModel(
+            "Ever Vigilant", 
+            SphereOfInfluence.LEADERSHIP,
+            PlayerCardType.EVENT,
+            new String[]{""},
+            EverVigilantID,
+            1,
+            "Choose and ready 1 ally card and discard card",
+            list2) ;
+        
         Identification DaughterID = new Identification(ExpansionName.CORE, 23);
         AllyCardModel second = new AllyCardModel(
           "Daughter of Nimrodel",
@@ -93,6 +113,7 @@ public class LordOfTheRings {
           3,
           "Exhaust Daughter of Nimrodel to heal up to 2 damage on any 1 hero",
           list);
+        
         Identification QuestID = new Identification(ExpansionName.CORE, 122);
         QuestCardModel firstQuest = new QuestCardModel(
                 "A Chosen Path: Beorn's Path",
@@ -102,6 +123,7 @@ public class LordOfTheRings {
                 "Passage through Mirkwood",
                 QuestID,
                 2);
+        
         Identification QuestID2 = new Identification(ExpansionName.CORE, 120);
         QuestCardModel secondQuest = new QuestCardModel(
                 "A Fork in the Road",
@@ -113,7 +135,8 @@ public class LordOfTheRings {
                 2);
         
         DeckBuild mockDeck = new DeckBuild();
-        mockDeck.add(second, 4);
+        mockDeck.add(everVigilant, 2);
+        mockDeck.add(second, 1);
         PlayerDeckBuild mockBuild = new PlayerDeckBuild(mockDeck);
         mockBuild.addHero(first);
         mockBuild.addHero(first);

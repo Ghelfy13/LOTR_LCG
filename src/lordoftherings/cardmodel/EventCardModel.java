@@ -5,6 +5,8 @@ package lordoftherings.cardmodel;
 import java.util.ArrayList;
 import lordoftherings.Identification;
 import lordoftherings.PlayerCardType;
+import lordoftherings.cards.EventCard;
+import lordoftherings.cards.PlayerCard;
 import lordoftherings.deckcomponents.SphereOfInfluence;
 import lordoftherings.effects.Effect;
 
@@ -12,7 +14,7 @@ import lordoftherings.effects.Effect;
  *
  * @author Amanda
  */
-public abstract class EventCardModel extends PlayerCardModel{
+public class EventCardModel extends PlayerCardModel{
     protected int cost;
     
     public EventCardModel(
@@ -38,5 +40,15 @@ public abstract class EventCardModel extends PlayerCardModel{
     @Override
     public int getCost(){
         return cost;
+    }
+
+    @Override
+    public EventCard createCard() {
+        return EventCard.get(this);
+    }
+
+    @Override
+    public String getEffect() {
+        return effect;
     }
 }

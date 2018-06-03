@@ -29,6 +29,7 @@ public class ExhaustToHealHandler implements ResultHandler<ArrayList<GameCharact
         Hero damagedHero = (Hero) result.get(0);
         damagedHero.removeDamage(healingPower);
         healer.exhaust();
+        board.removeRecentSuspension();
     }
     
 }

@@ -22,6 +22,7 @@ public class ActiveLocationViewController {
     private Location currentLocation;
     private LocationView locationView;
     public static final int X_POSITION = 8;
+    public static final int Y_POSITION = 3;
     
     public ActiveLocationViewController(BoardActiveState bas, ActiveLocationArea locationArea){
         this.bas = bas;
@@ -36,7 +37,7 @@ public class ActiveLocationViewController {
     public ActiveLocationView makeView(int x, int y){
         view = new ActiveLocationView(x, y);
         if(locationVC != null){
-            locationView = locationVC.makeView(X_POSITION, 0);
+            locationView = locationVC.makeView(X_POSITION, Y_POSITION);
             view.add(locationView);
         }
         view.addMouseMotionListener(bas.createMouseFollower());
@@ -49,14 +50,14 @@ public class ActiveLocationViewController {
             if(activeZone.getActiveLocation() != null){
                 currentLocation = activeZone.getActiveLocation();
                 locationVC = new LocationViewController(currentLocation, bas);
-                locationView = locationVC.makeView(X_POSITION, 0);
+                locationView = locationVC.makeView(X_POSITION, Y_POSITION);
                 view.add(locationView);
             }else{
                 view.removeAll();
             }
             
         }else if(currentLocation == activeZone.getActiveLocation() && currentLocation != null){
-            locationVC.updateView(X_POSITION, 0);
+            locationVC.updateView(X_POSITION, Y_POSITION);
         }
         view.revalidate();
         view.repaint();

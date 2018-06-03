@@ -34,7 +34,8 @@ public class HealEffect implements Effect{
     public boolean execute(int askingID, Board board, PlayerCard card) {
         board.addSuspension(SuspensionType.EFFECT);
         CharacterCard charCard = (CharacterCard) card;
-        Ally healer = board.getPlayerZoneAt(card.getController()).getCharZone().findAlly(charCard);
+        Ally healer = board.getPlayerZoneAt(card.getController()).
+                getCharZone().findAlly(charCard);
         DamagedHeroMatcher damagedHero = new DamagedHeroMatcher();
         CharacterQueryRequirements requirements = 
                 new CharacterQueryRequirements(damagedHero, 1,1);

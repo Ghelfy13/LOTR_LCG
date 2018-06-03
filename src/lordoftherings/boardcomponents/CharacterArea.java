@@ -44,7 +44,7 @@ public class CharacterArea {
             Ally current = allyZone.getAllyAt(i);
             if(current.getDamage() >= current.getMaxHealth()){
                 allyZone.removeAlly(current);
-                playerZone.moveCharacterToDiscardPile(current.getCard());
+                playerZone.moveCardToDiscardPile(current.getCard());
             }
         }
     }
@@ -54,7 +54,7 @@ public class CharacterArea {
             Hero current = heroZone.getHeroAt(i);
             if(current.getDamage() >= current.getMaxHealth()){
                 heroZone.getHeros().remove(i);
-                playerZone.moveCharacterToDiscardPile(current.getCard());
+                playerZone.moveCardToDiscardPile(current.getCard());
             }
         }
         

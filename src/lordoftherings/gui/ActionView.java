@@ -16,7 +16,7 @@ import lordoftherings.manager.actionComponents.FocusableMouseListener;
  * @author Amanda
  */
 public class ActionView extends JButton{
-    public static final int BOX_DIMENSIONS = 50;
+    public static final int BOX_DIMENSIONS = 40;
     
     public ActionView(BoardActiveState boardAS, ActionViewController controller, Action playableAction, int x, int y){
         //TODO: ActionImageManager gets playableActions icon and this will be set on the button

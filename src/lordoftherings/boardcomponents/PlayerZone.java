@@ -148,7 +148,7 @@ public class PlayerZone {
         return questingTotal;
     }
 
-    public void moveCharacterToDiscardPile(PlayerCard deadCard){
+    public void moveCardToDiscardPile(PlayerCard deadCard){//Does not remove from original location
         dPile.addCard(deadCard);
         deadCard.setLocation(ownerID, LocationOnBoard.DISCARDPILE);
         
