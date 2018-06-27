@@ -27,6 +27,7 @@ public class LocationViewController implements Actionable{
     private BoardActiveState bas;
     private LocationCardView cardView;
     private TokenView tokenView;
+    public static final int ACTIONS_Y_COORDINATE = 180;
     
     public LocationViewController(Location location, BoardActiveState bas){
         this.location = location;
@@ -79,6 +80,13 @@ public class LocationViewController implements Actionable{
     @Override
     public JComponent getView(){
         return view;
+    }
+
+    
+
+    @Override
+    public int getActionsYCoordinate() {
+        return ACTIONS_Y_COORDINATE;
     }
     
 }

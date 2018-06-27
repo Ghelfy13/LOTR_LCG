@@ -16,4 +16,5 @@ public interface Actionable extends Focusable{
     void onUnsetActionable();
     void getActions(ArrayList<Action> listOfActions, int askingID, Board boardState);
     JComponent getView();
+    int getActionsYCoordinate();
 }

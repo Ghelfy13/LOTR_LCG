@@ -5,6 +5,7 @@ package lordoftherings.manager.PlayerZoneControllerCompoents;
 import lordoftherings.manager.actionComponents.Actionable;
 import java.util.ArrayList;
 import javax.swing.JComponent;
+import lordoftherings.LocationOnBoard;
 import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.characters.Ally;
@@ -12,6 +13,7 @@ import lordoftherings.gui.PlayerZoneComponents.AllyCardView;
 import lordoftherings.gui.PlayerZoneComponents.AllyDamageView;
 import lordoftherings.gui.PlayerZoneComponents.AllyView;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
+import lordoftherings.manager.EncounterZoneControllerComponents.LocationViewController;
 import lordoftherings.manager.actionComponents.ActionableMouseListener;
 import lordoftherings.manager.actionComponents.BoardActiveState;
 
@@ -28,6 +30,7 @@ public class AllyViewController implements Actionable {
     private AllyDamageView damageView;
     private AllyCardView cardView;
     private BoardActiveState bas;
+    public static final int ALLY_ACTIONS_Y_COORDINATE = 165;
     
     
     public AllyViewController(Ally passedInAlly, AllyZoneViewController allyZoneVC, BoardActiveState bas){
@@ -98,4 +101,14 @@ public class AllyViewController implements Actionable {
     public JComponent getView() {
         return view;
     }
+
+    @Override
+    public int getActionsYCoordinate() {
+        if(wantedAlly.getCard().getLocation() == LocationOnBoard.HAND){
+            return ALLY_ACTIONS_Y_COORDINATE;
+        }
+        return LocationViewController.ACTIONS_Y_COORDINATE;
+    }
+
+    
 }

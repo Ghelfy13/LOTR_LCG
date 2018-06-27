@@ -72,5 +72,10 @@ public class HandCardViewController implements Actionable{
     public JComponent getView() {
         return view;
     }
-    
+
+    @Override
+    public int getActionsYCoordinate() {
+        return AllyViewController.ALLY_ACTIONS_Y_COORDINATE;
+    }
+
 }

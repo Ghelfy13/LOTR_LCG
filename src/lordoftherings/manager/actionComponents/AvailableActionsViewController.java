@@ -34,7 +34,11 @@ public class AvailableActionsViewController{
     
     public AvailableActionsView updateView(int x, int y){
         Actionable currentActionable = boardAS.getCurrentActionable();
-        view.setLocation(x, y);
+        int yCoordinate = 0;
+        if(currentActionable != null){
+            yCoordinate = currentActionable.getActionsYCoordinate();
+        }
+        view.setLocation(x, y + yCoordinate);
         if(currentActionable == null){
             listOfActions.clear();
             view.removeAll();
@@ -45,16 +49,21 @@ public class AvailableActionsViewController{
             listOfActions.clear();
             currentActionable.getActions(listOfActions, 0, boardState);
             if(listOfActions.size() == 0){
-                view.setBounds(x, y, ActionView.BOX_DIMENSIONS + 10, ActionView.BOX_DIMENSIONS + 10);
+                view.setBounds(x, y + yCoordinate, 
+                        ActionView.BOX_DIMENSIONS + 10,
+                        ActionView.BOX_DIMENSIONS + 10);
             }else{
-                view.setBounds(x, y, (ActionView.BOX_DIMENSIONS +5)*listOfActions.size() +5,ActionView.BOX_DIMENSIONS +10);
+                view.setBounds(x, y + yCoordinate,
+                        (ActionView.BOX_DIMENSIONS +5)*listOfActions.size() +5,
+                        ActionView.BOX_DIMENSIONS +10);
             }
             for(int i = 0; i < listOfActions.size(); ++i){
                 Action currentAction = listOfActions.get(i);
                 ActionViewController actionVC = new ActionViewController(currentAction, this);
                 int calculatedX = 5;
                 int calculatedY = 5;
-                ActionView actionV = actionVC.makeView(calculatedX*(i+1)+ActionView.BOX_DIMENSIONS*(i), calculatedY);
+                ActionView actionV = actionVC.makeView(calculatedX*(i+1)+
+                        ActionView.BOX_DIMENSIONS*(i), calculatedY);
                 view.add(actionV);
                 actionV.setVisible(true);
             }

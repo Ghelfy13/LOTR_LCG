@@ -13,6 +13,7 @@ import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.gui.PlayerZoneComponents.HeroCardView;
 import lordoftherings.gui.PlayerZoneComponents.HeroPoolView;
 import lordoftherings.gui.PlayerZoneComponents.HeroView;
+import lordoftherings.manager.EncounterZoneControllerComponents.LocationViewController;
 import lordoftherings.manager.actionComponents.BoardActiveState;
 
 /**
@@ -103,5 +104,10 @@ public class HeroViewController implements Actionable{
     @Override
     public JComponent getView() {
         return view;
+    }
+
+    @Override
+    public int getActionsYCoordinate() {
+        return LocationViewController.ACTIONS_Y_COORDINATE;
     }
 }

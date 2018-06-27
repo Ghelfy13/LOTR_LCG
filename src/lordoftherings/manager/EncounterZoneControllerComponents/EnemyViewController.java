@@ -110,4 +110,11 @@ public class EnemyViewController implements Actionable{
     public JComponent getView() {
         return view;
     }
+
+    @Override
+    public int getActionsYCoordinate() {
+        return LocationViewController.ACTIONS_Y_COORDINATE;
+    }
+
+    
 }

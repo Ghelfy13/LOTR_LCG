@@ -39,7 +39,7 @@ public class BoardActiveState extends FocusableActiveState {
         currentActionable.onSetActionable();
         Point locationOnScreen = currentActionable.getView().getLocationOnScreen();
         
-        actionsView = availableActionsVC.updateView(locationOnScreen.x + 40, locationOnScreen.y + 180);
+        actionsView = availableActionsVC.updateView(locationOnScreen.x + 40, locationOnScreen.y);
     }
     
     public void unsetActionable(){
@@ -47,7 +47,7 @@ public class BoardActiveState extends FocusableActiveState {
         Point locationOnScreen = currentActionable.getView().getLocationOnScreen();
         currentActionable.onUnsetActionable();
         currentActionable = null;
-        actionsView = availableActionsVC.updateView(locationOnScreen.x + 20, locationOnScreen.y + 160);
+        actionsView = availableActionsVC.updateView(locationOnScreen.x + 20, locationOnScreen.y);
     }
     
     public AvailableActionsView getAvailableActions(){
