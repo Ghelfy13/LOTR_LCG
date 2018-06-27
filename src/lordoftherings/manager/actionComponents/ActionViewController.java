@@ -26,7 +26,7 @@ public class ActionViewController implements Focusable {
         view.setVisible(true);
         return view;
     }
-
+    
     @Override
     public String getViewingText() {
         return wantedAction.getDescription();

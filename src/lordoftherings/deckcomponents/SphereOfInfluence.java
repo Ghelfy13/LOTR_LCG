@@ -13,3 +13,4 @@ public enum SphereOfInfluence {
     LORE,
     NEUTRAL
 }
+

@@ -44,14 +44,17 @@ public class AvailableActionsViewController{
             Board boardState = boardAS.getBoard();
             listOfActions.clear();
             currentActionable.getActions(listOfActions, 0, boardState);
-            
+            if(listOfActions.size() == 0){
+                view.setBounds(x, y, ActionView.BOX_DIMENSIONS + 10, ActionView.BOX_DIMENSIONS + 10);
+            }else{
+                view.setBounds(x, y, (ActionView.BOX_DIMENSIONS +5)*listOfActions.size() +5,ActionView.BOX_DIMENSIONS +10);
+            }
             for(int i = 0; i < listOfActions.size(); ++i){
                 Action currentAction = listOfActions.get(i);
                 ActionViewController actionVC = new ActionViewController(currentAction, this);
-                int calculatedX = 25;
-                int calculatedY = 25;
-                ActionView actionV = actionVC.makeView(calculatedX + 
-                        ActionView.BOX_DIMENSIONS*i, calculatedY);
+                int calculatedX = 5;
+                int calculatedY = 5;
+                ActionView actionV = actionVC.makeView(calculatedX*(i+1)+ActionView.BOX_DIMENSIONS*(i), calculatedY);
                 view.add(actionV);
                 actionV.setVisible(true);
             }

@@ -3,7 +3,6 @@
 
 package lordoftherings;
 
-import lordoftherings.deckcomponents.ExpansionName;
 import lordoftherings.deckcomponents.SphereOfInfluence;
 import lordoftherings.deckcomponents.DeckBuild;
 import lordoftherings.deckcomponents.PlayerDeckBuild;
@@ -25,6 +24,7 @@ import lordoftherings.characters.Enemy;
 import lordoftherings.boardcomponents.Location;
 import lordoftherings.cardmodel.EventCardModel;
 import lordoftherings.cards.PlayerCard;
+import lordoftherings.deckcomponents.ExpansionName;
 import lordoftherings.effects.Effect;
 import lordoftherings.effects.HealEffect;
 import lordoftherings.effects.ReadyAllyToDiscardCardEffect;

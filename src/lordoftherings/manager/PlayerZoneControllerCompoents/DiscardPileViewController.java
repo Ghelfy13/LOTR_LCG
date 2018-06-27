@@ -39,11 +39,13 @@ public class DiscardPileViewController implements Focusable{
     
     public void updateView(){
         topCard = dPile.getTopCard();
+        
         if(topCard != null){
             DiscardCardView topCardView = new DiscardCardView(5, 5, topCard.getIdentity());
             topCardView.addMouseMotionListener(bas.createMouseFollower());
             topCardView.addMouseListener(new FocusableMouseListener(bas, this));
             topCardView.setVisible(true);
+            view.removeAll();
             view.add(topCardView);
         }
         view.revalidate();
