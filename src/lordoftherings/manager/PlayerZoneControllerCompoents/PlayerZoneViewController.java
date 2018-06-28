@@ -10,6 +10,7 @@ import lordoftherings.gui.PlayerZoneComponents.DiscardPileView;
 import lordoftherings.gui.PlayerZoneComponents.EngagementAreaView;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.gui.PlayerZoneComponents.HandView;
+import lordoftherings.gui.PlayerZoneComponents.PlayerNameView;
 import lordoftherings.gui.PlayerZoneComponents.PlayerZoneView;
 import lordoftherings.gui.PlayerZoneComponents.QuestValueTitleView;
 import lordoftherings.gui.PlayerZoneComponents.QuestValueView;
@@ -38,7 +39,8 @@ public class PlayerZoneViewController {
     private ThreatDialTitleViewController threatTitleVC;
     private QuestValueViewController questValueVC;
     private QuestValueTitleViewController questTitleVC;
-    private DiscardPileViewController dpvc; 
+    private DiscardPileViewController discardPileVC; 
+    private PlayerNameViewController playerNameVC;
     public static final int Y_HAND_VALUE = 495;
     public static final int DISTANCE_BT_FIELDS = 50;
     
@@ -54,7 +56,8 @@ public class PlayerZoneViewController {
         this.threatTitleVC = new ThreatDialTitleViewController(pz);
         this.questTitleVC = new QuestValueTitleViewController(this);
         this.questValueVC = new QuestValueViewController(this);
-        this.dpvc = new DiscardPileViewController(pz.getDPile(), this, bas);
+        this.playerNameVC = new PlayerNameViewController("Player1", bas);//TODO actually feed in player's desired name
+        this.discardPileVC = new DiscardPileViewController(pz.getDPile(), this, bas);
     }
     
     public PlayerZoneView makeView(int x, int y){
@@ -62,6 +65,8 @@ public class PlayerZoneViewController {
         playerView.addMouseMotionListener(bas.createMouseFollower());
         DeckViewParent myDeck = deckvc.makeView(DECK_X, Y_HAND_VALUE);
         playerView.add(myDeck);
+        PlayerNameView nameView = playerNameVC.makeView(60, Y_HAND_VALUE - 100);
+        playerView.add(nameView);
         HandView myHand = handvc.makeView(DECK_X + HandCardView.CARD_WIDTH + 20, Y_HAND_VALUE);
         playerView.add(myHand);
         CharacterAreaView charView = charAreaVC.makeView(
@@ -77,7 +82,7 @@ public class PlayerZoneViewController {
         playerView.add(questTitleView);
         QuestValueView questValue = questValueVC.makeView(1800, Y_HAND_VALUE - 50);
         playerView.add(questValue);
-        DiscardPileView dPileView = dpvc.makeView(0, Y_HAND_VALUE -10);
+        DiscardPileView dPileView = discardPileVC.makeView(0, Y_HAND_VALUE -10);
         playerView.add(dPileView);
         playerView.setVisible(true);
         return playerView;
@@ -104,7 +109,7 @@ public class PlayerZoneViewController {
         threatTitleVC.updateView();
         questTitleVC.updateView();
         questValueVC.updateView();
-        dpvc.updateView();
+        discardPileVC.updateView();
     }
 
 }

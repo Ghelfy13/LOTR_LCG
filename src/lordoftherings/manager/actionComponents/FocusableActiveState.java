@@ -72,6 +72,10 @@ public abstract class FocusableActiveState {
         currentFocusable = view;
         focusableText.setText(view.getViewingText());
         focusableText.setSize(focusableText.getPreferredSize());
-        focusableText.setVisible(true);
+        if(focusableText.equals("")){
+            focusableText.setVisible(false);
+        }else{
+            focusableText.setVisible(true);
+        }
     }
 }

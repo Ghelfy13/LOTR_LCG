@@ -6,10 +6,8 @@ import lordoftherings.characters.Ally;
 import lordoftherings.gui.query_components.QueryAllyCardView;
 import lordoftherings.gui.query_components.QueryAllyDamageView;
 import lordoftherings.gui.query_components.QueryAllyView;
-import lordoftherings.manager.PlayerZoneControllerCompoents.AllyViewController;
 import lordoftherings.manager.actionComponents.Selectable;
 import lordoftherings.characters.GameCharacter;
-import lordoftherings.gui.PlayerZoneComponents.AllyView;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.manager.actionComponents.SelectableMouseListener;
 

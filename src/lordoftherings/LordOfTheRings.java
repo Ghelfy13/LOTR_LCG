@@ -42,6 +42,10 @@ public class LordOfTheRings {
      */
     public static void main(String[] args) {
         
+        for (int i = 0; i < args.length; ++i) {
+            System.out.println(args[i]);
+        }
+        
         Identification LocationID = new Identification(ExpansionName.CORE, 113);
         LocationCardModel firstLocation = new LocationCardModel(
         "Banks of the Anduin", 
