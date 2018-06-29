@@ -18,7 +18,7 @@ public class GameConfiguration {//Creates the scaling factor for the size of the
     
     public static void setUpConfiguration(String[] args){
         for(int i = 1; i < args.length; ++i){
-            if(args[i -1] == "--scalar"){
+            if(args[i -1].equals("--scalar")){
                 scalar = Double.parseDouble(args[i]);
             }
         }

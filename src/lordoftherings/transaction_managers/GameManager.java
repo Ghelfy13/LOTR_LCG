@@ -13,13 +13,16 @@ import lordoftherings.boardcomponents.Board;
 public class GameManager {
     
     private Board board;
-    private CharacterQueryHandler defaultCharQH;
+    private DefaultCharacterQueryHandler defaultCharQH;
     private CharacterQueryHandler customCharQH;
+    private PlayerZoneQueryHandler playerZoneQH;
+    
     
     public GameManager(PlayerDeckBuild[] playerBuilds, EncounterBuild encounterInfo){
         board = new Board(playerBuilds, encounterInfo, this);
         this.defaultCharQH = new DefaultCharacterQueryHandler(board);
         this.customCharQH = null;
+        this.playerZoneQH = new PlayerZoneQueryHandler(board);
     }
     
     public Board getBoard(){
@@ -32,6 +35,10 @@ public class GameManager {
         }else{
             customCharQH.handleQuery(handle, description);
         }
+    }
+    
+    public void handlePlayerZoneQuery(PlayerZoneQueryHandle handle, String description){
+        playerZoneQH.handleQuery(handle, description);
     }
     
     public void setCustomQueryHandler(CharacterQueryHandler newCustom){

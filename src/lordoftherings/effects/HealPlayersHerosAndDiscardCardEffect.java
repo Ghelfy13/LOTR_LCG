@@ -11,42 +11,42 @@ import lordoftherings.boardcomponents.PlayerZone;
 import lordoftherings.boardcomponents.SuspensionType;
 import lordoftherings.cards.EventCard;
 import lordoftherings.cards.PlayerCard;
-import lordoftherings.matcher.ExhaustedMatcher;
-import lordoftherings.transaction_managers.CharacterQueryHandle;
-import lordoftherings.transaction_managers.CharacterQueryRequirements;
+import lordoftherings.matcher.PlayerZoneMatcher;
 import lordoftherings.transaction_managers.ClearSuspensionHandler;
-import lordoftherings.transaction_managers.DiscardToReadyHandler;
+import lordoftherings.transaction_managers.DiscardToHealPlayersHerosResultHandler;
+import lordoftherings.transaction_managers.PlayerZoneQueryHandle;
+import lordoftherings.transaction_managers.PlayerZoneQueryRequirements;
 
 /**
  *
  * @author Amanda
  */
-public class ReadyAllyToDiscardCardEffect implements Effect{
+public class HealPlayersHerosAndDiscardCardEffect implements Effect{
     
-    public ReadyAllyToDiscardCardEffect(){}
+    public HealPlayersHerosAndDiscardCardEffect(){}
 
     @Override
     public boolean execute(int askingID, Board board, PlayerCard card) {
         board.addSuspension(SuspensionType.EFFECT);
-        EventCard eventCard = (EventCard) card;
-        ExhaustedMatcher exhaustedAlly = new ExhaustedMatcher();
-        CharacterQueryRequirements requirements = 
-                new CharacterQueryRequirements(exhaustedAlly, 1, 1);
-        board.handleCharacterQuery(
-                new CharacterQueryHandle(requirements, 
-                new DiscardToReadyHandler(board, eventCard), 
-                new ClearSuspensionHandler(board)),
-        "Choose an exhausted Ally to ready");
+        EventCard event = (EventCard) card;
+        PlayerZoneMatcher desiredPlayerZone = new PlayerZoneMatcher();
+        PlayerZoneQueryRequirements requirements = new PlayerZoneQueryRequirements
+            (desiredPlayerZone, 1, 1);
+        board.handlePlayerZoneQuery( 
+            new PlayerZoneQueryHandle(requirements,
+            new DiscardToHealPlayersHerosResultHandler(board, event),
+            new ClearSuspensionHandler(board)), 
+            "Choose a player to heal all of their heros.");
         return true;
     }
 
     @Override
     public ActionState getCurrentState(int askingID, Board board, PlayerCard card) {
         PlayerZone zone = board.getPlayerZoneAt(card.getController());
-        if(card.getLocation() == LocationOnBoard.HAND && 
-            board.getPlayerZoneAt(card.getController()).getHerosResources()>0 &&
+        if(askingID == card.getController() && 
+            card.getLocation() == LocationOnBoard.HAND && 
             board.getPhaseManagerGovenor().isCurrentPhaseActionable() &&
-            askingID == card.getController() && !zone.getAllies().isEmpty()){
+            zone.getHerosResources() >= card.getCost()){
             return ActionState.EXECUTABLE;
         }else if(card.getLocation() == LocationOnBoard.HAND){
             return ActionState.VISIBLE;
@@ -56,7 +56,7 @@ public class ReadyAllyToDiscardCardEffect implements Effect{
 
     @Override
     public String createDescription(PlayerCard card) {
-        return "Play this card to ready an exhausted Ally";
+        return "Play this card to heal all heros on a chosen players field.";
     }
 
     @Override

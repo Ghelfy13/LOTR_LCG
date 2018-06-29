@@ -56,7 +56,7 @@ public class PlayerZoneViewController {
         this.threatTitleVC = new ThreatDialTitleViewController(pz);
         this.questTitleVC = new QuestValueTitleViewController(this);
         this.questValueVC = new QuestValueViewController(this);
-        this.playerNameVC = new PlayerNameViewController("Player1", bas);//TODO actually feed in player's desired name
+        this.playerNameVC = new PlayerNameViewController(pz.getPlayerName(), bas);//TODO actually feed in player's desired name
         this.discardPileVC = new DiscardPileViewController(pz.getDPile(), this, bas);
     }
     

@@ -27,6 +27,7 @@ import lordoftherings.cards.PlayerCard;
 import lordoftherings.deckcomponents.ExpansionName;
 import lordoftherings.effects.Effect;
 import lordoftherings.effects.HealEffect;
+import lordoftherings.effects.HealPlayersHerosAndDiscardCardEffect;
 import lordoftherings.effects.ReadyAllyToDiscardCardEffect;
 import lordoftherings.gui.GameManagerView;
 import lordoftherings.manager.BoardControllerComponents.GameManagerViewController;
@@ -76,6 +77,10 @@ public class LordOfTheRings {
         ArrayList<Effect> list2 = new ArrayList<>();
         list2.add(discardToReady);
         
+        HealPlayersHerosAndDiscardCardEffect healPlayersHeros = new HealPlayersHerosAndDiscardCardEffect();
+        ArrayList<Effect> list3 = new ArrayList<>();
+        list3.add(healPlayersHeros);
+        
         Identification AragornID = new Identification(ExpansionName.CORE, 1);
         HeroCardModel first = new HeroCardModel(
                 "Aragorn",
@@ -102,6 +107,17 @@ public class LordOfTheRings {
             1,
             "Choose and ready 1 ally card and discard card",
             list2) ;
+        
+        Identification BeornsHospitalityID = new Identification(ExpansionName.CORE, 68);
+        EventCardModel beornsHospitality = new EventCardModel(
+            "Beorn's Hospitality", 
+            SphereOfInfluence.LORE,
+            PlayerCardType.EVENT,
+            new String[]{""},
+            BeornsHospitalityID,
+            5,
+            "Choose a player, and heal all damage on each hero controlled by that player.",
+            list3);
         
         Identification DaughterID = new Identification(ExpansionName.CORE, 23);
         AllyCardModel second = new AllyCardModel(

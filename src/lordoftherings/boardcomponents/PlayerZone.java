@@ -21,9 +21,10 @@ public class PlayerZone {
     private ThreatDial currentThreat;
     private Board board;
     private boolean playerIsAlive;
+    private PlayerName name;
     
     
-    public PlayerZone(PlayerDeckBuild playerDeckAndHeros, int ownerID, Board board){
+    public PlayerZone(PlayerDeckBuild playerDeckAndHeros, int ownerID, Board board, String name){
         playersHand = new Hand(ownerID);
         playersDeck = new PlayerDeck(ownerID, playerDeckAndHeros.getPlayersDeck());
         dPile = new DiscardPile(ownerID);
@@ -32,10 +33,15 @@ public class PlayerZone {
         this.currentThreat = new ThreatDial(field.getInitinalThreat(), ownerID, this);
         this.board = board;
         this.playerIsAlive = true;
+        this.name = new PlayerName(name, ownerID, this);
     }
     
     public boolean isPlayerAlive(){
         return playerIsAlive;
+    }
+    
+    public String getPlayerName(){
+        return name.getPlayerName();
     }
     
     public boolean herosStillAlive(){
@@ -45,6 +51,14 @@ public class PlayerZone {
             return false;
         }
         return true;
+    }
+    
+    public void healAllHeros(){
+        HeroArea area = field.getCharacterZone().getHeroArea();
+        for(int i = 0; i < area.getNumOfHeros(); ++i){
+            int damage = area.getHeroAt(i).getDamage();
+            area.getHeroAt(i).removeDamage(damage);
+        }
     }
     
     public Field getField(){

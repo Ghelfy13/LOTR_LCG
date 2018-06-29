@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.PlayerZoneControllerCompoents;
 
+import lordoftherings.boardcomponents.PlayerName;
 import lordoftherings.gui.PlayerZoneComponents.PlayerNameView;
 import lordoftherings.manager.actionComponents.BoardActiveState;
 import lordoftherings.manager.actionComponents.Focusable;
@@ -13,16 +14,16 @@ import lordoftherings.manager.actionComponents.Focusable;
 public class PlayerNameViewController implements Focusable{
     
     private BoardActiveState bas;
-    private String nameOfPlayer;
     private PlayerNameView view;
+    private String name;
     
     public PlayerNameViewController(String name, BoardActiveState bas){
         this.bas = bas;
-        this.nameOfPlayer = name;
+        this.name= name;
     }
     
     public PlayerNameView makeView(int x, int y){
-        view = new PlayerNameView(x, y, nameOfPlayer);
+        view = new PlayerNameView(x, y, name);
         view.addMouseMotionListener(bas.createMouseFollower());
         view.setVisible(true);
         return view;

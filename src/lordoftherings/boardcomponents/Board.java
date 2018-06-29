@@ -19,6 +19,7 @@ import lordoftherings.transaction_managers.CharacterQueryHandle;
 import lordoftherings.transaction_managers.CharacterQueryRequirements;
 import lordoftherings.transaction_managers.ClearSuspensionHandler;
 import lordoftherings.transaction_managers.GameManager;
+import lordoftherings.transaction_managers.PlayerZoneQueryHandle;
 import lordoftherings.transaction_managers.ResolveEnemyAttackHandler;
 import lordoftherings.transaction_managers.ResolvePlayerAttackHandler;
 import lordoftherings.transaction_managers.ResolveUndefendedEnemyAttackHandler;
@@ -31,7 +32,7 @@ import lordoftherings.transaction_managers.Uncancellable;
 public class Board {
     private EncounterZone encounterZone;
     private PlayerDeckBuild [] deckBuilds;
-    private PlayerZone[] playerZones;
+    public static PlayerZone[] playerZones;
     private int currentPlayerNum;
     private GameManager gameManager;
     private boolean hasPlayerWon;
@@ -46,7 +47,7 @@ public class Board {
         int size = deckBuilds.length;
         this.playerZones = new PlayerZone[size];
         for(int i = 0; i < size; ++i){
-            playerZones[i] = new PlayerZone(deckBuilds[i], i, this);
+            playerZones[i] = new PlayerZone(deckBuilds[i], i, this, "Player1");//TODO: replace this with an imput
         }
         this.gameManager = manager;
         this.hasPlayerWon = false;
@@ -331,6 +332,10 @@ public class Board {
     
     public void handleCharacterQuery(CharacterQueryHandle handle, String description){
         gameManager.handleCharacterQuery(handle, description);
+    }
+    
+    public void handlePlayerZoneQuery(PlayerZoneQueryHandle handle, String description){
+        gameManager.handlePlayerZoneQuery(handle, description);
     }
     
     public void addSuspension(SuspensionType suspension){
