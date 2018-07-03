@@ -12,14 +12,14 @@ import lordoftherings.manager.actionComponents.Selectable;
  */
 public class QueryPlayerNameViewController implements Selectable<Integer>{//playerID/Integer
     
-    private CharacterQueryActiveState charQAS;
+    private PlayerQueryActiveState playerQAS;
     private String nameOfPlayer;
     private QueryPlayerNameView nameView;
     private boolean isSelected;
     private int playerNum;
     
-    public QueryPlayerNameViewController(String name, CharacterQueryActiveState charQAS, int playerNum){
-        this.charQAS = charQAS;
+    public QueryPlayerNameViewController(String name, PlayerQueryActiveState playerQAS, int playerNum){
+        this.playerQAS = playerQAS;
         this.nameOfPlayer = name;
         this.isSelected = false;
         this.playerNum = playerNum;
@@ -27,7 +27,7 @@ public class QueryPlayerNameViewController implements Selectable<Integer>{//play
     
     public QueryPlayerNameView makeView(int x, int y){
         nameView = new QueryPlayerNameView(x, y, nameOfPlayer);
-        nameView.addMouseMotionListener(charQAS.createMouseFollower());
+        nameView.addMouseMotionListener(playerQAS.createMouseFollower());
         nameView.setVisible(true);
         return nameView;
     }

@@ -3,25 +3,24 @@
 package lordoftherings.transaction_managers;
 
 import java.util.ArrayList;
-import lordoftherings.boardcomponents.PlayerZone;
 import lordoftherings.matcher.Matcher;
 
 /**
  *
  * @author Amanda
  */
-public class PlayerZoneQueryRequirements {
-    private Matcher<PlayerZone> matcher;
+public abstract class QueryRequirements <T>{
+    private Matcher<T> matcher;
     private int min;
     private int max;
     
-    public PlayerZoneQueryRequirements(Matcher<PlayerZone> zoneMatcher, int min, int max){
-        this.matcher = zoneMatcher;
+    public QueryRequirements(Matcher<T> matcher, int min, int max){
+        this.matcher = matcher;
         this.min = min;
         this.max = max;
     }
     
-    public Matcher<PlayerZone> getMatcher(){
+    public Matcher<T> getMatcher(){
         return matcher;
     }
     
@@ -33,7 +32,7 @@ public class PlayerZoneQueryRequirements {
         return max;
     }
     
-    public boolean accepts(ArrayList<PlayerZone> potentialResult){
+    public boolean accepts(ArrayList<T> potentialResult){
         if(potentialResult.size() > max || potentialResult.size() < min){
             return false;
         }

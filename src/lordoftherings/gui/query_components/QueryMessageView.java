@@ -13,9 +13,9 @@ import lordoftherings.gui.AvailableActionsView;
  *
  * @author Amanda
  */
-public class CharacterQueryMessageView extends JTextArea{
+public class QueryMessageView extends JTextArea{
     
-    public CharacterQueryMessageView(int x, int y, String description){
+    public QueryMessageView(int x, int y, String description){
         setBounds(x, y, 500, 500);
         setText(description);
         setBackground(Color.white);

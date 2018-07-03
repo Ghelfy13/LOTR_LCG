@@ -14,8 +14,8 @@ import lordoftherings.cards.PlayerCard;
 import lordoftherings.matcher.PlayerZoneMatcher;
 import lordoftherings.transaction_managers.ClearSuspensionHandler;
 import lordoftherings.transaction_managers.DiscardToHealPlayersHerosResultHandler;
-import lordoftherings.transaction_managers.PlayerZoneQueryHandle;
-import lordoftherings.transaction_managers.PlayerZoneQueryRequirements;
+import lordoftherings.transaction_managers.PlayerQueryHandle;
+import lordoftherings.transaction_managers.PlayerQueryRequirements;
 
 /**
  *
@@ -30,10 +30,9 @@ public class HealPlayersHerosAndDiscardCardEffect implements Effect{
         board.addSuspension(SuspensionType.EFFECT);
         EventCard event = (EventCard) card;
         PlayerZoneMatcher desiredPlayerZone = new PlayerZoneMatcher();
-        PlayerZoneQueryRequirements requirements = new PlayerZoneQueryRequirements
+        PlayerQueryRequirements requirements = new PlayerQueryRequirements
             (desiredPlayerZone, 1, 1);
-        board.handlePlayerZoneQuery( 
-            new PlayerZoneQueryHandle(requirements,
+        board.handlePlayerZoneQuery(new PlayerQueryHandle(requirements,
             new DiscardToHealPlayersHerosResultHandler(board, event),
             new ClearSuspensionHandler(board)), 
             "Choose a player to heal all of their heros.");

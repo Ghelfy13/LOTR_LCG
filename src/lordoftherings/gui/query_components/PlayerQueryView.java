@@ -2,12 +2,13 @@
 
 package lordoftherings.gui.query_components;
 
+import javax.swing.JPanel;
 
 /**
  *
  * @author Amanda
  */
-public class CharacterQueryView extends QueryView{
+public class PlayerQueryView extends QueryView{
     
-    public CharacterQueryView(){}
+    public PlayerQueryView(){}
 }

@@ -19,12 +19,12 @@ public class QueryCharacterAreaViewController {
     private HeroArea heroArea;
     private AllyArea allyArea;
     private QueryCharacterAreaView charAreaView;
-    private QueryPlayerZoneViewController playerZoneVC;
+    private CharacterQueryPlayerZoneViewController playerZoneVC;
     private CharacterQueryActiveState charQAS;
    
     
     public QueryCharacterAreaViewController(
-            QueryPlayerZoneViewController playerZoneVC, 
+            CharacterQueryPlayerZoneViewController playerZoneVC, 
             HeroArea heroArea,
             AllyArea allyArea,
             CharacterQueryActiveState charQAS){

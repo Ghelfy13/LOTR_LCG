@@ -19,7 +19,7 @@ import lordoftherings.transaction_managers.CharacterQueryHandle;
 import lordoftherings.transaction_managers.CharacterQueryRequirements;
 import lordoftherings.transaction_managers.ClearSuspensionHandler;
 import lordoftherings.transaction_managers.GameManager;
-import lordoftherings.transaction_managers.PlayerZoneQueryHandle;
+import lordoftherings.transaction_managers.PlayerQueryHandle;
 import lordoftherings.transaction_managers.ResolveEnemyAttackHandler;
 import lordoftherings.transaction_managers.ResolvePlayerAttackHandler;
 import lordoftherings.transaction_managers.ResolveUndefendedEnemyAttackHandler;
@@ -334,7 +334,7 @@ public class Board {
         gameManager.handleCharacterQuery(handle, description);
     }
     
-    public void handlePlayerZoneQuery(PlayerZoneQueryHandle handle, String description){
+    public void handlePlayerZoneQuery(PlayerQueryHandle handle, String description){
         gameManager.handlePlayerZoneQuery(handle, description);
     }
     

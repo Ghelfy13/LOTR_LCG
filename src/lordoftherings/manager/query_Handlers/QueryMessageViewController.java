@@ -4,25 +4,25 @@ package lordoftherings.manager.query_Handlers;
 
 import lordoftherings.gui.query_components.CancelButtonView;
 import lordoftherings.gui.query_components.ContinueButtonView;
-import lordoftherings.gui.query_components.CharacterQueryMessageView;
+import lordoftherings.gui.query_components.QueryMessageView;
 import lordoftherings.transaction_managers.CharacterQueryHandle;
+import lordoftherings.transaction_managers.QueryHandle;
 
 /**
  *
  * @author Amanda
  */
-public class CharacterQueryMessageViewController {
+public class QueryMessageViewController {
     
-    private CharacterQueryMessageView view;
+    private QueryMessageView view;
     private ContinueButtonView continueView;
     private CancelButtonView cancelView;
-    private CharacterQueryHandle handle;
-    
-    private CharacterQueryViewController controller;
+    private QueryHandle handle;
+    private QueryViewController controller;
    
     
     
-    public CharacterQueryMessageViewController(CharacterQueryViewController controller, CharacterQueryHandle handle){
+    public QueryMessageViewController(QueryViewController controller, QueryHandle handle){
         this.controller = controller;
         view = null;
         continueView = null;
@@ -30,10 +30,10 @@ public class CharacterQueryMessageViewController {
         this.handle = handle;
     }
     
-    public CharacterQueryMessageView makeView(int x, int y, String description){
+    public QueryMessageView makeView(int x, int y, String description){
         boolean canCancel = handle.getCancelHandler().canCancel();
         boolean canContinue = handle.getRequirements().accepts(controller.getResult());
-        view = new CharacterQueryMessageView(x, y, description);
+        view = new QueryMessageView(x, y, description);
         continueView = new ContinueButtonView(25, 400, canContinue);
         continueView.addActionListener(new CharacterQueryContinueActionListener(controller));
         cancelView = new CancelButtonView(270, 400, canCancel);

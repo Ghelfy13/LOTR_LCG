@@ -9,9 +9,11 @@ import lordoftherings.gui.EndOfGameView;
 import lordoftherings.gui.GameManagerView;
 import lordoftherings.gui.GlassPaneView;
 import lordoftherings.gui.query_components.CharacterQueryView;
+import lordoftherings.gui.query_components.QueryView;
 import lordoftherings.manager.actionComponents.GlobalViewController;
 import lordoftherings.manager.query_Handlers.GuiCharacterQueryHandler;
 import lordoftherings.manager.query_Handlers.CharacterQueryViewController;
+import lordoftherings.manager.query_Handlers.QueryViewController;
 import lordoftherings.transaction_managers.CharacterQueryHandle;
 import lordoftherings.transaction_managers.GameManager;
 
@@ -24,7 +26,7 @@ public class GameManagerViewController implements GlobalViewController{
     private GameManagerView view;
     private BoardViewController boardVC;
     private GlassPaneView glassPane;
-    private CharacterQueryViewController charQueryVC;
+    private QueryViewController queryVC;
     private EndOfGameViewController endOfGameVC;
     
     public GameManagerViewController(GameManager manager){
@@ -32,7 +34,7 @@ public class GameManagerViewController implements GlobalViewController{
         manager.setCustomQueryHandler(new GuiCharacterQueryHandler(this));
         this.boardVC = new BoardViewController(manager.getBoard(), this);
         this.glassPane = null;
-        this.charQueryVC = null;
+        this.queryVC = null;
         this.endOfGameVC = new EndOfGameViewController(manager.getBoard());
     }
     
@@ -70,16 +72,16 @@ public class GameManagerViewController implements GlobalViewController{
     }
 
     public void setUpCharacterQuery(String descriptionOfQuest, CharacterQueryHandle handle) {
-        charQueryVC = new CharacterQueryViewController(this, handle);
-        CharacterQueryView backdrop = charQueryVC.makeView(descriptionOfQuest);
+        queryVC = new CharacterQueryViewController(this, handle);
+        QueryView backdrop = queryVC.makeView(descriptionOfQuest);
         view.add(backdrop, new Integer(2));
         backdrop.setVisible(true);
     }
     
 
     public void deactivateCharQueryVC() {
-        CharacterQueryView queryView = charQueryVC.getView();
-        charQueryVC = null;
+        QueryView queryView = queryVC.getView();
+        queryVC = null;
         view.remove(queryView);
         setGlassPaneToInvisible();
     }

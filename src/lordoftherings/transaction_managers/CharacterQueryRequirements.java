@@ -2,7 +2,6 @@
 
 package lordoftherings.transaction_managers;
 
-import java.util.ArrayList;
 import lordoftherings.matcher.Matcher;
 import lordoftherings.characters.GameCharacter;
 
@@ -10,38 +9,9 @@ import lordoftherings.characters.GameCharacter;
  *
  * @author Amanda
  */
-public class CharacterQueryRequirements {
-    private Matcher<GameCharacter> matcher;
-    private int min;
-    private int max;
-    
+public class CharacterQueryRequirements extends QueryRequirements{
+        
     public CharacterQueryRequirements(Matcher<GameCharacter> matcher, int min, int max){
-        this.matcher = matcher;
-        this.min = min;
-        this.max = max;
-    }
-    
-    public Matcher<GameCharacter> getMatcher(){
-        return matcher;
-    }
-    
-    public int getMin(){
-        return min;
-    }
-    
-    public int getMax(){
-        return max;
-    }
-    
-    public boolean accepts(ArrayList<GameCharacter> potentialResult){
-        if(potentialResult.size() > max || potentialResult.size() < min){
-            return false;
-        }
-        for(int i = 0; i < potentialResult.size(); ++i){
-            if(!matcher.matches(potentialResult.get(i))){
-                return false;
-            }
-        }
-        return true;
+        super(matcher, min, max);
     }
 }

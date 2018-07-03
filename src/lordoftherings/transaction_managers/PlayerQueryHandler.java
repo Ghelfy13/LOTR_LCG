@@ -10,15 +10,15 @@ import lordoftherings.boardcomponents.PlayerZone;
  *
  * @author Amanda
  */
-public class PlayerZoneQueryHandler {
+public class PlayerQueryHandler {
     
     private Board board;
     
-    public PlayerZoneQueryHandler(Board board){
+    public PlayerQueryHandler(Board board){
         this.board = board;
     }
     
-    public void handleQuery(PlayerZoneQueryHandle handle, String descriptionOfQuery){
+    public void handleQuery(PlayerQueryHandle handle, String descriptionOfQuery){
         int numOfPlayerZones = 0;
         ArrayList<PlayerZone> listOfZones = new ArrayList<>(handle.getMax());
         if(handle.getMin() == 0){

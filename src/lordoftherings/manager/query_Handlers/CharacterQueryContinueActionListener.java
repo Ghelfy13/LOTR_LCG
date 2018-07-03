@@ -5,9 +5,9 @@ package lordoftherings.manager.query_Handlers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import lordoftherings.transaction_managers.CharacterQueryRequirements;
 import lordoftherings.transaction_managers.ResultHandler;
 import lordoftherings.characters.GameCharacter;
+import lordoftherings.transaction_managers.QueryRequirements;
 
 /**
  *
@@ -24,7 +24,7 @@ public class CharacterQueryContinueActionListener implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
         ResultHandler<ArrayList<GameCharacter>> resultHandler = controller.getHandle().getResultHandler();
-        CharacterQueryRequirements requirements = controller.getHandle().getRequirements();
+        QueryRequirements<GameCharacter> requirements = controller.getHandle().getRequirements();
         ArrayList<GameCharacter> result = controller.getResult();
         if(requirements.accepts(result)){
             controller.deactivate();

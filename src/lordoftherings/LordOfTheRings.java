@@ -23,7 +23,6 @@ import lordoftherings.transaction_managers.GameManager;
 import lordoftherings.characters.Enemy;
 import lordoftherings.boardcomponents.Location;
 import lordoftherings.cardmodel.EventCardModel;
-import lordoftherings.cards.PlayerCard;
 import lordoftherings.deckcomponents.ExpansionName;
 import lordoftherings.effects.Effect;
 import lordoftherings.effects.HealEffect;
