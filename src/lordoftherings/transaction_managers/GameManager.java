@@ -5,6 +5,7 @@ package lordoftherings.transaction_managers;
 import lordoftherings.deckcomponents.EncounterBuild;
 import lordoftherings.deckcomponents.PlayerDeckBuild;
 import lordoftherings.boardcomponents.Board;
+import lordoftherings.manager.query_Handlers.PlayerQueryHandler;
 
 /**
  *
@@ -15,14 +16,15 @@ public class GameManager {
     private Board board;
     private DefaultCharacterQueryHandler defaultCharQH;
     private CharacterQueryHandler customCharQH;
-    private PlayerQueryHandler playerZoneQH;
+    private DefaultPlayerQueryHandler playerZoneQH;
+    private PlayerQueryHandler customPlayerQH;
     
     
     public GameManager(PlayerDeckBuild[] playerBuilds, EncounterBuild encounterInfo){
         board = new Board(playerBuilds, encounterInfo, this);
         this.defaultCharQH = new DefaultCharacterQueryHandler(board);
         this.customCharQH = null;
-        this.playerZoneQH = new PlayerQueryHandler(board);
+        this.playerZoneQH = new DefaultPlayerQueryHandler(board);
     }
     
     public Board getBoard(){
@@ -41,8 +43,11 @@ public class GameManager {
         playerZoneQH.handleQuery(handle, description);
     }
     
-    public void setCustomQueryHandler(CharacterQueryHandler newCustom){
+    public void setCustomCharacterQueryHandler(CharacterQueryHandler newCustom){
         customCharQH = newCustom;
+    }
+    public void setCustomPlayerQueryHandler(PlayerQueryHandler newCustom){
+        customPlayerQH = newCustom;
     }
     
     public void unsetCustomQueryHandler(){

@@ -8,14 +8,16 @@ import lordoftherings.gui.BoardView;
 import lordoftherings.gui.EndOfGameView;
 import lordoftherings.gui.GameManagerView;
 import lordoftherings.gui.GlassPaneView;
-import lordoftherings.gui.query_components.CharacterQueryView;
 import lordoftherings.gui.query_components.QueryView;
 import lordoftherings.manager.actionComponents.GlobalViewController;
 import lordoftherings.manager.query_Handlers.GuiCharacterQueryHandler;
 import lordoftherings.manager.query_Handlers.CharacterQueryViewController;
+import lordoftherings.manager.query_Handlers.GuiPlayerQueryHandler;
+import lordoftherings.manager.query_Handlers.PlayerQueryViewController;
 import lordoftherings.manager.query_Handlers.QueryViewController;
 import lordoftherings.transaction_managers.CharacterQueryHandle;
 import lordoftherings.transaction_managers.GameManager;
+import lordoftherings.transaction_managers.PlayerQueryHandle;
 
 /**
  *
@@ -31,7 +33,9 @@ public class GameManagerViewController implements GlobalViewController{
     
     public GameManagerViewController(GameManager manager){
         this.manager = manager;
-        manager.setCustomQueryHandler(new GuiCharacterQueryHandler(this));
+        manager.setCustomCharacterQueryHandler(new GuiCharacterQueryHandler(this));
+        manager.setCustomPlayerQueryHandler(new GuiPlayerQueryHandler(this));
+        //TODO: add set GUI player query here
         this.boardVC = new BoardViewController(manager.getBoard(), this);
         this.glassPane = null;
         this.queryVC = null;
@@ -75,6 +79,13 @@ public class GameManagerViewController implements GlobalViewController{
         queryVC = new CharacterQueryViewController(this, handle);
         QueryView backdrop = queryVC.makeView(descriptionOfQuest);
         view.add(backdrop, new Integer(2));
+        backdrop.setVisible(true);
+    }
+    
+    public void setUpPlayerQuery(PlayerQueryHandle handle, String descriptionOfAction){
+        queryVC = new PlayerQueryViewController(this, handle);
+        QueryView backdrop = queryVC.makeView(descriptionOfAction);
+        view.add(backdrop, new Integer(2));//What does this do?????
         backdrop.setVisible(true);
     }
     

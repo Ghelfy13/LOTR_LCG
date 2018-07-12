@@ -10,11 +10,11 @@ import lordoftherings.boardcomponents.PlayerZone;
  *
  * @author Amanda
  */
-public class PlayerQueryHandler {
+public class DefaultPlayerQueryHandler {
     
     private Board board;
     
-    public PlayerQueryHandler(Board board){
+    public DefaultPlayerQueryHandler(Board board){
         this.board = board;
     }
     

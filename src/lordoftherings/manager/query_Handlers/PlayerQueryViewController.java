@@ -3,11 +3,16 @@
 package lordoftherings.manager.query_Handlers;
 
 import java.awt.Point;
+import lordoftherings.boardcomponents.Board;
 import lordoftherings.boardcomponents.PlayerZone;
+import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.query_components.PlayerQueryView;
 import lordoftherings.gui.query_components.QueryMessageView;
 import lordoftherings.gui.query_components.QueryPlayerNameView;
+import lordoftherings.gui.query_components.QueryPlayerZoneView;
 import lordoftherings.gui.query_components.QueryView;
+import static lordoftherings.manager.BoardControllerComponents.BoardViewController.DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE;
+import static lordoftherings.manager.BoardControllerComponents.BoardViewController.DISTANCE_FROM_FRAME;
 import lordoftherings.manager.BoardControllerComponents.GameManagerViewController;
 import lordoftherings.transaction_managers.PlayerQueryHandle;
 
@@ -18,17 +23,16 @@ import lordoftherings.transaction_managers.PlayerQueryHandle;
 public class PlayerQueryViewController extends QueryViewController<PlayerZone>{
     
     private PlayerQueryView view;
-    private PlayerZone playerZone;
     private PlayerQueryActiveState playerQAS;
-    private QueryPlayerNameViewController nameVC;
+    private QueryPlayerZoneViewController playerZoneQVC;
             
     public PlayerQueryViewController(GameManagerViewController gameMVC, 
-            PlayerQueryHandle handle, PlayerZone zone){
+            PlayerQueryHandle handle){
         super(gameMVC, handle);
-        this.playerZone = zone;
         this.playerQAS = new PlayerQueryActiveState(this);
-        this.nameVC = new QueryPlayerNameViewController(zone.getPlayerName(),
-                playerQAS,zone.getOwner());
+        Board board = gameMVC.getBoard();
+        playerZoneQVC = new QueryPlayerZoneViewController(board.getPlayerZoneAt(0),
+                playerQAS);
     }
 
     @Override
@@ -37,9 +41,11 @@ public class PlayerQueryViewController extends QueryViewController<PlayerZone>{
         view.add(playerQAS.getFocusableText());
         view.addMouseMotionListener(playerQAS.createMouseFollower());
         QueryMessageView messageView = messageVC.makeView(1995, 0, description);
+        QueryPlayerZoneView zoneView = playerZoneQVC.makeView(DISTANCE_FROM_FRAME,
+                ActiveLocationView.CARD_COUNTER_HEIGHT + 
+                        DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE);
+        
         view.add(messageView);
-        QueryPlayerNameView nameView = nameVC.makeView(180, 1900);//TODO: need to fix
-        view.add(nameView);
         view.setVisible(true);
         return view;
     }
@@ -47,7 +53,7 @@ public class PlayerQueryViewController extends QueryViewController<PlayerZone>{
     @Override
     public void updateView() {
         messageVC.updateView();
-        nameVC.updateView();
+        //TODO: UPDATE VIEW ON PLAYERZONES INDIVIDUALLY
     }
 
     @Override

@@ -12,17 +12,17 @@ import lordoftherings.transaction_managers.QueryHandle;
  *
  * @author Amanda
  */
-public class QueryMessageViewController {
+public class QueryMessageViewController<T> {
     
     private QueryMessageView view;
     private ContinueButtonView continueView;
     private CancelButtonView cancelView;
-    private QueryHandle handle;
+    private QueryHandle<T> handle;
     private QueryViewController controller;
    
     
     
-    public QueryMessageViewController(QueryViewController controller, QueryHandle handle){
+    public QueryMessageViewController(QueryViewController<T> controller, QueryHandle<T> handle){
         this.controller = controller;
         view = null;
         continueView = null;
@@ -35,7 +35,7 @@ public class QueryMessageViewController {
         boolean canContinue = handle.getRequirements().accepts(controller.getResult());
         view = new QueryMessageView(x, y, description);
         continueView = new ContinueButtonView(25, 400, canContinue);
-        continueView.addActionListener(new CharacterQueryContinueActionListener(controller));
+        continueView.addActionListener(new QueryContinueActionListener<T>(controller));
         cancelView = new CancelButtonView(270, 400, canCancel);
         cancelView.addActionListener(new CancelButtonActionListener(controller));
         view.add(continueView);

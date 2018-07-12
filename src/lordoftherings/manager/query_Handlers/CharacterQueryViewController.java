@@ -3,11 +3,9 @@
 package lordoftherings.manager.query_Handlers;
 
 import java.awt.Point;
-import java.util.ArrayList;
 import lordoftherings.gui.query_components.QueryMessageView;
 import lordoftherings.gui.query_components.CharacterQueryView;
 import lordoftherings.manager.BoardControllerComponents.GameManagerViewController;
-import lordoftherings.transaction_managers.CancelHandler;
 import lordoftherings.transaction_managers.CharacterQueryHandle;
 import lordoftherings.characters.GameCharacter;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;

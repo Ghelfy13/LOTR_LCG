@@ -6,26 +6,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import lordoftherings.transaction_managers.ResultHandler;
-import lordoftherings.characters.GameCharacter;
 import lordoftherings.transaction_managers.QueryRequirements;
 
 /**
  *
  * @author Amanda
  */
-public class CharacterQueryContinueActionListener implements ActionListener{
+public class QueryContinueActionListener<T> implements ActionListener{
 
-    CharacterQueryViewController controller;
+    QueryViewController<T> controller;
     
-    public CharacterQueryContinueActionListener(CharacterQueryViewController controller){
-        this.controller = controller;
+    public QueryContinueActionListener(QueryViewController<T> controller){
+        this.controller = (QueryViewController<T>) controller;
     }
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        ResultHandler<ArrayList<GameCharacter>> resultHandler = controller.getHandle().getResultHandler();
-        QueryRequirements<GameCharacter> requirements = controller.getHandle().getRequirements();
-        ArrayList<GameCharacter> result = controller.getResult();
+        ResultHandler<ArrayList<T>> resultHandler = controller.getHandle().getResultHandler();
+        QueryRequirements<T> requirements = controller.getHandle().getRequirements();
+        ArrayList<T> result = controller.getResult();
         if(requirements.accepts(result)){
             controller.deactivate();
             resultHandler.handle(result);
