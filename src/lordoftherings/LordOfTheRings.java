@@ -156,6 +156,7 @@ public class LordOfTheRings {
         DeckBuild mockDeck = new DeckBuild();
         mockDeck.add(everVigilant, 2);
         mockDeck.add(second, 1);
+        mockDeck.add(beornsHospitality, 2);
         PlayerDeckBuild mockBuild = new PlayerDeckBuild(mockDeck);
         mockBuild.addHero(first);
         mockBuild.addHero(first);

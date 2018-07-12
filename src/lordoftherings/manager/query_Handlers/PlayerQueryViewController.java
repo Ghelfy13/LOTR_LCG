@@ -31,7 +31,7 @@ public class PlayerQueryViewController extends QueryViewController<PlayerZone>{
         super(gameMVC, handle);
         this.playerQAS = new PlayerQueryActiveState(this);
         Board board = gameMVC.getBoard();
-        playerZoneQVC = new QueryPlayerZoneViewController(board.getPlayerZoneAt(0),
+        playerZoneQVC = new QueryPlayerZoneViewController(this, board.getPlayerZoneAt(0),
                 playerQAS);
     }
 
@@ -53,7 +53,7 @@ public class PlayerQueryViewController extends QueryViewController<PlayerZone>{
     @Override
     public void updateView() {
         messageVC.updateView();
-        //TODO: UPDATE VIEW ON PLAYERZONES INDIVIDUALLY
+        playerZoneQVC.updateView();
     }
 
     @Override
