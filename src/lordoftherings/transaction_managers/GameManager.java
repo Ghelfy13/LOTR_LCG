@@ -25,6 +25,7 @@ public class GameManager {
         this.defaultCharQH = new DefaultCharacterQueryHandler(board);
         this.customCharQH = null;
         this.playerZoneQH = new DefaultPlayerQueryHandler(board);
+        this.customPlayerQH = null;
     }
     
     public Board getBoard(){
@@ -40,7 +41,12 @@ public class GameManager {
     }
     
     public void handlePlayerZoneQuery(PlayerQueryHandle handle, String description){
-        playerZoneQH.handleQuery(handle, description);
+        if(customPlayerQH == null){
+            playerZoneQH.handleQuery(handle, description);
+        }else{
+            customPlayerQH.handleQuery(handle, description);
+        }
+        
     }
     
     public void setCustomCharacterQueryHandler(CharacterQueryHandler newCustom){

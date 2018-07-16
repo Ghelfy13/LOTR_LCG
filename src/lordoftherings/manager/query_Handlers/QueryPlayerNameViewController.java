@@ -2,32 +2,37 @@
 
 package lordoftherings.manager.query_Handlers;
 
+import lordoftherings.boardcomponents.PlayerName;
+import lordoftherings.boardcomponents.PlayerZone;
 import lordoftherings.gui.query_components.QueryPlayerNameView;
 import lordoftherings.manager.actionComponents.BoardActiveState;
 import lordoftherings.manager.actionComponents.Selectable;
+import lordoftherings.manager.actionComponents.SelectableMouseListener;
 
 /**
  *
  * @author Amanda
  */
-public class QueryPlayerNameViewController implements Selectable<Integer>{//playerID/Integer
+public class QueryPlayerNameViewController implements Selectable<PlayerZone>{//playerID/Integer
     
     private PlayerQueryActiveState playerQAS;
     private String nameOfPlayer;
     private QueryPlayerNameView nameView;
     private boolean isSelected;
-    private int playerNum;
+    private PlayerZone zone;
     
-    public QueryPlayerNameViewController(String name, PlayerQueryActiveState playerQAS, int playerNum){
+    public QueryPlayerNameViewController(String name, 
+            PlayerQueryActiveState playerQAS, PlayerZone zone){
         this.playerQAS = playerQAS;
         this.nameOfPlayer = name;
         this.isSelected = false;
-        this.playerNum = playerNum;
+        this.zone = zone;
     }
     
     public QueryPlayerNameView makeView(int x, int y){
         nameView = new QueryPlayerNameView(x, y, nameOfPlayer);
         nameView.addMouseMotionListener(playerQAS.createMouseFollower());
+        nameView.addMouseListener(new SelectableMouseListener<PlayerZone>(playerQAS, this));
         nameView.setVisible(true);
         return nameView;
     }
@@ -55,8 +60,8 @@ public class QueryPlayerNameViewController implements Selectable<Integer>{//play
     }
 
     @Override
-    public Integer get() {
-        return playerNum;
+    public PlayerZone get() {
+        return zone;
     }
 
     @Override

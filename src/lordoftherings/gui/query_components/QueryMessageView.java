@@ -25,6 +25,7 @@ public class QueryMessageView extends JTextArea{
         setAlignmentY(CENTER_ALIGNMENT);
         setFont(AvailableActionsView.MESSAGE_FONT);
         setLineWrap(true);
+        setWrapStyleWord(true);
         Border queryBorder = BorderFactory.createMatteBorder(5,5,5,5,Color.BLACK);
         setBorder(queryBorder);
         this.setEditable(false);

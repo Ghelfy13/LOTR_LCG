@@ -44,8 +44,8 @@ public class PlayerQueryViewController extends QueryViewController<PlayerZone>{
         QueryPlayerZoneView zoneView = playerZoneQVC.makeView(DISTANCE_FROM_FRAME,
                 ActiveLocationView.CARD_COUNTER_HEIGHT + 
                         DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE);
-        
         view.add(messageView);
+        view.add(zoneView);
         view.setVisible(true);
         return view;
     }

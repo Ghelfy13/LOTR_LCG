@@ -26,18 +26,18 @@ public class QueryPlayerZoneViewController {
         this.zone = playerZone;
         this.playerQAS = playerQAS;
         this.nameVC = new QueryPlayerNameViewController(playerZone.getPlayerName(), 
-                playerQAS, playerZone.getOwner());
+                playerQAS, playerZone);
         this.handle = (PlayerQueryHandle) playerQVC.getHandle();
     }
     
     public QueryPlayerZoneView makeView(int x, int y){
-        QueryPlayerZoneView view = new QueryPlayerZoneView(x, y);
-        view.add(playerQAS.getFocusableText());
-        view.addMouseMotionListener(playerQAS.createMouseFollower());
+        zoneView = new QueryPlayerZoneView(x, y);
+        zoneView.add(playerQAS.getFocusableText());
+        zoneView.addMouseMotionListener(playerQAS.createMouseFollower());
         QueryPlayerNameView nameView = nameVC.makeView(60, Y_HAND_VALUE - 100);
-        view.add(nameView);
-        view.setVisible(true);
-        return view;
+        zoneView.add(nameView);
+        zoneView.setVisible(true);
+        return zoneView;
     }
     
     public void updateView(){
