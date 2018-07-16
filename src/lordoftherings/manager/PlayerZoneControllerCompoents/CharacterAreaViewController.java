@@ -2,8 +2,10 @@
 
 package lordoftherings.manager.PlayerZoneControllerCompoents;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.BorderFactory;
+import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 import lordoftherings.boardcomponents.CharacterArea;
 import lordoftherings.gui.PlayerZoneComponents.AllyZoneView;

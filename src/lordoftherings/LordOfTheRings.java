@@ -154,9 +154,9 @@ public class LordOfTheRings {
                 2);
         
         DeckBuild mockDeck = new DeckBuild();
-        mockDeck.add(everVigilant, 2);
-        mockDeck.add(second, 1);
-        mockDeck.add(beornsHospitality, 2);
+        mockDeck.add(everVigilant, 0);
+        mockDeck.add(second, 7);
+        mockDeck.add(beornsHospitality, 0);
         PlayerDeckBuild mockBuild = new PlayerDeckBuild(mockDeck);
         mockBuild.addHero(first);
         mockBuild.addHero(first);
@@ -176,6 +176,10 @@ public class LordOfTheRings {
         GameManager manager = new GameManager(mockBuildArray, enemyBuild);
         Board newBoard = manager.getBoard();
         newBoard.getPlayerZoneAt(0).addResourcesToHero(0, 6);
+        newBoard.getPlayerZoneAt(0).getCharZone().addAllyToAllyZone(second.createCard());
+        newBoard.getPlayerZoneAt(0).getCharZone().addAllyToAllyZone(second.createCard());
+        newBoard.getPlayerZoneAt(0).getCharZone().addAllyToAllyZone(second.createCard());
+        newBoard.getPlayerZoneAt(0).getCharZone().addAllyToAllyZone(second.createCard());
         newBoard.getEncounterZone().addNumOfCardsToDeck(firstEnemy, 5);
         newBoard.getEncounterZone().addNumOfCardsToDeck(firstLocation, 3);
         newBoard.getPlayerZoneAt(0).getEngagementArea().addEnemy(enemy);
