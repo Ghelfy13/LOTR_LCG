@@ -80,6 +80,10 @@ public class LordOfTheRings {
         ArrayList<Effect> list3 = new ArrayList<>();
         list3.add(healPlayersHeros);
         
+        DiscardCardToDrawEffect discardToDraw = new DiscardToDrawEffect();
+        ArrayList<Effect> list4 = new ArrayList<>();
+        list4.add(discardToDraw);
+        
         Identification AragornID = new Identification(ExpansionName.CORE, 1);
         HeroCardModel first = new HeroCardModel(
                 "Aragorn",
@@ -106,6 +110,17 @@ public class LordOfTheRings {
             1,
             "Choose and ready 1 ally card and discard card",
             list2) ;
+        
+        Identification loriensWealthID = new Identification(ExpansionName.CORE, 64);
+        EventCardModel loriensWealth = new EventCardModel(
+            "Lorien's Wealth",
+            SphereOfInfluence.LORE,
+            PlayerCardType.EVENT,
+            new String[]{""},
+            loriensWealthID,
+            3,
+            "Choose a player.  That player draws 3 cards",
+            list4);
         
         Identification BeornsHospitalityID = new Identification(ExpansionName.CORE, 68);
         EventCardModel beornsHospitality = new EventCardModel(
