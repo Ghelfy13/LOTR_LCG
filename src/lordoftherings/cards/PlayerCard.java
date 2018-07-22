@@ -36,6 +36,7 @@ public abstract class PlayerCard{
         this.cardLocation = cardLocation;
         this.ownerID = ownerID;
         this.controllerID = controllerID;
+        effectActions = new ArrayList<>();
     }
     
     public LocationOnBoard getLocation(){
@@ -62,9 +63,11 @@ public abstract class PlayerCard{
     public void setController(int newControllerID){
         controllerID = newControllerID;
     }
+    
     public int getCost(){
         return getCardModel().getCost();
     }
+    
     public String getIdentity(){
         return getCardModel().identify();
     }

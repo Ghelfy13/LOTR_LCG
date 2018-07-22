@@ -1,5 +1,8 @@
-//Copyright Amanda V. Harris 2018-present. All Rights Reserved.
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package lordoftherings.effects;
 
 import lordoftherings.LocationOnBoard;
@@ -9,31 +12,35 @@ import lordoftherings.actions.EffectAction;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.boardcomponents.PlayerZone;
 import lordoftherings.boardcomponents.SuspensionType;
-import lordoftherings.cards.EventCard;
+import lordoftherings.cards.CharacterCard;
 import lordoftherings.cards.PlayerCard;
 import lordoftherings.matcher.PlayerZoneMatcher;
 import lordoftherings.transaction_managers.ClearSuspensionHandler;
-import lordoftherings.transaction_managers.DiscardToDrawCardsHandler;
+import lordoftherings.transaction_managers.ExhaustToDrawHandler;
 import lordoftherings.transaction_managers.PlayerQueryHandle;
 import lordoftherings.transaction_managers.PlayerQueryRequirements;
 
-public class DiscardToDrawEffect implements Effect{
+/**
+ *
+ * @author Amanda
+ */
+public class ExhaustToDrawEffect implements Effect {
     
     private int drawValue = 0;
     
-    public DiscardToDrawEffect(int num){
+    public ExhaustToDrawEffect(int num){
         drawValue = num;
     }
 
     @Override
     public boolean execute(int askingID, Board board, PlayerCard card) {
         board.addSuspension(SuspensionType.EFFECT);
-        EventCard event = (EventCard) card;
-        PlayerZoneMatcher desiredPlayerZone = new PlayerZoneMatcher();
+        CharacterCard character = (CharacterCard) card;
+        PlayerZoneMatcher desiredPlayer = new PlayerZoneMatcher();
         PlayerQueryRequirements requirements = new PlayerQueryRequirements(
-            desiredPlayerZone, 1, 1);
-        board.handlePlayerZoneQuery(new PlayerQueryHandle(requirements, 
-            new DiscardToDrawCardsHandler(board, event, drawValue),
+            desiredPlayer, 1, 1);
+        board.handlePlayerZoneQuery(new PlayerQueryHandle(requirements,
+            new ExhaustToDrawHandler(board, character, drawValue),
             new ClearSuspensionHandler(board)),
             "Choose a player to draw " + drawValue + " cards.");
         return true;
@@ -42,15 +49,15 @@ public class DiscardToDrawEffect implements Effect{
     @Override
     public ActionState getCurrentState(int askingID, Board board, PlayerCard card) {
         PlayerZone zone = board.getCurrentPlayerZone();
-        if(askingID == card.getOwner() && board.getCurrentPlayerNum() == 
-                card.getOwner() &&
-                zone.getHerosResources() >= card.getCost() && 
+        if(askingID == card.getOwner() && 
+                board.getCurrentPlayerNum() == card.getOwner() &&
                 board.getPhaseManagerGovenor().isCurrentPhaseActionable() &&
-                card.getLocation() == LocationOnBoard.HAND){
+                card.getLocation() == LocationOnBoard.FIELD){
             return ActionState.EXECUTABLE;
         }else if(askingID == card.getOwner() && 
                 board.getCurrentPlayerNum() == card.getOwner() &&
-                card.getLocation() == LocationOnBoard.HAND){
+                card.getLocation() == LocationOnBoard.FIELD&&
+                board.getPhaseManagerGovenor().isCurrentPhaseActionable()){
             return ActionState.VISIBLE;
         }
         return ActionState.NOTAVAILABLE;
@@ -58,7 +65,7 @@ public class DiscardToDrawEffect implements Effect{
 
     @Override
     public String createDescription(PlayerCard card) {
-        return "Discard " + card.getTitle() + " to draw " + drawValue + " cards.";
+        return "Exhaust Beravor to allow a selected player to draw 2 cards";
     }
 
     @Override

@@ -24,7 +24,9 @@ import lordoftherings.characters.Enemy;
 import lordoftherings.boardcomponents.Location;
 import lordoftherings.cardmodel.EventCardModel;
 import lordoftherings.deckcomponents.ExpansionName;
+import lordoftherings.effects.DiscardToDrawEffect;
 import lordoftherings.effects.Effect;
+import lordoftherings.effects.ExhaustToDrawEffect;
 import lordoftherings.effects.HealEffect;
 import lordoftherings.effects.HealPlayersHerosAndDiscardCardEffect;
 import lordoftherings.effects.ReadyAllyToDiscardCardEffect;
@@ -80,9 +82,29 @@ public class LordOfTheRings {
         ArrayList<Effect> list3 = new ArrayList<>();
         list3.add(healPlayersHeros);
         
-        DiscardCardToDrawEffect discardToDraw = new DiscardToDrawEffect();
+        DiscardToDrawEffect discardToDraw = new DiscardToDrawEffect(3);
         ArrayList<Effect> list4 = new ArrayList<>();
         list4.add(discardToDraw);
+        
+        ExhaustToDrawEffect exhaustToDraw = new ExhaustToDrawEffect(2);
+        ArrayList<Effect> list5 = new ArrayList<>();
+        list5.add(exhaustToDraw);
+        
+        Identification BeravorID = new Identification(ExpansionName.CORE, 12);
+        HeroCardModel beravor = new HeroCardModel(
+            "Beravor",
+            SphereOfInfluence.LORE,
+            PlayerCardType.HERO,
+            new String [] {"Dunedain", "Ranger"},
+            BeravorID,
+            2, 
+            2,
+            2,
+            4,
+            10,
+            4,
+            "",
+            list5);
         
         Identification AragornID = new Identification(ExpansionName.CORE, 1);
         HeroCardModel first = new HeroCardModel(
@@ -98,7 +120,7 @@ public class LordOfTheRings {
                 12,
                 0,
                 "",
-                new ArrayList<Effect>());
+                new ArrayList<>());
         
         Identification EverVigilantID = new Identification(ExpansionName.CORE, 20);
         EventCardModel everVigilant = new EventCardModel(
@@ -170,12 +192,13 @@ public class LordOfTheRings {
         
         DeckBuild mockDeck = new DeckBuild();
         mockDeck.add(everVigilant, 0);
-        mockDeck.add(second, 7);
+        mockDeck.add(second, 0);
         mockDeck.add(beornsHospitality, 0);
+        mockDeck.add(loriensWealth, 7);
         PlayerDeckBuild mockBuild = new PlayerDeckBuild(mockDeck);
         mockBuild.addHero(first);
         mockBuild.addHero(first);
-        mockBuild.addHero(first);
+        mockBuild.addHero(beravor);
         PlayerDeckBuild[] mockBuildArray = new PlayerDeckBuild[1];
         mockBuildArray[0] = mockBuild;
         

@@ -29,7 +29,10 @@ public class HeroCard extends CharacterCard {
     }
     
     public static HeroCard get(HeroCardModel model){
-        HeroCard result = new HeroCard(model);
+        HeroCard result = new HeroCard(LocationOnBoard.FIELD,
+            0,
+            0,
+            model);
         result.instantiateActions();
         return result;
     }
