@@ -98,7 +98,9 @@ public class LordOfTheRings {
         ArrayList<Effect> list6 = new ArrayList<>();
         list6.add(exhaustToRaiseWillPower);
         
-        
+        ExhaustToDrawEffect exhaustToDrawGleowine = new ExhaustToDrawEffect(1);
+        ArrayList<Effect> list7 = new ArrayList<>();
+        list7.add(exhaustToDrawGleowine);
         
         Identification BeravorID = new Identification(ExpansionName.CORE, 12);
         HeroCardModel beravor = new HeroCardModel(
@@ -180,6 +182,21 @@ public class LordOfTheRings {
           "Exhaust Daughter of Nimrodel to heal up to 2 damage on any 1 hero",
           list);
         
+        Identification GleowineID = new Identification(ExpansionName.CORE, 62);
+        AllyCardModel gleowine = new AllyCardModel(
+            "Gleowine",
+            SphereOfInfluence.LORE,
+            PlayerCardType.ALLY,
+            new String[]{"Minstrel", "Rohan"},
+            GleowineID,
+            2,
+            1,
+            0,
+            0,
+            2,
+            "Exhaust Gleowine to choose a player.  That player draws 1 card.",
+            list7);
+        
         Identification FaramirID = new Identification(ExpansionName.CORE, 14);
         AllyCardModel faramir = new AllyCardModel(
             "Faramir",
@@ -220,7 +237,8 @@ public class LordOfTheRings {
         mockDeck.add(everVigilant, 0);
         mockDeck.add(second, 0);
         mockDeck.add(beornsHospitality, 0);
-        mockDeck.add(faramir, 3);
+        mockDeck.add(faramir,0);
+        mockDeck.add(gleowine, 2);
         mockDeck.add(loriensWealth, 0);
         PlayerDeckBuild mockBuild = new PlayerDeckBuild(mockDeck);
         mockBuild.addHero(first);

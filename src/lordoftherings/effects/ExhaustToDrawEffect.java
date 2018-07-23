@@ -63,9 +63,10 @@ public class ExhaustToDrawEffect implements Effect {
         }
         if(askingID == card.getOwner() && 
                 board.getCurrentPlayerNum() == card.getOwner() &&
+                card.getLocation() == LocationOnBoard.FIELD &&
                 !character.isExhausted()&&
-                board.getPhaseManagerGovenor().isCurrentPhaseActionable() &&
-                card.getLocation() == LocationOnBoard.FIELD){
+                board.getPhaseManagerGovenor().isCurrentPhaseActionable() 
+                ){
             return ActionState.EXECUTABLE;
         }else if(askingID == card.getOwner() && 
                 board.getCurrentPlayerNum() == card.getOwner() &&
