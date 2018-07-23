@@ -14,6 +14,9 @@ import lordoftherings.boardcomponents.PlayerZone;
 import lordoftherings.boardcomponents.SuspensionType;
 import lordoftherings.cards.CharacterCard;
 import lordoftherings.cards.PlayerCard;
+import lordoftherings.characters.Ally;
+import lordoftherings.characters.GameCharacter;
+import lordoftherings.characters.Hero;
 import lordoftherings.matcher.PlayerZoneMatcher;
 import lordoftherings.transaction_managers.ClearSuspensionHandler;
 import lordoftherings.transaction_managers.ExhaustToDrawHandler;
@@ -49,8 +52,18 @@ public class ExhaustToDrawEffect implements Effect {
     @Override
     public ActionState getCurrentState(int askingID, Board board, PlayerCard card) {
         PlayerZone zone = board.getCurrentPlayerZone();
+        CharacterCard charCard = (CharacterCard) card;
+        GameCharacter character;
+        Ally myAlly = zone.getCharZone().findAlly(charCard);
+        Hero myHero = zone.getCharZone().findHero(charCard);
+        if(myAlly != null){
+            character = myAlly;
+        }else{
+            character = myHero;//can equal null here
+        }
         if(askingID == card.getOwner() && 
                 board.getCurrentPlayerNum() == card.getOwner() &&
+                !character.isExhausted()&&
                 board.getPhaseManagerGovenor().isCurrentPhaseActionable() &&
                 card.getLocation() == LocationOnBoard.FIELD){
             return ActionState.EXECUTABLE;

@@ -16,7 +16,7 @@ import lordoftherings.modifiers.WillPowerModifier;
  */
 public abstract class CharacterCard extends PlayerCard{
     private CommitCharacterAction commitAction;
-    private ArrayList<WillPowerModifier> willPowerModifiers;
+    
     
     public CharacterCard(){
     }
@@ -25,7 +25,7 @@ public abstract class CharacterCard extends PlayerCard{
             int ownerID, 
             int controllerID){
         super(cardLocation, ownerID, controllerID);
-        willPowerModifiers = new ArrayList<>();
+        
     }
     
     public void instantiateActions(){
@@ -33,25 +33,9 @@ public abstract class CharacterCard extends PlayerCard{
         commitAction = new CommitCharacterAction(this);
     }
     
-    public void addWillPowerMod(WillPowerModifier mod){
-        willPowerModifiers.add(mod);
-    }
     
-    public boolean removeWillPowerMod(WillPowerModifier mod){
-        return willPowerModifiers.remove(mod);
-    }
     
-    public ArrayList<WillPowerModifier> getWillPowerMods(){
-        return willPowerModifiers;
-    }
-    
-    public int getWillPowerWithMods(){
-        int num = getCardModel().getWillPower();
-        for(int i = 0; i < willPowerModifiers.size(); ++i){
-            num += willPowerModifiers.get(i).getNumOfAdjustment();
-        }
-        return num;
-    }
+   
     
     @Override
     public abstract CharacterCardModel getCardModel();

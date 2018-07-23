@@ -2,7 +2,9 @@
 
 package lordoftherings.characters;
 
+import java.util.ArrayList;
 import lordoftherings.cards.CharacterCard;
+import lordoftherings.modifiers.WillPowerModifier;
 
 /**
  *
@@ -12,15 +14,36 @@ public abstract class GameCharacter {
     protected int damage;
     private boolean isExhausted;
     private boolean isCommitted;
-    
+    private ArrayList<WillPowerModifier> willPowerModifiers;
     
     public GameCharacter(){
         damage = 0;
         isExhausted = false;
         isCommitted = false;
+        willPowerModifiers = new ArrayList<>();
     }
     
     abstract public CharacterCard getCard();
+    
+    public void addWillPowerMod(WillPowerModifier mod){
+        willPowerModifiers.add(mod);
+    }
+    
+     public boolean removeWillPowerMod(WillPowerModifier mod){
+        return willPowerModifiers.remove(mod);
+    }
+    
+    public ArrayList<WillPowerModifier> getWillPowerMods(){
+        return willPowerModifiers;
+    }
+    
+    public int getWillPowerWithMods(){
+        int num = getCard().getCardModel().getWillPower();
+        for(int i = 0; i < willPowerModifiers.size(); ++i){
+            num += willPowerModifiers.get(i).getNumOfAdjustment();
+        }
+        return num;
+    }
     
     public int getAttack(){
         return getCard().getCardModel().getAttack();
@@ -35,7 +58,7 @@ public abstract class GameCharacter {
     }
     
     public int getWillPower(){
-        return getCard().getCardModel().getWillPower();
+        return getWillPowerWithMods();
     }
     
     public int getHealth(){

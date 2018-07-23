@@ -27,11 +27,14 @@ import lordoftherings.deckcomponents.ExpansionName;
 import lordoftherings.effects.DiscardToDrawEffect;
 import lordoftherings.effects.Effect;
 import lordoftherings.effects.ExhaustToDrawEffect;
+import lordoftherings.effects.ExhaustToRaiseWillPowerEffect;
 import lordoftherings.effects.HealEffect;
 import lordoftherings.effects.HealPlayersHerosAndDiscardCardEffect;
 import lordoftherings.effects.ReadyAllyToDiscardCardEffect;
 import lordoftherings.gui.GameManagerView;
 import lordoftherings.manager.BoardControllerComponents.GameManagerViewController;
+import lordoftherings.modifiers.LifeSpanOfModifier;
+import lordoftherings.modifiers.WillPowerModifier;
 
 /**
  *
@@ -91,7 +94,7 @@ public class LordOfTheRings {
         list5.add(exhaustToDraw);
         
         ExhaustToRaiseWillPowerEffect exhaustToRaiseWillPower = 
-                new ExhaustToRaiseWillPowerEffect(1);
+                new ExhaustToRaiseWillPowerEffect(1, new WillPowerModifier(1, LifeSpanOfModifier.ENDOFPHASE));
         ArrayList<Effect> list6 = new ArrayList<>();
         list6.add(exhaustToRaiseWillPower);
         
@@ -217,7 +220,8 @@ public class LordOfTheRings {
         mockDeck.add(everVigilant, 0);
         mockDeck.add(second, 0);
         mockDeck.add(beornsHospitality, 0);
-        mockDeck.add(loriensWealth, 7);
+        mockDeck.add(faramir, 3);
+        mockDeck.add(loriensWealth, 0);
         PlayerDeckBuild mockBuild = new PlayerDeckBuild(mockDeck);
         mockBuild.addHero(first);
         mockBuild.addHero(first);
@@ -237,9 +241,6 @@ public class LordOfTheRings {
         GameManager manager = new GameManager(mockBuildArray, enemyBuild);
         Board newBoard = manager.getBoard();
         newBoard.getPlayerZoneAt(0).addResourcesToHero(0, 6);
-        newBoard.getPlayerZoneAt(0).getCharZone().addAllyToAllyZone(second.createCard());
-        newBoard.getPlayerZoneAt(0).getCharZone().addAllyToAllyZone(second.createCard());
-        newBoard.getPlayerZoneAt(0).getCharZone().addAllyToAllyZone(second.createCard());
         newBoard.getPlayerZoneAt(0).getCharZone().addAllyToAllyZone(second.createCard());
         newBoard.getEncounterZone().addNumOfCardsToDeck(firstEnemy, 5);
         newBoard.getEncounterZone().addNumOfCardsToDeck(firstLocation, 3);

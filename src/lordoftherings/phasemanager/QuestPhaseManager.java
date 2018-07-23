@@ -58,6 +58,7 @@ public class QuestPhaseManager implements PhaseManager{
             case RESOLVE_QUEST:
                for(int i = 0; i < board.getNumOfPlayerZones(); ++i){
                     board.getPlayerZoneAt(i).unsetCommittedCharacters();
+                    board.getPlayerZoneAt(i).clearUpPhaseModifiers();
                 } 
                return;
             default:

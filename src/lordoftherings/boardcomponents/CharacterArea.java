@@ -8,6 +8,7 @@ import lordoftherings.cards.CharacterCard;
 import lordoftherings.characters.Ally;
 import lordoftherings.characters.GameCharacter;
 import lordoftherings.characters.Hero;
+import lordoftherings.modifiers.LifeSpanOfModifier;
 import lordoftherings.modifiers.WillPowerModifier;
 /**
  *
@@ -30,10 +31,10 @@ public class CharacterArea {
     
     public void addWillPowerModifierToAll(WillPowerModifier mod){
         for(int i = 0; i < heroZone.getNumOfHeros(); ++i){
-            heroZone.getHeroAt(i).getCard().addWillPowerMod(mod);
+            heroZone.getHeroAt(i).addWillPowerMod(mod);
         }
         for(int i = 0; i < allyZone.getSize(); ++i){
-            allyZone.getAllyAt(i).getCard().addWillPowerMod(mod);
+            allyZone.getAllyAt(i).addWillPowerMod(mod);
         }
     }
     
@@ -99,6 +100,26 @@ public class CharacterArea {
             return allyZone.getAllyAt(indexOfAlly);
         }
         return null;
+    }
+
+    public void cleanUpPhaseModifiers() {//Only works for willPowerModifier
+        for(int i = 0; i < allyZone.getSize(); ++i){
+            ArrayList<WillPowerModifier> willPower = allyZone.getAllyAt(i).getWillPowerMods();
+            for(int j = 0; j < willPower.size(); ++j){
+                if(willPower.get(j).getLifeSpan() == LifeSpanOfModifier.ENDOFPHASE){
+                    willPower.remove(willPower.get(j));
+                }
+            }
+        }
+        
+        for(int i = 0; i < heroZone.getNumOfHeros(); ++i){
+            ArrayList<WillPowerModifier> willPower = heroZone.getHeroAt(i).getWillPowerMods();
+            for(int j = 0; j < willPower.size(); ++j){
+                if(willPower.get(j).getLifeSpan() == LifeSpanOfModifier.ENDOFPHASE){
+                    willPower.remove(willPower.get(j));
+                }
+            }
+        }
     }
 
 }

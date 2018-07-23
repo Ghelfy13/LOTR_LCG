@@ -185,5 +185,9 @@ public class PlayerZone {
         return board.getEnemyDiscardPile();
     }
 
+    public void clearUpPhaseModifiers() {
+        field.getCharacterZone().cleanUpPhaseModifiers();
+    }
+
     
 }
