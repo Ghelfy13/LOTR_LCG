@@ -10,6 +10,7 @@ import lordoftherings.LocationOnBoard;
 import lordoftherings.PlayerCardType;
 import lordoftherings.actions.EffectAction;
 import lordoftherings.effects.Effect;
+import lordoftherings.modifiers.WillPowerModifier;
 
 /**
  *
@@ -23,11 +24,13 @@ public abstract class PlayerCard{
     private ArrayList<EffectAction> effectActions;
     
     
+    
     public PlayerCard(){
         cardLocation = LocationOnBoard.UNSET;
         ownerID = ID_UNSET;
         controllerID = ID_UNSET;
         effectActions = new ArrayList<>();
+        
     }
     
     public PlayerCard(LocationOnBoard cardLocation, 
@@ -38,6 +41,8 @@ public abstract class PlayerCard{
         this.controllerID = controllerID;
         effectActions = new ArrayList<>();
     }
+    
+    
     
     public LocationOnBoard getLocation(){
         return cardLocation;

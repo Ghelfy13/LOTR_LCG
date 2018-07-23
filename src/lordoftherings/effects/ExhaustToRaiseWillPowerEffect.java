@@ -4,16 +4,14 @@ package lordoftherings.effects;
 
 import lordoftherings.LocationOnBoard;
 import lordoftherings.actions.ActionState;
-import lordoftherings.actions.BasicEffectAction;
 import lordoftherings.actions.EffectAction;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.boardcomponents.PlayerZone;
 import lordoftherings.boardcomponents.SuspensionType;
-import lordoftherings.cards.EventCard;
+import lordoftherings.cards.AllyCard;
 import lordoftherings.cards.PlayerCard;
 import lordoftherings.matcher.PlayerZoneMatcher;
 import lordoftherings.transaction_managers.ClearSuspensionHandler;
-import lordoftherings.transaction_managers.DiscardToHealPlayersHerosResultHandler;
 import lordoftherings.transaction_managers.PlayerQueryHandle;
 import lordoftherings.transaction_managers.PlayerQueryRequirements;
 
@@ -21,21 +19,26 @@ import lordoftherings.transaction_managers.PlayerQueryRequirements;
  *
  * @author Amanda
  */
-public class HealPlayersHerosAndDiscardCardEffect implements Effect{
-    
-    public HealPlayersHerosAndDiscardCardEffect(){}
+public class ExhaustToRaiseWillPowerEffect implements Effect{
 
+    private int numOfWill = 0;
+    
+    public ExhaustToRaiseWillPowerEffect(int num){
+        numOfWill = num;
+    }
+    
     @Override
     public boolean execute(int askingID, Board board, PlayerCard card) {
         board.addSuspension(SuspensionType.EFFECT);
-        EventCard event = (EventCard) card;
+        AllyCard myAlly = (AllyCard) card;
         PlayerZoneMatcher desiredPlayerZone = new PlayerZoneMatcher();
-        PlayerQueryRequirements requirements = new PlayerQueryRequirements
-            (desiredPlayerZone, 1, 1);
-        board.handlePlayerZoneQuery(new PlayerQueryHandle(requirements,
-            new DiscardToHealPlayersHerosResultHandler(board, event),
-            new ClearSuspensionHandler(board)), 
-            "Choose a player to heal all of their heros.");
+        PlayerQueryRequirements requirements = new PlayerQueryRequirements(
+            desiredPlayerZone, 1, 1);
+        board.handlePlayerZoneQuery( new PlayerQueryHandle(requirements,
+            new ExhaustToRaiseWillPowerHandler(board, myAlly),
+            new ClearSuspensionHandler(board)),
+            "Choose a player to have all their character's"
+                    + " will power raised by " + numOfWill);
         return true;
     }
 
@@ -56,12 +59,12 @@ public class HealPlayersHerosAndDiscardCardEffect implements Effect{
 
     @Override
     public String createDescription(PlayerCard card) {
-        return "Play this card to heal all heros on a chosen players field.";
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public EffectAction getAction(PlayerCard card) {
-        return new BasicEffectAction(card, this);
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

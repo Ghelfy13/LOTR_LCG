@@ -8,6 +8,7 @@ import lordoftherings.cards.CharacterCard;
 import lordoftherings.characters.Ally;
 import lordoftherings.characters.GameCharacter;
 import lordoftherings.characters.Hero;
+import lordoftherings.modifiers.WillPowerModifier;
 /**
  *
  * @author Amanda
@@ -25,6 +26,15 @@ public class CharacterArea {
     
     public int getTotalNumResources(){
         return heroZone.sumOfResources();
+    }
+    
+    public void addWillPowerModifierToAll(WillPowerModifier mod){
+        for(int i = 0; i < heroZone.getNumOfHeros(); ++i){
+            heroZone.getHeroAt(i).getCard().addWillPowerMod(mod);
+        }
+        for(int i = 0; i < allyZone.getSize(); ++i){
+            allyZone.getAllyAt(i).getCard().addWillPowerMod(mod);
+        }
     }
     
     public boolean addAllyToAllyZone(AllyCard newAlly){

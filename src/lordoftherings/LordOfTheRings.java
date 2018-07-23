@@ -90,6 +90,13 @@ public class LordOfTheRings {
         ArrayList<Effect> list5 = new ArrayList<>();
         list5.add(exhaustToDraw);
         
+        ExhaustToRaiseWillPowerEffect exhaustToRaiseWillPower = 
+                new ExhaustToRaiseWillPowerEffect(1);
+        ArrayList<Effect> list6 = new ArrayList<>();
+        list6.add(exhaustToRaiseWillPower);
+        
+        
+        
         Identification BeravorID = new Identification(ExpansionName.CORE, 12);
         HeroCardModel beravor = new HeroCardModel(
             "Beravor",
@@ -169,6 +176,22 @@ public class LordOfTheRings {
           3,
           "Exhaust Daughter of Nimrodel to heal up to 2 damage on any 1 hero",
           list);
+        
+        Identification FaramirID = new Identification(ExpansionName.CORE, 14);
+        AllyCardModel faramir = new AllyCardModel(
+            "Faramir",
+            SphereOfInfluence.LEADERSHIP,
+            PlayerCardType.ALLY,
+            new String [] {"Gondor", "Noble", "Ranger"},
+            FaramirID,
+            4,
+            2,
+            1,
+            2,
+            3,
+            "Exhaust Faramir to choose a player.  Each character controlled "
+                    + "by the player gets +1 Willpower until the end of the phase.",
+            list6);
         
         Identification QuestID = new Identification(ExpansionName.CORE, 122);
         QuestCardModel firstQuest = new QuestCardModel(
