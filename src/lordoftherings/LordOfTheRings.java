@@ -34,7 +34,8 @@ import lordoftherings.effects.ReadyAllyToDiscardCardEffect;
 import lordoftherings.gui.GameManagerView;
 import lordoftherings.manager.BoardControllerComponents.GameManagerViewController;
 import lordoftherings.modifiers.LifeSpanOfModifier;
-import lordoftherings.modifiers.WillPowerModifier;
+import lordoftherings.modifiers.Modifier;
+import lordoftherings.modifiers.TypeOfModifier;
 
 /**
  *
@@ -94,13 +95,38 @@ public class LordOfTheRings {
         list5.add(exhaustToDraw);
         
         ExhaustToRaiseWillPowerEffect exhaustToRaiseWillPower = 
-                new ExhaustToRaiseWillPowerEffect(1, new WillPowerModifier(1, LifeSpanOfModifier.ENDOFPHASE));
+                new ExhaustToRaiseWillPowerEffect(1, new Modifier(1, TypeOfModifier.WILL_POWER, LifeSpanOfModifier.ENDOFPHASE));
         ArrayList<Effect> list6 = new ArrayList<>();
         list6.add(exhaustToRaiseWillPower);
         
         ExhaustToDrawEffect exhaustToDrawGleowine = new ExhaustToDrawEffect(1);
         ArrayList<Effect> list7 = new ArrayList<>();
         list7.add(exhaustToDrawGleowine);
+        
+        
+        
+        Identification BladeMasteryID = new Identification(ExpansionName.CORE, 32);
+        EventCardModel bladeMastery = new EventCardModel(
+            "Blade Mastery",
+            SphereOfInfluence.LORE,
+            PlayerCardType.EVENT,
+            new String []{""},
+            BladeMasteryID,
+            1,
+            "Choose a character.  That character gets +1 attack and +1 defend this round",
+            new ArrayList<>());//Made a effect for this
+                
+        Identification EverVigilantID = new Identification(ExpansionName.CORE, 20);
+        EventCardModel everVigilant = new EventCardModel(
+            "Ever Vigilant", 
+            SphereOfInfluence.LEADERSHIP,
+            PlayerCardType.EVENT,
+            new String[]{""},
+            EverVigilantID,
+            1,
+            "Choose and ready 1 ally card and discard card",
+            list2) ;
+        
         
         Identification BeravorID = new Identification(ExpansionName.CORE, 12);
         HeroCardModel beravor = new HeroCardModel(
@@ -134,16 +160,6 @@ public class LordOfTheRings {
                 "",
                 new ArrayList<>());
         
-        Identification EverVigilantID = new Identification(ExpansionName.CORE, 20);
-        EventCardModel everVigilant = new EventCardModel(
-            "Ever Vigilant", 
-            SphereOfInfluence.LEADERSHIP,
-            PlayerCardType.EVENT,
-            new String[]{""},
-            EverVigilantID,
-            1,
-            "Choose and ready 1 ally card and discard card",
-            list2) ;
         
         Identification loriensWealthID = new Identification(ExpansionName.CORE, 64);
         EventCardModel loriensWealth = new EventCardModel(

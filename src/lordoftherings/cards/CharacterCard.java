@@ -8,7 +8,6 @@ import lordoftherings.actions.Action;
 import lordoftherings.actions.CommitCharacterAction;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.cardmodel.CharacterCardModel;
-import lordoftherings.modifiers.WillPowerModifier;
 
 /**
  *
@@ -18,8 +17,7 @@ public abstract class CharacterCard extends PlayerCard{
     private CommitCharacterAction commitAction;
     
     
-    public CharacterCard(){
-    }
+    public CharacterCard(){}
     
     public CharacterCard(LocationOnBoard cardLocation, 
             int ownerID, 
@@ -32,10 +30,6 @@ public abstract class CharacterCard extends PlayerCard{
         super.instantiateActions();
         commitAction = new CommitCharacterAction(this);
     }
-    
-    
-    
-   
     
     @Override
     public abstract CharacterCardModel getCardModel();

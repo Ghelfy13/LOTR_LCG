@@ -10,7 +10,6 @@ import lordoftherings.LocationOnBoard;
 import lordoftherings.PlayerCardType;
 import lordoftherings.actions.EffectAction;
 import lordoftherings.effects.Effect;
-import lordoftherings.modifiers.WillPowerModifier;
 
 /**
  *

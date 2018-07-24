@@ -13,7 +13,7 @@ import lordoftherings.cards.AllyCard;
 import lordoftherings.cards.PlayerCard;
 import lordoftherings.characters.Ally;
 import lordoftherings.matcher.PlayerZoneMatcher;
-import lordoftherings.modifiers.WillPowerModifier;
+import lordoftherings.modifiers.Modifier;
 import lordoftherings.transaction_managers.ClearSuspensionHandler;
 import lordoftherings.transaction_managers.ExhaustToRaiseWillPowerHandler;
 import lordoftherings.transaction_managers.PlayerQueryHandle;
@@ -26,9 +26,9 @@ import lordoftherings.transaction_managers.PlayerQueryRequirements;
 public class ExhaustToRaiseWillPowerEffect implements Effect{
 
     private int numOfWill = 0;
-    private WillPowerModifier mod;
+    private Modifier mod;
     
-    public ExhaustToRaiseWillPowerEffect(int num, WillPowerModifier mod){
+    public ExhaustToRaiseWillPowerEffect(int num, Modifier mod){
         numOfWill = num;
         this.mod = mod;
     }

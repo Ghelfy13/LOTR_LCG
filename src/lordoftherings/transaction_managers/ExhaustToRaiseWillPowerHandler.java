@@ -8,7 +8,7 @@ import lordoftherings.boardcomponents.PlayerZone;
 import lordoftherings.cards.CharacterCard;
 import lordoftherings.cards.PlayerCard;
 import lordoftherings.characters.Ally;
-import lordoftherings.modifiers.WillPowerModifier;
+import lordoftherings.modifiers.Modifier;
 
 /**
  *
@@ -18,10 +18,10 @@ public class ExhaustToRaiseWillPowerHandler implements ResultHandler<ArrayList<P
     //Currently only handles ally cards. 
     private Board board;
     private PlayerCard card;
-    private WillPowerModifier mod;
+    private Modifier mod;
     
     public ExhaustToRaiseWillPowerHandler(Board board, PlayerCard card, 
-            WillPowerModifier mod){
+            Modifier mod){
         this.board = board;
         this.card = card;
         this.mod = mod;
@@ -33,7 +33,7 @@ public class ExhaustToRaiseWillPowerHandler implements ResultHandler<ArrayList<P
         PlayerZone current = result.get(0);
         Ally myAlly = current.getCharZone().findAlly(character);
         myAlly.exhaust();
-        current.getCharZone().addWillPowerModifierToAll(mod);
+        current.getCharZone().addModifierToAll(mod);
     }
     
 }
