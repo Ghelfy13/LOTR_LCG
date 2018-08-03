@@ -87,7 +87,7 @@ public class AllyArea {
         int questingTotal = 0;
         for(int i = 0; i < myAllies.size(); ++i){
             if(myAllies.get(i).isCommitted()){
-                questingTotal += myAllies.get(i).getWillPower();
+                questingTotal += myAllies.get(i).getWillPowerWithMods();
             }
         }
         return questingTotal;

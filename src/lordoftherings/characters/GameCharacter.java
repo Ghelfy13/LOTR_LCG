@@ -45,7 +45,7 @@ public abstract class GameCharacter {
                 willMods.add(modifiers.get(i));
             }
         }
-        int num = getWillPower();
+        int num = getBaseWillPower();
         for(int j = 0; j < willMods.size(); ++j){
             num += willMods.get(j).getNumOfAdjustment();
         }
@@ -59,7 +59,7 @@ public abstract class GameCharacter {
                 attackMods.add(modifiers.get(i));
             }
         }
-        int num = getAttack();
+        int num = getBaseAttack();
         for(int j = 0; j < attackMods.size(); ++j){
             num += attackMods.get(j).getNumOfAdjustment();
         }
@@ -73,31 +73,45 @@ public abstract class GameCharacter {
                 defenseMods.add(modifiers.get(i));
             }
         }
-        int num = getDefense();
+        int num = getBaseDefense();
         for(int j = 0; j < defenseMods.size(); ++j){
             num += defenseMods.get(j).getNumOfAdjustment();
         }
         return num;
     }
     
-    public int getAttack(){
+    public int getHitPointsWithMods(){
+        ArrayList<Modifier> hitPointMods = new ArrayList<>();
+        for(int i = 0; i < modifiers.size(); ++i){
+            if(modifiers.get(i).getType() == TypeOfModifier.HIT_POINTS){
+                hitPointMods.add(modifiers.get(i));
+            }
+        }
+        int num = getBaseWillPower();
+        for(int j = 0; j < hitPointMods.size(); ++j){
+            num += hitPointMods.get(j).getNumOfAdjustment();
+        }
+        return num;
+    }
+    
+    public int getBaseAttack(){
         return getCard().getCardModel().getAttack();
     }
     
-    public int getDefense(){
+    public int getBaseDefense(){
         return getCard().getCardModel().getDefense();
     }
     
-    public int getMaxHealth(){
+    public int getBaseMaxHealth(){
         return getCard().getCardModel().getHitPoints();
     }
     
-    public int getWillPower(){
-        return getWillPowerWithMods();
+    public int getBaseWillPower(){
+        return getCard().getCardModel().getWillPower();
     }
     
     public int getHealth(){
-        return (getMaxHealth() - damage);
+        return (getBaseMaxHealth() - damage);
     }
     
     public void exhaust(){
@@ -145,7 +159,7 @@ public abstract class GameCharacter {
     }
     
     public void assignDamageWithDefense(int damageDealt){
-        int receivedDamage = damageDealt - getDefense();
+        int receivedDamage = damageDealt - getDefenseWithMods();
         if(receivedDamage > 0){
             damage += receivedDamage;
         }

@@ -221,7 +221,7 @@ public class Board {
     public void resolveAttackOnEnemy(Enemy target, ArrayList<GameCharacter> attackers){
         int attackPower = 0;
         for(int i = 0; i < attackers.size(); ++i){
-            attackPower += attackers.get(i).getAttack();
+            attackPower += attackers.get(i).getAttackWithMods();
             attackers.get(i).exhaust();
         }
         int actualDamage = attackPower - target.getDefense();

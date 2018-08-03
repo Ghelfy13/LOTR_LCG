@@ -110,6 +110,8 @@ public class LordOfTheRings {
         mods.add(attack);
         mods.add(defense);
         DiscardToAddModifiersEffect playBladeMastery = new DiscardToAddModifiersEffect(mods);
+        ArrayList<Effect> list8 = new ArrayList<>();
+        list8.add(playBladeMastery);
         
         Identification BladeMasteryID = new Identification(ExpansionName.CORE, 32);
         EventCardModel bladeMastery = new EventCardModel(
@@ -120,7 +122,7 @@ public class LordOfTheRings {
             BladeMasteryID,
             1,
             "Choose a character.  That character gets +1 attack and +1 defend this round",
-            new ArrayList<>());//Made a effect for this
+            list8);
                 
         Identification EverVigilantID = new Identification(ExpansionName.CORE, 20);
         EventCardModel everVigilant = new EventCardModel(
@@ -256,11 +258,12 @@ public class LordOfTheRings {
                 2);
         
         DeckBuild mockDeck = new DeckBuild();
+        mockDeck.add(bladeMastery, 3);
         mockDeck.add(everVigilant, 0);
         mockDeck.add(second, 0);
         mockDeck.add(beornsHospitality, 0);
         mockDeck.add(faramir,0);
-        mockDeck.add(gleowine, 2);
+        mockDeck.add(gleowine, 0);
         mockDeck.add(loriensWealth, 0);
         PlayerDeckBuild mockBuild = new PlayerDeckBuild(mockDeck);
         mockBuild.addHero(first);

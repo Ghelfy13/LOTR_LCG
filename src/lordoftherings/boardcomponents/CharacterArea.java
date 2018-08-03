@@ -53,7 +53,7 @@ public class CharacterArea {
     public void moveDeadAllysToDiscardPile(){
         for(int i = 0; i < allyZone.getAllies().size(); ++i){
             Ally current = allyZone.getAllyAt(i);
-            if(current.getDamage() >= current.getMaxHealth()){
+            if(current.getDamage() >= current.getHitPointsWithMods()){
                 allyZone.removeAlly(current);
                 playerZone.moveCardToDiscardPile(current.getCard());
             }
@@ -63,7 +63,7 @@ public class CharacterArea {
     public void moveDeadHerosToDiscardPile(){
         for(int i = 0; i < heroZone.getNumOfHeros(); ++i){
             Hero current = heroZone.getHeroAt(i);
-            if(current.getDamage() >= current.getMaxHealth()){
+            if(current.getDamage() >= current.getHitPointsWithMods()){
                 heroZone.getHeros().remove(i);
                 playerZone.moveCardToDiscardPile(current.getCard());
             }

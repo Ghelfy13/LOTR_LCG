@@ -7,6 +7,7 @@ package lordoftherings.transaction_managers;
 
 import java.util.ArrayList;
 import lordoftherings.boardcomponents.Board;
+import lordoftherings.boardcomponents.PlayerZone;
 import lordoftherings.cards.EventCard;
 import lordoftherings.characters.GameCharacter;
 import lordoftherings.modifiers.Modifier;
@@ -35,6 +36,9 @@ public class DiscardToAddModifiersHandler implements ResultHandler<ArrayList<Gam
                 result.get(i).addModifier(mods.get(j));
             }
         }
+        PlayerZone playerZone = board.getPlayerZoneAt(event.getController());
+        playerZone.moveCardToDiscardPile(event);
+        playerZone.getHand().removeCard(event);
         board.removeTopSuspension();
     }
 }

@@ -67,7 +67,7 @@ public class HeroArea {
         int questingTotal = 0;
         for(int i = 0; i < myHeros.size(); ++i){
             if(myHeros.get(i).isCommitted()){
-                questingTotal += myHeros.get(i).getWillPower();
+                questingTotal += myHeros.get(i).getWillPowerWithMods();
             }
         }
         return questingTotal;
