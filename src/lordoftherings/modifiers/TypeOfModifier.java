@@ -10,5 +10,5 @@ public enum TypeOfModifier {
     ATTACK,
     DEFENSE,
     WILL_POWER,
-    RESOURCE
+    HIT_POINTS
 }

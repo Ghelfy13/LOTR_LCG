@@ -11,7 +11,7 @@ import lordoftherings.boardcomponents.PlayerZone;
 import lordoftherings.boardcomponents.SuspensionType;
 import lordoftherings.cards.EventCard;
 import lordoftherings.cards.PlayerCard;
-import lordoftherings.matcher.PlayerZoneMatcher;
+import lordoftherings.matcher.AnyMatcher;
 import lordoftherings.transaction_managers.ClearSuspensionHandler;
 import lordoftherings.transaction_managers.DiscardToHealPlayersHerosResultHandler;
 import lordoftherings.transaction_managers.PlayerQueryHandle;
@@ -29,7 +29,7 @@ public class HealPlayersHerosAndDiscardCardEffect implements Effect{
     public boolean execute(int askingID, Board board, PlayerCard card) {
         board.addSuspension(SuspensionType.EFFECT);
         EventCard event = (EventCard) card;
-        PlayerZoneMatcher desiredPlayerZone = new PlayerZoneMatcher();
+        AnyMatcher<PlayerZone> desiredPlayerZone = new AnyMatcher<>();
         PlayerQueryRequirements requirements = new PlayerQueryRequirements
             (desiredPlayerZone, 1, 1);
         board.handlePlayerZoneQuery(new PlayerQueryHandle(requirements,

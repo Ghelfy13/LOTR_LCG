@@ -11,12 +11,12 @@ import lordoftherings.cards.EventCard;
  *
  * @author Amanda
  */
-public class DiscardToDrawCardsHandler implements ResultHandler<ArrayList<PlayerZone>>{
+public class DiscardToDrawHandler implements ResultHandler<ArrayList<PlayerZone>>{
     private Board board;
     private EventCard card;
     private int numOfCards;
     
-    public DiscardToDrawCardsHandler(Board board, EventCard card, int num){
+    public DiscardToDrawHandler(Board board, EventCard card, int num){
         this.board = board;
         this.card = card;
         this.numOfCards = num;

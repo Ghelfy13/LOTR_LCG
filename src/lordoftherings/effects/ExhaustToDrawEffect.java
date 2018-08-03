@@ -17,7 +17,7 @@ import lordoftherings.cards.PlayerCard;
 import lordoftherings.characters.Ally;
 import lordoftherings.characters.GameCharacter;
 import lordoftherings.characters.Hero;
-import lordoftherings.matcher.PlayerZoneMatcher;
+import lordoftherings.matcher.AnyMatcher;
 import lordoftherings.transaction_managers.ClearSuspensionHandler;
 import lordoftherings.transaction_managers.ExhaustToDrawHandler;
 import lordoftherings.transaction_managers.PlayerQueryHandle;
@@ -39,7 +39,7 @@ public class ExhaustToDrawEffect implements Effect {
     public boolean execute(int askingID, Board board, PlayerCard card) {
         board.addSuspension(SuspensionType.EFFECT);
         CharacterCard character = (CharacterCard) card;
-        PlayerZoneMatcher desiredPlayer = new PlayerZoneMatcher();
+        AnyMatcher<PlayerZone> desiredPlayer = new AnyMatcher<>();
         PlayerQueryRequirements requirements = new PlayerQueryRequirements(
             desiredPlayer, 1, 1);
         board.handlePlayerZoneQuery(new PlayerQueryHandle(requirements,

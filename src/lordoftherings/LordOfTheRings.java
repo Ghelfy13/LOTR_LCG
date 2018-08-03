@@ -24,6 +24,7 @@ import lordoftherings.characters.Enemy;
 import lordoftherings.boardcomponents.Location;
 import lordoftherings.cardmodel.EventCardModel;
 import lordoftherings.deckcomponents.ExpansionName;
+import lordoftherings.effects.DiscardToAddModifiersEffect;
 import lordoftherings.effects.DiscardToDrawEffect;
 import lordoftherings.effects.Effect;
 import lordoftherings.effects.ExhaustToDrawEffect;
@@ -103,7 +104,12 @@ public class LordOfTheRings {
         ArrayList<Effect> list7 = new ArrayList<>();
         list7.add(exhaustToDrawGleowine);
         
-        
+        Modifier attack = new Modifier(1, TypeOfModifier.ATTACK, LifeSpanOfModifier.ENDOFPHASE);
+        Modifier defense = new Modifier(1, TypeOfModifier.DEFENSE, LifeSpanOfModifier.ENDOFPHASE);
+        ArrayList<Modifier> mods = new ArrayList<>();
+        mods.add(attack);
+        mods.add(defense);
+        DiscardToAddModifiersEffect playBladeMastery = new DiscardToAddModifiersEffect(mods);
         
         Identification BladeMasteryID = new Identification(ExpansionName.CORE, 32);
         EventCardModel bladeMastery = new EventCardModel(

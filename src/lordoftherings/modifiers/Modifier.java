@@ -7,25 +7,25 @@ package lordoftherings.modifiers;
  * @author Amanda
  */
 public class Modifier {
-    private int numOfAdjustment;
-    private TypeOfModifier type;
     private LifeSpanOfModifier lifeSpan;
+    private TypeOfModifier type;
+    private int numOfAdjustment;
     
-    public Modifier(int num, TypeOfModifier type, LifeSpanOfModifier lifeSpan){
-        this.numOfAdjustment = num;
+    public Modifier(int numOfAdjustment, TypeOfModifier type, LifeSpanOfModifier lifeSpan){
         this.type = type;
         this.lifeSpan = lifeSpan;
+        this.numOfAdjustment = numOfAdjustment;
     }
     
-    public int getNumOfAdjustment(){
-        return numOfAdjustment;
+    public LifeSpanOfModifier getLifeSpan(){
+        return lifeSpan;
     }
     
     public TypeOfModifier getType(){
         return type;
     }
     
-    public LifeSpanOfModifier getLifeSpan(){
-        return lifeSpan;
+    public int getNumOfAdjustment(){
+        return numOfAdjustment;
     }
 }
