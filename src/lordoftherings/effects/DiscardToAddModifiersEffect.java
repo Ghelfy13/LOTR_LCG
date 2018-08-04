@@ -29,6 +29,19 @@ public class DiscardToAddModifiersEffect implements Effect{
     public DiscardToAddModifiersEffect(ArrayList<Modifier> mods){
         modifiers = mods;
     }
+    
+    public String getModifierDescription(){
+        StringBuilder builder = new StringBuilder();
+        for(int i = 0; i < modifiers.size(); ++i){
+            String type = modifiers.get(i).getType().toString().toLowerCase();
+            int num = modifiers.get(i).getNumOfAdjustment();
+            builder.append( type +" by " + num + " ");
+            if(i > 0 && i < modifiers.size()-1){
+                builder.append("& ");
+            }
+        }
+        return builder.toString();
+    }
 
     @Override
     public boolean execute(int askingID, Board board, PlayerCard card) {
@@ -40,7 +53,7 @@ public class DiscardToAddModifiersEffect implements Effect{
         board.handleCharacterQuery(new CharacterQueryHandle(requirements, 
             new DiscardToAddModifiersHandler(board, event, modifiers),
             new ClearSuspensionHandler(board)),
-            "Choose a character to raise some of their stats.");
+            "Choose a character to raise " + getModifierDescription());
         return true;
     }
 
