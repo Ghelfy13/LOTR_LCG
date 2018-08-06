@@ -9,15 +9,12 @@ import lordoftherings.characters.GameCharacter;
  *
  * @author Amanda
  */
-public class ExhaustedMatcher implements Matcher<GameCharacter>{
-    
-    
+public class ExhaustedHeroMatcher implements Matcher<GameCharacter>{
 
     @Override
     public boolean matches(GameCharacter element) {
-        return ((element.getCard().getCardType() == PlayerCardType.ALLY ||
-                element.getCard().getCardType() == PlayerCardType.HERO)&& 
-                element.isExhausted());
+        return element.getCard().getCardType() == PlayerCardType.HERO &&
+                element.isExhausted();
     }
     
 }

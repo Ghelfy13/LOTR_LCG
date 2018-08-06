@@ -113,6 +113,17 @@ public class LordOfTheRings {
         ArrayList<Effect> list8 = new ArrayList<>();
         list8.add(playBladeMastery);
         
+        Identification CommonSenseID = new Identification(ExpansionName.CORE,21);
+        EventCardModel commonSense = new EventCardModel(
+            "Common Sense",
+            SphereOfInfluence.LEADERSHIP,
+            PlayerCardType.EVENT,
+            new String []{""},
+            CommonSenseID,
+            0,
+            "Exhaust 1 hero you control to choose and ready a different hero.",
+            new ArrayList<>());
+        
         Identification BladeMasteryID = new Identification(ExpansionName.CORE, 32);
         EventCardModel bladeMastery = new EventCardModel(
             "Blade Mastery",
