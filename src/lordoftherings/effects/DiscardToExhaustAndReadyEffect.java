@@ -9,30 +9,27 @@ import lordoftherings.boardcomponents.Board;
 import lordoftherings.boardcomponents.SuspensionType;
 import lordoftherings.cards.EventCard;
 import lordoftherings.cards.PlayerCard;
-import lordoftherings.matcher.ExhaustedHeroMatcher;
-import lordoftherings.matcher.ExhaustedMatcher;
+import lordoftherings.matcher.ReadyHeroMatcher;
 import lordoftherings.transaction_managers.CharacterQueryHandle;
 import lordoftherings.transaction_managers.CharacterQueryRequirements;
 import lordoftherings.transaction_managers.ClearSuspensionHandler;
-import lordoftherings.transaction_managers.DiscardToDrawHandler;
-import lordoftherings.transaction_managers.PlayerQueryHandle;
-import lordoftherings.transaction_managers.PlayerQueryRequirements;
+import lordoftherings.transaction_managers.DiscardToExhaustAndReadyHandler;
 
 /**
  *
  * @author Amanda
  */
-public class DiscardToExhaustAndReady implements Effect{
+public class DiscardToExhaustAndReadyEffect implements Effect{
 
     @Override
     public boolean execute(int askingID, Board board, PlayerCard card) {
         board.addSuspension(SuspensionType.EFFECT);
         EventCard event = (EventCard) card;
-        ExhaustedHeroMatcher exhaustedHero = new ExhaustedHeroMatcher();
+        ReadyHeroMatcher exhaustedHero = new ReadyHeroMatcher();
         CharacterQueryRequirements requirements = new CharacterQueryRequirements(
             exhaustedHero, 1, 1);
         board.handleCharacterQuery(new CharacterQueryHandle(requirements, 
-            new DiscardToExhaustAndReadyHandler(board, event),
+            new DiscardToExhaustAndReadyHandler(event, board),
             new ClearSuspensionHandler(board)),
             "Choose a hero you controll to then ready a different hero.");
         return true;

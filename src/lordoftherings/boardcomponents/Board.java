@@ -15,11 +15,13 @@ import lordoftherings.cards.EnemyCard;
 import lordoftherings.characters.GameCharacter;
 import lordoftherings.characters.Enemy;
 import lordoftherings.characters.Hero;
+import lordoftherings.matcher.ExhaustedHeroMatcher;
 import lordoftherings.transaction_managers.CharacterQueryHandle;
 import lordoftherings.transaction_managers.CharacterQueryRequirements;
 import lordoftherings.transaction_managers.ClearSuspensionHandler;
 import lordoftherings.transaction_managers.GameManager;
 import lordoftherings.transaction_managers.PlayerQueryHandle;
+import lordoftherings.transaction_managers.ReadyCharactersHandler;
 import lordoftherings.transaction_managers.ResolveEnemyAttackHandler;
 import lordoftherings.transaction_managers.ResolvePlayerAttackHandler;
 import lordoftherings.transaction_managers.ResolveUndefendedEnemyAttackHandler;
@@ -234,6 +236,26 @@ public class Board {
         removeRecentSuspension();
         target.setAttackedStatus(true);
     }
+    
+    public void getCharactersToReady(ArrayList<GameCharacter> exhausted){
+        if(exhausted.isEmpty()){
+            ExhaustedHeroMatcher exhaustHero = new ExhaustedHeroMatcher();
+            CharacterQueryRequirements requirements = new 
+                CharacterQueryRequirements(exhaustHero, 1, 1);
+            gameManager.handleCharacterQuery(new CharacterQueryHandle(
+                requirements,
+                new ReadyCharactersHandler(this),
+                new ClearSuspensionHandler(this)), 
+                "Choos an exhausted character \n to ready.");
+            return;
+        }else if(exhausted.size() == 1){
+            GameCharacter wantedHero = exhausted.get(0);
+            wantedHero.ready();
+        }else{
+            throw new RuntimeException();
+        }
+    }
+    
     public void resolveAttackWithDefenders(Enemy attacker, ArrayList<GameCharacter> defenders) {
         if(defenders.isEmpty()){
             HeroMatcher defender = new HeroMatcher();
@@ -258,7 +280,7 @@ public class Board {
         removeRecentSuspension();
         attacker.setEnemyToNotAttacking();
     }
-
+    
     public void resolveAttackWithNoDefenders(Enemy attacker, ArrayList<GameCharacter> characterToDamage) {
         if(characterToDamage.get(0).getCard().getCardType() != PlayerCardType.HERO){
             throw new RuntimeException();

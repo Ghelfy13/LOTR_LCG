@@ -26,6 +26,7 @@ import lordoftherings.cardmodel.EventCardModel;
 import lordoftherings.deckcomponents.ExpansionName;
 import lordoftherings.effects.DiscardToAddModifiersEffect;
 import lordoftherings.effects.DiscardToDrawEffect;
+import lordoftherings.effects.DiscardToExhaustAndReadyEffect;
 import lordoftherings.effects.Effect;
 import lordoftherings.effects.ExhaustToDrawEffect;
 import lordoftherings.effects.ExhaustToRaiseWillPowerEffect;
@@ -113,16 +114,20 @@ public class LordOfTheRings {
         ArrayList<Effect> list8 = new ArrayList<>();
         list8.add(playBladeMastery);
         
-        Identification CommonSenseID = new Identification(ExpansionName.CORE,21);
-        EventCardModel commonSense = new EventCardModel(
-            "Common Sense",
+        DiscardToExhaustAndReadyEffect exhaustReadyEffect = new DiscardToExhaustAndReadyEffect();
+        ArrayList<Effect> list9 = new ArrayList<>();
+        list9.add(exhaustReadyEffect);
+        
+        Identification CommonCauseID = new Identification(ExpansionName.CORE,21);
+        EventCardModel commonCause = new EventCardModel(
+            "Common Cause",
             SphereOfInfluence.LEADERSHIP,
             PlayerCardType.EVENT,
             new String []{""},
-            CommonSenseID,
+            CommonCauseID,
             0,
             "Exhaust 1 hero you control to choose and ready a different hero.",
-            new ArrayList<>());
+            list9);
         
         Identification BladeMasteryID = new Identification(ExpansionName.CORE, 32);
         EventCardModel bladeMastery = new EventCardModel(
@@ -269,7 +274,8 @@ public class LordOfTheRings {
                 2);
         
         DeckBuild mockDeck = new DeckBuild();
-        mockDeck.add(bladeMastery, 3);
+        mockDeck.add(commonCause, 3);
+        mockDeck.add(bladeMastery, 0);
         mockDeck.add(everVigilant, 0);
         mockDeck.add(second, 0);
         mockDeck.add(beornsHospitality, 0);
