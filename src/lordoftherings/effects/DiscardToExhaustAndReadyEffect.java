@@ -35,7 +35,7 @@ public class DiscardToExhaustAndReadyEffect implements Effect{
         board.handleCharacterQuery(new CharacterQueryHandle(requirements, 
             new DiscardToExhaustAndReadyHandler(board, list),
             new ClearSuspensionHandler(board)),
-            "Choose a hero you control to then ready a different hero.");
+            "Choose a hero you control to exhaust so that a different hero can ready.");
         return true;
     }
 
