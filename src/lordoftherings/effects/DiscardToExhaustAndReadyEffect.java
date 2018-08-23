@@ -2,13 +2,16 @@
 
 package lordoftherings.effects;
 
+import java.util.ArrayList;
 import lordoftherings.actions.ActionState;
 import lordoftherings.actions.BasicEffectAction;
 import lordoftherings.actions.EffectAction;
 import lordoftherings.boardcomponents.Board;
+import lordoftherings.boardcomponents.PlayerZone;
 import lordoftherings.boardcomponents.SuspensionType;
 import lordoftherings.cards.EventCard;
 import lordoftherings.cards.PlayerCard;
+import lordoftherings.characters.GameCharacter;
 import lordoftherings.matcher.ReadyHeroMatcher;
 import lordoftherings.transaction_managers.CharacterQueryHandle;
 import lordoftherings.transaction_managers.CharacterQueryRequirements;
@@ -26,12 +29,13 @@ public class DiscardToExhaustAndReadyEffect implements Effect{
         board.addSuspension(SuspensionType.EFFECT);
         EventCard event = (EventCard) card;
         ReadyHeroMatcher exhaustedHero = new ReadyHeroMatcher();
+        ResultList list = new ResultList(board, event);
         CharacterQueryRequirements requirements = new CharacterQueryRequirements(
             exhaustedHero, 1, 1);
         board.handleCharacterQuery(new CharacterQueryHandle(requirements, 
-            new DiscardToExhaustAndReadyHandler(event, board),
+            new DiscardToExhaustAndReadyHandler(board, list),
             new ClearSuspensionHandler(board)),
-            "Choose a hero you controll to then ready a different hero.");
+            "Choose a hero you control to then ready a different hero.");
         return true;
     }
 
@@ -55,6 +59,56 @@ public class DiscardToExhaustAndReadyEffect implements Effect{
     @Override
     public EffectAction getAction(PlayerCard card) {
         return new BasicEffectAction(card,this);
+    }
+    
+    public static class ResultList{
+        private EventCard card;
+        private ArrayList<GameCharacter> charToExhaust;
+        private ArrayList<GameCharacter> charToReady;
+        private Board board;
+        
+        public ResultList(Board board, EventCard card){
+            this.board = board;
+            this.card = card;
+        }
+        
+        public void executeActions(){
+            if(card != null){
+                PlayerZone zone = board.getPlayerZoneAt(card.getController());
+                zone.getHand().removeCard(card);
+                zone.moveCardToDiscardPile(card);
+            }
+            if(charToExhaust != null){
+                for(int i = 0; i < charToExhaust.size(); ++i){
+                    charToExhaust.get(i).exhaust();
+                }
+            }
+            if(charToReady != null){
+                for(int i = 0; i < charToReady.size(); ++i){
+                    charToReady.get(i).ready();
+                }
+            }
+        }
+        
+        public void addCharsToExhaust(ArrayList<GameCharacter> exhaustList){
+            charToExhaust = exhaustList;
+        }
+        
+        public void addCharsToReady(ArrayList<GameCharacter> readyList){
+            charToReady = readyList;
+        }
+        
+        public EventCard getEventCard(){
+            return card;
+        }
+        
+        public ArrayList<GameCharacter> getListToExhaust(){
+            return charToExhaust;
+        }
+        
+        public ArrayList<GameCharacter> getListToReady(){
+            return charToReady;
+        }
     }
     
 }

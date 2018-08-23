@@ -26,6 +26,8 @@ import lordoftherings.transaction_managers.ResolveEnemyAttackHandler;
 import lordoftherings.transaction_managers.ResolvePlayerAttackHandler;
 import lordoftherings.transaction_managers.ResolveUndefendedEnemyAttackHandler;
 import lordoftherings.transaction_managers.Uncancellable;
+import lordoftherings.effects.DiscardToAddModifiersEffect;
+import lordoftherings.effects.DiscardToExhaustAndReadyEffect;
 
 /**
  *
@@ -237,20 +239,19 @@ public class Board {
         target.setAttackedStatus(true);
     }
     
-    public void getCharactersToReady(ArrayList<GameCharacter> exhausted){
+    public void getCharactersToReady(ArrayList<GameCharacter> exhausted, DiscardToExhaustAndReadyEffect.ResultList list){
         if(exhausted.isEmpty()){
             ExhaustedHeroMatcher exhaustHero = new ExhaustedHeroMatcher();
             CharacterQueryRequirements requirements = new 
                 CharacterQueryRequirements(exhaustHero, 1, 1);
             gameManager.handleCharacterQuery(new CharacterQueryHandle(
                 requirements,
-                new ReadyCharactersHandler(this),
+                new ReadyCharactersHandler(this, list),
                 new ClearSuspensionHandler(this)), 
                 "Choos an exhausted character \n to ready.");
             return;
         }else if(exhausted.size() == 1){
-            GameCharacter wantedHero = exhausted.get(0);
-            wantedHero.ready();
+            list.addCharsToReady(exhausted);
         }else{
             throw new RuntimeException();
         }
