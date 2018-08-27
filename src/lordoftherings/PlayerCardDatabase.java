@@ -13,6 +13,7 @@ import lordoftherings.deckcomponents.SphereOfInfluence;
 import lordoftherings.effects.DiscardToAddModifiersEffect;
 import lordoftherings.effects.DiscardToDrawEffect;
 import lordoftherings.effects.DiscardToExhaustAndReadyEffect;
+import lordoftherings.effects.DiscardToHealEffect;
 import lordoftherings.effects.Effect;
 import lordoftherings.effects.ExhaustToDrawEffect;
 import lordoftherings.effects.ExhaustToRaiseWillPowerEffect;
@@ -198,6 +199,20 @@ public class PlayerCardDatabase {
             "Exhaust 1 hero you control to choose and ready a different hero.",
             list9);
         cardMap.put(CommonCauseID, commonCause);
+        
+        DiscardToHealEffect discardToHealEffect = new DiscardToHealEffect();
+        ArrayList<Effect> list10 = new ArrayList<>();
+        list10.add(discardToHealEffect);
+        Identification LoreOfImladrisID = new Identification(ExpansionName.CORE, 63);
+        EventCardModel loreOfImladris = new EventCardModel(
+            "Lore Of Imladris",
+            SphereOfInfluence.LORE,
+            PlayerCardType.EVENT,
+            new String[] {""},
+            LoreOfImladrisID,
+            2,
+            "Choose a character.  Heal all damage from that character.",
+            list10);
     }
     
 }

@@ -25,4 +25,19 @@ public class Identification implements Comparable<Identification> {
             return Integer.compare(this.numInSet, other.numInSet);
         }
     }
+    
+    @Override
+    public int hashCode() {
+        return setName.ordinal()*161 + numInSet;
+    }
+    
+    @Override
+    public boolean equals(Object other) {
+        if (other == null || !(other instanceof Identification)) {
+            return false;
+        }
+        Identification otherID = (Identification) other;
+        return otherID.setName == setName &&
+                otherID.numInSet == numInSet;
+    }
 }
