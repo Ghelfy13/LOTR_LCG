@@ -34,7 +34,7 @@ public class DiscardToHealEffect implements Effect{
         board.handleCharacterQuery( 
                 new CharacterQueryHandle(
                         requirements,
-                        new DiscardToHealHandler(),
+                        new DiscardToHealHandler(card, board),
                         new ClearSuspensionHandler(board)),
                 "Choose a character to heal all damage on them.");
         return true;

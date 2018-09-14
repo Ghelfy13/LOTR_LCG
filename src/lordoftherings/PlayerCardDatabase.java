@@ -34,7 +34,14 @@ public class PlayerCardDatabase {
     
     public static PlayerCardModel get(Identification id) {
         initializeCardMap();
-        return cardMap.get(id);
+        PlayerCardModel desiredID = cardMap.get(id);
+        if(desiredID != null){
+            return desiredID;
+        }
+        else{
+            throw new RuntimeException("No model found for this ID: " + id.setName + " " + id.numInSet);
+        }
+        
     }
     
     public static void initializeCardMap() {
@@ -213,6 +220,7 @@ public class PlayerCardDatabase {
             2,
             "Choose a character.  Heal all damage from that character.",
             list10);
+        cardMap.put(LoreOfImladrisID, loreOfImladris);
     }
     
 }

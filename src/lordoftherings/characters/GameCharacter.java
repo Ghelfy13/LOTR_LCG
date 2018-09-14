@@ -87,7 +87,7 @@ public abstract class GameCharacter {
                 hitPointMods.add(modifiers.get(i));
             }
         }
-        int num = getBaseWillPower();
+        int num = getBaseHitPoints();
         for(int j = 0; j < hitPointMods.size(); ++j){
             num += hitPointMods.get(j).getNumOfAdjustment();
         }
@@ -102,7 +102,7 @@ public abstract class GameCharacter {
         return getCard().getCardModel().getDefense();
     }
     
-    public int getBaseMaxHealth(){
+    public int getBaseHitPoints(){
         return getCard().getCardModel().getHitPoints();
     }
     
@@ -111,7 +111,7 @@ public abstract class GameCharacter {
     }
     
     public int getHealth(){
-        return (getBaseMaxHealth() - damage);
+        return (getBaseHitPoints() - damage);
     }
     
     public void exhaust(){
