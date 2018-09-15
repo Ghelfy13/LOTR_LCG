@@ -1,0 +1,9 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'lordoftherings.LordOfTheRings'
+sourceSets {
+	main.java.srcDirs = ['src']
+}
+
+buildDir = 'gradle_build'

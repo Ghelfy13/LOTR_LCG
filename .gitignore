@@ -3,3 +3,5 @@ manifest.mf
 build/**
 dist/**
 nbproject/**
+gradle_build/**
+.gradle/**
