@@ -5,7 +5,6 @@ package lordoftherings.transaction_managers;
 import lordoftherings.deckcomponents.EncounterBuild;
 import lordoftherings.deckcomponents.PlayerDeckBuild;
 import lordoftherings.boardcomponents.Board;
-import lordoftherings.manager.query_Handlers.PlayerQueryHandler;
 
 /**
  *

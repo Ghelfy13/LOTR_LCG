@@ -1,7 +1,8 @@
 //Copyright Amanda V. Harris 2018-present. All Rights Reserved.
 
-package lordoftherings.manager.query_Handlers;
+package lordoftherings.transaction_managers;
 
+import lordoftherings.transaction_managers.PlayerQueryHandler;
 import lordoftherings.manager.BoardControllerComponents.GameManagerViewController;
 import lordoftherings.transaction_managers.PlayerQueryHandle;
 

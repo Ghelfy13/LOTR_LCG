@@ -8,7 +8,6 @@ import lordoftherings.boardcomponents.PlayerZone;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.query_components.PlayerQueryView;
 import lordoftherings.gui.query_components.QueryMessageView;
-import lordoftherings.gui.query_components.QueryPlayerNameView;
 import lordoftherings.gui.query_components.QueryPlayerZoneView;
 import lordoftherings.gui.query_components.QueryView;
 import static lordoftherings.manager.BoardControllerComponents.BoardViewController.DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE;
