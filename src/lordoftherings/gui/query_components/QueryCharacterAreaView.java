@@ -15,7 +15,7 @@ public class QueryCharacterAreaView extends JPanel {
     
     public QueryCharacterAreaView(int x, int y){
         this.setBounds(x, y, EncounterZoneView.ZONE_WIDTH, ActiveLocationView.CARD_COUNTER_HEIGHT);
-        Color backgroundColor = new Color(0x10,0x66,0x1b);
+        //Color backgroundColor = new Color(0x10,0x66,0x1b);
         //setBackground(Color.white);
         //this.setBackground(backgroundColor);
         this.setOpaque(false);

@@ -21,7 +21,17 @@ public class EnemyQueryActiveState extends SelectableActiveState<Enemy> {
     
     @Override
     public void selectOrDeselect(Selectable<Enemy> selectedElement) {
-        
+        if(enemyQueryVC.resultContains(selectedElement.get())){
+            selectedElement.onDeselect();
+            enemyQueryVC.removeFromResult(selectedElement.get());
+        }
+        else{
+            if(!enemyQueryVC.resultIsFull()){
+                selectedElement.onSelect();
+                enemyQueryVC.addToResult(selectedElement.get());
+            }
+        }
+        enemyQueryVC.updateView();
     }
     
 }

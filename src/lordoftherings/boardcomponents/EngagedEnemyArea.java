@@ -48,7 +48,7 @@ public class EngagedEnemyArea {//Belongs in Field
         }
     }
     
-    public void moveDeadEnemiesToDiscardPile(){
+    public void cleanUpEngagedEnemyArea(){
         for(int i = 0; i < listOfEngagedEnemies.size(); ++i){
             Enemy current = listOfEngagedEnemies.get(i);
             if(current.getDamage() >= current.getMaxHealth()){

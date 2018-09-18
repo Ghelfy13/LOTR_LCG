@@ -26,7 +26,6 @@ import lordoftherings.transaction_managers.ResolveEnemyAttackHandler;
 import lordoftherings.transaction_managers.ResolvePlayerAttackHandler;
 import lordoftherings.transaction_managers.ResolveUndefendedEnemyAttackHandler;
 import lordoftherings.transaction_managers.Uncancellable;
-import lordoftherings.effects.DiscardToAddModifiersEffect;
 import lordoftherings.effects.DiscardToExhaustAndReadyEffect;
 
 /**

@@ -16,6 +16,7 @@ public class QueryPlayerZoneView extends JPanel{
         setLayout(null);
         setBounds(x, y, ZONE_WIDTH, ZONE_HEIGHT);
         setOpaque(false);
+        setVisible(true);
     }
     
 }

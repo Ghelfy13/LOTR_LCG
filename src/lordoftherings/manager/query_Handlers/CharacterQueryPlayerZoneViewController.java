@@ -58,6 +58,6 @@ public class CharacterQueryPlayerZoneViewController {
     
     public void deleteFallenCharacters(){
         playerZone.cleanUpCharacterArea();
-        playerZone.getEngagementArea().moveDeadEnemiesToDiscardPile();
+        playerZone.getEngagementArea().cleanUpEngagedEnemyArea();
     }
 }

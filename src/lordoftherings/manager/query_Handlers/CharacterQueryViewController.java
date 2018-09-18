@@ -18,7 +18,8 @@ import lordoftherings.manager.actionComponents.GlobalViewController;
  *
  * @author Amanda
  */
-public class CharacterQueryViewController extends QueryViewController<GameCharacter> implements CancellableQueryViewController, GlobalViewController{
+public class CharacterQueryViewController extends QueryViewController<GameCharacter> 
+    implements CancellableQueryViewController, GlobalViewController{
     
     private CharacterQueryPlayerZoneViewController playerZoneVC;
     private CharacterQueryActiveState charQAS;
@@ -44,7 +45,6 @@ public class CharacterQueryViewController extends QueryViewController<GameCharac
                 BoardViewController.DISTANCE_FROM_FRAME, 
                 ActiveLocationView.CARD_COUNTER_HEIGHT + BoardViewController.
                         DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE);
-        playerZoneView.setVisible(true);
         view.add(playerZoneView);
         view.setVisible(true);
         return view;

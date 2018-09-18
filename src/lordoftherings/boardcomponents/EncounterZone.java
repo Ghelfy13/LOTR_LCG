@@ -81,6 +81,17 @@ public class EncounterZone {
         }
     }
     
+    public void discardDeadEnemies(){
+        ArrayList<Enemy> enemies = stage.getEnemyArea().getListOfEnemies();
+        for(int i = 0; i < enemies.size(); ++i){
+            Enemy current = enemies.get(i);
+            if(current.getDamage() >= current.getMaxHealth()){
+                discardDeadEnemy(current.getCard());
+                stage.getEnemyArea().removeEnemy(current);
+            }
+        }
+    }
+    
     public void discardDeadEnemy(EncounterCard deadCard){
         encounterDiscard.addCardToPile(deadCard);
     }

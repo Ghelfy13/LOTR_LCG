@@ -174,7 +174,7 @@ public class PlayerZone {
     }
     
     public void cleanUpEngagedEnemyArea(){
-        field.getEngagementArea().moveDeadEnemiesToDiscardPile();
+        field.getEngagementArea().cleanUpEngagedEnemyArea();
     }
 
     public void setEnemiesToAttackedAndDefended() {
