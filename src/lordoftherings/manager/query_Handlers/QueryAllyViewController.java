@@ -17,15 +17,14 @@ import lordoftherings.manager.actionComponents.SelectableMouseListener;
  */
 public class QueryAllyViewController implements Selectable<GameCharacter>{
     private QueryAllyView view;
-    private QueryAllyZoneViewController allyZoneVC;
     private Ally currentAlly;
     private QueryAllyCardViewController cardVC;
     private QueryAllyDamageView damageView;
     private CharacterQueryActiveState charQAS;
     private boolean isSelected;
     
-    public QueryAllyViewController(Ally currentAlly, QueryAllyZoneViewController allyZoneVC, CharacterQueryActiveState charQAS){
-        this.allyZoneVC = allyZoneVC;
+    public QueryAllyViewController(Ally currentAlly, 
+            CharacterQueryActiveState charQAS){
         this.currentAlly = currentAlly;
         view = null;
         this.cardVC = new QueryAllyCardViewController(currentAlly, this, charQAS);
