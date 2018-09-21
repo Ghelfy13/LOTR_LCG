@@ -61,6 +61,7 @@ public class QueryAllyZoneViewController {
                 view.remove(entry.getValue().getView());
             }
         }
+        
         for(Ally deadAlly: allysToRemove){
             controllerMap.remove(deadAlly);
         }

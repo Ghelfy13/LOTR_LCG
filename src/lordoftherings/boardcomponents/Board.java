@@ -3,6 +3,7 @@
 package lordoftherings.boardcomponents;
 
 import java.util.ArrayList;
+import lordoftherings.LocationOnBoard;
 import lordoftherings.deckcomponents.PlayerDeckBuild;
 import lordoftherings.deckcomponents.EncounterBuild;
 import lordoftherings.deckcomponents.Quest;
@@ -27,6 +28,7 @@ import lordoftherings.transaction_managers.ResolvePlayerAttackHandler;
 import lordoftherings.transaction_managers.ResolveUndefendedEnemyAttackHandler;
 import lordoftherings.transaction_managers.Uncancellable;
 import lordoftherings.effects.DiscardToExhaustAndReadyEffect;
+import lordoftherings.transaction_managers.EnemyQueryHandle;
 
 /**
  *
@@ -330,6 +332,16 @@ public class Board {
         
     }
     
+    public void moveEnemiesToStagingArea(ArrayList<Enemy> list){
+        for(int i = 0; i < list.size(); ++i){
+            Enemy current = list.get(i);
+            PlayerZone zone = this.getPlayerZoneAt(current.getCard().getControllerID());
+            zone.getEngagementArea().removeEnemy(current);
+            encounterZone.getStagingArea().getEnemyArea().addEnemyToList(current);
+            current.getCard().setLocation(LocationOnBoard.ENCOUNTER_ZONE, -1);
+        }
+    }
+    
     public boolean enemiesLeftToEngage(){
         int numOfEnemies = encounterZone.getStagingArea().getEnemyArea().getNumOfEnemies();
             for(int i = 0; i < numOfEnemies; ++i){
@@ -354,6 +366,10 @@ public class Board {
     
     public void handleCharacterQuery(CharacterQueryHandle handle, String description){
         gameManager.handleCharacterQuery(handle, description);
+    }
+    
+    public void handleEnemyQuery(EnemyQueryHandle handle, String description){
+        gameManager.handleEnemyQuery(handle, description);
     }
     
     public void handlePlayerZoneQuery(PlayerQueryHandle handle, String description){

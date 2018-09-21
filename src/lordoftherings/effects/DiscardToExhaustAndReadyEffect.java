@@ -16,7 +16,7 @@ import lordoftherings.matcher.ReadyHeroMatcher;
 import lordoftherings.transaction_managers.CharacterQueryHandle;
 import lordoftherings.transaction_managers.CharacterQueryRequirements;
 import lordoftherings.transaction_managers.ClearSuspensionHandler;
-import lordoftherings.transaction_managers.DiscardToExhaustAndReadyHandler;
+import lordoftherings.transaction_managers.DiscardToExhaustAndReadyResultHandler;
 
 /**
  *
@@ -33,7 +33,7 @@ public class DiscardToExhaustAndReadyEffect implements Effect{
         CharacterQueryRequirements requirements = new CharacterQueryRequirements(
             exhaustedHero, 1, 1);
         board.handleCharacterQuery(new CharacterQueryHandle(requirements, 
-            new DiscardToExhaustAndReadyHandler(board, list),
+            new DiscardToExhaustAndReadyResultHandler(board, list),
             new ClearSuspensionHandler(board)),
             "Choose a hero you control to exhaust so that a different hero can ready.");
         return true;

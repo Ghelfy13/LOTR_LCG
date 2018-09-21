@@ -19,6 +19,7 @@ import lordoftherings.effects.ExhaustToDrawEffect;
 import lordoftherings.effects.ExhaustToRaiseWillPowerEffect;
 import lordoftherings.effects.HealEffect;
 import lordoftherings.effects.HealPlayersHerosAndDiscardCardEffect;
+import lordoftherings.effects.PlayToMoveEnemyToStagingAreaEffect;
 import lordoftherings.effects.ReadyAllyToDiscardCardEffect;
 import lordoftherings.modifiers.LifeSpanOfModifier;
 import lordoftherings.modifiers.Modifier;
@@ -221,6 +222,21 @@ public class PlayerCardDatabase {
             "Choose a character.  Heal all damage from that character.",
             list10);
         cardMap.put(LoreOfImladrisID, loreOfImladris);
+        
+        PlayToMoveEnemyToStagingAreaEffect moveEnemyEffect = new PlayToMoveEnemyToStagingAreaEffect();
+        ArrayList<Effect> list11 = new ArrayList<>();
+        list11.add(moveEnemyEffect);
+        Identification LightInDarkID = new Identification(ExpansionName.CORE, 52);
+        EventCardModel aLightInTheDark = new EventCardModel(
+            "A Light in the Dark", 
+            SphereOfInfluence.SPIRIT,
+            PlayerCardType.EVENT,
+            new String[]{""},
+            LightInDarkID,
+            2,
+            "Choose an enemy engaged with a player.  Return that enemy to the staging area.",
+            list11);
+        cardMap.put(LightInDarkID, aLightInTheDark);
     }
     
 }

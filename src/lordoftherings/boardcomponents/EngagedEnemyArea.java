@@ -83,6 +83,15 @@ public class EngagedEnemyArea {//Belongs in Field
         return null;
     }
     
+    public int findEnemyIndex(Enemy current){
+        for(int i = 0; i < listOfEngagedEnemies.size(); ++i){
+            if(listOfEngagedEnemies.get(i) == current){
+                return i;
+            }
+        }
+        return -1;
+    }
+    
     public boolean enemiesStillAttacking(){
         for(int i = 0; i < listOfEngagedEnemies.size(); ++i){
             if(listOfEngagedEnemies.get(i).isEnemyStillAttacking()){

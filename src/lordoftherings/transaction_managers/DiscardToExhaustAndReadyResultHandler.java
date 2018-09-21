@@ -1,8 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//Copyright Amanda V. Harris 2018-present. All Rights Reserved.
+
 package lordoftherings.transaction_managers;
 
 import java.util.ArrayList;
@@ -14,12 +11,12 @@ import lordoftherings.effects.DiscardToExhaustAndReadyEffect.ResultList;
  *
  * @author Amanda
  */
-public class DiscardToExhaustAndReadyHandler implements ResultHandler<ArrayList<GameCharacter>>{
+public class DiscardToExhaustAndReadyResultHandler implements ResultHandler<ArrayList<GameCharacter>>{
 
     private Board board;
     private ResultList list;
     
-    public DiscardToExhaustAndReadyHandler(Board board, ResultList list){
+    public DiscardToExhaustAndReadyResultHandler(Board board, ResultList list){
         this.board = board;
         this.list = list;
     }

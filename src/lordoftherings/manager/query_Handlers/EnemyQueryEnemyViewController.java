@@ -50,6 +50,10 @@ public class EnemyQueryEnemyViewController implements Selectable<Enemy>{
         cardVC.updateView(isSelected);
     }
     
+    public EnemyQueryEnemyView getView(){
+        return view;
+    }
+    
     @Override
     public void onSelect() {
         isSelected = true;
