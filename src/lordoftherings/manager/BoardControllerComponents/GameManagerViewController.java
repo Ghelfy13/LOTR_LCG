@@ -12,11 +12,14 @@ import lordoftherings.gui.query_components.QueryView;
 import lordoftherings.manager.actionComponents.GlobalViewController;
 import lordoftherings.transaction_managers.GuiCharacterQueryHandler;
 import lordoftherings.manager.query_Handlers.CharacterQueryViewController;
+import lordoftherings.manager.query_Handlers.EnemyQueryViewController;
 import lordoftherings.transaction_managers.GuiPlayerQueryHandler;
 import lordoftherings.manager.query_Handlers.PlayerQueryViewController;
 import lordoftherings.manager.query_Handlers.QueryViewController;
 import lordoftherings.transaction_managers.CharacterQueryHandle;
+import lordoftherings.transaction_managers.EnemyQueryHandle;
 import lordoftherings.transaction_managers.GameManager;
+import lordoftherings.transaction_managers.GuiEnemyQueryHandler;
 import lordoftherings.transaction_managers.PlayerQueryHandle;
 
 /**
@@ -35,6 +38,7 @@ public class GameManagerViewController implements GlobalViewController{
         this.manager = manager;
         manager.setCustomCharacterQueryHandler(new GuiCharacterQueryHandler(this));
         manager.setCustomPlayerQueryHandler(new GuiPlayerQueryHandler(this));
+        manager.setCustomEnemyQueryHandler(new GuiEnemyQueryHandler(this));
         //TODO: add set GUI player query here
         this.boardVC = new BoardViewController(manager.getBoard(), this);
         this.glassPane = null;
@@ -89,8 +93,15 @@ public class GameManagerViewController implements GlobalViewController{
         backdrop.setVisible(true);
     }
     
+    public void setUpEnemyQuery(EnemyQueryHandle handle, String descriptionOfAction){
+        queryVC = new EnemyQueryViewController(this, handle);
+        QueryView backDrop = queryVC.makeView(descriptionOfAction);
+        view.add(backDrop, new Integer(2));
+        backDrop.setVisible(true);
+    }
+    
 
-    public void deactivateCharQueryVC() {
+    public void deactivateQueryVC() {
         QueryView queryView = queryVC.getView();
         queryVC = null;
         view.remove(queryView);

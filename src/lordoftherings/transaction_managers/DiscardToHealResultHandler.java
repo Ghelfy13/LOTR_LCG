@@ -12,11 +12,11 @@ import lordoftherings.characters.GameCharacter;
  *
  * @author Amanda
  */
-public class DiscardToHealHandler implements ResultHandler<ArrayList<GameCharacter>>{
+public class DiscardToHealResultHandler implements ResultHandler<ArrayList<GameCharacter>>{
     private PlayerCard healingCard;
     private Board board;
     
-    public DiscardToHealHandler(PlayerCard card, Board board){
+    public DiscardToHealResultHandler(PlayerCard card, Board board){
         healingCard = card;
         this.board = board;
     }

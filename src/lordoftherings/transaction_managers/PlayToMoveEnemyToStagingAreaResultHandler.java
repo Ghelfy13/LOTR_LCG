@@ -3,7 +3,10 @@
 package lordoftherings.transaction_managers;
 
 import java.util.ArrayList;
+import lordoftherings.LocationOnBoard;
 import lordoftherings.boardcomponents.Board;
+import lordoftherings.boardcomponents.EncounterZone;
+import lordoftherings.boardcomponents.PlayerZone;
 import lordoftherings.cards.EventCard;
 import lordoftherings.characters.Enemy;
 
@@ -23,8 +26,16 @@ public class PlayToMoveEnemyToStagingAreaResultHandler implements ResultHandler<
     
     @Override
     public void handle(ArrayList<Enemy> result) {
-        board.moveEnemiesToStagingArea(result);
-        board.removeRecentSuspension();
+        EncounterZone encounterZone = board.getEncounterZone();
+        for(int i = 0; i < result.size(); ++i){
+            Enemy current = result.get(i);
+            PlayerZone zone = board.getPlayerZoneAt(current.getCard().getControllerID());
+            zone.getEngagementArea().removeEnemy(current);
+            encounterZone.getStagingArea().getEnemyArea().addEnemyToList(current);
+            current.getCard().setLocation(LocationOnBoard.ENCOUNTER_ZONE, -1);
+        }
+        board.getCurrentPlayerZone().getHand().removeCard(event);
+        board.getCurrentPlayerZone().moveCardToDiscardPile(event);
     }
 
 }

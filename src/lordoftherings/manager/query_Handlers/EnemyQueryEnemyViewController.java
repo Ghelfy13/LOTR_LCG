@@ -25,7 +25,7 @@ public class EnemyQueryEnemyViewController implements Selectable<Enemy>{
 
     public EnemyQueryEnemyViewController(Enemy currentEnemy, 
             EnemyQueryActiveState enemyQAS){
-        this.enemy = enemy;
+        this.enemy = currentEnemy;
         this.enemyQAS = enemyQAS;
         cardVC = new EnemyQueryEnemyCardViewController(enemy, this, enemyQAS);
         damageView = null;

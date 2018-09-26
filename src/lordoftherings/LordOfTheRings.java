@@ -111,7 +111,7 @@ public class LordOfTheRings {
         Identification LoreOfImladrisID = new Identification(ExpansionName.CORE, 63);
         Identification LightInDarkID = new Identification(ExpansionName.CORE, 52);
         mockDeck.add(PlayerCardDatabase.get(LightInDarkID), 3);
-        //mockDeck.add(PlayerCardDatabase.get(LoreOfImladrisID), 0);
+        //mockDeck.add(PlayerCardDatabase.get(LoreOfImladrisID), 3);
         PlayerDeckBuild mockBuild = new PlayerDeckBuild(mockDeck);
         mockBuild.addHero(first);
         mockBuild.addHero(first);

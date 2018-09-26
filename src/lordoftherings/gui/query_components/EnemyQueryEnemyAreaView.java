@@ -2,6 +2,7 @@
 
 package lordoftherings.gui.query_components;
 
+import java.awt.Color;
 import javax.swing.JPanel;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.EncounterZoneComponents.EncounterZoneView;
@@ -15,6 +16,7 @@ public class EnemyQueryEnemyAreaView extends JPanel{
     public EnemyQueryEnemyAreaView(int x, int y){
         setLayout(null);
         setBounds(x, y, EncounterZoneView.ZONE_WIDTH, ActiveLocationView.CARD_COUNTER_HEIGHT);
-        setOpaque(false);
+        setOpaque(true);
+        setBackground(Color.white);
     }
 }

@@ -44,7 +44,7 @@ public abstract class QueryViewController<T> implements CancellableQueryViewCont
     }
 
     public void deactivate() {
-        gameMVC.deactivateCharQueryVC();
+        gameMVC.deactivateQueryVC();
     }
 
     public ArrayList<T> getResult() {

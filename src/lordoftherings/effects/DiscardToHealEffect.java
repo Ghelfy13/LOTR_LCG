@@ -14,7 +14,7 @@ import lordoftherings.matcher.DamagedMatcher;
 import lordoftherings.transaction_managers.CharacterQueryHandle;
 import lordoftherings.transaction_managers.CharacterQueryRequirements;
 import lordoftherings.transaction_managers.ClearSuspensionHandler;
-import lordoftherings.transaction_managers.DiscardToHealHandler;
+import lordoftherings.transaction_managers.DiscardToHealResultHandler;
 
 /**
  *
@@ -31,10 +31,9 @@ public class DiscardToHealEffect implements Effect{
         DamagedMatcher damagedChar = new DamagedMatcher();
         CharacterQueryRequirements requirements = 
                 new CharacterQueryRequirements(damagedChar, 1, 1);
-        board.handleCharacterQuery( 
-                new CharacterQueryHandle(
+        board.handleCharacterQuery(new CharacterQueryHandle(
                         requirements,
-                        new DiscardToHealHandler(card, board),
+                        new DiscardToHealResultHandler(card, board),
                         new ClearSuspensionHandler(board)),
                 "Choose a character to heal all damage on them.");
         return true;

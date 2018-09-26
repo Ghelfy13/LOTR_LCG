@@ -31,9 +31,11 @@ public class PlayToMoveEnemyToStagingAreaEffect implements Effect{
         Matcher<Enemy> engagedEnemyMatcher = new EngagedEnemyMatcher();
         EnemyQueryRequirements requirements = new EnemyQueryRequirements(
             engagedEnemyMatcher, 1, 1);
-        board.handleEnemyQuery(new EnemyQueryHandle(requirements,
-            new PlayToMoveEnemyToStagingAreaResultHandler(board, event),
-            new ClearSuspensionHandler(board)),
+        board.handleEnemyQuery(
+            new EnemyQueryHandle(
+                    requirements,
+                    new PlayToMoveEnemyToStagingAreaResultHandler(board, event),
+                    new ClearSuspensionHandler(board)),
             "Choose an enemy engaged with a play to move them back into the staging area.");
         return true;
     }

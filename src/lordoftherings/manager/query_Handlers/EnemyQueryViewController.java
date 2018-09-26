@@ -7,11 +7,17 @@ import lordoftherings.boardcomponents.EncounterZone;
 import lordoftherings.boardcomponents.EnemyArea;
 import lordoftherings.boardcomponents.EngagedEnemyArea;
 import lordoftherings.characters.Enemy;
+import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
+import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.gui.query_components.EnemyQueryEnemyAreaView;
 import lordoftherings.gui.query_components.EnemyQueryEngagedEnemyAreaView;
 import lordoftherings.gui.query_components.EnemyQueryView;
 import lordoftherings.gui.query_components.QueryMessageView;
+import static lordoftherings.manager.BoardControllerComponents.BoardViewController.DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE;
+import static lordoftherings.manager.BoardControllerComponents.BoardViewController.DISTANCE_FROM_FRAME;
 import lordoftherings.manager.BoardControllerComponents.GameManagerViewController;
+import static lordoftherings.manager.EncounterZoneControllerComponents.EncounterZoneViewController.DISTANCE_BT_DECK_AND_STAGE;
+import static lordoftherings.manager.PlayerZoneControllerCompoents.PlayerZoneViewController.DECK_X;
 import lordoftherings.manager.actionComponents.GlobalViewController;
 import lordoftherings.transaction_managers.EnemyQueryHandle;
 
@@ -28,6 +34,10 @@ public class EnemyQueryViewController extends QueryViewController<Enemy>
     private EnemyQueryView view;
     private EngagedEnemyArea engagedArea;
     private EncounterZone encounterZone;
+    public static int X_VALUE_FOR_ENGAGEMENT;
+    public static int Y_VALUE_FOR_ENGAGEMENT;
+    public static int X_VALUE_FOR_ENEMY_AREA;
+    public static int Y_VALUE_FOR_ENEMY_AREA;
     
     public EnemyQueryViewController(GameManagerViewController gameMVC, EnemyQueryHandle handle) {
         super(gameMVC, handle);
@@ -39,6 +49,12 @@ public class EnemyQueryViewController extends QueryViewController<Enemy>
             gameMVC.getBoard().getCurrentPlayerZone().getEngagementArea(), enemyQAS);
         this.engagedArea = gameMVC.getBoard().getCurrentPlayerZone().getEngagementArea();
         this.encounterZone = gameMVC.getBoard().getEncounterZone();
+        X_VALUE_FOR_ENGAGEMENT = DISTANCE_FROM_FRAME + DECK_X +HandCardView.CARD_WIDTH + 20;
+        Y_VALUE_FOR_ENGAGEMENT = ActiveLocationView.CARD_COUNTER_HEIGHT + 
+                DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE;
+        X_VALUE_FOR_ENEMY_AREA = DISTANCE_FROM_FRAME + HandCardView.CARD_WIDTH + 
+                DISTANCE_BT_DECK_AND_STAGE + 190;
+        Y_VALUE_FOR_ENEMY_AREA = DISTANCE_FROM_FRAME;
     }
 
     @Override
@@ -46,10 +62,10 @@ public class EnemyQueryViewController extends QueryViewController<Enemy>
         view = new EnemyQueryView();
         view.add(enemyQAS.getFocusableText());
         view.addMouseMotionListener(enemyQAS.createMouseFollower());
-        QueryMessageView messageView = messageVC.makeView(1995, 0, description);//Just copied from CharQueryVC
+        QueryMessageView messageView = messageVC.makeView(1995, 0, description);
         view.add(messageView);
-        EnemyQueryEnemyAreaView enemyAreaView = enemyAreaVC.makeView(100, 200);//TODO: FIND NECESSARY DIMENSIONS
-        EnemyQueryEngagedEnemyAreaView engagedEnemyAreaView = engagedEnemyAreaVC.makeView(100, 200); //TODO: FIND NECESSARY DIMENSIONS
+        EnemyQueryEnemyAreaView enemyAreaView = enemyAreaVC.makeView(X_VALUE_FOR_ENEMY_AREA, Y_VALUE_FOR_ENEMY_AREA);
+        EnemyQueryEngagedEnemyAreaView engagedEnemyAreaView = engagedEnemyAreaVC.makeView(X_VALUE_FOR_ENGAGEMENT, Y_VALUE_FOR_ENGAGEMENT);
         view.add(enemyAreaView);
         view.add(engagedEnemyAreaView);
         view.setVisible(true);

@@ -53,6 +53,7 @@ public class EnemyQueryEngagedEnemyAreaViewController{
             }
         }
         view.setVisible(true);
+        updateView();
         return view;
     }
     

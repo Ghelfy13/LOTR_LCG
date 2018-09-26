@@ -28,6 +28,7 @@ import lordoftherings.transaction_managers.ResolvePlayerAttackHandler;
 import lordoftherings.transaction_managers.ResolveUndefendedEnemyAttackHandler;
 import lordoftherings.transaction_managers.Uncancellable;
 import lordoftherings.effects.DiscardToExhaustAndReadyEffect;
+import lordoftherings.matcher.EngagedEnemyMatcher;
 import lordoftherings.transaction_managers.EnemyQueryHandle;
 
 /**
@@ -258,6 +259,8 @@ public class Board {
         }
     }
     
+     
+    
     public void resolveAttackWithDefenders(Enemy attacker, ArrayList<GameCharacter> defenders) {
         if(defenders.isEmpty()){
             HeroMatcher defender = new HeroMatcher();
@@ -332,15 +335,7 @@ public class Board {
         
     }
     
-    public void moveEnemiesToStagingArea(ArrayList<Enemy> list){
-        for(int i = 0; i < list.size(); ++i){
-            Enemy current = list.get(i);
-            PlayerZone zone = this.getPlayerZoneAt(current.getCard().getControllerID());
-            zone.getEngagementArea().removeEnemy(current);
-            encounterZone.getStagingArea().getEnemyArea().addEnemyToList(current);
-            current.getCard().setLocation(LocationOnBoard.ENCOUNTER_ZONE, -1);
-        }
-    }
+   
     
     public boolean enemiesLeftToEngage(){
         int numOfEnemies = encounterZone.getStagingArea().getEnemyArea().getNumOfEnemies();

@@ -29,6 +29,7 @@ public class EnemyQueryEnemyAreaViewController {
     private EnemyArea enemyArea;
     private EnemyQueryEnemyViewController enemyVC;
     
+    
     public EnemyQueryEnemyAreaViewController(EnemyQueryViewController queryVC,
             EncounterZone encounterZone, EnemyQueryActiveState enemyQAS){
         this.encounterZone = encounterZone;
@@ -37,6 +38,7 @@ public class EnemyQueryEnemyAreaViewController {
         this.handle = (EnemyQueryHandle) queryVC.getHandle();
         controllerMap = new HashMap<>();
         this.enemyArea = encounterZone.getStagingArea().getEnemyArea();
+        
     }
     
     public EnemyQueryEnemyAreaView makeView(int x, int y){
@@ -56,6 +58,7 @@ public class EnemyQueryEnemyAreaViewController {
             }
         }
         view.setVisible(true);
+        updateView();
         return view;
     }
     

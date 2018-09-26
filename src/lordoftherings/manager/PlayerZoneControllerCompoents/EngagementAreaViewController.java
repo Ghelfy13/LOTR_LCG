@@ -48,7 +48,7 @@ public class EngagementAreaViewController {
             EnemyViewController controller = new EnemyViewController(bas, currentEnemy);
             controllerMap.put(currentEnemy, controller);
             EnemyView newView = controller.makeView(
-                    i*ActiveLocationView.PARENT_WIDTH, 0);
+                    i*AllyZoneViewController.CARDS_AND_SPACE, 0);
             view.add(newView);
         }
         view.setVisible(true);
@@ -73,12 +73,12 @@ public class EngagementAreaViewController {
                 EnemyViewController eController = new EnemyViewController(bas, currentEnemy);
                 controllerMap.put(currentEnemy, eController);
                 EnemyView eView = eController.makeView(
-                        i*ActiveLocationView.PARENT_WIDTH, 0);
+                        i*AllyZoneViewController.CARDS_AND_SPACE, 0);
                 view.add(eView);
-                eController.updateView(i*ActiveLocationView.PARENT_WIDTH, 0);
+                eController.updateView(i*AllyZoneViewController.CARDS_AND_SPACE, 0);
             }else{
                 EnemyViewController enemyVC = controllerMap.get(currentEnemy);
-                enemyVC.updateView(i*ActiveLocationView.PARENT_WIDTH, 0);
+                enemyVC.updateView(i*AllyZoneViewController.CARDS_AND_SPACE, 0);
             }
         }
         
