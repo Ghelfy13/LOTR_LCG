@@ -21,6 +21,7 @@ import lordoftherings.effects.HealEffect;
 import lordoftherings.effects.HealPlayersHerosAndDiscardCardEffect;
 import lordoftherings.effects.PlayToFeintEffect;
 import lordoftherings.effects.PlayToMoveEnemyToStagingAreaEffect;
+import lordoftherings.effects.PlayToQuickStrikeEffect;
 import lordoftherings.effects.ReadyAllyToDiscardCardEffect;
 import lordoftherings.modifiers.LifeSpanOfModifier;
 import lordoftherings.modifiers.Modifier;

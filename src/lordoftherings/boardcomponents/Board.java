@@ -28,8 +28,11 @@ import lordoftherings.transaction_managers.ResolvePlayerAttackHandler;
 import lordoftherings.transaction_managers.ResolveUndefendedEnemyAttackHandler;
 import lordoftherings.transaction_managers.Uncancellable;
 import lordoftherings.effects.DiscardToExhaustAndReadyEffect;
+import lordoftherings.effects.PlayToQuickStrikeEffect;
 import lordoftherings.matcher.EngagedEnemyMatcher;
+import lordoftherings.transaction_managers.AttackEnemyResultHandler;
 import lordoftherings.transaction_managers.EnemyQueryHandle;
+import lordoftherings.transaction_managers.EnemyQueryRequirements;
 
 /**
  *
@@ -241,7 +244,8 @@ public class Board {
         target.setAttackedStatus(true);
     }
     
-    public void getCharactersToReady(ArrayList<GameCharacter> exhausted, DiscardToExhaustAndReadyEffect.ResultList list){
+    public void getCharactersToReady(ArrayList<GameCharacter> exhausted, 
+            DiscardToExhaustAndReadyEffect.ResultList list){
         if(exhausted.isEmpty()){
             ExhaustedHeroMatcher exhaustHero = new ExhaustedHeroMatcher();
             CharacterQueryRequirements requirements = new 
@@ -259,7 +263,25 @@ public class Board {
         }
     }
     
-     
+    public void getEnemyToAttack(ArrayList<Enemy> engaged, 
+            PlayToQuickStrikeEffect.ResultList list){
+        if(engaged.isEmpty()){
+            EngagedEnemyMatcher engagedEnemy = new EngagedEnemyMatcher();
+            EnemyQueryRequirements requirements =
+                new EnemyQueryRequirements(engagedEnemy, 1,1);
+            gameManager.handleEnemyQuery(new EnemyQueryHandle(
+                requirements,
+                new AttackEnemyResultHandler(this, list),
+                new ClearSuspensionHandler(this)),
+                "Choose an enemy engaged with you to attack.");
+            return;
+        }
+        else if(engaged.size() == 1){
+            list.addEnemyToAttack(engaged);
+        }else{
+            throw new RuntimeException();
+        }
+    }
     
     public void resolveAttackWithDefenders(Enemy attacker, ArrayList<GameCharacter> defenders) {
         if(defenders.isEmpty()){

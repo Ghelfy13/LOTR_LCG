@@ -16,7 +16,7 @@ public class EnemyQueryEnemyAreaView extends JPanel{
     public EnemyQueryEnemyAreaView(int x, int y){
         setLayout(null);
         setBounds(x, y, EncounterZoneView.ZONE_WIDTH, ActiveLocationView.CARD_COUNTER_HEIGHT);
-        setOpaque(true);
-        setBackground(Color.white);
+        setOpaque(false);
+        //setBackground(Color.white);
     }
 }
