@@ -19,6 +19,7 @@ import lordoftherings.effects.ExhaustToDrawEffect;
 import lordoftherings.effects.ExhaustToRaiseWillPowerEffect;
 import lordoftherings.effects.HealEffect;
 import lordoftherings.effects.HealPlayersHerosAndDiscardCardEffect;
+import lordoftherings.effects.PlayToFeintEffect;
 import lordoftherings.effects.PlayToMoveEnemyToStagingAreaEffect;
 import lordoftherings.effects.ReadyAllyToDiscardCardEffect;
 import lordoftherings.modifiers.LifeSpanOfModifier;
@@ -237,6 +238,37 @@ public class PlayerCardDatabase {
             "Choose an enemy engaged with a player.  Return that enemy to the staging area.",
             list11);
         cardMap.put(LightInDarkID, aLightInTheDark);
+        
+        PlayToFeintEffect feintEffect = new PlayToFeintEffect();
+        ArrayList<Effect> list12 = new ArrayList<>();
+        list12.add(feintEffect);
+        Identification FeintID = new Identification(ExpansionName.CORE, 34);
+        EventCardModel feint = new EventCardModel(
+            "Feint",
+            SphereOfInfluence.TACTICS,
+            PlayerCardType.EVENT,
+            new String[]{""},
+            FeintID,
+            1,
+            "Choose an enemy engaged with a player.  That enemy cannot attack this phase.",
+            list12);
+        cardMap.put(FeintID, feint);
+        
+        Identification QuickStrikeID = new Identification(ExpansionName.CORE, 35);
+        PlayToQuickStrikeEffect quickStrikeEffect = new PlayToQuickStrikeEffect();
+        ArrayList<Effect> list13 = new ArrayList<>();
+        list13.add(quickStrikeEffect);
+        EventCardModel quickStrike = new EventCardModel(
+            "Quick Strike",
+            SphereOfInfluence.TACTICS,
+            PlayerCardType.EVENT,
+            new String[]{""},
+            QuickStrikeID,
+            1,
+            "Exhaust a character you control to immediately declare it as an attacker "
+                    + "and resolve its attack against any enemy engaged with that player.",
+            list13);
+        cardMap.put(QuickStrikeID, quickStrike);
     }
     
 }

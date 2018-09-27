@@ -17,12 +17,14 @@ public class Enemy {
     protected int damage;
     private boolean isAttacking;
     private boolean beenAttacked;
+    private boolean canAttack;
     
     public Enemy(EnemyCard enemyCard){
         this.card = enemyCard;
         damage = 0;
         this.isAttacking = false;
         this.beenAttacked = true;
+        this.canAttack = true;
     }
     
     public void assignDamage(int newDamage){
@@ -59,10 +61,24 @@ public class Enemy {
     
     public void setEnemyToAttacking(){
         isAttacking = true;
+        canAttack = true;
     }
     
     public void setEnemyToNotAttacking(){
         isAttacking = false;
+        canAttack = false;
+    }
+    
+    public void enemyCanNotAttack(){
+        canAttack = false;
+    }
+    
+    public void enemyCanAttack(){
+        canAttack = true;
+    }
+    
+    public boolean canEnemyAttack(){
+        return canAttack;
     }
     
     public void getActions(ArrayList<Action> listOfActions, Board board, int askingID){

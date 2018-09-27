@@ -46,6 +46,10 @@ public class CombatPhaseManager implements PhaseManager{
             for(int i = 0; i < board.getNumOfPlayerZones(); ++i){
                 board.getPlayerZoneAt(i).setEnemiesToAttackedAndDefended();
             }
+        }if(subPhase == CombatSubPhase.RESOLVE_ENEMY_ATTACKS){
+            for(int i = 0; i < board.getNumOfPlayerZones(); ++i){
+                board.getPlayerZoneAt(i).getEngagementArea().resetCanAttack();
+            }
         }
     }
 

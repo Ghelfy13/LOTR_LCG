@@ -10,32 +10,30 @@ import lordoftherings.boardcomponents.Board;
 import lordoftherings.boardcomponents.SuspensionType;
 import lordoftherings.cards.EventCard;
 import lordoftherings.cards.PlayerCard;
-import lordoftherings.matcher.DamagedMatcher;
-import lordoftherings.transaction_managers.CharacterQueryHandle;
-import lordoftherings.transaction_managers.CharacterQueryRequirements;
+import lordoftherings.matcher.EngagedEnemyMatcher;
 import lordoftherings.transaction_managers.ClearSuspensionHandler;
-import lordoftherings.transaction_managers.DiscardToHealResultHandler;
+import lordoftherings.transaction_managers.EnemyQueryHandle;
+import lordoftherings.transaction_managers.EnemyQueryRequirements;
+import lordoftherings.transaction_managers.PlayToFeintResultHandler;
 
 /**
  *
  * @author Amanda
  */
-public class DiscardToHealEffect implements Effect{
-    
-    
+public class PlayToFeintEffect implements Effect{
 
     @Override
     public boolean execute(int askingID, Board board, PlayerCard card) {
         board.addSuspension(SuspensionType.EFFECT);
         EventCard event = (EventCard) card;
-        DamagedMatcher damagedChar = new DamagedMatcher();
-        CharacterQueryRequirements requirements = 
-                new CharacterQueryRequirements(damagedChar, 1, 1);
-        board.handleCharacterQuery(new CharacterQueryHandle(
-                        requirements,
-                        new DiscardToHealResultHandler(event, board),
-                        new ClearSuspensionHandler(board)),
-                "Choose a character to heal all damage on them.");
+        EngagedEnemyMatcher engagedEnemy = new EngagedEnemyMatcher();
+        EnemyQueryRequirements requirements = 
+                new EnemyQueryRequirements(engagedEnemy, 1, 1);
+        board.handleEnemyQuery(new EnemyQueryHandle(
+            requirements,
+            new PlayToFeintResultHandler(event, board),
+            new ClearSuspensionHandler(board)),
+            "Choose an engaged enemy so that they can not attack this phase.");
         return true;
     }
 
@@ -58,7 +56,7 @@ public class DiscardToHealEffect implements Effect{
 
     @Override
     public String createDescription(PlayerCard card) {
-        return "Heal all damage on " + card.getTitle();
+        return "Play and choose any engaged enemy so that they can't attack this phase";
     }
 
     @Override

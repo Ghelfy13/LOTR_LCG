@@ -101,9 +101,20 @@ public class EngagedEnemyArea {//Belongs in Field
         return false;
     }
     
+    public void resetCanAttack(){
+        for(int i = 0; i < listOfEngagedEnemies.size(); ++i){
+            listOfEngagedEnemies.get(i).enemyCanAttack();
+        }
+    }
+    
     public void setEnemiesToAttacking(){
         for(int i = 0; i < listOfEngagedEnemies.size(); ++i){
-            listOfEngagedEnemies.get(i).setEnemyToAttacking();
+            Enemy current = listOfEngagedEnemies.get(i);
+            if(current.canEnemyAttack()){
+                current.setEnemyToAttacking();
+            }else{
+                current.setEnemyToNotAttacking();
+            }
         }
     }
     
