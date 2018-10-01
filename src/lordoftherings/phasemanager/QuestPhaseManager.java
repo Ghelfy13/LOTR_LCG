@@ -59,6 +59,7 @@ public class QuestPhaseManager implements PhaseManager{
                for(int i = 0; i < board.getNumOfPlayerZones(); ++i){
                     board.getPlayerZoneAt(i).unsetCommittedCharacters();
                     board.getPlayerZoneAt(i).clearUpPhaseModifiers();
+                    board.getEncounterZone().getStagingArea().resetThreatContribution();
                 } 
                return;
             default:

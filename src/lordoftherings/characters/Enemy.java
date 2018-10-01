@@ -18,6 +18,7 @@ public class Enemy {
     private boolean isAttacking;
     private boolean beenAttacked;
     private boolean canAttack;
+    private boolean contributesThreat;
     
     public Enemy(EnemyCard enemyCard){
         this.card = enemyCard;
@@ -25,6 +26,7 @@ public class Enemy {
         this.isAttacking = false;
         this.beenAttacked = true;
         this.canAttack = true;
+        this.contributesThreat = true;
     }
     
     public void assignDamage(int newDamage){
@@ -79,6 +81,18 @@ public class Enemy {
     
     public boolean canEnemyAttack(){
         return canAttack;
+    }
+    
+    public void doesntContributeThreat(){
+        contributesThreat = false;
+    }
+    
+    public void doesContributeThreat(){
+        contributesThreat = true;
+    }
+    
+    public boolean canContributeThreat(){
+        return contributesThreat;
     }
     
     public void getActions(ArrayList<Action> listOfActions, Board board, int askingID){

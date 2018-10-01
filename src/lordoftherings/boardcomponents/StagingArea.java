@@ -54,12 +54,22 @@ public class StagingArea {
     public int getCurrentThreat(){
         int threat = 0;
         for( int i = 0; i < enemyZone.getNumOfEnemies(); ++i){
-            threat += enemyZone.getEnemyAt(i).getThreat();
+            Enemy current = enemyZone.getEnemyAt(i);
+            if(current.canContributeThreat()){
+                threat += current.getThreat();
+            }
         }
         for(int i = 0; i < locationZone.getSizeOfList(); ++i){
             threat += locationZone.getLocationAt(i).getThreat();
         }
         return threat;
+    }
+    
+    public void resetThreatContribution(){
+        for( int i = 0; i < enemyZone.getNumOfEnemies(); ++i){
+            Enemy current = enemyZone.getEnemyAt(i);
+            current.doesContributeThreat();
+        }
     }
     
     public Enemy getEnemyAt(int index){

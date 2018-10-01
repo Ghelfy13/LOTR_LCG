@@ -18,10 +18,11 @@ public class PlayerZone {
     private DiscardPile dPile;
     private Field field;
     private int ownerID;
-    private ThreatDial currentThreat;
+    private ThreatDial threatDial;
     private Board board;
     private boolean playerIsAlive;
     private PlayerName name;
+    private int playerThreat;
     
     
     public PlayerZone(PlayerDeckBuild playerDeckAndHeros, int ownerID, Board board, String name){
@@ -30,10 +31,10 @@ public class PlayerZone {
         dPile = new DiscardPile(ownerID);
         field = new Field(playerDeckAndHeros.getHeros(), ownerID, this);
         this.ownerID = ownerID;
-        this.currentThreat = new ThreatDial(field.getInitinalThreat(), ownerID, this);
         this.board = board;
         this.playerIsAlive = true;
         this.name = new PlayerName(name, ownerID, this);
+        this.threatDial = new ThreatDial(field.getInitinalThreat(), ownerID, this);
     }
     
     public boolean isPlayerAlive(){
@@ -65,7 +66,7 @@ public class PlayerZone {
         return field;
     }
     
-    public int getInitialThreat(){
+    public int getInitialHeroThreat(){
         return field.getInitinalThreat();
     }
     
@@ -73,12 +74,12 @@ public class PlayerZone {
         return field.getCharacterZone();
     }
     
-    public int getCurrentThreat(){
-        return currentThreat.getThreat();
+    public int getCurrentPlayerThreat(){
+        return threatDial.getThreat();
     }
     
     public void increaseThreatBy(int num){
-        currentThreat.increaseThreat(num);
+        threatDial.increaseThreat(num);
     }
     
     public EngagedEnemyArea getEngagementArea(){

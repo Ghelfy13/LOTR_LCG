@@ -26,7 +26,7 @@ public class ThreatDialTitleViewController {
     }
     
     public void updateView(){
-        int currentThreat = zone.getCurrentThreat();
+        int currentThreat = zone.getCurrentPlayerThreat();
         if(currentThreat >= 40 && currentThreat < 50){
             titleView.setBackground(Color.ORANGE);
         }else if(currentThreat >= 50){

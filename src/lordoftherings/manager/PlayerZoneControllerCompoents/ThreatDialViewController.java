@@ -19,14 +19,14 @@ public class ThreatDialViewController {
     }
     
     public ThreatDialView makeView(int x, int y){
-        int threat = zone.getInitialThreat();
+        int threat = zone.getInitialHeroThreat();
         dialView = new ThreatDialView(threat, x, y);
         dialView.setVisible(true);
         return dialView;
     }
     
     public void updateView(){
-        int currentThreat = zone.getCurrentThreat();
+        int currentThreat = zone.getCurrentPlayerThreat();
         if(currentThreat >= 40 && currentThreat < 50){
             dialView.setBackground(Color.ORANGE);
         }else if(currentThreat >= 50){

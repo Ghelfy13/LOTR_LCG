@@ -187,7 +187,7 @@ public class Board {
         }
         for(int i = 0; i < playerZones.length; ++i){
             if(playerZones[i].herosStillAlive() && 
-                    playerZones[i].getCurrentThreat()<50){
+                    playerZones[i].getCurrentPlayerThreat()<50){
                 hasPlayerWon = false;
                 return false;
             }
@@ -340,11 +340,11 @@ public class Board {
         for(int i = 0; i < enemyArea.getNumOfEnemies(); ++i){
             Enemy currentEnemy = enemyArea.getListOfEnemies().get(i);
             if(indexOfProperEnemy == -1){
-                if(currentEnemy.getThreat() <= playerZone.getCurrentThreat()){
+                if(currentEnemy.getThreat() <= playerZone.getCurrentPlayerThreat()){
                     indexOfProperEnemy = i;
                 }
             }else{
-                if(currentEnemy.getThreat() <= playerZone.getCurrentThreat() ||
+                if(currentEnemy.getThreat() <= playerZone.getCurrentPlayerThreat() ||
                         currentEnemy.getThreat() > enemyArea.getListOfEnemies().get(i).getThreat()){
                     indexOfProperEnemy = i;
                 }
@@ -374,8 +374,8 @@ public class Board {
     public int getLowestPlayerThreat(){
         int lowestThreat = 100;
         for(int i = 0; i < getNumOfPlayerZones(); ++i){
-            if(getPlayerZoneAt(i).getCurrentThreat() < lowestThreat){
-                lowestThreat = getPlayerZoneAt(i).getCurrentThreat();
+            if(getPlayerZoneAt(i).getCurrentPlayerThreat() < lowestThreat){
+                lowestThreat = getPlayerZoneAt(i).getCurrentPlayerThreat();
             }
         }
         return lowestThreat;

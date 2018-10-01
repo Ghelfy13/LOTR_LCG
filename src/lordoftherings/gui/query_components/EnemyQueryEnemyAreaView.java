@@ -6,6 +6,7 @@ import java.awt.Color;
 import javax.swing.JPanel;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.EncounterZoneComponents.EncounterZoneView;
+import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 
 /**
  *
@@ -13,9 +14,10 @@ import lordoftherings.gui.EncounterZoneComponents.EncounterZoneView;
  */
 public class EnemyQueryEnemyAreaView extends JPanel{
     
-    public EnemyQueryEnemyAreaView(int x, int y){
+    public EnemyQueryEnemyAreaView(int x, int y, int numOfEnemies){
         setLayout(null);
-        setBounds(x, y, EncounterZoneView.ZONE_WIDTH, ActiveLocationView.CARD_COUNTER_HEIGHT);
+        setBounds(x, y, numOfEnemies*ActiveLocationView.PARENT_WIDTH, 
+                HandCardView.CARD_HEIGHT);
         setOpaque(false);
         //setBackground(Color.white);
     }

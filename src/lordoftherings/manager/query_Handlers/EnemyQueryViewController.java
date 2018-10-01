@@ -53,7 +53,7 @@ public class EnemyQueryViewController extends QueryViewController<Enemy>
         Y_VALUE_FOR_ENGAGEMENT = ActiveLocationView.CARD_COUNTER_HEIGHT + 
                 DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE;
         X_VALUE_FOR_ENEMY_AREA = DISTANCE_FROM_FRAME + HandCardView.CARD_WIDTH + 
-                DISTANCE_BT_DECK_AND_STAGE + 190;
+                DISTANCE_BT_DECK_AND_STAGE + 190 + ActiveLocationView.PARENT_WIDTH + 65;
         Y_VALUE_FOR_ENEMY_AREA = DISTANCE_FROM_FRAME;
     }
 
@@ -65,7 +65,8 @@ public class EnemyQueryViewController extends QueryViewController<Enemy>
         QueryMessageView messageView = messageVC.makeView(1995, 0, description);
         view.add(messageView);
         EnemyQueryEnemyAreaView enemyAreaView = enemyAreaVC.makeView(X_VALUE_FOR_ENEMY_AREA, Y_VALUE_FOR_ENEMY_AREA);
-        EnemyQueryEngagedEnemyAreaView engagedEnemyAreaView = engagedEnemyAreaVC.makeView(X_VALUE_FOR_ENGAGEMENT, Y_VALUE_FOR_ENGAGEMENT);
+        EnemyQueryEngagedEnemyAreaView engagedEnemyAreaView = 
+                engagedEnemyAreaVC.makeView(X_VALUE_FOR_ENGAGEMENT, Y_VALUE_FOR_ENGAGEMENT);
         view.add(enemyAreaView);
         view.add(engagedEnemyAreaView);
         view.setVisible(true);

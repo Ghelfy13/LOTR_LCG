@@ -18,6 +18,6 @@ public class EncounterZoneView extends JPanel {
                 EncounterZoneViewController.DISTANCE_FROM_FRAME);
         setLayout(null);
         setBackground(Color.YELLOW);
-        setOpaque(false);
+        setOpaque(true);
     }
 }

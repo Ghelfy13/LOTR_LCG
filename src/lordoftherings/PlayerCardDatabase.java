@@ -19,6 +19,7 @@ import lordoftherings.effects.ExhaustToDrawEffect;
 import lordoftherings.effects.ExhaustToRaiseWillPowerEffect;
 import lordoftherings.effects.HealEffect;
 import lordoftherings.effects.HealPlayersHerosAndDiscardCardEffect;
+import lordoftherings.effects.PlayRadagastsCunningEffect;
 import lordoftherings.effects.PlayToFeintEffect;
 import lordoftherings.effects.PlayToMoveEnemyToStagingAreaEffect;
 import lordoftherings.effects.PlayToQuickStrikeEffect;
@@ -270,6 +271,22 @@ public class PlayerCardDatabase {
                     + "and resolve its attack against any enemy engaged with that player.",
             list13);
         cardMap.put(QuickStrikeID, quickStrike);
+        
+        Identification RadagastsCunningID = new Identification(ExpansionName.CORE, 65);
+        PlayRadagastsCunningEffect radagastsEffect = new PlayRadagastsCunningEffect();
+        ArrayList<Effect> list14 = new ArrayList<>();
+        list14.add(radagastsEffect);
+        EventCardModel radagastsCunning = new EventCardModel(
+            "Radagast's Cunning",
+            SphereOfInfluence.LORE,
+            PlayerCardType.EVENT,
+            new String[]{""},
+            RadagastsCunningID,
+            1,
+            "Choose an enemy in the staging area.  Until the end of phase, that enemy's threat"
+                    + " does not contribute to the threat count.",
+            list14);
+        cardMap.put(RadagastsCunningID, radagastsCunning);
     }
     
 }

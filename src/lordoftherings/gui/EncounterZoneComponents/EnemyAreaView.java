@@ -17,7 +17,7 @@ public class EnemyAreaView extends JPanel{
         length = numOfEnemies*ActiveLocationView.PARENT_WIDTH;
         setBounds(x, y, length, HandCardView.CARD_HEIGHT);
         setLayout(null);
-        setOpaque(false);
+        setOpaque(true);
         this.addMouseMotionListener(mmListener);
     }
     

@@ -42,7 +42,8 @@ public class EnemyQueryEnemyAreaViewController {
     }
     
     public EnemyQueryEnemyAreaView makeView(int x, int y){
-        view = new EnemyQueryEnemyAreaView(x, y);
+        view = new EnemyQueryEnemyAreaView(x, y, encounterZone.getStagingArea().
+                getEnemyArea().getNumOfEnemies());
         view.add(enemyQAS.getFocusableText());
         view.addMouseMotionListener(enemyQAS.createMouseFollower());
         ArrayList<Enemy> listOfEnemies = enemyArea.getListOfEnemies();

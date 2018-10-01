@@ -15,7 +15,7 @@ public class ThreatDial {
     
     public ThreatDial(int initialThreat, int ownerID, PlayerZone zone){
         this.zone = zone;
-        this.threat = zone.getInitialThreat();
+        this.threat = zone.getInitialHeroThreat();
         this.ownerID = ownerID;
     }
     
