@@ -27,8 +27,9 @@ public class QuestCardViewController {
         return cardView;
     }
     
-    public void updateView(String newInfo){
-        cardView.setText(newInfo);
+    public void updateView(QuestCard newQuest){
+        currentQuest = newQuest;
+        cardView = new QuestCardView(currentQuest.getModel().identify(), 0, 0);
         cardView.revalidate();
         cardView.repaint();
     }

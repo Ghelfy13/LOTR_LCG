@@ -49,7 +49,7 @@ public class QuestViewController implements Focusable{
     
     public void updateView(Quest newQuest){
         if(newQuest != currentQuest){
-            cardVC.updateView(newQuest.getInformation());
+            cardVC.updateView(newQuest.getQuestCard());
             currentQuest = newQuest;
             tokenVC.updateView(0);
         }else{

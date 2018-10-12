@@ -29,6 +29,7 @@ public class Quest {
     
     public void addTravelTokens(int numOfTokens){
         travelTokens += numOfTokens;
+        haveEnoughTokens();
     }
     
     public void removeTravelTokens(int numOfTokens){

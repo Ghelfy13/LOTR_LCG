@@ -95,6 +95,7 @@ public class EncounterZoneViewController {
         enemyDPileVC.updateView();
         questSetVC.updateView();
         questVC.updateView(encounterZone.getActiveQuest());
+        questDPileVC.updateView();
         
     }
 }

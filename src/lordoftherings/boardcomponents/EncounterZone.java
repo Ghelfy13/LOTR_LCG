@@ -101,6 +101,10 @@ public class EncounterZone {
     
     public void discardCompletedQuest(QuestCard completeQuest){
         questDiscard.addCard(completeQuest);
+        QuestCard nextQuest = getQuestSet().getNextQuest();
+            if(nextQuest != null){
+                activeQuest = new ActiveQuest(new Quest(quests.getNextQuest()));
+            }
     }
     
     public void discardDeadEnemy(EncounterCard deadCard){

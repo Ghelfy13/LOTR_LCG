@@ -13,6 +13,7 @@ import lordoftherings.matcher.ReadyMatcher;
 import lordoftherings.phasemanager.PhaseManagerGovenor;
 import lordoftherings.PlayerCardType;
 import lordoftherings.cards.EnemyCard;
+import lordoftherings.cards.QuestCard;
 import lordoftherings.characters.GameCharacter;
 import lordoftherings.characters.Enemy;
 import lordoftherings.characters.Hero;
@@ -143,7 +144,8 @@ public class Board {
                 playerZones[i].increaseThreatBy(threatPoints - questPoints);
             }
         }else{
-            ActiveLocationArea locationZone = encounterZone.getStagingArea().getActiveLocationArea();
+            ActiveLocationArea locationZone = encounterZone.getStagingArea().
+                    getActiveLocationArea();
             if(locationZone.isEmpty()){
                 encounterZone.getActiveQuest().addTravelTokens(numOfTokens);
             }else{
@@ -160,13 +162,12 @@ public class Board {
             }
             checkTokensOnQuest();
         }
-        
     }
     
     public void checkTokensOnQuest(){
         Quest currentQuest = encounterZone.getActiveQuest();
         if(currentQuest.haveEnoughTokens()){
-            encounterZone.getQuestSet().getNextQuest();
+            encounterZone.discardCompletedQuest(currentQuest.getQuestCard());
             hasGameEnded();
         }
     }
