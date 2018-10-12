@@ -26,4 +26,6 @@ public class ActiveQuest {
     public Quest getQuest(){
         return currentQuest;
     }
+    
+    
 }

@@ -38,6 +38,7 @@ public class QuestSetViewController implements Focusable{
     
     public void updateView(){
         if(questSet.getNumOfQuestsLeft() == 0){
+            System.out.println("Going blind");
             parentView.setVisible(false);
         }
         parentView.revalidate();

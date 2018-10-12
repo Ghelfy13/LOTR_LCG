@@ -56,11 +56,7 @@ public class QuestPhaseManager implements PhaseManager{
             case ENCOUNTER_DECK_REVEAL:
                 return;
             case RESOLVE_QUEST:
-               for(int i = 0; i < board.getNumOfPlayerZones(); ++i){
-                    board.getPlayerZoneAt(i).unsetCommittedCharacters();
-                    board.getPlayerZoneAt(i).clearUpPhaseModifiers();
-                    board.getEncounterZone().getStagingArea().resetThreatContribution();
-                } 
+                
                return;
             default:
                 return;
@@ -83,6 +79,12 @@ public class QuestPhaseManager implements PhaseManager{
                 return board.getPhaseManagerGovenor().getQuestPhaseManager().
                         setSubPhase(QuestSubPhase.PLAYER_ACTIONS);
             case PLAYER_ACTIONS:
+                for(int i = 0; i < board.getNumOfPlayerZones(); ++i){
+                    board.getPlayerZoneAt(i).unsetCommittedCharacters();
+                    board.getPlayerZoneAt(i).clearUpPhaseModifiers();
+                    board.getEncounterZone().getStagingArea().resetThreatContribution();
+                    board.getPlayerZoneAt(i).getEngagementArea().resetCanAttack();
+                }
                 return board.getPhaseManagerGovenor().getTravelPhaseManager().
                         setSubPhase(TravelSubPhase.SELECT_ACTIVE_LOCATION);
             default:

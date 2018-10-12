@@ -42,6 +42,7 @@ public class EncounterDiscardPileViewController implements Focusable{
     public void updateView(){
         topCard = discardPile.getTopCard();
         if(topCard != null){
+            view.removeAll();
             EncounterDiscardCardView topCardView = new EncounterDiscardCardView(5, 5, topCard.getIdentity());
             topCardView.addMouseMotionListener(bas.createMouseFollower());
             topCardView.addMouseListener(new FocusableMouseListener(bas, this));

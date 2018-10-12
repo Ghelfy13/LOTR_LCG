@@ -16,8 +16,7 @@ public class StagingAreaView extends JPanel{
     public StagingAreaView(int x, int y, MouseMotionListener mmListener){
         setBounds(x, y, EngagementAreaView.AREA_WIDTH, ActiveLocationView.CARD_COUNTER_HEIGHT);
         setLayout(null);
-        setOpaque(true);
-        setBackground(Color.CYAN);
+        setOpaque(false);
         this.addMouseMotionListener(mmListener);
     }
 }

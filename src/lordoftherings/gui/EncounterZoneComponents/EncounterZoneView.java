@@ -17,7 +17,6 @@ public class EncounterZoneView extends JPanel {
         setBounds( x, y, ZONE_WIDTH , 2*ActiveLocationView.CARD_COUNTER_HEIGHT +
                 EncounterZoneViewController.DISTANCE_FROM_FRAME);
         setLayout(null);
-        setBackground(Color.YELLOW);
-        setOpaque(true);
+        setOpaque(false);
     }
 }
