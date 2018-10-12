@@ -7,6 +7,7 @@ import lordoftherings.boardcomponents.EncounterZone;
 import lordoftherings.gui.EncounterZoneComponents.EncounterDeckParentView;
 import lordoftherings.gui.EncounterZoneComponents.EncounterDiscardPileView;
 import lordoftherings.gui.EncounterZoneComponents.EncounterZoneView;
+import lordoftherings.gui.EncounterZoneComponents.QuestDiscardPileView;
 import lordoftherings.gui.EncounterZoneComponents.QuestSetParentView;
 import lordoftherings.gui.EncounterZoneComponents.QuestView;
 import lordoftherings.gui.EncounterZoneComponents.StagingAreaThreatTitleView;
@@ -25,6 +26,7 @@ public class EncounterZoneViewController {
     private EncounterDiscardPileViewController enemyDPileVC;
     private QuestSetViewController questSetVC;
     private QuestViewController questVC;
+    private QuestDiscardPileViewController questDPileVC;
     private EncounterZone encounterZone;
     private StagingAreaViewController stagingVC;
     private EncounterZoneView view;
@@ -33,6 +35,10 @@ public class EncounterZoneViewController {
     private StagingAreaThreatTitleViewController threatTitleVC;
     public static final int DISTANCE_FROM_FRAME = 10;
     public static final int DISTANCE_BT_DECK_AND_STAGE = 10;
+    public static final int Y_VALUE_FOR_STAGING_AREA = HandCardView.CARD_WIDTH +
+            4*DISTANCE_BT_DECK_AND_STAGE;
+    public static final int X_VALUE_FOR_STAGING_AREA = HandCardView.CARD_WIDTH +
+            DISTANCE_BT_DECK_AND_STAGE + 190;
     
     
     public EncounterZoneViewController(BoardActiveState boardAS, EncounterZone zone){
@@ -45,22 +51,27 @@ public class EncounterZoneViewController {
         this.stagingVC = new StagingAreaViewController(boardAS, encounterZone.getStagingArea());
         this.threatTitleVC = new StagingAreaThreatTitleViewController(zone);
         this.threatVC = new StagingAreaThreatViewController(zone);
+        this.questDPileVC = new QuestDiscardPileViewController(this, bas, encounterZone.getQuestDiscardPile());
     }
     
     public EncounterZoneView makeView(int x, int y){
         view = new EncounterZoneView(x, y);
         view.addMouseMotionListener(bas.createMouseFollower());
         EncounterDeckParentView deckView = enemyDeckVC.makeView(
-                bas.createMouseFollower(), PlayerZoneViewController.DECK_X, DISTANCE_FROM_FRAME);
-        EncounterDiscardPileView discardView = enemyDPileVC.makeView(0, DISTANCE_FROM_FRAME);
-        StagingAreaView stageView = stagingVC.makeView(HandCardView.CARD_WIDTH + DISTANCE_BT_DECK_AND_STAGE + 190, 0);
+                bas.createMouseFollower(), PlayerZoneViewController.DECK_X, 
+                Y_VALUE_FOR_STAGING_AREA);
+        EncounterDiscardPileView discardView = enemyDPileVC.makeView(0, 
+                Y_VALUE_FOR_STAGING_AREA);
+        StagingAreaView stageView = stagingVC.makeView(X_VALUE_FOR_STAGING_AREA,
+                Y_VALUE_FOR_STAGING_AREA);
         StagingAreaThreatTitleView threatTitleView = threatTitleVC.makeView(1800, 0);
         StagingAreaThreatView threatView = threatVC.makeView(1800, 50);
-        QuestSetParentView setView = questSetVC.makeView(0, 
-                4*DISTANCE_BT_DECK_AND_STAGE + HandCardView.CARD_HEIGHT);
-        QuestView questView = questVC.makeView(HandCardView.CARD_HEIGHT +
-                4*DISTANCE_BT_DECK_AND_STAGE, 4*DISTANCE_BT_DECK_AND_STAGE + 
-                        HandCardView.CARD_HEIGHT);
+        QuestDiscardPileView questDPView = questDPileVC.makeView(0,DISTANCE_FROM_FRAME);
+        QuestSetParentView setView = questSetVC.makeView(HandCardView.CARD_HEIGHT +
+                4*DISTANCE_BT_DECK_AND_STAGE,DISTANCE_FROM_FRAME);
+        QuestView questView = questVC.makeView(2*HandCardView.CARD_HEIGHT +
+                8*DISTANCE_BT_DECK_AND_STAGE, DISTANCE_FROM_FRAME);
+        view.add(questDPView);
         view.add(questView);
         view.add(setView);
         view.add(threatTitleView);

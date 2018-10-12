@@ -21,6 +21,10 @@ public class QuestCard {
         ownerID = -4;
     }
     
+    public String getIdentity(){
+        return getModel().identify();
+    }
+    
     public String getTitle(){
         return questModel.getTitle();
     }

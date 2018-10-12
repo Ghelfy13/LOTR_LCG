@@ -12,18 +12,19 @@ import lordoftherings.gui.PlayerZoneComponents.HandCardView;
  *
  * @author Amanda
  */
-public class QuestZoneView extends JPanel{
+public class QuestDiscardPileView extends JPanel{
     
-    public QuestZoneView(int x, int y){
+    public QuestDiscardPileView(int x, int y){
         setBounds(x, y, HandCardView.CARD_HEIGHT + CARD_BORDER, 
                 HandCardView.CARD_WIDTH + CARD_BORDER);
         setLayout(null);
         setOpaque(true);
-        setBackground(Color.MAGENTA);
+        Color background = new Color(164, 117, 170);
+        setBackground(background);
         setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }
     
-    public QuestZoneView getView(){
+    public QuestDiscardPileView getView(){
         return this;
     }
 }

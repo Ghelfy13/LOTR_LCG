@@ -42,7 +42,9 @@ public class EncounterZone {
         return encounterDeck;
     }
     
-    
+    public QuestDiscardPile getQuestDiscardPile(){
+        return questDiscard;
+    }
     
     public QuestSet getQuestSet(){
         return quests;

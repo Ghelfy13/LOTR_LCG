@@ -2,10 +2,10 @@
 
 package lordoftherings.manager.EncounterZoneControllerComponents;
 
-import lordoftherings.boardcomponents.EncounterDiscardPile;
-import lordoftherings.cards.EncounterCard;
-import lordoftherings.gui.EncounterZoneComponents.EncounterDiscardCardView;
-import lordoftherings.gui.EncounterZoneComponents.EncounterDiscardPileView;
+import lordoftherings.boardcomponents.QuestDiscardPile;
+import lordoftherings.cards.QuestCard;
+import lordoftherings.gui.EncounterZoneComponents.QuestCardView;
+import lordoftherings.gui.EncounterZoneComponents.QuestDiscardPileView;
 import lordoftherings.manager.actionComponents.BoardActiveState;
 import lordoftherings.manager.actionComponents.Focusable;
 import lordoftherings.manager.actionComponents.FocusableMouseListener;
@@ -14,25 +14,23 @@ import lordoftherings.manager.actionComponents.FocusableMouseListener;
  *
  * @author Amanda
  */
-public class EncounterDiscardPileViewController implements Focusable{
-    
-    private EncounterDiscardPile discardPile;
-    private EncounterZoneViewController encounterZoneVC;
-    private EncounterDiscardPileView view;
-    private EncounterCard topCard;
+public class QuestDiscardPileViewController implements Focusable{
+
+    private QuestDiscardPileView view;
+    private QuestDiscardPile discardPile;
+    private QuestCard topCard;
     private BoardActiveState bas;
+    private EncounterZoneViewController encounterVC;
     
-    public EncounterDiscardPileViewController(EncounterZoneViewController zoneVC, 
-            BoardActiveState bas, EncounterDiscardPile discardPile){
-        this.encounterZoneVC = zoneVC;
-        this.discardPile = discardPile;
+    public QuestDiscardPileViewController(EncounterZoneViewController zoneVC, 
+            BoardActiveState bas, QuestDiscardPile discardPile){
         this.bas = bas;
-        this.view = null;
-        this.topCard = null;
+        this.discardPile = discardPile;
+        this.encounterVC = zoneVC;
     }
     
-    public EncounterDiscardPileView makeView(int x, int y){
-        view = new EncounterDiscardPileView(x, y);
+    public QuestDiscardPileView makeView(int x, int y){
+        view = new QuestDiscardPileView(x, y);
         view.addMouseMotionListener(bas.createMouseFollower());
         view.addMouseListener(new FocusableMouseListener(bas, this));
         view.setVisible(true);
@@ -43,7 +41,7 @@ public class EncounterDiscardPileViewController implements Focusable{
         topCard = discardPile.getTopCard();
         if(topCard != null){
             view.removeAll();
-            EncounterDiscardCardView topCardView = new EncounterDiscardCardView(5, 5, topCard.getIdentity());
+            QuestCardView topCardView = new QuestCardView(topCard.getIdentity(), 5, 5);
             topCardView.addMouseMotionListener(bas.createMouseFollower());
             topCardView.addMouseListener(new FocusableMouseListener(bas, this));
             topCardView.setVisible(true);
@@ -53,13 +51,12 @@ public class EncounterDiscardPileViewController implements Focusable{
         view.repaint();
     }
     
-    
     @Override
     public String getViewingText() {
         if(discardPile.getSize() == 1){
-            return "1 card is in the Encounter Discard Pile";
+            return "1 card is in the Quest Discard Pile";
         }else{
-            return discardPile.getSize() + " cards in the Encounter Discard Pile";
+            return discardPile.getSize() + " cards in the Quest Discard Pile";
         }
     }
     

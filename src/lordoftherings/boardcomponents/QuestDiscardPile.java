@@ -31,4 +31,8 @@ public class QuestDiscardPile {
         }
         return null;
     }
+    
+    public int getSize(){
+        return discardPile.size();
+    }
 }

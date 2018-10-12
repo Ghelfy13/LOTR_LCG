@@ -16,6 +16,7 @@ import lordoftherings.gui.query_components.QueryMessageView;
 import static lordoftherings.manager.BoardControllerComponents.BoardViewController.DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE;
 import static lordoftherings.manager.BoardControllerComponents.BoardViewController.DISTANCE_FROM_FRAME;
 import lordoftherings.manager.BoardControllerComponents.GameManagerViewController;
+import lordoftherings.manager.EncounterZoneControllerComponents.EncounterZoneViewController;
 import static lordoftherings.manager.EncounterZoneControllerComponents.EncounterZoneViewController.DISTANCE_BT_DECK_AND_STAGE;
 import static lordoftherings.manager.PlayerZoneControllerCompoents.PlayerZoneViewController.DECK_X;
 import lordoftherings.manager.actionComponents.GlobalViewController;
@@ -34,10 +35,14 @@ public class EnemyQueryViewController extends QueryViewController<Enemy>
     private EnemyQueryView view;
     private EngagedEnemyArea engagedArea;
     private EncounterZone encounterZone;
-    public static int X_VALUE_FOR_ENGAGEMENT;
-    public static int Y_VALUE_FOR_ENGAGEMENT;
-    public static int X_VALUE_FOR_ENEMY_AREA;
-    public static int Y_VALUE_FOR_ENEMY_AREA;
+    public static int X_VALUE_FOR_ENGAGEMENT = DISTANCE_FROM_FRAME + DECK_X +
+            HandCardView.CARD_WIDTH + 20;;
+    public static int Y_VALUE_FOR_ENGAGEMENT = ActiveLocationView.CARD_COUNTER_HEIGHT + 
+                DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE;;
+    public static int X_VALUE_FOR_ENEMY_AREA = DISTANCE_FROM_FRAME + HandCardView.CARD_WIDTH + 
+                DISTANCE_BT_DECK_AND_STAGE + 190 + ActiveLocationView.PARENT_WIDTH + 65;
+    public static int Y_VALUE_FOR_ENEMY_AREA = 
+            EncounterZoneViewController.Y_VALUE_FOR_STAGING_AREA + DISTANCE_FROM_FRAME;
     
     public EnemyQueryViewController(GameManagerViewController gameMVC, EnemyQueryHandle handle) {
         super(gameMVC, handle);
@@ -49,12 +54,6 @@ public class EnemyQueryViewController extends QueryViewController<Enemy>
             gameMVC.getBoard().getCurrentPlayerZone().getEngagementArea(), enemyQAS);
         this.engagedArea = gameMVC.getBoard().getCurrentPlayerZone().getEngagementArea();
         this.encounterZone = gameMVC.getBoard().getEncounterZone();
-        X_VALUE_FOR_ENGAGEMENT = DISTANCE_FROM_FRAME + DECK_X +HandCardView.CARD_WIDTH + 20;
-        Y_VALUE_FOR_ENGAGEMENT = ActiveLocationView.CARD_COUNTER_HEIGHT + 
-                DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE;
-        X_VALUE_FOR_ENEMY_AREA = DISTANCE_FROM_FRAME + HandCardView.CARD_WIDTH + 
-                DISTANCE_BT_DECK_AND_STAGE + 190 + ActiveLocationView.PARENT_WIDTH + 65;
-        Y_VALUE_FOR_ENEMY_AREA = DISTANCE_FROM_FRAME;
     }
 
     @Override
