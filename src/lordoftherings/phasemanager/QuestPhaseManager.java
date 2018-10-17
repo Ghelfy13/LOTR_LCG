@@ -33,7 +33,6 @@ public class QuestPhaseManager implements PhaseManager{
                 isActionable = false;
                 break;
             case RESOLVE_QUEST:
-                board.resolveQuest();
                 board.hasGameEnded();
                 isActionable = false;
                 break;
@@ -56,7 +55,7 @@ public class QuestPhaseManager implements PhaseManager{
             case ENCOUNTER_DECK_REVEAL:
                 return;
             case RESOLVE_QUEST:
-                
+               board.resolveQuest();
                return;
             default:
                 return;

@@ -2,6 +2,7 @@
 
 package lordoftherings.boardcomponents;
 
+import java.util.ArrayList;
 import lordoftherings.deckcomponents.QuestSetBuild;
 import lordoftherings.cards.QuestCard;
 
@@ -10,52 +11,36 @@ import lordoftherings.cards.QuestCard;
  * @author Amanda
  */
 public class QuestSet {
-    private QuestCard[] questSet;
+    private ArrayList<QuestCard> questSet;
     private QuestCard currentQuest;
-    private boolean completedQuests;
-    private int numOfQuestsLeft;
     
     public QuestSet(QuestSetBuild setComponents){
-        questSet = new QuestCard[setComponents.getSizeOfSet()];
-        completedQuests = false;
-        for(int i = 0; i < questSet.length; ++i){
+        questSet = new ArrayList<>();
+        for(int i = 0; i < setComponents.getSizeOfSet(); ++i){
             QuestCard card = new QuestCard(setComponents.getCardModelAt(i));
-            questSet[i] = card;
+            questSet.add(card);
         }
-        numOfQuestsLeft = questSet.length;
     }
     
     public QuestCard getQuestCardAt(int i){
-        return questSet[i];
+        return questSet.get(i);
     }
     
     public int getSizeOfSet(){
-        return questSet.length;
-    }
-    
-    public int getNumOfQuestsLeft(){
-        return numOfQuestsLeft;
+        return questSet.size();
     }
     
     public boolean hasCompletedQuests(){
-        return completedQuests;
+        return currentQuest == null && questSet.isEmpty();
     }
     
     public QuestCard getNextQuest(){//can return null
-        if(currentQuest == null){
-            currentQuest = questSet[0];
-            --numOfQuestsLeft;
-            return currentQuest;
+        if(questSet.isEmpty()){
+            currentQuest = null;
         }
-        for(int i = 0; i < questSet.length; ++i){
-            if(questSet[i] == currentQuest && i != questSet.length){
-                currentQuest = questSet[i];
-                --numOfQuestsLeft;
-                return currentQuest;
-            }
+        else{
+            currentQuest = questSet.remove(0);
         }
-        completedQuests = true;
-        currentQuest = null;
         return currentQuest;
     }
     

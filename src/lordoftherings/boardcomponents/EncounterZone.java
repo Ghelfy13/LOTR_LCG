@@ -103,7 +103,7 @@ public class EncounterZone {
         questDiscard.addCard(completeQuest);
         QuestCard nextQuest = getQuestSet().getNextQuest();
             if(nextQuest != null){
-                activeQuest = new ActiveQuest(new Quest(quests.getNextQuest()));
+                activeQuest = new ActiveQuest(new Quest(nextQuest));
             }
     }
     

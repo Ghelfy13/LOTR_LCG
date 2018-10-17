@@ -5,6 +5,7 @@
  */
 package lordoftherings.manager.EncounterZoneControllerComponents;
 
+import lordoftherings.boardcomponents.EncounterZone;
 import lordoftherings.deckcomponents.Quest;
 import lordoftherings.gui.EncounterZoneComponents.QuestCardView;
 import lordoftherings.gui.EncounterZoneComponents.QuestTokenView;
@@ -27,8 +28,8 @@ public class QuestViewController implements Focusable{
     private QuestTokenView tokenView;
     private BoardActiveState bas;
     
-    public QuestViewController(Quest currentQuest, BoardActiveState bas){
-        this.currentQuest = currentQuest;
+    public QuestViewController(EncounterZone zone, BoardActiveState bas){
+        this.currentQuest = zone.getActiveQuest();
         this.bas = bas;
         cardVC = new QuestCardViewController(currentQuest.getQuestCard(), bas);
         tokenVC = new QuestTokenViewController();
@@ -36,7 +37,7 @@ public class QuestViewController implements Focusable{
     
     public QuestView makeView(int x, int y){
         view = new QuestView(x, y);
-        cardView = cardVC.makeView();
+        cardView = cardVC.makeView(currentQuest.getQuestCard());
         cardView.addMouseListener(new FocusableMouseListener(bas, this));
         cardView.addMouseMotionListener(bas.createMouseFollower());
         view.add(cardView);
@@ -48,12 +49,18 @@ public class QuestViewController implements Focusable{
     }
     
     public void updateView(Quest newQuest){
+        if(newQuest == null){
+            view.setVisible(false);
+        }
         if(newQuest != currentQuest){
-            cardVC.updateView(newQuest.getQuestCard());
+            view.removeAll();
+            cardView = cardVC.makeView(newQuest.getQuestCard());
+            tokenView = tokenVC.makeView(0, HandCardView.CARD_WIDTH);
             currentQuest = newQuest;
-            tokenVC.updateView(0);
+            view.add(cardView);
+            view.add(tokenView);
         }else{
-            tokenVC.updateView(currentQuest.getNumOfTokens());
+            tokenVC.updateView(newQuest.getNumOfTokens());
         }
         view.revalidate();
         view.repaint();

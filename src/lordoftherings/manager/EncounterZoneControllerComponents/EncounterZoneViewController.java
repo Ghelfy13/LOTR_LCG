@@ -47,7 +47,7 @@ public class EncounterZoneViewController {
         this.enemyDeckVC = new EncounterDeckViewController(encounterZone.getEncounterDeck(), this);
         this.enemyDPileVC = new EncounterDiscardPileViewController(this, bas, encounterZone.getEnemyDiscardPile());
         this.questSetVC = new QuestSetViewController(zone.getQuestSet(), bas);
-        this.questVC = new QuestViewController(encounterZone.getActiveQuest(), bas);
+        this.questVC = new QuestViewController(encounterZone, bas);
         this.stagingVC = new StagingAreaViewController(boardAS, encounterZone.getStagingArea());
         this.threatTitleVC = new StagingAreaThreatTitleViewController(zone);
         this.threatVC = new StagingAreaThreatViewController(zone);
