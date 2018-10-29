@@ -19,6 +19,8 @@ public class GameManager {
     private PlayerQueryHandler customPlayerQH;
     private DefaultEnemyQueryHandler enemyQH;
     private EnemyQueryHandler customEnemyQH;
+    private DiscardPileQueryHandler customDPileQH;
+    private DefaultDiscardPileQueryHandler dPileQH;
     
     
     public GameManager(PlayerDeckBuild[] playerBuilds, EncounterBuild encounterInfo){
@@ -29,6 +31,8 @@ public class GameManager {
         this.customPlayerQH = null;
         this.enemyQH = new DefaultEnemyQueryHandler(board);
         this.customEnemyQH = null;
+        this.dPileQH = new DefaultDiscardPileQueryHandler(board);
+        this.customDPileQH = null;
     }
     
     public Board getBoard(){
@@ -60,6 +64,15 @@ public class GameManager {
         
     }
     
+    public void handleDiscardPileQuery(DiscardPileQueryHandle handle, String description){
+        if(customDPileQH == null){
+            dPileQH.handleQuery(handle, description);
+        }
+        else{
+            customDPileQH.handleQuery(handle, description);
+        }
+    }
+    
     public void setCustomCharacterQueryHandler(CharacterQueryHandler newCustom){
         customCharQH = newCustom;
     }
@@ -69,6 +82,10 @@ public class GameManager {
     
     public void setCustomEnemyQueryHandler(EnemyQueryHandler newCustom){
         customEnemyQH = newCustom;
+    }
+    
+    public void setCustomDiscardPileQueryHandler(DiscardPileQueryHandler newCustom){
+        customDPileQH = newCustom;
     }
     
     public void unsetCustomCharQueryHandler(){

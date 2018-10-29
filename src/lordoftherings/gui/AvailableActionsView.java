@@ -12,7 +12,6 @@ import javax.swing.JLabel;
  * @author Amanda
  */
 public class AvailableActionsView extends JLabel {
-    //TODO: MAKE A JLABEL WITH IMAGE ICON BUTTONS TO PERFORM AN ACTION
     public static final Font MESSAGE_FONT = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 36);
     int lengthOfBox;
     
