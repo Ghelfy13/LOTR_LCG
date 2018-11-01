@@ -2,10 +2,19 @@
 
 package lordoftherings.gui.query_components;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author Amanda
  */
-public class DiscardPileQueryPlayerZoneView {
+public class DiscardPileQueryPlayerZoneView extends JPanel{
     
+    public DiscardPileQueryPlayerZoneView(int x, int y){
+        setBounds(x, y, QueryPlayerZoneView.ZONE_WIDTH, 
+                QueryPlayerZoneView.ZONE_HEIGHT);
+        setLayout(null);
+        setOpaque(false);
+        setVisible(true);
+    }
 }

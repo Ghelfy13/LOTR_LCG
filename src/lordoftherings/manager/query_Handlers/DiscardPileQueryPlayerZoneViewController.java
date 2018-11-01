@@ -3,6 +3,8 @@
 package lordoftherings.manager.query_Handlers;
 
 import lordoftherings.boardcomponents.PlayerZone;
+import lordoftherings.gui.query_components.DiscardPileQueryPileView;
+import lordoftherings.gui.query_components.DiscardPileQueryPlayerZoneView;
 import lordoftherings.manager.PlayerZoneControllerCompoents.PlayerZoneViewController;
 import lordoftherings.transaction_managers.DiscardPileQueryHandle;
 
@@ -29,7 +31,7 @@ public class DiscardPileQueryPlayerZoneViewController {
     public DiscardPileQueryPlayerZoneView makeView(int x, int y){
         zoneView = new DiscardPileQueryPlayerZoneView(x,y);
         zoneView.addMouseMotionListener(dPileQAS.createMouseFollower());
-        DiscardPileQueryPileViewController pileView = dPileVC.makeView(0, 
+        DiscardPileQueryPileView pileView = dPileVC.makeView(0, 
                 PlayerZoneViewController.Y_HAND_VALUE -10);
         zoneView.add(pileView);
         zoneView.setVisible(true);

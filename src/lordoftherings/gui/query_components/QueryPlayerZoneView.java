@@ -9,8 +9,8 @@ import javax.swing.JPanel;
  * @author Amanda
  */
 public class QueryPlayerZoneView extends JPanel{
-    public final int ZONE_WIDTH = 2000;
-    public final int ZONE_HEIGHT = 1000;
+    public static final int ZONE_WIDTH = 2000;
+    public static final int ZONE_HEIGHT = 1000;
     
     public QueryPlayerZoneView(int x, int y){
         setLayout(null);
