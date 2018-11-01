@@ -23,6 +23,7 @@ import lordoftherings.effects.PlayRadagastsCunningEffect;
 import lordoftherings.effects.PlayToFeintEffect;
 import lordoftherings.effects.PlayToMoveEnemyToStagingAreaEffect;
 import lordoftherings.effects.PlayToQuickStrikeEffect;
+import lordoftherings.effects.PlayWillOfWestEffect;
 import lordoftherings.effects.ReadyAllyToDiscardCardEffect;
 import lordoftherings.modifiers.LifeSpanOfModifier;
 import lordoftherings.modifiers.Modifier;
@@ -289,7 +290,7 @@ public class PlayerCardDatabase {
         cardMap.put(RadagastsCunningID, radagastsCunning);
         
         Identification WillOfTheWestID = new Identification(ExpansionName.CORE, 49);
-        PlayWillOfTheWestEffect willOfWestEffect = new PlayWillOfTheWestEffect();
+        PlayWillOfWestEffect willOfWestEffect = new PlayWillOfWestEffect();
         ArrayList<Effect> list15 = new ArrayList<>();
         list15.add(willOfWestEffect);
         EventCardModel willOfWest = new EventCardModel(

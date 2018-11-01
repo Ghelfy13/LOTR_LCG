@@ -22,8 +22,15 @@ public class DiscardPile {
     }
     
     public PlayerCard getTopCard(){
-        if(dPile.size() != 0){
+        if(!dPile.isEmpty()){
             return dPile.get(dPile.size() -1);
+        }
+        return null;
+    }
+    
+    public PlayerCard removeTopCard(){
+        if(!dPile.isEmpty()){
+            return dPile.remove(dPile.size() -1);
         }
         return null;
     }

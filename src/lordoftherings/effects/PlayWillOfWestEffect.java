@@ -12,6 +12,9 @@ import lordoftherings.boardcomponents.SuspensionType;
 import lordoftherings.cards.EventCard;
 import lordoftherings.cards.PlayerCard;
 import lordoftherings.matcher.AnyMatcher;
+import lordoftherings.transaction_managers.ClearSuspensionHandler;
+import lordoftherings.transaction_managers.PlayWillOfWestResultHandler;
+import lordoftherings.transaction_managers.PlayerQueryHandle;
 import lordoftherings.transaction_managers.PlayerQueryRequirements;
 
 /**
@@ -29,7 +32,11 @@ public class PlayWillOfWestEffect implements Effect{
         AnyMatcher<PlayerZone> desiredPlayerZone = new AnyMatcher<>();
         PlayerQueryRequirements requirements = new PlayerQueryRequirements(
             desiredPlayerZone, 1, 1);
-        board.handlePlayerZoneQuery(handle, description);
+        board.handlePlayerZoneQuery(new PlayerQueryHandle(requirements,
+            new PlayWillOfWestResultHandler(board, event),
+            new ClearSuspensionHandler(board)),
+            "Choose a player to have their discard pile shuffled back into their deck.");
+        return true;
     }
 
     @Override

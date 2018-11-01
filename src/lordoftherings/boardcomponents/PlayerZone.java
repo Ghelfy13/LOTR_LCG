@@ -189,6 +189,13 @@ public class PlayerZone {
     public void clearUpPhaseModifiers() {
         field.getCharacterZone().cleanUpPhaseModifiers();
     }
+    
+    public void reshuffleDiscardPile(){
+        for(int i = 0; i < dPile.getSize(); ++i){
+            playersDeck.addCard(dPile.removeTopCard());
+        }
+        playersDeck.shuffle();
+    }
 
     
 }

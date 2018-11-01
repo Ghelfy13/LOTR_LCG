@@ -45,6 +45,8 @@ public class DeckViewController implements Focusable{
     public void updateView(){
         if(playerDeck.getSize() == 0){
             deckParent.getView().setVisible(false);
+        }else{
+            deckParent.getView().setVisible(true);
         }
     }
     

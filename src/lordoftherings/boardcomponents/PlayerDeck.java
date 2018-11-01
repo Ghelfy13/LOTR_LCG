@@ -47,7 +47,7 @@ public class PlayerDeck {
         Random random = new Random();
         int sizeOfDeck = deck.size();
         for(int i = 0; i < sizeOfDeck; ++i){
-            int position = random.nextInt(40);
+            int position = random.nextInt(sizeOfDeck);
             PlayerCard cardAtI = deck.get(i);
             PlayerCard cardAtRandom = deck.get(position);
             deck.set(position, cardAtI);
@@ -67,5 +67,9 @@ public class PlayerDeck {
         PlayerCard card = deck.remove(deck.size() - 1);
         card.unsetLocation();
         return card;
+    }
+    
+    public void addCard(PlayerCard card){
+        deck.add(card);
     }
 }
