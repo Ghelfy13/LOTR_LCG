@@ -3,7 +3,6 @@
 package lordoftherings.boardcomponents;
 
 import java.util.ArrayList;
-import lordoftherings.LocationOnBoard;
 import lordoftherings.deckcomponents.PlayerDeckBuild;
 import lordoftherings.deckcomponents.EncounterBuild;
 import lordoftherings.deckcomponents.Quest;
@@ -13,7 +12,6 @@ import lordoftherings.matcher.ReadyMatcher;
 import lordoftherings.phasemanager.PhaseManagerGovenor;
 import lordoftherings.PlayerCardType;
 import lordoftherings.cards.EnemyCard;
-import lordoftherings.cards.QuestCard;
 import lordoftherings.characters.GameCharacter;
 import lordoftherings.characters.Enemy;
 import lordoftherings.characters.Hero;
@@ -32,6 +30,7 @@ import lordoftherings.effects.DiscardToExhaustAndReadyEffect;
 import lordoftherings.effects.PlayToQuickStrikeEffect;
 import lordoftherings.matcher.EngagedEnemyMatcher;
 import lordoftherings.transaction_managers.AttackEnemyResultHandler;
+import lordoftherings.transaction_managers.DiscardPileQueryHandle;
 import lordoftherings.transaction_managers.EnemyQueryHandle;
 import lordoftherings.transaction_managers.EnemyQueryRequirements;
 
@@ -392,6 +391,10 @@ public class Board {
     
     public void handlePlayerZoneQuery(PlayerQueryHandle handle, String description){
         gameManager.handlePlayerZoneQuery(handle, description);
+    }
+    
+    public void handleDiscardPileQuery(DiscardPileQueryHandle handle, String description){
+        gameManager.handleDiscardPileQuery(handle, description);
     }
     
     public void addSuspension(SuspensionType suspension){

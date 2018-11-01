@@ -287,6 +287,23 @@ public class PlayerCardDatabase {
                     + " does not contribute to the threat count.",
             list14);
         cardMap.put(RadagastsCunningID, radagastsCunning);
+        
+        Identification WillOfTheWestID = new Identification(ExpansionName.CORE, 49);
+        PlayWillOfTheWestEffect willOfWestEffect = new PlayWillOfTheWestEffect();
+        ArrayList<Effect> list15 = new ArrayList<>();
+        list15.add(willOfWestEffect);
+        EventCardModel willOfWest = new EventCardModel(
+            "Will of the West",
+            SphereOfInfluence.SPIRIT,
+            PlayerCardType.EVENT,
+            new String[]{""},
+            WillOfTheWestID,
+            1,
+            "Choose a player.  Shuffle that player's discard pile back into his deck.",
+            list15);
+        cardMap.put(WillOfTheWestID, willOfWest);
     }
+    
+    
     
 }
