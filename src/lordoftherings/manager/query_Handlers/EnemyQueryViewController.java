@@ -4,7 +4,6 @@ package lordoftherings.manager.query_Handlers;
 
 import java.awt.Point;
 import lordoftherings.boardcomponents.EncounterZone;
-import lordoftherings.boardcomponents.EnemyArea;
 import lordoftherings.boardcomponents.EngagedEnemyArea;
 import lordoftherings.characters.Enemy;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
