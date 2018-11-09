@@ -27,8 +27,9 @@ public class EnemyCardModel extends EncounterCardModel{
     int attack,
     int defense,
     int hitPoints,
+    int victoryPoints,
     String effect){
-        super(title, type, traits, cardID, effect);
+        super(title, type, traits, cardID, effect, victoryPoints);
         this.engagementCost = engagementCost;
         this.threat = threat;
         this.attack = attack;
@@ -38,6 +39,14 @@ public class EnemyCardModel extends EncounterCardModel{
     
     public EncounterType getType(){
         return type;
+    }
+    
+    public boolean hasVictoryPoints(){
+        return victoryPoints != 0;
+    }
+    
+    public int getVictoryPoints(){
+        return victoryPoints;
     }
     
     public int getEngagementCost(){

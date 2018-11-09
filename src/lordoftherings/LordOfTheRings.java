@@ -54,6 +54,7 @@ public class LordOfTheRings {
         LocationID, 
         1,
         3,
+        0,
         "");
         
         Identification OrcsID = new Identification (ExpansionName.CORE, 3);
@@ -67,6 +68,7 @@ public class LordOfTheRings {
             3,
             2,
             1,
+            0,
             "");
         
         Identification AragornID = new Identification(ExpansionName.CORE, 1);

@@ -16,17 +16,20 @@ public abstract class EncounterCardModel {
     protected String[] traits;
     protected Identification cardID;
     protected String effect;
+    protected int victoryPoints;
     
     public EncounterCardModel(String title, 
             EncounterType type, 
             String [] traits, 
             Identification cardID,
-            String effect){
+            String effect,
+            int victoryPoints){
         this.title = title;
         this.type = type;
         this.traits = traits;
         this.cardID = cardID;
         this.effect = effect;
+        this.victoryPoints = victoryPoints;
     }
     
     protected String identifyTraits(){
@@ -51,4 +54,6 @@ public abstract class EncounterCardModel {
     public abstract EncounterCard createCard();
     
     public abstract String getEffect();
+    
+    public abstract int getVictoryPoints();
 }

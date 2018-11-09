@@ -13,10 +13,11 @@ import lordoftherings.cards.LocationCard;
 public class LocationCardModel extends EncounterCardModel{
     private int threat;
     private int questPoints;
+            
     
     public LocationCardModel(String title, EncounterType type, String[] traits,
-            Identification cardID, int threat, int questPoints, String effect) {
-        super(title, type, traits, cardID, effect);
+            Identification cardID, int threat, int questPoints, int victoryPoints, String effect) {
+        super(title, type, traits, cardID, effect, victoryPoints);
         this.threat = threat;
         this.questPoints = questPoints;
     }
@@ -47,6 +48,14 @@ public class LocationCardModel extends EncounterCardModel{
         return new LocationCard(this);
     }
 
+    public boolean hasVictoryPoints(){
+        return victoryPoints != 0;
+    }
+    
+    public int getVictoryPoints(){
+        return victoryPoints;
+    }
+    
     public String geTitle() {
         return title;
     }

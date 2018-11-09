@@ -61,6 +61,8 @@ public abstract class EncounterCard {
     
     abstract public PlayerCardType getCardType();
     
+    abstract public int getVictoryPoints();
+    
     abstract public void afterOnWhenRevealed(Board board);
     
     public void getActions(ArrayList<Action> listOfActions, Board board, int askingID){

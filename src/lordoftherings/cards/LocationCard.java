@@ -51,4 +51,9 @@ public class LocationCard extends EncounterCard {
             listOfActions.add(makeActiveLocation);
         }
     }
+
+    @Override
+    public int getVictoryPoints() {
+        return cardModel.getVictoryPoints();
+    }
 }

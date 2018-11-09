@@ -107,5 +107,10 @@ public class EnemyCard extends EncounterCard{
     public PlayerCardType getCardType() {
         return PlayerCardType.ENEMY;
     }
+
+    @Override
+    public int getVictoryPoints() {
+        return model.getVictoryPoints();
+    }
     
 }
