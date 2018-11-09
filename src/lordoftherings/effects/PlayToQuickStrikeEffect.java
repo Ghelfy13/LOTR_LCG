@@ -100,6 +100,7 @@ public class PlayToQuickStrikeEffect implements Effect{
             }
             if(card != null){
                 PlayerZone zone = board.getPlayerZoneAt(card.getController());
+                zone.payForCard(card.getCost());
                 zone.getHand().removeCard(card);
                 zone.moveCardToDiscardPile(card);
                 zone.cleanUpEngagedEnemyArea();

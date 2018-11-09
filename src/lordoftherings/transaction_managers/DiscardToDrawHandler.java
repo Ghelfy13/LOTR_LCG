@@ -29,6 +29,10 @@ public class DiscardToDrawHandler implements ResultHandler<ArrayList<PlayerZone>
                 result.get(i).drawCardFromDeckAddToHand();
             }
         }
+        PlayerZone controller = board.getPlayerZoneAt(card.getController());
+        controller.payForCard(card.getCost());
+        controller.getHand().removeCard(card);
+        controller.getDPile().addCard(card);
         board.removeRecentSuspension();
     }
     

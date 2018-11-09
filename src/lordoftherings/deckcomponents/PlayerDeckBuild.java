@@ -10,12 +10,12 @@ import java.util.ArrayList;
  */
 public class PlayerDeckBuild {
     private DeckBuild playersDeck;
-    private ArrayList<HeroCardModel> modelCitizen;
+    private ArrayList<HeroCardModel> listOfHeros;
     
     
     public PlayerDeckBuild(DeckBuild deck){
         this.playersDeck = deck;
-        modelCitizen = new ArrayList(); 
+        listOfHeros = new ArrayList(); 
     }
     
     public DeckBuild getPlayersDeck(){
@@ -23,17 +23,17 @@ public class PlayerDeckBuild {
     }
     
     public void addHero(HeroCardModel heroToBeAdded){
-        modelCitizen.add(heroToBeAdded);
+        listOfHeros.add(heroToBeAdded);
     }
     
     public void removeHero(HeroCardModel heroToBeRemoved){
-        modelCitizen.remove(heroToBeRemoved);
+        listOfHeros.remove(heroToBeRemoved);
     }
     
     public ArrayList<HeroCard> getHeros(){
         ArrayList<HeroCard> outstandingCitizen = new ArrayList<>();
-        for(int i = 0; i < modelCitizen.size(); ++i){
-            outstandingCitizen.add(modelCitizen.get(i).createCard());
+        for(int i = 0; i < listOfHeros.size(); ++i){
+            outstandingCitizen.add(listOfHeros.get(i).createCard());
         }
         return outstandingCitizen;
     }

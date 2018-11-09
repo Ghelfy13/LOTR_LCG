@@ -27,6 +27,7 @@ public class DiscardToHealResultHandler implements ResultHandler<ArrayList<GameC
             result.get(i).removeDamage(result.get(i).getDamage());
         }
         PlayerZone zone = board.getPlayerZoneAt(healingCard.getController());
+        zone.payForCard(healingCard.getCost());
         zone.moveCardToDiscardPile(healingCard);
         zone.getHand().removeCard(healingCard);
     }

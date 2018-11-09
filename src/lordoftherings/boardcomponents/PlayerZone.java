@@ -62,6 +62,21 @@ public class PlayerZone {
         }
     }
     
+    public void payForCard(int cost){
+        HeroArea area = field.getCharacterZone().getHeroArea();
+        for(int i = 0; i < area.getNumOfHeros(); ++i){
+            Hero currentHero = area.getHeroAt(i);
+            int currentHeroResources = currentHero.getNumOfResources();
+            if(currentHeroResources < cost){
+                currentHero.spendResources(currentHeroResources);
+                cost -= currentHeroResources;
+            }else{
+                currentHero.spendResources(cost);
+                break;
+            }
+        }
+    }
+    
     public Field getField(){
         return field;
     }

@@ -37,6 +37,7 @@ public class DiscardToAddModifiersHandler implements ResultHandler<ArrayList<Gam
             }
         }
         PlayerZone playerZone = board.getPlayerZoneAt(event.getController());
+        playerZone.payForCard(event.getCost());
         playerZone.moveCardToDiscardPile(event);
         playerZone.getHand().removeCard(event);
         board.removeTopSuspension();

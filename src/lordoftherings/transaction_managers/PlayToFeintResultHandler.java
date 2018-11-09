@@ -28,6 +28,7 @@ public class PlayToFeintResultHandler implements ResultHandler<ArrayList<Enemy>>
             current.setEnemyToNotAttacking();
         }
         PlayerZone zone = board.getPlayerZoneAt(event.getController());
+        zone.payForCard(event.getCost());
         zone.moveCardToDiscardPile(event);
         zone.getHand().removeCard(event);
     }

@@ -19,6 +19,7 @@ import lordoftherings.effects.ExhaustToDrawEffect;
 import lordoftherings.effects.ExhaustToRaiseWillPowerEffect;
 import lordoftherings.effects.HealEffect;
 import lordoftherings.effects.HealPlayersHerosAndDiscardCardEffect;
+import lordoftherings.effects.PlayGrimResolveEffect;
 import lordoftherings.effects.PlayRadagastsCunningEffect;
 import lordoftherings.effects.PlayToFeintEffect;
 import lordoftherings.effects.PlayToMoveEnemyToStagingAreaEffect;
@@ -303,6 +304,21 @@ public class PlayerCardDatabase {
             "Choose a player.  Shuffle that player's discard pile back into his deck.",
             list15);
         cardMap.put(WillOfTheWestID, willOfWest);
+        
+        Identification GrimResolveID = new Identification(ExpansionName.CORE, 25);
+        PlayGrimResolveEffect grimResolveEffect = new PlayGrimResolveEffect();
+        ArrayList<Effect> list16 = new ArrayList<>();
+        list16.add(grimResolveEffect);
+        EventCardModel grimResolve = new EventCardModel(
+            "Grim Resolve",
+            SphereOfInfluence.LEADERSHIP,
+            PlayerCardType.EVENT,
+            new String[]{""},
+            GrimResolveID,
+            5,
+            "After playing, ready all character cards in play.",
+            list16);
+        cardMap.put(GrimResolveID, grimResolve);
     }
     
     

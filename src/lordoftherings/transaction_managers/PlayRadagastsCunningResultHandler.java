@@ -31,6 +31,7 @@ public class PlayRadagastsCunningResultHandler implements ResultHandler<ArrayLis
             result.get(i).doesntContributeThreat();
         }
         PlayerZone zone = board.getPlayerZoneAt(event.getController());
+        zone.payForCard(event.getCost());
         zone.moveCardToDiscardPile(event);
         zone.getHand().removeCard(event);
     }

@@ -28,6 +28,7 @@ public class DiscardToHealPlayersHerosResultHandler implements ResultHandler<Arr
             current.healAllHeros();
         }
         PlayerZone controllerZone = board.getPlayerZoneAt(card.getController());
+        controllerZone.payForCard(card.getCost());
         controllerZone.moveCardToDiscardPile(card);
         controllerZone.getHand().removeCard(card);
         board.removeRecentSuspension();

@@ -34,8 +34,10 @@ public class PlayToMoveEnemyToStagingAreaResultHandler implements ResultHandler<
             encounterZone.getStagingArea().getEnemyArea().addEnemyToList(current);
             current.getCard().setLocation(LocationOnBoard.ENCOUNTER_ZONE, -1);
         }
-        board.getCurrentPlayerZone().getHand().removeCard(event);
-        board.getCurrentPlayerZone().moveCardToDiscardPile(event);
+        PlayerZone zone = board.getPlayerZoneAt(event.getController());
+        zone.payForCard(event.getCost());
+        zone.moveCardToDiscardPile(event);
+        zone.getHand().removeCard(event);
     }
 
 }

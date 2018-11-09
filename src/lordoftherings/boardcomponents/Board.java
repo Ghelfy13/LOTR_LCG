@@ -357,7 +357,11 @@ public class Board {
         
     }
     
-   
+    public void readyAllCharacters(){
+        for(int i = 0; i < playerZones.length; ++i){
+            playerZones[i].readyCharacters();
+        }
+    }
     
     public boolean enemiesLeftToEngage(){
         int numOfEnemies = encounterZone.getStagingArea().getEnemyArea().getNumOfEnemies();

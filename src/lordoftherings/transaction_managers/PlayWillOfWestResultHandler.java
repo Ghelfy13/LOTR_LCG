@@ -28,6 +28,7 @@ public class PlayWillOfWestResultHandler implements ResultHandler<ArrayList<Play
             current.reshuffleDiscardPile();
         }
         PlayerZone controller = board.getPlayerZoneAt(card.getController());
+        controller.payForCard(card.getCost());
         controller.moveCardToDiscardPile(card);
         controller.getHand().removeCard(card);
         board.removeRecentSuspension();

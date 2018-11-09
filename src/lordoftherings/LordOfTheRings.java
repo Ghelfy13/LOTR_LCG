@@ -108,14 +108,19 @@ public class LordOfTheRings {
         
         
         DeckBuild mockDeck = new DeckBuild();
+        Identification GrimResolveID = new Identification(ExpansionName.CORE, 25);
         Identification WillOfWestID = new Identification(ExpansionName.CORE, 49);
         Identification LoreOfImladrisID = new Identification(ExpansionName.CORE, 63);
         Identification LightInDarkID = new Identification(ExpansionName.CORE, 52);
         Identification FeintID = new Identification(ExpansionName.CORE, 34);
         Identification QuickStrikeID = new Identification(ExpansionName.CORE, 35);
         Identification RadagastsCunningID = new Identification(ExpansionName.CORE, 65);
-        mockDeck.add(PlayerCardDatabase.get(FeintID), 1);
-        mockDeck.add(PlayerCardDatabase.get(WillOfWestID), 1);
+        
+        mockDeck.add(PlayerCardDatabase.get(QuickStrikeID), 2);
+        
+        //mockDeck.add(PlayerCardDatabase.get(FeintID), 1);
+        //mockDeck.add(PlayerCardDatabase.get(WillOfWestID), 1);
+        //mockDeck.add(PlayerCardDatabase.get(GrimResolveID), 2);
         //mockDeck.add(PlayerCardDatabase.get(LoreOfImladrisID), 3);
         PlayerDeckBuild mockBuild = new PlayerDeckBuild(mockDeck);
         mockBuild.addHero(first);

@@ -30,6 +30,7 @@ public class DiscardToReadyHandler implements ResultHandler<ArrayList<GameCharac
             current.ready();
         }
         PlayerZone playerZone = board.getPlayerZoneAt(card.getController());
+        playerZone.payForCard(card.getCost());
         playerZone.moveCardToDiscardPile(card);
         playerZone.getHand().removeCard(card);
         board.removeRecentSuspension();
