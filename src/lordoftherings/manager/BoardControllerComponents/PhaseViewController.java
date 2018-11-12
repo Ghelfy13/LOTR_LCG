@@ -12,8 +12,6 @@ public class PhaseViewController {
     
     private BoardViewController boardVC;
     private PhaseView view;
-    private int xValue;
-    private int yValue;
     
     public PhaseViewController(BoardViewController boardVC){
         this.boardVC = boardVC;

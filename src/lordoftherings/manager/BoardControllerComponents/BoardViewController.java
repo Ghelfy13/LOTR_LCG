@@ -12,9 +12,12 @@ import lordoftherings.gui.BoardView;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.EncounterZoneComponents.EncounterZoneView;
 import lordoftherings.gui.PhaseView;
+import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.gui.PlayerZoneComponents.PlayerZoneView;
 import lordoftherings.gui.ProgressPhaseButtonView;
 import lordoftherings.gui.SubPhaseView;
+import lordoftherings.gui.VictoryPointsLabelView;
+import lordoftherings.gui.VictoryPointsPileView;
 import lordoftherings.manager.actionComponents.GlobalViewController;
 
 /**
@@ -32,6 +35,8 @@ public class BoardViewController implements GlobalViewController {
     private EncounterZoneViewController encounterZoneVC;
     private SubPhaseViewController subPhaseVC;
     private GameManagerViewController gameManagerVC;
+    private VictoryPointsPileViewController vpPileVC;
+    private VictoryPointsLabelViewController vpLabelVC;
     public static final int DISTANCE_FROM_FRAME = 10;
     public static final int DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE = 245;
     
@@ -45,6 +50,8 @@ public class BoardViewController implements GlobalViewController {
         this.playerZoneVC = new PlayerZoneViewController(this, myBoard.getPlayerZoneAt(0), activeState);
         this.subPhaseVC = new SubPhaseViewController(this);
         this.gameManagerVC = managerVC;
+        this.vpPileVC = new VictoryPointsPileViewController(this, activeState);
+        this.vpLabelVC = new VictoryPointsLabelViewController(this, myBoard.getVPPile());
     }
     
     public BoardView makeView(int x, int y, int width, int height){
@@ -53,7 +60,8 @@ public class BoardViewController implements GlobalViewController {
         view.add(activeState.getAvailableActions());
         view.addMouseMotionListener(activeState.createMouseFollower());
         PlayerZoneView playerView = playerZoneVC.makeView(
-                DISTANCE_FROM_FRAME, ActiveLocationView.CARD_COUNTER_HEIGHT + DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE);
+                DISTANCE_FROM_FRAME, ActiveLocationView.CARD_COUNTER_HEIGHT + 
+                        DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE);
         view.add(playerView);
         phaseVC = new PhaseViewController(this);
         PhaseView phaseView = phaseVC.makeView(width - PhaseView.PHASE_BUTTON_WIDTH, y);
@@ -64,6 +72,17 @@ public class BoardViewController implements GlobalViewController {
         ProgressPhaseActionListener ppActionListener = new ProgressPhaseActionListener(gameManagerVC, this);
         phaseButtonView.addActionListener(ppActionListener);
         view.add(phaseButtonView);
+        VictoryPointsPileView vpPileView = vpPileVC.makeView(
+                width - (ProgressPhaseButtonView.PROGRESS_BUTTON_WIDTH + 
+                        PhaseView.PHASE_BUTTON_WIDTH) + 160, 
+                ActiveLocationView.CARD_COUNTER_HEIGHT + 
+                        DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE);
+        view.add(vpPileView);
+        VictoryPointsLabelView vpLabelView = vpLabelVC.makeView(width - (ProgressPhaseButtonView.PROGRESS_BUTTON_WIDTH + 
+                        PhaseView.PHASE_BUTTON_WIDTH) + 115, 
+                ActiveLocationView.CARD_COUNTER_HEIGHT + 
+                        DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE + HandCardView.CARD_HEIGHT + 20);
+        view.add(vpLabelView);
         EncounterZoneView enemyZoneView = encounterZoneVC.makeView(DISTANCE_FROM_FRAME, DISTANCE_FROM_FRAME);
         view.add(enemyZoneView);
         SubPhaseView subPhaseView = subPhaseVC.makeView(

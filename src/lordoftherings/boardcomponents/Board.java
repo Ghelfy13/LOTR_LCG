@@ -47,7 +47,7 @@ public class Board {
     private boolean hasPlayerWon;
     private ArrayList<SuspensionType> currentSuspensions;
     private PhaseManagerGovenor pmGovenor;
-    
+    private VictoryPointsPile vpPile;
     
     
     public Board(PlayerDeckBuild[] playerBuild, EncounterBuild encounterInfo, GameManager manager){
@@ -62,10 +62,15 @@ public class Board {
         this.hasPlayerWon = false;
         this.currentSuspensions = new ArrayList<>();
         this.pmGovenor = new PhaseManagerGovenor(this);
+        this.vpPile = new VictoryPointsPile(this);
     }
     
     public PlayerZone getPlayerZoneAt(int index){
         return playerZones[index];
+    }
+    
+    public VictoryPointsPile getVPPile(){
+        return vpPile;
     }
     
     public int getNumOfPlayerZones(){

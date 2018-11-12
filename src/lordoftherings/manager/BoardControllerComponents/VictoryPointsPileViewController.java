@@ -1,11 +1,11 @@
-//Copyright Amanda V. Harris 2018-present. All Rights Reserved.
+//Copyright Amanda V. Harris 2018-present. All Rights Reserved.    
 
-package lordoftherings.manager.EncounterZoneControllerComponents;
+package lordoftherings.manager.BoardControllerComponents;
 
-import lordoftherings.boardcomponents.EncounterDiscardPile;
+import lordoftherings.boardcomponents.VictoryPointsPile;
 import lordoftherings.cards.EncounterCard;
 import lordoftherings.gui.EncounterZoneComponents.EncounterDiscardCardView;
-import lordoftherings.gui.EncounterZoneComponents.EncounterDiscardPileView;
+import lordoftherings.gui.VictoryPointsPileView;
 import lordoftherings.manager.actionComponents.BoardActiveState;
 import lordoftherings.manager.actionComponents.Focusable;
 import lordoftherings.manager.actionComponents.FocusableMouseListener;
@@ -14,25 +14,25 @@ import lordoftherings.manager.actionComponents.FocusableMouseListener;
  *
  * @author Amanda
  */
-public class EncounterDiscardPileViewController implements Focusable{
+public class VictoryPointsPileViewController implements Focusable{
     
-    private EncounterDiscardPile discardPile;
-    private EncounterZoneViewController encounterZoneVC;
-    private EncounterDiscardPileView view;
-    private EncounterCard topCard;
+    private BoardViewController boardVC;
+    private VictoryPointsPile pile;
+    private VictoryPointsPileView view;
     private BoardActiveState bas;
+    private EncounterCard topCard;
     
-    public EncounterDiscardPileViewController(EncounterZoneViewController zoneVC, 
-            BoardActiveState bas, EncounterDiscardPile discardPile){
-        this.encounterZoneVC = zoneVC;
-        this.discardPile = discardPile;
+    
+    public VictoryPointsPileViewController(BoardViewController boardVC, 
+            BoardActiveState bas){
+        this.boardVC = boardVC;
+        pile = boardVC.getBoard().getVPPile();
         this.bas = bas;
-        this.view = null;
-        this.topCard = null;
+        topCard = null;
     }
     
-    public EncounterDiscardPileView makeView(int x, int y){
-        view = new EncounterDiscardPileView(x, y);
+    public VictoryPointsPileView makeView(int x, int y){
+        view = new VictoryPointsPileView(x, y);
         view.addMouseMotionListener(bas.createMouseFollower());
         view.addMouseListener(new FocusableMouseListener(bas, this));
         view.setVisible(true);
@@ -40,7 +40,7 @@ public class EncounterDiscardPileViewController implements Focusable{
     }
     
     public void updateView(){
-        topCard = discardPile.getTopCard();
+        topCard = pile.getTopCard();
         if(topCard != null){
             view.removeAll();
             EncounterDiscardCardView topCardView = 
@@ -53,15 +53,13 @@ public class EncounterDiscardPileViewController implements Focusable{
         view.revalidate();
         view.repaint();
     }
-    
-    
+
     @Override
     public String getViewingText() {
-        if(discardPile.getSize() == 1){
-            return "1 card is in the Encounter Discard Pile";
-        }else{
-            return discardPile.getSize() + " cards in the Encounter Discard Pile";
+        if(pile.size() == 1){
+            return "1 card in the Victory Points Pile.";
         }
+        return pile.size() + " cards in the Victory Points Pile.";
     }
     
 }
