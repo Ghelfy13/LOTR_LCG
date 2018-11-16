@@ -37,6 +37,10 @@ public class PlayerZone {
         this.threatDial = new ThreatDial(field.getInitinalThreat(), ownerID, this);
     }
     
+    public Board getBoard(){
+        return board;
+    }
+    
     public boolean isPlayerAlive(){
         return playerIsAlive;
     }

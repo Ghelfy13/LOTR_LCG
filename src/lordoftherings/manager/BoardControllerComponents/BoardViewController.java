@@ -121,6 +121,8 @@ public class BoardViewController implements GlobalViewController {
         playerZoneVC.updateView();
         encounterZoneVC.updateView();
         subPhaseVC.updateView();
+        vpPileVC.updateView();
+        vpLabelVC.updateView();
     }
     
     public Board getBoard(){

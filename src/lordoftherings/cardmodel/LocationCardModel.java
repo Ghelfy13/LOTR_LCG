@@ -30,7 +30,7 @@ public class LocationCardModel extends EncounterCardModel{
     public String identify() {
         return title.toUpperCase()+ "\n" + "\n" + "Encounter Type: " + type + "\n" 
                 + "Traits: " + identifyTraits() + "Threat Value: "
-                + threat + "\n" + "Quest Points:  " + questPoints + "\n" + '\n' + effect;
+                + threat + "\n" + "Quest Points:  " + questPoints + "\n" + "Victory Points: " + victoryPoints + '\n' + effect;
     }
 
     @Override

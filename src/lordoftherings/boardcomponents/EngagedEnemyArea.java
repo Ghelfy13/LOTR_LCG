@@ -52,8 +52,12 @@ public class EngagedEnemyArea {//Belongs in Field
         for(int i = 0; i < listOfEngagedEnemies.size(); ++i){
             Enemy current = listOfEngagedEnemies.get(i);
             if(current.getDamage() >= current.getMaxHealth()){
+                if(current.getCard().getVictoryPoints() != 0){
+                    playerZone.getBoard().getVPPile().addCard(current.getCard());
+                }else{
+                    playerZone.getEnemyDiscardPile().addCardToPile(current.getCard());
+                }
                 removeEnemy(current);
-                playerZone.getEnemyDiscardPile().addCardToPile(current.getCard());
             }
         }
     }

@@ -10,6 +10,7 @@ import lordoftherings.characters.Enemy;
 import java.util.ArrayList;
 import lordoftherings.deckcomponents.Quest;
 import lordoftherings.LocationOnBoard;
+import lordoftherings.cards.LocationCard;
 import lordoftherings.cards.QuestCard;
 import lordoftherings.phasemanager.GamePhase;
 
@@ -59,8 +60,12 @@ public class EncounterZone {
     }
     
     public void moveCurrentLocationToDiscardPile(){
-        encounterDiscard.addCardToPile(stage.getActiveLocationArea().
-                getActiveLocation().getCard());
+        LocationCard location = stage.getActiveLocationArea().getActiveLocation().getCard();
+        if(location.getVictoryPoints() != 0){
+            board.getVPPile().addCard(location);
+        }else{
+             encounterDiscard.addCardToPile(location);
+        }
         stage.getActiveLocationArea().unsetActiveLocation();
     }
     
@@ -93,7 +98,11 @@ public class EncounterZone {
         for(int i = 0; i < enemies.size(); ++i){
             Enemy current = enemies.get(i);
             if(current.getDamage() >= current.getMaxHealth()){
-                discardDeadEnemy(current.getCard());
+                if(current.getCard().getVictoryPoints() != 0){
+                    board.getVPPile().addCard(current.getCard());
+                }else{
+                    discardDeadEnemy(current.getCard());
+                }
                 stage.getEnemyArea().removeEnemy(current);
             }
         }

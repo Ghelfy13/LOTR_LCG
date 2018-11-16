@@ -79,7 +79,7 @@ public class EnemyCardModel extends EncounterCardModel{
                 "\n" + "Traits: " + identifyTraits() + "Engagement Cost: " + 
                 engagementCost + "\n" + "Threat Value: " + threat + "\n" +
                 "Attack: " + attack + "\n" + "Defense: " + defense + "\n" +
-                "Hit Points: " + hitPoints + "\n" + '\n' + effect ;
+                "Hit Points: " + hitPoints + "\n" + "Victory Points: " + victoryPoints + '\n' + effect ;
     }
     
     @Override
