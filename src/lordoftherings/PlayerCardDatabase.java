@@ -59,18 +59,19 @@ public class PlayerCardDatabase {
         list.add(healHero);
         Identification DaughterID = new Identification(ExpansionName.CORE, 23);
         AllyCardModel second = new AllyCardModel(
-          "Daughter of Nimrodel",
-          SphereOfInfluence.LORE,
-          PlayerCardType.ALLY,
-          new String[]{"Silvan"},
-          DaughterID,
-          1,
-          0,
-          0,
-          1,
-          3,
-          "Exhaust Daughter of Nimrodel to heal up to 2 damage on any 1 hero",
-          list);
+            "Daughter of Nimrodel",
+            SphereOfInfluence.LORE,
+            PlayerCardType.ALLY,
+            new String[]{"Silvan"},
+            DaughterID,
+            1,
+            0,
+            0,
+            1,
+            3,
+            "Exhaust Daughter of Nimrodel to heal up to 2 damage on any 1 hero",
+            list,
+            false);
         cardMap.put(DaughterID, second);
         
         ReadyAllyToDiscardCardEffect discardToReady = new ReadyAllyToDiscardCardEffect();
@@ -156,7 +157,8 @@ public class PlayerCardDatabase {
             3,
             "Exhaust Faramir to choose a player.  Each character controlled "
                     + "by the player gets +1 Willpower until the end of the phase.",
-            list6);
+            list6,
+            true);
         cardMap.put(FaramirID, faramir);
         
         ExhaustToDrawEffect exhaustToDrawGleowine = new ExhaustToDrawEffect(1);
@@ -175,7 +177,8 @@ public class PlayerCardDatabase {
             0,
             2,
             "Exhaust Gleowine to choose a player.  That player draws 1 card.",
-            list7);
+            list7,
+            true);
         cardMap.put(GleowineID, gleowine);
         
         Modifier attack = new Modifier(1, TypeOfModifier.ATTACK, LifeSpanOfModifier.ENDOFPHASE);

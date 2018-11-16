@@ -21,6 +21,7 @@ public abstract class PlayerCardModel {
     protected Identification cardID;
     protected String effect;
     protected ArrayList<Effect> listOfEffects;
+    protected boolean isUnique;
     
     protected PlayerCardModel(
         String title, 
@@ -29,7 +30,8 @@ public abstract class PlayerCardModel {
         String [] trait, 
         Identification cardID,
         String effect,
-        ArrayList<Effect> list){
+        ArrayList<Effect> list,
+        boolean isUnique){
         this.title = title;
         this.sphereOfInfluence = sphereOfInfluence;
         this.type = type;
@@ -37,6 +39,7 @@ public abstract class PlayerCardModel {
         this.cardID = cardID;
         this.effect = effect;
         this.listOfEffects = list;
+        this.isUnique = isUnique;
     }
     
     public Identification getCardID(){
@@ -51,6 +54,10 @@ public abstract class PlayerCardModel {
 
     public String getTitle() {
         return title;
+    }
+    
+    public boolean isUnique(){
+        return isUnique;
     }
     
     public abstract String getEffect();

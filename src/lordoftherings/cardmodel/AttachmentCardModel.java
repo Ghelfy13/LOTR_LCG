@@ -24,8 +24,9 @@ public abstract class AttachmentCardModel extends PlayerCardModel {
         Identification cardID,
         int cost,
         String effect,
-        ArrayList<Effect> list){
-        super(title, sphere, type, trait, cardID, effect, list);
+        ArrayList<Effect> list,
+        boolean isUnique){
+        super(title, sphere, type, trait, cardID, effect, list, isUnique);
         this.cost = cost;
     }
     

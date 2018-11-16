@@ -109,6 +109,7 @@ public class LordOfTheRings {
         
         
         
+        
         DeckBuild mockDeck = new DeckBuild();
         Identification GrimResolveID = new Identification(ExpansionName.CORE, 25);
         Identification WillOfWestID = new Identification(ExpansionName.CORE, 49);

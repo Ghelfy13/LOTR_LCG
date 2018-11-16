@@ -30,8 +30,9 @@ public abstract class CharacterCardModel extends PlayerCardModel{
         int defense,
         int hitPoints,
         String effect,
-        ArrayList<Effect> list){
-        super(title, sphereOfInfluence, type, trait, cardID, effect, list);
+        ArrayList<Effect> list,
+        boolean isUnique){
+        super(title, sphereOfInfluence, type, trait, cardID, effect, list, isUnique);
         this.willPower = willPower;
         this.attack = attack;
         this.defense = defense;

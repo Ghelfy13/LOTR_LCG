@@ -42,7 +42,8 @@ public class HeroCardModel extends CharacterCardModel{
             defense,
             hitPoints,
             effect,
-            list);
+            list,
+            true);
          this.threatCost = threatCost;
          this.resourcePool = resourcePool;
      }

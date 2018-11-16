@@ -16,17 +16,32 @@ public class HeroArea {
     private int numOfInitialHeros = 0;
     
     public HeroArea(ArrayList <HeroCard> heroCards){
-        myHeros = new ArrayList<>(10);
+        myHeros = new ArrayList<>(3);
         int size = heroCards.size();
         for(int i = 0; i < size; ++i){
             Hero newHero = new Hero(heroCards.get(i));
-            newHero.getCard().setLocation(0, LocationOnBoard.FIELD);
-            myHeros.add(newHero);
+            if(!alreadyHas(newHero)){
+                newHero.getCard().setLocation(0, LocationOnBoard.FIELD);
+                myHeros.add(newHero);
+            }else{
+                throw new IllegalStateException();
+            }
+            
         }
         numOfInitialHeros = size;
     }
     public int getNumOfHeros(){
         return myHeros.size();
+    }
+    
+    public boolean alreadyHas(Hero current){
+        for(int i = 0; i < myHeros.size(); ++i){
+            Hero inList = myHeros.get(i);
+            if(inList.getCard().getTitle().equals(current.getCard().getTitle())){
+                return true;
+            }
+        }
+        return false;
     }
     
     public boolean isEmpty(){

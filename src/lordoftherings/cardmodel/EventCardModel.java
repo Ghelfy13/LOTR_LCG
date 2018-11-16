@@ -26,7 +26,7 @@ public class EventCardModel extends PlayerCardModel{
     int cost,
     String effect,
     ArrayList<Effect> list){
-        super(title, sphere, type, trait, cardID, effect, list);
+        super(title, sphere, type, trait, cardID, effect, list, false);
         this.cost = cost;
     }
     
