@@ -48,7 +48,7 @@ public class AvailableActionsViewController{
             Board boardState = boardAS.getBoard();
             listOfActions.clear();
             currentActionable.getActions(listOfActions, 0, boardState);
-            if(listOfActions.size() == 0){
+            if(listOfActions.isEmpty()){
                 view.setBounds(x, y + yCoordinate, 
                         ActionView.BOX_DIMENSIONS + 10,
                         ActionView.BOX_DIMENSIONS + 10);

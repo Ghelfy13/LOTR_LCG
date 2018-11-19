@@ -44,18 +44,32 @@ public class PlayAllyAction extends Action{
     @Override
     public void updateActionState(int askingID, Board boardState){
         PlayerZone playerArea = boardState.getPlayerZoneAt(cardToPlay.getController());
+        boolean isUnique = cardToPlay.getCardModel().isUnique();
         if(cardToPlay.getLocation() == LocationOnBoard.HAND &&
-           askingID == cardToPlay.getController() &&
-           boardState.getPhaseManagerGovenor().getCurrentPhase() == GamePhase.PLANNING && 
-           boardState.getPhaseManagerGovenor().getCurrentSubPhase() == 
-                PlanningSubPhase.PLAY_ALLIES_AND_ATTACHMENTS &&
-           boardState.isCurrentPlayer(askingID)){
-           if(playerArea.getField().canAfford(cardToPlay)){
-                state = ActionState.EXECUTABLE;
+            askingID == cardToPlay.getController() &&
+            boardState.getPhaseManagerGovenor().getCurrentPhase() == GamePhase.PLANNING && 
+            boardState.getPhaseManagerGovenor().getCurrentSubPhase() == 
+                 PlanningSubPhase.PLAY_ALLIES_AND_ATTACHMENTS &&
+            boardState.isCurrentPlayer(askingID)){
+            if(isUnique){
+                if(boardState.alreadyHasUniqueCardInPlay(cardToPlay)){
+                    state = ActionState.VISIBLE;
+                    return;
+                }else{
+                    if(playerArea.getField().canAfford(cardToPlay)){
+                        state = ActionState.EXECUTABLE;
+                    }
+                    else{
+                       state = ActionState.VISIBLE;
+                    }
+                }
+            }else{
+                if(playerArea.getField().canAfford(cardToPlay)){
+                    state = ActionState.EXECUTABLE;
+                }else{
+                    state = ActionState.VISIBLE;
+                }
             }
-           else{
-               state = ActionState.VISIBLE;
-           }
         }
         else{
             state = ActionState.NOTAVAILABLE;

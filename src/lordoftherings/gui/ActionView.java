@@ -26,8 +26,8 @@ import lordoftherings.manager.actionComponents.FocusableMouseListener;
 public class ActionView extends JButton{
     public static final int BOX_DIMENSIONS = 40;
     
-    public ActionView(BoardActiveState boardAS, ActionViewController controller, Action playableAction, int x, int y){
-        super(cardBackImage(BOX_DIMENSIONS, BOX_DIMENSIONS));
+    public ActionView(BoardActiveState boardAS, ActionViewController controller, Action playableAction,ImageIcon icon, int x, int y){
+        super(icon);
         setBounds(x, y, BOX_DIMENSIONS, BOX_DIMENSIONS);
         setHorizontalAlignment(SwingConstants.CENTER);
         setVerticalAlignment(SwingConstants.CENTER);
@@ -43,18 +43,5 @@ public class ActionView extends JButton{
         }
     }
     
-    public static ImageIcon cardBackImage(int width, int length){// h = 25, w = 18
-        Image deckImage = null;
-        try {
-            deckImage = ImageIO.read(new File("resources/actionImage.jpg"));
-        }catch(IOException e){
-            throw new RuntimeException(e);
-        }
-        BufferedImage resizedImg = new BufferedImage(width, length, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D lotrImg = resizedImg.createGraphics();
-        lotrImg.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        lotrImg.drawImage(deckImage, 0, 0, width, length, null);
-        lotrImg.dispose();
-        return new ImageIcon(resizedImg);
-    }
+    
 }

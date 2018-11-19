@@ -12,6 +12,8 @@ import lordoftherings.matcher.ReadyMatcher;
 import lordoftherings.phasemanager.PhaseManagerGovenor;
 import lordoftherings.PlayerCardType;
 import lordoftherings.cards.EnemyCard;
+import lordoftherings.cards.PlayerCard;
+import lordoftherings.characters.Ally;
 import lordoftherings.characters.GameCharacter;
 import lordoftherings.characters.Enemy;
 import lordoftherings.characters.Hero;
@@ -75,6 +77,23 @@ public class Board {
     
     public int getNumOfPlayerZones(){
         return playerZones.length;
+    }
+    
+    public boolean alreadyHasUniqueCardInPlay(PlayerCard card){
+        System.out.println(card.getTitle());
+        for(int i = 0; i < playerZones.length; ++i){
+            ArrayList<Ally> allies = playerZones[i].getAllies();
+            System.out.println(allies.size());
+            for(int j = 0; j < allies.size(); ++j){
+                Ally current = allies.get(j);
+                String currentTitle = current.getCard().getTitle();
+                System.out.println(current.getCard().getTitle());
+                if(currentTitle.equals(card.getTitle())){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
     
     public void increaseEveryPlayersThreatBy(int num){

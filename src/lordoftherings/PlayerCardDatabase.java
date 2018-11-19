@@ -139,6 +139,24 @@ public class PlayerCardDatabase {
             list5);
         cardMap.put(BeravorID, beravor);
         
+        Identification DunhereID = new Identification(ExpansionName.CORE, 9);
+        HeroCardModel dunhere = new HeroCardModel(
+            "Dunhere",
+            SphereOfInfluence.SPIRIT,
+            PlayerCardType.HERO,
+            new String[] {"Rohan", "Warrior"},
+            DunhereID,
+            1,
+            2,
+            1,
+            4,
+            8,
+            2,
+            "",
+            new ArrayList<>());
+        cardMap.put(DunhereID, dunhere);
+        
+        
         ExhaustToRaiseWillPowerEffect exhaustToRaiseWillPower = 
                 new ExhaustToRaiseWillPowerEffect(1, new Modifier(1, TypeOfModifier.WILL_POWER, LifeSpanOfModifier.ENDOFPHASE));
         ArrayList<Effect> list6 = new ArrayList<>();
