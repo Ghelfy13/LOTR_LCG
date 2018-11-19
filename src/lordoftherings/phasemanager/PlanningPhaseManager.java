@@ -21,7 +21,7 @@ public class PlanningPhaseManager implements PhaseManager{
     public void onStartSubPhase(Board board) {
         switch(subPhase){
             case PLAY_ALLIES_AND_ATTACHMENTS:
-                isActionable = false;
+                isActionable = true;
                 break;
             case PLAYER_ACTIONS:
                 isActionable = true;
