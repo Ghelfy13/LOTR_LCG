@@ -50,6 +50,14 @@ public class CharacterArea {
         return allyZone;
     }
     
+    public int getTotalDamageOnHeros(){
+        int totalDamage = 0;
+        for(int i = 0; i < heroZone.getNumOfHeros(); ++i){
+            totalDamage += heroZone.getHeroAt(i).getDamage();
+        }
+        return totalDamage;
+    }
+    
     public void moveDeadAllysToDiscardPile(){
         for(int i = 0; i < allyZone.getAllies().size(); ++i){
             Ally current = allyZone.getAllyAt(i);
@@ -64,6 +72,7 @@ public class CharacterArea {
         for(int i = 0; i < heroZone.getNumOfHeros(); ++i){
             Hero current = heroZone.getHeroAt(i);
             if(current.getDamage() >= current.getHitPointsWithMods()){
+                playerZone.addDeadHeroToList(current);
                 heroZone.getHeros().remove(i);
                 playerZone.moveCardToDiscardPile(current.getCard());
             }

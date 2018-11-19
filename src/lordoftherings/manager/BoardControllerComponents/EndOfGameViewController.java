@@ -30,7 +30,7 @@ public class EndOfGameViewController {
     public void updateView(){
         if(board.hasGameEnded()){
             if(board.getPlayerStatus()){
-                messageView = new EndOfGameMessageView(X_VALUE, Y_VALUE, "Congratulations!  You've Won!");
+                messageView = new EndOfGameMessageView(X_VALUE, Y_VALUE, "Congratulations!  You've Won!" + " \n" + "Your score is: " + board.calculateEndGameScore());
                 messageView.setForeground(Color.CYAN);
             }else{
                 messageView = new EndOfGameMessageView(X_VALUE, Y_VALUE, "Heros Failed");

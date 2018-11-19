@@ -23,6 +23,7 @@ public class PlayerZone {
     private boolean playerIsAlive;
     private PlayerName name;
     private int playerThreat;
+    private Hero[] deadHeros;
     
     
     public PlayerZone(PlayerDeckBuild playerDeckAndHeros, int ownerID, Board board, String name){
@@ -35,6 +36,7 @@ public class PlayerZone {
         this.playerIsAlive = true;
         this.name = new PlayerName(name, ownerID, this);
         this.threatDial = new ThreatDial(field.getInitinalThreat(), ownerID, this);
+        deadHeros = new Hero[3];
     }
     
     public Board getBoard(){
@@ -186,6 +188,22 @@ public class PlayerZone {
         dPile.addCard(deadCard);
         deadCard.setLocation(ownerID, LocationOnBoard.DISCARDPILE);
         
+    }
+    
+    public void addDeadHeroToList(Hero deadHero){
+        deadHeros[deadHeros.length] = deadHero;
+    }
+    
+    public int getTotalDamageOnHeros(){
+        return field.getCharacterZone().getTotalDamageOnHeros();
+    }
+    
+    public int getSumOfThreatOfDeadHeros(){
+        int deadsThreat = 0;
+        for(int i = 0; i < deadHeros.length; ++i){
+            deadsThreat += deadHeros[i].getThreatCost();
+        }
+        return deadsThreat;
     }
     
     public void cleanUpCharacterArea(){

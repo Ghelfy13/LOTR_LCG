@@ -15,7 +15,8 @@ public class VictoryPointsLabelViewController {
     private VictoryPointsPile pile;
     private VictoryPointsLabelView view;
     
-    public VictoryPointsLabelViewController(BoardViewController boardVC, VictoryPointsPile pile){
+    public VictoryPointsLabelViewController(BoardViewController boardVC, 
+            VictoryPointsPile pile){
         this.boardVC = boardVC;
         this.pile = pile;
     }

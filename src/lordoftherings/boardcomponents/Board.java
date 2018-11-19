@@ -50,6 +50,7 @@ public class Board {
     private ArrayList<SuspensionType> currentSuspensions;
     private PhaseManagerGovenor pmGovenor;
     private VictoryPointsPile vpPile;
+    private NumOfRoundsTracker numOfRoundsTracker;
     
     
     public Board(PlayerDeckBuild[] playerBuild, EncounterBuild encounterInfo, GameManager manager){
@@ -65,6 +66,7 @@ public class Board {
         this.currentSuspensions = new ArrayList<>();
         this.pmGovenor = new PhaseManagerGovenor(this);
         this.vpPile = new VictoryPointsPile(this);
+        this.numOfRoundsTracker = new NumOfRoundsTracker(this);
     }
     
     public PlayerZone getPlayerZoneAt(int index){
@@ -379,6 +381,18 @@ public class Board {
             encounterZone.getStagingArea().removeEnemyAt(indexOfProperEnemy);
         }
         
+    }
+    
+    public int calculateEndGameScore(){
+        int score = 0;
+        for(int i = 0; i < playerZones.length; ++i){
+            score += playerZones[i].getCurrentPlayerThreat();
+            score +=playerZones[i].getTotalDamageOnHeros();
+            score +=playerZones[i].getSumOfThreatOfDeadHeros();
+        }
+        score += 10*numOfRoundsTracker.getNumOfRounds();
+        score -= vpPile.getVictoryPoints();
+        return score;
     }
     
     public void readyAllCharacters(){
