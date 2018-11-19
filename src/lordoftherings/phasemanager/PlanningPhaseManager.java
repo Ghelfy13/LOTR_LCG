@@ -14,7 +14,7 @@ public class PlanningPhaseManager implements PhaseManager{
     
     public PlanningPhaseManager(){
         this.subPhase = PlanningSubPhase.PLAY_ALLIES_AND_ATTACHMENTS;
-        this.isActionable = false;
+        this.isActionable = true;
     }
     
     @Override
