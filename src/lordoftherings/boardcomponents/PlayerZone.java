@@ -23,7 +23,7 @@ public class PlayerZone {
     private boolean playerIsAlive;
     private PlayerName name;
     private int playerThreat;
-    private Hero[] deadHeros;
+    private ArrayList<Hero> deadHeros;
     
     
     public PlayerZone(PlayerDeckBuild playerDeckAndHeros, int ownerID, Board board, String name){
@@ -36,7 +36,7 @@ public class PlayerZone {
         this.playerIsAlive = true;
         this.name = new PlayerName(name, ownerID, this);
         this.threatDial = new ThreatDial(field.getInitinalThreat(), ownerID, this);
-        deadHeros = new Hero[3];
+        deadHeros = new ArrayList<>();
     }
     
     public Board getBoard(){
@@ -191,7 +191,7 @@ public class PlayerZone {
     }
     
     public void addDeadHeroToList(Hero deadHero){
-        deadHeros[deadHeros.length] = deadHero;
+        deadHeros.add(deadHero);
     }
     
     public int getTotalDamageOnHeros(){
@@ -200,8 +200,8 @@ public class PlayerZone {
     
     public int getSumOfThreatOfDeadHeros(){
         int deadsThreat = 0;
-        for(int i = 0; i < deadHeros.length; ++i){
-            deadsThreat += deadHeros[i].getThreatCost();
+        for(int i = 0; i < deadHeros.size(); ++i){
+            deadsThreat += deadHeros.get(i).getThreatCost();
         }
         return deadsThreat;
     }

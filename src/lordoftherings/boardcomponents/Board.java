@@ -77,6 +77,10 @@ public class Board {
         return vpPile;
     }
     
+    public String getQuestName(){
+        return encounterZone.getQuestSet().getNameOfQuestSet();
+    }
+    
     public NumOfRoundsTracker getNumOfRounds(){
         return numOfRoundsTracker;
     }

@@ -28,10 +28,27 @@ public class EndOfGameViewController {
     }
     
     public void updateView(){
+        int playerBaseScore = board.getPlayerZoneAt(0).getCurrentPlayerThreat() + 
+                board.getPlayerZoneAt(0).getTotalDamageOnHeros() +
+                board.getPlayerZoneAt(0).getSumOfThreatOfDeadHeros();
+        int baseWithVPoints = playerBaseScore - board.getVPPile().getVictoryPoints();
+        int baseWithVPAndRounds = baseWithVPoints + board.getNumOfRounds().getNumOfRounds()*10;
         if(board.hasGameEnded()){
             if(board.getPlayerStatus()){
-                messageView = new EndOfGameMessageView(X_VALUE, Y_VALUE, "Congratulations!  You've Won!" + " \n" + "Your score is: " + board.calculateEndGameScore());
-                messageView.setForeground(Color.CYAN);
+                String firstLine = "You've completed: " + board.getQuestName() + "\n" + "\n";
+                String secondLine = "Calculation of score: " + "\n";
+                String score = "Threat: " + board.getPlayerZoneAt(0).getCurrentPlayerThreat() + "  " + 
+                        "Damage on Heros: " + board.getPlayerZoneAt(0).getTotalDamageOnHeros() +"  " + 
+                        "Threat of Dead Heros: " + board.getPlayerZoneAt(0).getSumOfThreatOfDeadHeros() + "\n";
+                String victoryPoints = "Score - Victory Points: " + 
+                        playerBaseScore + " - " + board.getVPPile().getVictoryPoints() + " = " + 
+                                (baseWithVPoints)+  "\n";
+                String rounds = "Score + Number of rounds X 10: " +
+                        baseWithVPoints+" + "+board.getNumOfRounds().getNumOfRounds()*10 +
+                        " = " + baseWithVPAndRounds + "\n";
+                String totalScore = "Total Score: " + board.calculateEndGameScore();
+                messageView = new EndOfGameMessageView(X_VALUE, Y_VALUE, firstLine +
+                        secondLine + score + victoryPoints + rounds + totalScore);
             }else{
                 messageView = new EndOfGameMessageView(X_VALUE, Y_VALUE, "Heros Failed");
             }

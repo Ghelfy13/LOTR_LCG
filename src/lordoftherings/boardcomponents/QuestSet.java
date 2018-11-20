@@ -13,9 +13,12 @@ import lordoftherings.cards.QuestCard;
 public class QuestSet {
     private ArrayList<QuestCard> questSet;
     private QuestCard currentQuest;
+    private String nameOfQuest;
     
-    public QuestSet(QuestSetBuild setComponents){
+    
+    public QuestSet(QuestSetBuild setComponents, String nameOfQuest){
         questSet = new ArrayList<>();
+        this.nameOfQuest = nameOfQuest;
         for(int i = 0; i < setComponents.getSizeOfSet(); ++i){
             QuestCard card = new QuestCard(setComponents.getCardModelAt(i));
             questSet.add(card);
@@ -24,6 +27,10 @@ public class QuestSet {
     
     public QuestCard getQuestCardAt(int i){
         return questSet.get(i);
+    }
+    
+    public String getNameOfQuestSet(){
+        return nameOfQuest;
     }
     
     public int getSizeOfSet(){

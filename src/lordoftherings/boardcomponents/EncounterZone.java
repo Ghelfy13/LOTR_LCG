@@ -33,7 +33,8 @@ public class EncounterZone {
         encounterDiscard = new EncounterDiscardPile();
         stage = new StagingArea();
         this.encounterDeck = new EncounterDeck(encounterSet.getEnemyDeck());
-        this.quests = new QuestSet(encounterSet.getQuestDeck());
+        this.quests = new QuestSet(encounterSet.getQuestDeck(), 
+                encounterSet.getQuestDeck().getCardModelAt(0).getScenarioTitle());
         this.board = board;
         this.activeQuest = new ActiveQuest(new Quest(quests.getNextQuest()));
         this.questDiscard = new QuestDiscardPile();

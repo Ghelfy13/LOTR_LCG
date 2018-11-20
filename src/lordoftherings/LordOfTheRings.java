@@ -137,7 +137,7 @@ public class LordOfTheRings {
         
         EncounterDeckBuild encounterDB = new EncounterDeckBuild();
         QuestSetBuild questSB = new QuestSetBuild();
-        questSB.addQuestCard(secondQuest);
+        //questSB.addQuestCard(secondQuest);
         questSB.addQuestCard(firstQuest);
         EncounterBuild enemyBuild = new EncounterBuild(encounterDB, questSB);
         Enemy enemy = new Enemy(firstEnemy.createCard());
