@@ -28,8 +28,7 @@ public class RefreshPhaseManager implements PhaseManager{
             case REFRESH_CARDS:
             case INCREASE_THREAT:
             case PASS_FIRST_PLAYER_TOKEN:
-                isActionable = false;
-                return;
+            case RAISE_ROUND_COUNTER:
             case PLAYER_ACTIONS:
                 isActionable = true;
                 return;
@@ -49,6 +48,10 @@ public class RefreshPhaseManager implements PhaseManager{
                 board.increaseEveryPlayersThreatBy(1);
                 return;
             case PASS_FIRST_PLAYER_TOKEN:
+                return;
+            case RAISE_ROUND_COUNTER:
+                board.getNumOfRounds().raiseRoundCounter();
+                return;
             case PLAYER_ACTIONS:
                 return;
         }
@@ -65,6 +68,9 @@ public class RefreshPhaseManager implements PhaseManager{
                 return board.getPhaseManagerGovenor().getRefreshPhaseManager().
                         setSubPhase(RefreshSubPhase.PASS_FIRST_PLAYER_TOKEN);
             case PASS_FIRST_PLAYER_TOKEN:
+                return board.getPhaseManagerGovenor().getRefreshPhaseManager().
+                        setSubPhase(RefreshSubPhase.RAISE_ROUND_COUNTER);
+            case RAISE_ROUND_COUNTER:
                 return board.getPhaseManagerGovenor().getRefreshPhaseManager().
                         setSubPhase(RefreshSubPhase.PLAYER_ACTIONS);
             case PLAYER_ACTIONS:

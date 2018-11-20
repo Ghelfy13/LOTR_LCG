@@ -77,6 +77,10 @@ public class Board {
         return vpPile;
     }
     
+    public NumOfRoundsTracker getNumOfRounds(){
+        return numOfRoundsTracker;
+    }
+    
     public int getNumOfPlayerZones(){
         return playerZones.length;
     }

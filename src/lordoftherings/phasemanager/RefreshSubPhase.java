@@ -10,5 +10,6 @@ public enum RefreshSubPhase implements SubPhase{
     REFRESH_CARDS,
     INCREASE_THREAT,
     PASS_FIRST_PLAYER_TOKEN,
+    RAISE_ROUND_COUNTER,
     PLAYER_ACTIONS
 }

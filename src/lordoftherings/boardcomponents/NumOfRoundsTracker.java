@@ -12,10 +12,14 @@ public class NumOfRoundsTracker {
     
     public NumOfRoundsTracker(Board board){
         this.board = board;
-        this.numOfRounds = 0;
+        this.numOfRounds = 1;
     }
     
     public int getNumOfRounds(){
         return numOfRounds;
+    }
+    
+    public void raiseRoundCounter(){
+        ++numOfRounds;
     }
 }

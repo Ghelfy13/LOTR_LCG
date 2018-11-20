@@ -13,8 +13,7 @@ public class NumOfRoundsLabelViewController {
     private BoardViewController boardVC;
     private NumOfRoundsLabelView view;
     
-    public NumOfRoundsLabelViewController(BoardViewController boardVC,
-            NumOfRoundsTracker tracker){
+    public NumOfRoundsLabelViewController(BoardViewController boardVC){
         this.boardVC = boardVC;
     }
     
