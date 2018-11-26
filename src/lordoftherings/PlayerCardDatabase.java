@@ -192,7 +192,7 @@ public class PlayerCardDatabase {
             2,
             1,
             0,
-            0,
+            2,
             2,
             "Exhaust Gleowine to choose a player.  That player draws 1 card.",
             list7,
