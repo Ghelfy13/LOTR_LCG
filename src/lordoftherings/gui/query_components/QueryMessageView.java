@@ -7,6 +7,7 @@ import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
+import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.gui.AvailableActionsView;
 
 /**
@@ -14,9 +15,10 @@ import lordoftherings.gui.AvailableActionsView;
  * @author Amanda
  */
 public class QueryMessageView extends JTextArea{
+    public static final int MESSAGE_DIMENSIONS = scale(500);
     
     public QueryMessageView(int x, int y, String description){
-        setBounds(x, y, 500, 500);
+        setBounds(scale(x), scale(y), MESSAGE_DIMENSIONS, MESSAGE_DIMENSIONS);
         setText(description);
         setBackground(Color.white);
         setLayout(null);

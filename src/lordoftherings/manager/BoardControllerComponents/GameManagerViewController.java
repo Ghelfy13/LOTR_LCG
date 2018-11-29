@@ -3,7 +3,6 @@
 package lordoftherings.manager.BoardControllerComponents;
 
 import java.awt.Point;
-import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.gui.BoardView;
 import lordoftherings.gui.EndOfGameView;
@@ -48,9 +47,9 @@ public class GameManagerViewController implements GlobalViewController{
     }
     
     public GameManagerView makeView(int x, int y){
-        view = new GameManagerView(scale(x), scale(y));
+        view = new GameManagerView(x, y);
         glassPane = new GlassPaneView(view.getWidth(), view.getHeight());
-        BoardView boardV = boardVC.makeView(x, y, GameManagerView.WINDOW_WIDTH, GameManagerView.WINDOW_LENGTH);
+        BoardView boardV = boardVC.makeView(x, y);
         EndOfGameView endView = endOfGameVC.makeView();
         view.add(endView);
         glassPane.setVisible(false);

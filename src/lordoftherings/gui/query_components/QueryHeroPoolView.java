@@ -5,6 +5,7 @@ package lordoftherings.gui.query_components;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextArea;
+import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.gui.EncounterZoneComponents.EnemyDamageView;
 import lordoftherings.gui.PlayerZoneComponents.AllyCardView;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
@@ -17,7 +18,7 @@ public class QueryHeroPoolView extends JTextArea{
     
     public QueryHeroPoolView (int x, int y, int resources, int damage){
         super("Resources: " + resources + "  Damage: " +damage);
-        this.setBounds(x, y, HandCardView.CARD_WIDTH, EnemyDamageView.DAMAGE_HEIGHT);
+        this.setBounds(scale(x), scale(y), HandCardView.CARD_WIDTH, EnemyDamageView.DAMAGE_HEIGHT);
         this.setFont(AllyCardView.CARD_FONT);
         this.setEditable(false);
         this.setBackground(Color.yellow);

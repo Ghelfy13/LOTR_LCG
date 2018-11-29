@@ -14,10 +14,11 @@ import lordoftherings.gui.PlayerZoneComponents.HandCardView;
  * @author Amanda
  */
 public class VictoryPointsPileView extends JPanel{
+    public static final int PILE_WIDTH = HandCardView.CARD_WIDTH + EncounterDiscardPileView.CARD_BORDER;
+    public static final int PILE_HEIGHT = HandCardView.CARD_HEIGHT + CARD_BORDER;
     
     public VictoryPointsPileView(int x, int y){
-        setBounds(x, y, HandCardView.CARD_WIDTH + EncounterDiscardPileView.CARD_BORDER,
-                HandCardView.CARD_HEIGHT + CARD_BORDER);
+        setBounds(x, y, PILE_WIDTH, PILE_HEIGHT);
         setOpaque(true);
         setLayout(null);
         Color background = new Color(164, 117, 170);

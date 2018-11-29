@@ -5,6 +5,7 @@ package lordoftherings.gui.query_components;
 import java.awt.Color;
 import static java.awt.Component.CENTER_ALIGNMENT;
 import javax.swing.JTextArea;
+import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.gui.EncounterZoneComponents.EnemyDamageView;
 import lordoftherings.gui.PlayerZoneComponents.AllyCardView;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
@@ -17,7 +18,7 @@ public class EnemyQueryEnemyDamageView extends JTextArea{
     
      public EnemyQueryEnemyDamageView (int x, int y, int damage){
         super("Damage: " +damage);
-        this.setBounds(x, y, HandCardView.CARD_WIDTH, EnemyDamageView.DAMAGE_HEIGHT);
+        this.setBounds(scale(x), scale(y), HandCardView.CARD_WIDTH, EnemyDamageView.DAMAGE_HEIGHT);
         this.setAlignmentX(CENTER_ALIGNMENT);
         this.setEditable(false);
         this.setFont(AllyCardView.CARD_FONT);

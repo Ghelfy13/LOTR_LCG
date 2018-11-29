@@ -6,8 +6,11 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.gui.EncounterZoneComponents.StagingAreaThreatTitleView;
 import lordoftherings.gui.PlayerZoneComponents.QuestValueView;
+import static lordoftherings.gui.PlayerZoneComponents.QuestValueView.QUEST_HEIGHT;
+import static lordoftherings.gui.PlayerZoneComponents.QuestValueView.QUEST_WIDTH;
 
 /**
  *
@@ -16,7 +19,7 @@ import lordoftherings.gui.PlayerZoneComponents.QuestValueView;
 public class ContinueButtonView extends JButton {
     
     public ContinueButtonView(int x, int y, boolean canContinue){
-        setBounds(x, y, 200, 50);
+        setBounds(scale(x), scale(y), QUEST_WIDTH, QUEST_HEIGHT);
         setText("Continue");
         setHorizontalAlignment(SwingConstants.CENTER);
         setVerticalAlignment(SwingConstants.CENTER);

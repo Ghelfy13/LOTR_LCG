@@ -8,6 +8,7 @@ package lordoftherings.gui;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextArea;
+import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.gui.EncounterZoneComponents.EncounterZoneView;
 import lordoftherings.gui.PlayerZoneComponents.PlayerZoneView;
 
@@ -16,11 +17,12 @@ import lordoftherings.gui.PlayerZoneComponents.PlayerZoneView;
  * @author Amanda
  */
 public class EndOfGameMessageView extends JTextArea{
+    public static final Font GAME_FONT = new Font(Font.SERIF, Font.BOLD, scale(50));
     
     public EndOfGameMessageView(int x, int y, String message){
-        this.setBounds(x, y, EncounterZoneView.ZONE_WIDTH, PlayerZoneView.ZONE_HEIGHT);
-        Font gameFont = new Font(Font.SERIF, Font.BOLD, 50);
-        this.setFont(gameFont);
+        this.setBounds(scale(x), scale(y), EncounterZoneView.ZONE_WIDTH, PlayerZoneView.ZONE_HEIGHT);
+        
+        this.setFont(GAME_FONT);
         this.setForeground(Color.BLACK);
         setLineWrap(true);
         setWrapStyleWord(true);

@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.EncounterZoneControllerComponents;
 
+import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.deckcomponents.Quest;
 import lordoftherings.boardcomponents.EncounterZone;
 import lordoftherings.gui.EncounterZoneComponents.EncounterDeckParentView;
@@ -38,7 +39,7 @@ public class EncounterZoneViewController {
     public static final int Y_VALUE_FOR_STAGING_AREA = HandCardView.CARD_WIDTH +
             4*DISTANCE_BT_DECK_AND_STAGE;
     public static final int X_VALUE_FOR_STAGING_AREA = HandCardView.CARD_WIDTH +
-            DISTANCE_BT_DECK_AND_STAGE + 190;
+            DISTANCE_BT_DECK_AND_STAGE + scale(190);
     
     
     public EncounterZoneViewController(BoardActiveState boardAS, EncounterZone zone){

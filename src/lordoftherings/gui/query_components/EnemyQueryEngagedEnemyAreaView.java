@@ -3,8 +3,8 @@
 package lordoftherings.gui.query_components;
 
 import javax.swing.JPanel;
+import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
-import lordoftherings.gui.EncounterZoneComponents.EncounterZoneView;
 import static lordoftherings.gui.PlayerZoneComponents.EngagementAreaView.AREA_WIDTH;
 
 /**
@@ -15,7 +15,7 @@ public class EnemyQueryEngagedEnemyAreaView extends JPanel{
     
     public EnemyQueryEngagedEnemyAreaView(int x, int y, int numOfEnemies){
         setLayout(null);
-        setBounds(x, y, AREA_WIDTH, ActiveLocationView.CARD_COUNTER_HEIGHT);
+        setBounds(scale(x), scale(y), AREA_WIDTH, ActiveLocationView.CARD_COUNTER_HEIGHT);
         setOpaque(false);
     }
 }

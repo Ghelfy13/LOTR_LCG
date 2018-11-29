@@ -12,6 +12,8 @@ import lordoftherings.phasemanager.GamePhase;
 import lordoftherings.gui.BoardView;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.EncounterZoneComponents.EncounterZoneView;
+import static lordoftherings.gui.GameManagerView.WINDOW_LENGTH;
+import static lordoftherings.gui.GameManagerView.WINDOW_WIDTH;
 import lordoftherings.gui.NumOfRoundsLabelView;
 import lordoftherings.gui.NumOfRoundsView;
 import lordoftherings.gui.PhaseView;
@@ -45,6 +47,8 @@ public class BoardViewController implements GlobalViewController {
     private NumOfRoundsViewController numOfRoundsVC;
     public static final int DISTANCE_FROM_FRAME = 10;
     public static final int DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE = 245;
+    public int width = WINDOW_WIDTH;
+    public int height = WINDOW_LENGTH;
     
     public BoardViewController(Board newBoard, GameManagerViewController managerVC){
         this.myBoard = newBoard;
@@ -63,8 +67,8 @@ public class BoardViewController implements GlobalViewController {
         this.numOfRoundsVC = new NumOfRoundsViewController(this, numOfRounds);
     }
     
-    public BoardView makeView(int x, int y, int width, int height){
-        view = new BoardView(x, y, width, height);
+    public BoardView makeView(int x, int y){
+        view = new BoardView(x, y);
         view.add(activeState.getFocusableText());
         view.add(activeState.getAvailableActions());
         view.addMouseMotionListener(activeState.createMouseFollower());

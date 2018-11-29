@@ -5,6 +5,7 @@ package lordoftherings.gui;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
+import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.gui.PlayerZoneComponents.QuestValueView;
 
@@ -13,10 +14,10 @@ import lordoftherings.gui.PlayerZoneComponents.QuestValueView;
  * @author Amanda
  */
 public class NumOfRoundsView extends JLabel{
-    public static final int LABEL_HEIGHT = 30;
+    public static final int LABEL_HEIGHT = scale(30);
     
     public NumOfRoundsView(int x, int y, int numOfRounds){
-        setBounds(x, y, HandCardView.CARD_WIDTH, LABEL_HEIGHT);
+        setBounds(scale(x), scale(y), HandCardView.CARD_WIDTH, LABEL_HEIGHT);
         setLayout(null);
         setOpaque(true);
         setText("" + numOfRounds);

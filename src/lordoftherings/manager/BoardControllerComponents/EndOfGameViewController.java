@@ -2,7 +2,6 @@
 
 package lordoftherings.manager.BoardControllerComponents;
 
-import java.awt.Color;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.gui.EndOfGameMessageView;
 import lordoftherings.gui.EndOfGameView;

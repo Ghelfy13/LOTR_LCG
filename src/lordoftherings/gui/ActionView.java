@@ -3,16 +3,10 @@
 package lordoftherings.gui;
 
 import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.RenderingHints;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.manager.BoardControllerComponents.ActionExecutor;
 import lordoftherings.actions.Action;
 import lordoftherings.manager.actionComponents.ActionViewController;
@@ -24,11 +18,11 @@ import lordoftherings.manager.actionComponents.FocusableMouseListener;
  * @author Amanda
  */
 public class ActionView extends JButton{
-    public static final int BOX_DIMENSIONS = 40;
+    public static final int BOX_DIMENSIONS = scale(40);
     
     public ActionView(BoardActiveState boardAS, ActionViewController controller, Action playableAction,ImageIcon icon, int x, int y){
         super(icon);
-        setBounds(x, y, BOX_DIMENSIONS, BOX_DIMENSIONS);
+        setBounds(scale(x), scale(y), BOX_DIMENSIONS, BOX_DIMENSIONS);
         setHorizontalAlignment(SwingConstants.CENTER);
         setVerticalAlignment(SwingConstants.CENTER);
         setLayout(null);

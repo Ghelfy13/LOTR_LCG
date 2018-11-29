@@ -3,6 +3,7 @@
 package lordoftherings.gui.query_components;
 
 import javax.swing.JPanel;
+import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.PlayerZoneComponents.HeroZoneView;
 
@@ -15,7 +16,7 @@ public class QueryHeroAreaView extends JPanel{
     
     public QueryHeroAreaView(int x, int y, int numOfHeros){
         length = numOfHeros*HeroZoneView.ENEMY_SPACE_LENGTH;
-        setBounds(x, y, length, ActiveLocationView.CARD_COUNTER_HEIGHT);
+        setBounds(scale(x), scale(y), length, ActiveLocationView.CARD_COUNTER_HEIGHT);
         setOpaque(false);
         setLayout(null);
     }
