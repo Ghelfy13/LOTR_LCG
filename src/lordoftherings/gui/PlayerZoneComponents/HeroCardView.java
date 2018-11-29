@@ -3,8 +3,8 @@
 package lordoftherings.gui.PlayerZoneComponents;
 
 import java.awt.Color;
-import java.awt.Font;
 import javax.swing.JTextArea;
+import static lordoftherings.GameConfiguration.scale;
 
 /**
  *
@@ -18,6 +18,6 @@ public class HeroCardView extends JTextArea{
         this.insert(heroInfo, 0);
         this.setFont(AllyCardView.CARD_FONT);
         this.setBackground(Color.LIGHT_GRAY);
-        setBounds(x, y, HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
+        setBounds(scale(x), scale(y), HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
     }
 }

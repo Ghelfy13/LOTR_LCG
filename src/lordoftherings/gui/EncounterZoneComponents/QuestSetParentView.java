@@ -19,8 +19,8 @@ import static lordoftherings.GameConfiguration.scale;
 public class QuestSetParentView extends JPanel{
     
      public QuestSetParentView(int x, int y){
-        setBounds(x, y, scale(HandCardView.CARD_HEIGHT + CARD_BORDER), 
-                scale(HandCardView.CARD_WIDTH + CARD_BORDER));
+        setBounds(scale(x), scale(y), HandCardView.CARD_HEIGHT + CARD_BORDER, 
+                HandCardView.CARD_WIDTH + CARD_BORDER);
         setLayout(null);
         setOpaque(true);
         setBackground(Color.MAGENTA);

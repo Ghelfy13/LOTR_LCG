@@ -14,11 +14,11 @@ import static lordoftherings.gui.EncounterZoneComponents.StagingAreaThreatView.T
  * @author Amanda
  */
 public class StagingAreaThreatTitleView extends JLabel{
-    public static final Font THREAT_FONT = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, 24);
+    public static final Font THREAT_FONT = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, scale(24));
     
     public StagingAreaThreatTitleView(int x, int y){
         setText("THREAT");
-        setBounds(x, y, scale(THREAT_WIDTH), scale(THREAT_HEIGHT));
+        setBounds(scale(x), scale(y), THREAT_WIDTH, THREAT_HEIGHT);
         setLayout(null);
         setBackground(Color.ORANGE);
         setOpaque(true);

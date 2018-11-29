@@ -4,6 +4,7 @@ package lordoftherings.gui.PlayerZoneComponents;
 
 import java.awt.Color;
 import javax.swing.JPanel;
+import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 
 /**
@@ -12,11 +13,11 @@ import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
  */
 public class HeroZoneView extends JPanel{
     private int length;
-    public static final int ENEMY_SPACE_LENGTH = 205;
+    public static final int ENEMY_SPACE_LENGTH = scale(205);
     
     public HeroZoneView(int x, int y, int numOfHeros){
         length = numOfHeros*ENEMY_SPACE_LENGTH;
-        setBounds(x, y, length ,ActiveLocationView.CARD_COUNTER_HEIGHT);
+        setBounds(scale(x), scale(y), length ,ActiveLocationView.CARD_COUNTER_HEIGHT);
         setOpaque(false);
         setLayout(null);
     }

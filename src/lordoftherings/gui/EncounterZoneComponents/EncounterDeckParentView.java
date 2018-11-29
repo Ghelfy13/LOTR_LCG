@@ -20,7 +20,7 @@ public class EncounterDeckParentView extends JPanel{
     public EncounterDeckParentView(EncounterDeckViewController controller, int x, int y){
         view = new EncounterDeckView(controller);
         this.add(view);
-        this.setBounds(x, y, scale(HandCardView.CARD_WIDTH), scale(HandCardView.CARD_HEIGHT));
+        this.setBounds(scale(x), scale(y), HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
         this.setOpaque(false);
         BoardActiveState bas = controller.getBoardActiveStateController();
         this.addMouseListener(new FocusableMouseListener(bas,controller));

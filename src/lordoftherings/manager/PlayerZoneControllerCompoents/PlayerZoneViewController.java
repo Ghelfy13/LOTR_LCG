@@ -14,7 +14,6 @@ import lordoftherings.gui.PlayerZoneComponents.PlayerNameView;
 import lordoftherings.gui.PlayerZoneComponents.PlayerZoneView;
 import lordoftherings.gui.PlayerZoneComponents.QuestValueTitleView;
 import lordoftherings.gui.PlayerZoneComponents.QuestValueView;
-import lordoftherings.gui.PlayerZoneComponents.QuestValueViewController;
 import lordoftherings.gui.PlayerZoneComponents.ThreatDialTitleView;
 import lordoftherings.gui.PlayerZoneComponents.ThreatDialView;
 import lordoftherings.manager.actionComponents.BoardActiveState;

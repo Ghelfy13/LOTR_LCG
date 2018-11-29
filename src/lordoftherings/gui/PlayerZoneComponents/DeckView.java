@@ -14,16 +14,19 @@ import javax.swing.JLabel;
 import lordoftherings.manager.actionComponents.BoardActiveState;
 import lordoftherings.manager.PlayerZoneControllerCompoents.DeckViewController;
 import lordoftherings.manager.actionComponents.FocusableMouseListener;
+import static lordoftherings.GameConfiguration.scale;
 
 /**
  *
  * @author Amanda
  */
 public class DeckView extends JLabel{
+    public static final int X_COORDINATE = scale(250);
+    public static final int Y_COORDINATE = scale(300);
     
     public DeckView(DeckViewController controller){
         super(cardBackImage(HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT));
-        this.setBounds(250,300,HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
+        this.setBounds(X_COORDINATE, Y_COORDINATE, HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
         BoardActiveState bas = controller.getBoardActiveStateController();
         this.addMouseListener(new FocusableMouseListener(bas,controller));
     }

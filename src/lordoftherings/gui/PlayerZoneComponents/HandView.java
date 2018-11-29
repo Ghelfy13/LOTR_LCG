@@ -4,6 +4,7 @@ package lordoftherings.gui.PlayerZoneComponents;
 
 import java.awt.Color;
 import javax.swing.JPanel;
+import static lordoftherings.GameConfiguration.scale;
 /**
  *
  * @author Amanda
@@ -12,7 +13,7 @@ public class HandView extends JPanel{
     
     public HandView(int x, int y){
         setLayout(null);
-        setBounds(x,y, EngagementAreaView.AREA_WIDTH, HandCardView.CARD_HEIGHT);
+        setBounds(scale(x), scale(y), EngagementAreaView.AREA_WIDTH, HandCardView.CARD_HEIGHT);
         setOpaque(false);
     }
     

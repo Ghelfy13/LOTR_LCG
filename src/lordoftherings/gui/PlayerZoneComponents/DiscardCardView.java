@@ -5,6 +5,7 @@ package lordoftherings.gui.PlayerZoneComponents;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextArea;
+import static lordoftherings.GameConfiguration.scale;
 
 /**
  *
@@ -13,7 +14,7 @@ import javax.swing.JTextArea;
 public class DiscardCardView extends JTextArea{
         
     public DiscardCardView(int x, int y, String info){
-        setBounds(x, y, HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
+        setBounds(scale(x), scale(y), HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
         setText(info);
         setOpaque(true);
         setLayout(null);

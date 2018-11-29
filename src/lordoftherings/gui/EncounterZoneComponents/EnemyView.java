@@ -13,8 +13,8 @@ import static lordoftherings.GameConfiguration.scale;
 public class EnemyView extends JPanel{
     
     public EnemyView(EnemyViewController controller, int x, int y){
-        setBounds(x, y, scale(ActiveLocationView.PARENT_WIDTH),
-                scale(ActiveLocationView.CARD_COUNTER_HEIGHT));
+        setBounds(scale(x), scale(y), ActiveLocationView.PARENT_WIDTH,
+                ActiveLocationView.CARD_COUNTER_HEIGHT);
         setLayout(null);
         setOpaque(false);
         

@@ -16,7 +16,7 @@ import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 public class TokenView extends JTextArea{
      
     public TokenView(int x, int y, int tokenNum){
-        this.setBounds(x, y, scale(HandCardView.CARD_WIDTH), scale(EnemyDamageView.DAMAGE_HEIGHT));
+        this.setBounds(scale(x), scale(y), HandCardView.CARD_WIDTH, EnemyDamageView.DAMAGE_HEIGHT);
         this.insert("Tokens: " + tokenNum, 0);
         this.setEditable(false);
         this.setAlignmentX(CENTER_ALIGNMENT);

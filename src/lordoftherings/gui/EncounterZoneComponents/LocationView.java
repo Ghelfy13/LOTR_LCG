@@ -12,7 +12,7 @@ import static lordoftherings.GameConfiguration.scale;
 public class LocationView extends JPanel{
         
     public LocationView(int x, int y){
-        setBounds(x, y, scale(ActiveLocationView.PARENT_WIDTH), scale(ActiveLocationView.CARD_COUNTER_HEIGHT));
+        setBounds(scale(x), scale(y), ActiveLocationView.PARENT_WIDTH, ActiveLocationView.CARD_COUNTER_HEIGHT);
         setOpaque(false);
         setLayout(null);
     }

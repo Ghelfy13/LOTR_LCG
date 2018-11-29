@@ -23,6 +23,6 @@ public class QuestCardView extends JTextArea{
         this.setWrapStyleWord(true);
         this.setEditable(false);
         this.setBackground(Color.LIGHT_GRAY);
-        setBounds(x, y, scale(HandCardView.CARD_HEIGHT), scale(HandCardView.CARD_WIDTH));
+        setBounds(scale(x), scale(y), HandCardView.CARD_HEIGHT, HandCardView.CARD_WIDTH);
     }
 }

@@ -13,12 +13,12 @@ import static lordoftherings.GameConfiguration.scale;
  * @author Amanda
  */
 public class StagingAreaThreatView extends JLabel{
-    public static final int THREAT_WIDTH = 150;
-    public static final int THREAT_HEIGHT = 50;
+    public static final int THREAT_WIDTH = scale(150);
+    public static final int THREAT_HEIGHT = scale(50);
     
     public StagingAreaThreatView(int x, int y, int threat){
         setText("" + threat);
-        setBounds(x, y, scale(THREAT_WIDTH), scale(THREAT_HEIGHT));
+        setBounds(scale(x), scale(y), THREAT_WIDTH, THREAT_HEIGHT);
         setLayout(null);
         setBackground(Color.ORANGE);
         setOpaque(true);

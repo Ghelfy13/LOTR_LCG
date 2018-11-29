@@ -15,13 +15,13 @@ public class LocationAreaView extends JPanel{
     
     public LocationAreaView (int x, int y, int numOfLocations, MouseMotionListener mmListener){
         length = numOfLocations*(ActiveLocationView.PARENT_WIDTH);
-        setBounds(x, y, scale(length), scale(ActiveLocationView.CARD_COUNTER_HEIGHT));
+        setBounds(scale(x), scale(y), length, ActiveLocationView.CARD_COUNTER_HEIGHT);
         setLayout(null);
         setOpaque(false);
         this.addMouseMotionListener(mmListener);
     }
     
     public int getLength(){
-        return scale(length);
+        return length;
     }
 }

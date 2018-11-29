@@ -22,10 +22,11 @@ import lordoftherings.manager.actionComponents.FocusableMouseListener;
  * @author Amanda
  */
 public class EncounterDeckView extends JLabel{
+    public static final int DIMENSIONS = scale(10);
     
     public EncounterDeckView(EncounterDeckViewController controller){
-        super(cardBackImage(scale(HandCardView.CARD_WIDTH), scale(HandCardView.CARD_HEIGHT)));
-        this.setBounds(10, 10, scale(HandCardView.CARD_WIDTH), scale(HandCardView.CARD_HEIGHT));
+        super(cardBackImage(HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT));
+        this.setBounds(DIMENSIONS, DIMENSIONS, HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
         BoardActiveState bas = controller.getBoardActiveStateController();
         this.addMouseListener(new FocusableMouseListener(bas,controller));
         this.addMouseMotionListener(bas.createMouseFollower());

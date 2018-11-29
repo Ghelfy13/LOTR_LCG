@@ -5,6 +5,7 @@ package lordoftherings.gui.PlayerZoneComponents;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.gui.ProgressPhaseButtonView;
 
 /**
@@ -14,7 +15,7 @@ import lordoftherings.gui.ProgressPhaseButtonView;
 public class PlayerNameView extends JLabel{
     
     public PlayerNameView(int x, int y, String name){
-        setBounds(x, y, 
+        setBounds(scale(x), scale(y), 
                 ProgressPhaseButtonView.PROGRESS_BUTTON_WIDTH, 
                 ProgressPhaseButtonView.PROGRESS_BUTTON_HEIGHT);
         setText(name);

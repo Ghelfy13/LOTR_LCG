@@ -13,11 +13,11 @@ import static lordoftherings.GameConfiguration.scale;
  * @author Amanda
  */
 public class EncounterDiscardPileView extends JPanel{
-    public static final int CARD_BORDER = 10;
+    public static final int CARD_BORDER = scale(10);
     
     public EncounterDiscardPileView(int x, int y){
-        setBounds(x, y, scale(HandCardView.CARD_WIDTH + EncounterDiscardPileView.CARD_BORDER),
-                scale(HandCardView.CARD_HEIGHT + CARD_BORDER));
+        setBounds(scale(x), scale(y), HandCardView.CARD_WIDTH + CARD_BORDER,
+                HandCardView.CARD_HEIGHT + CARD_BORDER);
         setOpaque(true);
         setLayout(null);
         Color background = new Color(164, 117, 170);

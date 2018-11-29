@@ -26,10 +26,10 @@ public class QuestSetView extends JLabel{
     private BoardActiveState bas;
     
     public QuestSetView(BoardActiveState bas, QuestSetViewController setVC,  int x, int y){
-        super(cardBackImage(scale(HandCardView.CARD_HEIGHT + CARD_BORDER), 
-                scale(HandCardView.CARD_WIDTH + CARD_BORDER)));
-        this.setBounds(x, y, scale(HandCardView.CARD_HEIGHT + CARD_BORDER), 
-                scale(HandCardView.CARD_WIDTH + CARD_BORDER));
+        super(cardBackImage(HandCardView.CARD_HEIGHT + CARD_BORDER, 
+                HandCardView.CARD_WIDTH + CARD_BORDER));
+        this.setBounds(scale(x), scale(y), HandCardView.CARD_HEIGHT + CARD_BORDER, 
+                HandCardView.CARD_WIDTH + CARD_BORDER);
         this.bas = bas;
         this.addMouseListener(new FocusableMouseListener(bas, setVC));
         this.addMouseMotionListener(bas.createMouseFollower());

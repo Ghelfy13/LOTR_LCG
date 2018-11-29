@@ -21,7 +21,7 @@ public class EnemyCardView extends JTextArea{
         this.setFont(AllyCardView.CARD_FONT);
         this.setEditable(false);
         this.setBackground(Color.LIGHT_GRAY);
-        setBounds(x, y, scale(HandCardView.CARD_WIDTH), scale(HandCardView.CARD_HEIGHT));
+        setBounds(scale(x), scale(y), HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
         
     }
 }

@@ -3,6 +3,7 @@
 package lordoftherings.gui.PlayerZoneComponents;
 
 import javax.swing.JPanel;
+import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.EncounterZoneComponents.EncounterZoneView;
 
@@ -13,7 +14,7 @@ import lordoftherings.gui.EncounterZoneComponents.EncounterZoneView;
 public class CharacterAreaView extends JPanel{
     
     public CharacterAreaView(int x, int y){
-        this.setBounds(x, y, EncounterZoneView.ZONE_WIDTH, ActiveLocationView.CARD_COUNTER_HEIGHT);
+        this.setBounds(scale(x), scale(y), EncounterZoneView.ZONE_WIDTH, ActiveLocationView.CARD_COUNTER_HEIGHT);
         this.setOpaque(false);
         this.setLayout(null);
     }

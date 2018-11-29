@@ -1,7 +1,8 @@
 //Copyright Amanda V. Harris 2018-present. All Rights Reserved.
 
-package lordoftherings.gui.PlayerZoneComponents;
+package lordoftherings.manager.PlayerZoneControllerCompoents;
 
+import lordoftherings.gui.PlayerZoneComponents.QuestValueView;
 import lordoftherings.phasemanager.GamePhase;
 import lordoftherings.manager.PlayerZoneControllerCompoents.PlayerZoneViewController;
 

@@ -2,20 +2,19 @@
 
 package lordoftherings.gui.PlayerZoneComponents;
 
-import java.awt.Color;
 import javax.swing.JPanel;
+import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
-import lordoftherings.gui.EncounterZoneComponents.EncounterZoneView;
 
 /**
  *
  * @author Amanda
  */
 public class EngagementAreaView extends JPanel{
-    public static final int AREA_WIDTH = 200*7;
+    public static final int AREA_WIDTH = scale(1400);
     
     public EngagementAreaView(int x, int y, int numOfEnemies){
-        setBounds(x, y, AREA_WIDTH, ActiveLocationView.CARD_COUNTER_HEIGHT);
+        setBounds(scale(x), scale(y), AREA_WIDTH, ActiveLocationView.CARD_COUNTER_HEIGHT);
         setLayout(null);
         setOpaque(false);
     }

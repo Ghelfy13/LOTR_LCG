@@ -21,6 +21,6 @@ public class EncounterDiscardCardView extends JTextArea{
         setEditable(false);
         setBackground(Color.LIGHT_GRAY);
         setFont(AllyCardView.CARD_FONT);
-        setBounds(x, y, scale(HandCardView.CARD_WIDTH), scale(HandCardView.CARD_HEIGHT));
+        setBounds(scale(x), scale(y), HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
     }
 }

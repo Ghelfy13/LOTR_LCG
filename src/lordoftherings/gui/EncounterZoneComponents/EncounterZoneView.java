@@ -11,11 +11,11 @@ import lordoftherings.manager.EncounterZoneControllerComponents.EncounterZoneVie
  * @author Amanda
  */
 public class EncounterZoneView extends JPanel {
-    public static final int ZONE_WIDTH = 2000;
+    public static final int ZONE_WIDTH = scale(2000);
     
     public EncounterZoneView(int x, int y){
-        setBounds( x, y, scale(ZONE_WIDTH), scale(2*ActiveLocationView.CARD_COUNTER_HEIGHT +
-                EncounterZoneViewController.DISTANCE_FROM_FRAME));
+        setBounds(scale(x), scale(y), ZONE_WIDTH, 2*ActiveLocationView.CARD_COUNTER_HEIGHT +
+                EncounterZoneViewController.DISTANCE_FROM_FRAME);
         setLayout(null);
         setOpaque(false);
     }

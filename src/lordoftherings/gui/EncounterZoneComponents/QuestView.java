@@ -13,7 +13,7 @@ import static lordoftherings.GameConfiguration.scale;
 public class QuestView extends JPanel{
     
     public QuestView(int x, int y){
-        setBounds(x, y, scale(HandCardView.CARD_HEIGHT), scale(HandCardView.CARD_WIDTH + EnemyDamageView.DAMAGE_HEIGHT));
+        setBounds(scale(x), scale(y), HandCardView.CARD_HEIGHT, HandCardView.CARD_WIDTH + EnemyDamageView.DAMAGE_HEIGHT);
         setLayout(null);
         setOpaque(true);
         
