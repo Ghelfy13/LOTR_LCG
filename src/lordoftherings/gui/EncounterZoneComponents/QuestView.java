@@ -2,10 +2,9 @@
 
 package lordoftherings.gui.EncounterZoneComponents;
 
-import java.awt.Color;
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
+import static lordoftherings.GameConfiguration.scale;
 
 /**
  *
@@ -14,7 +13,7 @@ import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 public class QuestView extends JPanel{
     
     public QuestView(int x, int y){
-        setBounds(x, y, HandCardView.CARD_HEIGHT, HandCardView.CARD_WIDTH + EnemyDamageView.DAMAGE_HEIGHT);
+        setBounds(x, y, scale(HandCardView.CARD_HEIGHT), scale(HandCardView.CARD_WIDTH + EnemyDamageView.DAMAGE_HEIGHT));
         setLayout(null);
         setOpaque(true);
         

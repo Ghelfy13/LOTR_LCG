@@ -3,6 +3,7 @@
 package lordoftherings.gui.EncounterZoneComponents;
 
 import javax.swing.JPanel;
+import static lordoftherings.GameConfiguration.scale;
 
 /**
  *
@@ -11,7 +12,7 @@ import javax.swing.JPanel;
 public class LocationView extends JPanel{
         
     public LocationView(int x, int y){
-        setBounds(x, y, ActiveLocationView.PARENT_WIDTH, ActiveLocationView.CARD_COUNTER_HEIGHT);
+        setBounds(x, y, scale(ActiveLocationView.PARENT_WIDTH), scale(ActiveLocationView.CARD_COUNTER_HEIGHT));
         setOpaque(false);
         setLayout(null);
     }

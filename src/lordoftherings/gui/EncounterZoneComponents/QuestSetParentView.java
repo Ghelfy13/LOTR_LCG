@@ -10,6 +10,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import static lordoftherings.gui.EncounterZoneComponents.EncounterDiscardPileView.CARD_BORDER;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
+import static lordoftherings.GameConfiguration.scale;
 
 /**
  *
@@ -18,8 +19,8 @@ import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 public class QuestSetParentView extends JPanel{
     
      public QuestSetParentView(int x, int y){
-        setBounds(x, y, HandCardView.CARD_HEIGHT + CARD_BORDER, 
-                HandCardView.CARD_WIDTH + CARD_BORDER);
+        setBounds(x, y, scale(HandCardView.CARD_HEIGHT + CARD_BORDER), 
+                scale(HandCardView.CARD_WIDTH + CARD_BORDER));
         setLayout(null);
         setOpaque(true);
         setBackground(Color.MAGENTA);

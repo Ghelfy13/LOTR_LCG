@@ -2,10 +2,9 @@
 
 package lordoftherings.gui.EncounterZoneComponents;
 
-import java.awt.Color;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JPanel;
-import lordoftherings.gui.PlayerZoneComponents.HandCardView;
+import static lordoftherings.GameConfiguration.scale;
 
 /**
  *
@@ -16,13 +15,13 @@ public class LocationAreaView extends JPanel{
     
     public LocationAreaView (int x, int y, int numOfLocations, MouseMotionListener mmListener){
         length = numOfLocations*(ActiveLocationView.PARENT_WIDTH);
-        setBounds(x, y, length, ActiveLocationView.CARD_COUNTER_HEIGHT);
+        setBounds(x, y, scale(length), scale(ActiveLocationView.CARD_COUNTER_HEIGHT));
         setLayout(null);
         setOpaque(false);
         this.addMouseMotionListener(mmListener);
     }
     
     public int getLength(){
-        return length;
+        return scale(length);
     }
 }

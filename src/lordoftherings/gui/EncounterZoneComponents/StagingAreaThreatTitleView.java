@@ -5,6 +5,9 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import static lordoftherings.GameConfiguration.scale;
+import static lordoftherings.gui.EncounterZoneComponents.StagingAreaThreatView.THREAT_HEIGHT;
+import static lordoftherings.gui.EncounterZoneComponents.StagingAreaThreatView.THREAT_WIDTH;
 
 /**
  *
@@ -15,7 +18,7 @@ public class StagingAreaThreatTitleView extends JLabel{
     
     public StagingAreaThreatTitleView(int x, int y){
         setText("THREAT");
-        setBounds(x, y, 150, 50);
+        setBounds(x, y, scale(THREAT_WIDTH), scale(THREAT_HEIGHT));
         setLayout(null);
         setBackground(Color.ORANGE);
         setOpaque(true);

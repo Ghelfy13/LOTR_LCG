@@ -3,6 +3,7 @@
 package lordoftherings.gui.EncounterZoneComponents;
 
 import javax.swing.JPanel;
+import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.manager.actionComponents.BoardActiveState;
 import lordoftherings.manager.EncounterZoneControllerComponents.EncounterDeckViewController;
@@ -19,7 +20,7 @@ public class EncounterDeckParentView extends JPanel{
     public EncounterDeckParentView(EncounterDeckViewController controller, int x, int y){
         view = new EncounterDeckView(controller);
         this.add(view);
-        this.setBounds(x, y, HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
+        this.setBounds(x, y, scale(HandCardView.CARD_WIDTH), scale(HandCardView.CARD_HEIGHT));
         this.setOpaque(false);
         BoardActiveState bas = controller.getBoardActiveStateController();
         this.addMouseListener(new FocusableMouseListener(bas,controller));

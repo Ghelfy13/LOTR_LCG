@@ -3,10 +3,10 @@
 package lordoftherings.gui.EncounterZoneComponents;
 
 import java.awt.Color;
-import java.awt.Font;
 import javax.swing.JTextArea;
 import lordoftherings.gui.PlayerZoneComponents.AllyCardView;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
+import static lordoftherings.GameConfiguration.scale;
 
 /**
  *
@@ -21,6 +21,6 @@ public class EncounterDiscardCardView extends JTextArea{
         setEditable(false);
         setBackground(Color.LIGHT_GRAY);
         setFont(AllyCardView.CARD_FONT);
-        setBounds(x, y, HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
+        setBounds(x, y, scale(HandCardView.CARD_WIDTH), scale(HandCardView.CARD_HEIGHT));
     }
 }

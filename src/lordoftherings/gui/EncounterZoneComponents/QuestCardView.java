@@ -6,6 +6,7 @@ import java.awt.Color;
 import javax.swing.JTextArea;
 import lordoftherings.gui.PlayerZoneComponents.AllyCardView;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
+import static lordoftherings.GameConfiguration.scale;
 
 /**
  *
@@ -22,6 +23,6 @@ public class QuestCardView extends JTextArea{
         this.setWrapStyleWord(true);
         this.setEditable(false);
         this.setBackground(Color.LIGHT_GRAY);
-        setBounds(x, y, HandCardView.CARD_HEIGHT, HandCardView.CARD_WIDTH);
+        setBounds(x, y, scale(HandCardView.CARD_HEIGHT), scale(HandCardView.CARD_WIDTH));
     }
 }

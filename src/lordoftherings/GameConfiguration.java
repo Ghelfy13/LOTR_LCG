@@ -8,7 +8,7 @@ package lordoftherings;
  */
 public class GameConfiguration {//Creates the scaling factor for the size of the game on someones scream
     
-    public static double scalar = .9;
+    public static double scalar = .5;
     
     public static int scale(int value){
         return (int) (value*scalar);

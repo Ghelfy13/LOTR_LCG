@@ -6,6 +6,7 @@ import java.awt.Color;
 import javax.swing.JTextArea;
 import lordoftherings.gui.PlayerZoneComponents.AllyCardView;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
+import static lordoftherings.GameConfiguration.scale;
 
 /**
  *
@@ -20,7 +21,7 @@ public class EnemyCardView extends JTextArea{
         this.setFont(AllyCardView.CARD_FONT);
         this.setEditable(false);
         this.setBackground(Color.LIGHT_GRAY);
-        setBounds(x, y, HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
+        setBounds(x, y, scale(HandCardView.CARD_WIDTH), scale(HandCardView.CARD_HEIGHT));
         
     }
 }
