@@ -38,6 +38,8 @@ public class LordOfTheRings {
      */
     public static void main(String[] args) {
         
+        
+        
         Identification QuestID = new Identification(ExpansionName.CORE, 21);
         PlayerCardModel readyCard = PlayerCardDatabase.get(QuestID);
         System.out.print(readyCard);
@@ -127,7 +129,7 @@ public class LordOfTheRings {
         //mockDeck.add(PlayerCardDatabase.get(WillOfWestID), 1);
         //mockDeck.add(PlayerCardDatabase.get(GrimResolveID), 2);
         //mockDeck.add(PlayerCardDatabase.get(LoreOfImladrisID), 3);
-        PlayerDeckBuild mockBuild = new PlayerDeckBuild(mockDeck);
+        PlayerDeckBuild mockBuild = new PlayerDeckBuild(mockDeck, "Duck OverLord");
         mockBuild.addHero(first);
         mockBuild.addHero((HeroCardModel)PlayerCardDatabase.get(DunhereID));
         Identification BeravorID = new Identification(ExpansionName.CORE, 12);
@@ -160,8 +162,8 @@ public class LordOfTheRings {
         
         JFrame LOTRFrame = new JFrame("LORD OF THE RINGS");
         LOTRFrame.setSize(
-            PANE_WIDTH,
-            PANE_HEIGHT);
+            GameConfiguration.scale(PANE_WIDTH),
+            GameConfiguration.scale(PANE_HEIGHT));
         LOTRFrame.setLayout(null);
         LOTRFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         LOTRFrame.setResizable(false);

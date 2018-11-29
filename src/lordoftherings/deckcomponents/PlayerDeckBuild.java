@@ -11,15 +11,21 @@ import java.util.ArrayList;
 public class PlayerDeckBuild {
     private DeckBuild playersDeck;
     private ArrayList<HeroCardModel> listOfHeros;
+    private String playerName;
     
     
-    public PlayerDeckBuild(DeckBuild deck){
+    public PlayerDeckBuild(DeckBuild deck, String name){
         this.playersDeck = deck;
         listOfHeros = new ArrayList(); 
+        playerName = name;
     }
     
     public DeckBuild getPlayersDeck(){
         return playersDeck;
+    }
+    
+    public String getPlayerName(){
+        return playerName;
     }
     
     public void addHero(HeroCardModel heroToBeAdded){

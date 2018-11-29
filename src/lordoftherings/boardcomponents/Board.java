@@ -59,7 +59,7 @@ public class Board {
         int size = deckBuilds.length;
         this.playerZones = new PlayerZone[size];
         for(int i = 0; i < size; ++i){
-            playerZones[i] = new PlayerZone(deckBuilds[i], i, this, "Player1");//TODO: replace this with an imput
+            playerZones[i] = new PlayerZone(deckBuilds[i], i, this, deckBuilds[i].getPlayerName());//TODO: replace this with an imput
         }
         this.gameManager = manager;
         this.hasPlayerWon = false;

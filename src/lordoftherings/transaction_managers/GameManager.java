@@ -2,6 +2,7 @@
 
 package lordoftherings.transaction_managers;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.deckcomponents.EncounterBuild;
 import lordoftherings.deckcomponents.PlayerDeckBuild;
 import lordoftherings.boardcomponents.Board;
