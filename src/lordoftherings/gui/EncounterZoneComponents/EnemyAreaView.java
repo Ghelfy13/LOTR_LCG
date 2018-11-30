@@ -23,6 +23,6 @@ public class EnemyAreaView extends JPanel{
     }
     
     public int getLengthOfEnemyArea(){
-        return scale(length);
+        return length;
     }
 }

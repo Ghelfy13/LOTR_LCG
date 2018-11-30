@@ -4,6 +4,7 @@ package lordoftherings.manager.EncounterZoneControllerComponents;
 
 import java.util.ArrayList;
 import javax.swing.JComponent;
+import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.boardcomponents.Location;
@@ -28,6 +29,7 @@ public class LocationViewController implements Actionable{
     private LocationCardView cardView;
     private TokenView tokenView;
     public static final int ACTIONS_Y_COORDINATE = 180;
+    public static final int TOKEN_Y_VALUE = 200;
     
     public LocationViewController(Location location, BoardActiveState bas){
         this.location = location;
@@ -41,7 +43,7 @@ public class LocationViewController implements Actionable{
         cardView = cardVC.makeView(0,0);
         cardView.addMouseListener(new ActionableMouseListener(bas, this));
         view.add(cardView);
-        tokenView = tokenVC.makeView(0, HandCardView.CARD_HEIGHT);
+        tokenView = tokenVC.makeView(0, TOKEN_Y_VALUE);
         view.add(tokenView);
         view.addMouseMotionListener(bas.createMouseFollower());
         view.setVisible(true);
@@ -49,7 +51,7 @@ public class LocationViewController implements Actionable{
     }
     
     public void updateView(int x, int y){
-        view.setLocation(x, y);
+        view.setLocation(scale(x), scale(y));
         cardVC.updateView();
         tokenVC.updateView(location.getNumOfTokens());
         view.revalidate();

@@ -10,6 +10,7 @@ import lordoftherings.gui.EncounterZoneComponents.EnemyAreaView;
 import lordoftherings.gui.EncounterZoneComponents.LocationAreaView;
 import lordoftherings.gui.EncounterZoneComponents.StagingAreaView;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
+import static lordoftherings.manager.EncounterZoneControllerComponents.EncounterZoneViewController.DISTANCE_FROM_FRAME;
 import lordoftherings.manager.actionComponents.BoardActiveState;
 
 /**
@@ -25,6 +26,7 @@ public class StagingAreaViewController {
     private LocationAreaViewController locationAreaVC;
     private ActiveLocationViewController activeLocationVC;
     private ArrayList<Enemy> myEnemies;
+    public static final int AREA_X_VALUE = 225;
     
     public  StagingAreaViewController(BoardActiveState bas, StagingArea stage){
         this.bas = bas;
@@ -38,10 +40,10 @@ public class StagingAreaViewController {
     
     public StagingAreaView makeView(int x, int y){
         view = new StagingAreaView(x, y, bas.createMouseFollower());
-        EnemyAreaView enemyView = enemyAreaVC.makeView(ActiveLocationView.PARENT_WIDTH, 0);
+        EnemyAreaView enemyView = enemyAreaVC.makeView(AREA_X_VALUE, DISTANCE_FROM_FRAME);
         view.add(enemyView);
         LocationAreaView locationView = locationAreaVC.makeView(
-                ActiveLocationView.CARD_COUNTER_HEIGHT + enemyAreaVC.getAreaLength(), 0);
+                AREA_X_VALUE + enemyAreaVC.getAreaLength(), DISTANCE_FROM_FRAME);
         view.add(locationView);
         ActiveLocationView activeLocationView = activeLocationVC.makeView(0, 0);
         view.add(activeLocationView);
@@ -50,9 +52,8 @@ public class StagingAreaViewController {
     }
     
     public void updateView(){
-        enemyAreaVC.updateView(ActiveLocationView.CARD_COUNTER_HEIGHT);
-        locationAreaVC.updateView(ActiveLocationView.CARD_COUNTER_HEIGHT 
-                + enemyAreaVC.getAreaLength());
+        enemyAreaVC.updateView(AREA_X_VALUE);
+        locationAreaVC.updateView(AREA_X_VALUE + enemyAreaVC.getAreaLength());
         activeLocationVC.updateView();
     }
        

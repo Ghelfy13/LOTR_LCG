@@ -36,10 +36,15 @@ public class EncounterZoneViewController {
     private StagingAreaThreatTitleViewController threatTitleVC;
     public static final int DISTANCE_FROM_FRAME = 10;
     public static final int DISTANCE_BT_DECK_AND_STAGE = 10;
-    public static final int Y_VALUE_FOR_STAGING_AREA = HandCardView.CARD_WIDTH +
+    public static final int Y_VALUE_FOR_STAGING_AREA = 144 +
             4*DISTANCE_BT_DECK_AND_STAGE;
-    public static final int X_VALUE_FOR_STAGING_AREA = HandCardView.CARD_WIDTH +
-            DISTANCE_BT_DECK_AND_STAGE + scale(190);
+    public static final int X_VALUE_FOR_STAGING_AREA = 334 +
+            DISTANCE_BT_DECK_AND_STAGE;
+    public static final int QUEST_SET_X_VALUE = 200 +
+                4*DISTANCE_BT_DECK_AND_STAGE;
+    public static final int THREAT_X_VALUE = 1800;
+    public static final int THREAT_Y_VALUE = 50;
+    public static final int QUEST_X_VALUE = 400 + 8*DISTANCE_BT_DECK_AND_STAGE;
     
     
     public EncounterZoneViewController(BoardActiveState boardAS, EncounterZone zone){
@@ -65,13 +70,11 @@ public class EncounterZoneViewController {
                 Y_VALUE_FOR_STAGING_AREA);
         StagingAreaView stageView = stagingVC.makeView(X_VALUE_FOR_STAGING_AREA,
                 Y_VALUE_FOR_STAGING_AREA);
-        StagingAreaThreatTitleView threatTitleView = threatTitleVC.makeView(1800, 0);
-        StagingAreaThreatView threatView = threatVC.makeView(1800, 50);
+        StagingAreaThreatTitleView threatTitleView = threatTitleVC.makeView(THREAT_X_VALUE, 0);
+        StagingAreaThreatView threatView = threatVC.makeView(THREAT_X_VALUE, THREAT_Y_VALUE);
         QuestDiscardPileView questDPView = questDPileVC.makeView(0,DISTANCE_FROM_FRAME);
-        QuestSetParentView setView = questSetVC.makeView(HandCardView.CARD_HEIGHT +
-                4*DISTANCE_BT_DECK_AND_STAGE,DISTANCE_FROM_FRAME);
-        QuestView questView = questVC.makeView(2*HandCardView.CARD_HEIGHT +
-                8*DISTANCE_BT_DECK_AND_STAGE, DISTANCE_FROM_FRAME);
+        QuestSetParentView setView = questSetVC.makeView(QUEST_SET_X_VALUE,DISTANCE_FROM_FRAME);
+        QuestView questView = questVC.makeView(QUEST_X_VALUE, DISTANCE_FROM_FRAME);
         view.add(questDPView);
         view.add(questView);
         view.add(setView);

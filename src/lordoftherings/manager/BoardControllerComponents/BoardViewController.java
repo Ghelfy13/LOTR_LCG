@@ -10,14 +10,12 @@ import lordoftherings.boardcomponents.Board;
 import lordoftherings.boardcomponents.NumOfRoundsTracker;
 import lordoftherings.phasemanager.GamePhase;
 import lordoftherings.gui.BoardView;
-import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.EncounterZoneComponents.EncounterZoneView;
 import static lordoftherings.gui.GameManagerView.WINDOW_LENGTH;
 import static lordoftherings.gui.GameManagerView.WINDOW_WIDTH;
 import lordoftherings.gui.NumOfRoundsLabelView;
 import lordoftherings.gui.NumOfRoundsView;
 import lordoftherings.gui.PhaseView;
-import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.gui.PlayerZoneComponents.PlayerZoneView;
 import lordoftherings.gui.ProgressPhaseButtonView;
 import lordoftherings.gui.SubPhaseView;
@@ -49,6 +47,16 @@ public class BoardViewController implements GlobalViewController {
     public static final int DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE = 245;
     public int width = WINDOW_WIDTH;
     public int height = WINDOW_LENGTH;
+    public static final int PLAYERZONE_Y_COORDINATE = 470;
+    public static final int PHASEVIEW_X_COORDINATE = 2250;
+    public static final int PROGRESS_BUTTON_X_VALUE = 2025;
+    public static final int VPPILE_X_VALUE = 2185;
+    public static final int VPPILE_Y_VALUE = 225 + DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE;
+    public static final int VPLABEL_X_VALUE = 2140;
+    public static final int VPLABEL_Y_VALUE = 445 + DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE;
+    public static final int ROUNDS_LABEL_Y_VALUE = 225;
+    public static final int ROUNDS_Y_VALUE = ROUNDS_LABEL_Y_VALUE + 30;
+    public static final int SUBPHASE_Y_VALUE = 50;
     
     public BoardViewController(Board newBoard, GameManagerViewController managerVC){
         this.myBoard = newBoard;
@@ -72,44 +80,29 @@ public class BoardViewController implements GlobalViewController {
         view.add(activeState.getFocusableText());
         view.add(activeState.getAvailableActions());
         view.addMouseMotionListener(activeState.createMouseFollower());
-        PlayerZoneView playerView = playerZoneVC.makeView(
-                DISTANCE_FROM_FRAME, ActiveLocationView.CARD_COUNTER_HEIGHT + 
-                        DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE);
+        PlayerZoneView playerView = playerZoneVC.makeView(DISTANCE_FROM_FRAME, PLAYERZONE_Y_COORDINATE);
         view.add(playerView);
         phaseVC = new PhaseViewController(this);
-        PhaseView phaseView = phaseVC.makeView(width - PhaseView.PHASE_BUTTON_WIDTH, y);
+        PhaseView phaseView = phaseVC.makeView(PHASEVIEW_X_COORDINATE, y);
         view.add(phaseView);
         phaseButtonController = new ProgressPhaseButtonViewController(gameManagerVC);
         ProgressPhaseButtonView phaseButtonView = phaseButtonController.makeView(
-                width - (ProgressPhaseButtonView.PROGRESS_BUTTON_WIDTH + PhaseView.PHASE_BUTTON_WIDTH), y);
+                PROGRESS_BUTTON_X_VALUE, y);
         ProgressPhaseActionListener ppActionListener = new ProgressPhaseActionListener(gameManagerVC, this);
         phaseButtonView.addActionListener(ppActionListener);
         view.add(phaseButtonView);
-        VictoryPointsPileView vpPileView = vpPileVC.makeView(
-                width - (ProgressPhaseButtonView.PROGRESS_BUTTON_WIDTH + 
-                        PhaseView.PHASE_BUTTON_WIDTH) + 160, 
-                ActiveLocationView.CARD_COUNTER_HEIGHT + 
-                        DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE);
+        VictoryPointsPileView vpPileView = vpPileVC.makeView(VPPILE_X_VALUE, VPPILE_Y_VALUE);
         view.add(vpPileView);
-        VictoryPointsLabelView vpLabelView = vpLabelVC.makeView(width - (ProgressPhaseButtonView.PROGRESS_BUTTON_WIDTH + 
-                        PhaseView.PHASE_BUTTON_WIDTH) + 115, 
-                ActiveLocationView.CARD_COUNTER_HEIGHT + 
-                        DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE + HandCardView.CARD_HEIGHT + 20);
+        VictoryPointsLabelView vpLabelView = vpLabelVC.makeView(VPLABEL_X_VALUE, VPLABEL_Y_VALUE);
         view.add(vpLabelView);
-        NumOfRoundsLabelView numOfRoundsLabelView = numOfRoundsLVC.makeView(width - 
-                (ProgressPhaseButtonView.PROGRESS_BUTTON_WIDTH + 
-                        PhaseView.PHASE_BUTTON_WIDTH) + 160,  
-                ActiveLocationView.CARD_COUNTER_HEIGHT);
-        NumOfRoundsView numOfRoundsView = numOfRoundsVC.makeView(width - 
-                (ProgressPhaseButtonView.PROGRESS_BUTTON_WIDTH + 
-                        PhaseView.PHASE_BUTTON_WIDTH) + 160,  
-                ActiveLocationView.CARD_COUNTER_HEIGHT + 30);
+        NumOfRoundsLabelView numOfRoundsLabelView = numOfRoundsLVC.makeView(VPPILE_X_VALUE,  
+                ROUNDS_LABEL_Y_VALUE);
+        NumOfRoundsView numOfRoundsView = numOfRoundsVC.makeView(VPPILE_X_VALUE, ROUNDS_Y_VALUE);
         view.add(numOfRoundsView);
         view.add(numOfRoundsLabelView);
         EncounterZoneView enemyZoneView = encounterZoneVC.makeView(DISTANCE_FROM_FRAME, DISTANCE_FROM_FRAME);
         view.add(enemyZoneView);
-        SubPhaseView subPhaseView = subPhaseVC.makeView(
-                width - (ProgressPhaseButtonView.PROGRESS_BUTTON_WIDTH + PhaseView.PHASE_BUTTON_WIDTH), PhaseView.PHASE_BUTTON_HEIGHT);
+        SubPhaseView subPhaseView = subPhaseVC.makeView(PROGRESS_BUTTON_X_VALUE, SUBPHASE_Y_VALUE);
         view.add(subPhaseView);
         view.setVisible(true);
         return view;

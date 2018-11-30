@@ -30,6 +30,7 @@ public class EnemyViewController implements Actionable{
     private EnemyView view;
     private Enemy enemy;
     private BoardActiveState bas;
+    public static final int ENEMY_Y_VALUE = 200;
     
     public EnemyViewController(BoardActiveState bas, Enemy card){
         this.enemy = card;
@@ -43,7 +44,7 @@ public class EnemyViewController implements Actionable{
         cardView = cardVC.makeView(0, 0);
         cardView.addMouseListener(new ActionableMouseListener(bas, this));
         view.add(cardView);
-        damageView = damageVC.makeView(0, HandCardView.CARD_HEIGHT);
+        damageView = damageVC.makeView(0, ENEMY_Y_VALUE);
         view.add(damageView);
         view.addMouseMotionListener(bas.createMouseFollower());
         view.setVisible(true);

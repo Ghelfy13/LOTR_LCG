@@ -27,6 +27,7 @@ public class QuestViewController implements Focusable{
     private QuestCardView cardView;
     private QuestTokenView tokenView;
     private BoardActiveState bas;
+    public static final int TOKEN_Y_VALUE = 144;
     
     public QuestViewController(EncounterZone zone, BoardActiveState bas){
         this.currentQuest = zone.getActiveQuest();
@@ -41,7 +42,7 @@ public class QuestViewController implements Focusable{
         cardView.addMouseListener(new FocusableMouseListener(bas, this));
         cardView.addMouseMotionListener(bas.createMouseFollower());
         view.add(cardView);
-        tokenView = tokenVC.makeView(0, HandCardView.CARD_WIDTH);
+        tokenView = tokenVC.makeView(0, TOKEN_Y_VALUE);
         view.add(tokenView);
         view.addMouseMotionListener(bas.createMouseFollower());
         view.setVisible(true);
@@ -55,7 +56,7 @@ public class QuestViewController implements Focusable{
         if(newQuest != currentQuest){
             view.removeAll();
             cardView = cardVC.makeView(newQuest.getQuestCard());
-            tokenView = tokenVC.makeView(0, HandCardView.CARD_WIDTH);
+            tokenView = tokenVC.makeView(0, TOKEN_Y_VALUE);
             currentQuest = newQuest;
             view.add(cardView);
             view.add(tokenView);
