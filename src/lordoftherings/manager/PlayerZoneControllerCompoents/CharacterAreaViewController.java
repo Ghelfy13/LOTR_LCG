@@ -35,8 +35,8 @@ public class CharacterAreaViewController {
         this.bas = bas;
     }
     
-    public CharacterAreaView makeView(int xValue, int yValue){
-        CharacterAreaView charView = new CharacterAreaView(xValue, yValue);
+    public CharacterAreaView makeView(int x, int y){
+        CharacterAreaView charView = new CharacterAreaView(x, y);
         charView.addMouseMotionListener(bas.createMouseFollower());
         HeroZoneView heroView = heroZoneVC.makeView(0, 0);
         AllyZoneView allyView = allyZoneVC.makeView(heroView.getLengthOfHeroZone(), 0);

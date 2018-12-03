@@ -2,7 +2,10 @@
 
 package lordoftherings.manager.PlayerZoneControllerCompoents;
 
+import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.characters.Hero;
+import static lordoftherings.gui.PlayerZoneComponents.HandCardView.CARD_HEIGHT;
+import static lordoftherings.gui.PlayerZoneComponents.HandCardView.CARD_WIDTH;
 import lordoftherings.gui.PlayerZoneComponents.HeroCardView;
 import lordoftherings.manager.actionComponents.BoardActiveState;
 
@@ -15,8 +18,7 @@ public class HeroCardViewController {
     private String heroInfo;
     private BoardActiveState bas;
     private HeroCardView view;
-    private static final int CARD_HEIGHT = 200;
-    private static final int CARD_WIDTH = 144;
+    
     
     public HeroCardViewController(Hero myHero, BoardActiveState bas){
         this.myHero = myHero;
@@ -34,9 +36,9 @@ public class HeroCardViewController {
     
     public HeroCardView updateView(int x, int y, boolean isExhausted, boolean isCommitted){
         if(isExhausted){
-            view.setBounds(x, y + CARD_HEIGHT - CARD_WIDTH, CARD_HEIGHT, CARD_WIDTH);
+            view.setBounds(scale(x), scale(y) + CARD_HEIGHT - CARD_WIDTH, CARD_HEIGHT, CARD_WIDTH);
         }else if(!isExhausted){
-            view.setBounds(x, y, CARD_WIDTH, CARD_HEIGHT);
+            view.setBounds(scale(x), scale(y), CARD_WIDTH, CARD_HEIGHT);
         }if(isCommitted){
             view.setBorder(CharacterAreaViewController.COMMIT_BORDER);
         }else if(!isCommitted){

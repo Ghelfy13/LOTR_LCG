@@ -5,6 +5,7 @@ package lordoftherings.manager.PlayerZoneControllerCompoents;
 import lordoftherings.manager.actionComponents.Actionable;
 import java.util.ArrayList;
 import javax.swing.JComponent;
+import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.LocationOnBoard;
 import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
@@ -30,7 +31,7 @@ public class AllyViewController implements Actionable {
     private AllyDamageView damageView;
     private AllyCardView cardView;
     private BoardActiveState bas;
-    public static final int ALLY_ACTIONS_Y_COORDINATE = 165;
+    public static final int ALLY_ACTIONS_Y_COORDINATE = scale(165);
     
     
     public AllyViewController(Ally passedInAlly, AllyZoneViewController allyZoneVC, BoardActiveState bas){
@@ -57,7 +58,7 @@ public class AllyViewController implements Actionable {
         return view;
     }
      
-    public void updateView(int x, int y){
+    public void updateView(){
         allyCardVC.updateView(0, 0, wantedAlly.isExhausted(), wantedAlly.isCommitted());
         damageView.setText("Damage: " + wantedAlly.getDamage());
         view.setVisible(true);

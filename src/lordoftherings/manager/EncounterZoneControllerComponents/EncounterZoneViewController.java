@@ -45,6 +45,7 @@ public class EncounterZoneViewController {
     public static final int THREAT_X_VALUE = 1800;
     public static final int THREAT_Y_VALUE = 50;
     public static final int QUEST_X_VALUE = 400 + 8*DISTANCE_BT_DECK_AND_STAGE;
+    public static final int DECK_X = 180;
     
     
     public EncounterZoneViewController(BoardActiveState boardAS, EncounterZone zone){
@@ -64,7 +65,7 @@ public class EncounterZoneViewController {
         view = new EncounterZoneView(x, y);
         view.addMouseMotionListener(bas.createMouseFollower());
         EncounterDeckParentView deckView = enemyDeckVC.makeView(
-                bas.createMouseFollower(), PlayerZoneViewController.DECK_X, 
+                bas.createMouseFollower(), DECK_X, 
                 Y_VALUE_FOR_STAGING_AREA);
         EncounterDiscardPileView discardView = enemyDPileVC.makeView(0, 
                 Y_VALUE_FOR_STAGING_AREA);

@@ -33,9 +33,9 @@ public class HeroZoneViewController {
         this.bas = bas;
     }
     
-    public HeroZoneView makeView(int X_Value, int Y_Value){
+    public HeroZoneView makeView(int x, int y){
         int numOfHeros = heroArea.getNumOfHeros();
-        view = new HeroZoneView(X_Value, Y_Value, numOfHeros);
+        view = new HeroZoneView(x, y, numOfHeros);
         view.addMouseMotionListener(bas.createMouseFollower());
         int num = 0;
         while(num < numOfHeros){
@@ -43,7 +43,7 @@ public class HeroZoneViewController {
             heroVC = new HeroViewController(hero, characterVC, bas);
             hero.setPositionInHeroArea(num);
             controllerMap.put(hero, heroVC);
-            view.add(heroVC.makeView(num*(HERO_VIEW_WIDTH +5), 0));
+            view.add(heroVC.makeView(num*(HERO_VIEW_WIDTH + 5), 0));
             ++num;
         }
         view.setVisible(true);

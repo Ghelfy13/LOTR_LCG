@@ -17,11 +17,10 @@ public class DeckViewController implements Focusable{
     private DeckViewParent deckParent;
     private BoardActiveState bas;
     
-    public DeckViewController(){
-       deckParent = new DeckViewParent(this);
-    }
+    public DeckViewController(){}
     
-    public DeckViewController(PlayerZoneViewController playerZoneViewController, PlayerDeck playerDeck, BoardActiveState bas){
+    public DeckViewController(PlayerZoneViewController playerZoneViewController, 
+            PlayerDeck playerDeck, BoardActiveState bas){
         this.playerDeck = playerDeck;
         this.playerZoneVC = playerZoneViewController;
         this.deckParent = null;
@@ -29,9 +28,8 @@ public class DeckViewController implements Focusable{
     }
            
     public DeckViewParent makeView(int x, int y){
-        deckParent = new DeckViewParent(this);
+        deckParent = new DeckViewParent(this, x, y);
         deckParent.addMouseMotionListener(bas.createMouseFollower());
-        deckParent.setLocation(x,y);
         deckParent.setVisible(true);
         deckParent.getView().setVisible(true);
         deckParent.getView().addMouseMotionListener(bas.createMouseFollower());

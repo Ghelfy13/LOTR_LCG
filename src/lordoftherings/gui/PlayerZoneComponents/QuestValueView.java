@@ -12,7 +12,7 @@ import static lordoftherings.GameConfiguration.scale;
  * @author Amanda
  */
 public class QuestValueView extends JLabel{
-    public static final Font QUEST_FONT = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, scale(30));
+    public static final Font QUEST_FONT = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, scale(20));
     public static final int QUEST_WIDTH = scale(200);
     public static final int QUEST_HEIGHT = scale(50);
     

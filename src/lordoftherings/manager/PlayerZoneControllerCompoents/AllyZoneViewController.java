@@ -72,7 +72,7 @@ public class AllyZoneViewController{
                 controllerMap.put(existingAlly, allyVC);
             }else{
                 AllyViewController allyVC = controllerMap.get(existingAlly);
-                allyVC.updateView(i*CARDS_AND_SPACE, 0);
+                allyVC.updateView();
             }
         }
         view.revalidate();

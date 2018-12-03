@@ -20,6 +20,7 @@ public class DiscardPileViewController implements Focusable{
     private DiscardPileView view;
     private PlayerCard topCard;
     private BoardActiveState bas;
+    public static final int DISCARD_DISTANCE = 5;
     
     public DiscardPileViewController(DiscardPile dPile, PlayerZoneViewController zoneVC, BoardActiveState bas){
         this.dPile = dPile;
@@ -41,7 +42,7 @@ public class DiscardPileViewController implements Focusable{
         topCard = dPile.getTopCard();
         
         if(topCard != null){
-            DiscardCardView topCardView = new DiscardCardView(5, 5, topCard.getIdentity());
+            DiscardCardView topCardView = new DiscardCardView(DISCARD_DISTANCE, DISCARD_DISTANCE, topCard.getIdentity());
             topCardView.addMouseMotionListener(bas.createMouseFollower());
             topCardView.addMouseListener(new FocusableMouseListener(bas, this));
             topCardView.setVisible(true);

@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.PlayerZoneControllerCompoents;
 
+import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.characters.Ally;
 import lordoftherings.cards.AllyCard;
 import lordoftherings.gui.PlayerZoneComponents.AllyCardView;
@@ -16,8 +17,8 @@ class AllyCardViewController{
     private AllyViewController allyVC;
     private AllyCardView view;
     private BoardActiveState bas;
-    private static final int CARD_HEIGHT = 200;
-    private static final int CARD_WIDTH = 144;
+    private static final int CARD_HEIGHT = scale(200);
+    private static final int CARD_WIDTH = scale(144);
     
     public AllyCardViewController(Ally wantedCard, AllyViewController allyVC, BoardActiveState bas){
         this.card = wantedCard.getCard();
@@ -35,9 +36,9 @@ class AllyCardViewController{
     
     public void updateView(int x, int y, boolean isExhausted, boolean isCommitted){
         if(isExhausted){
-            view.setBounds(x, y + CARD_HEIGHT - CARD_WIDTH, CARD_HEIGHT, CARD_WIDTH);
+            view.setBounds(scale(x), scale(y) + CARD_HEIGHT - CARD_WIDTH, CARD_HEIGHT, CARD_WIDTH);
         }else if(!isExhausted){
-            view.setBounds(x, y, CARD_WIDTH, CARD_HEIGHT);
+            view.setBounds(scale(x), scale(y), CARD_WIDTH, CARD_HEIGHT);
         }if(isCommitted){
             view.setBorder(CharacterAreaViewController.COMMIT_BORDER);
         }else if(!isCommitted){
