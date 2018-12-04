@@ -239,7 +239,7 @@ public class Board {
     }
     
     public void startAttackWithEnemy(Enemy attacker){
-        currentSuspensions.add(SuspensionType.DEFEND);
+        currentSuspensions.add(SuspensionType.ENEMY_ATTACK);
         Matcher<GameCharacter> ready = new ReadyMatcher();
         CharacterQueryRequirements requirements = new CharacterQueryRequirements(ready, 0, 1);
         gameManager.handleCharacterQuery(new CharacterQueryHandle(
@@ -251,7 +251,7 @@ public class Board {
     }
     
     public void startPlayerAttackOnEnemy(Enemy target){
-        currentSuspensions.add(SuspensionType.ATTACK);
+        currentSuspensions.add(SuspensionType.PLAYER_ATTACK);
         Matcher<GameCharacter> ready = new ReadyMatcher();
         CharacterQueryRequirements requirements = new CharacterQueryRequirements(ready, 1, Integer.MAX_VALUE);
         gameManager.handleCharacterQuery(new CharacterQueryHandle(

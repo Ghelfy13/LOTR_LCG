@@ -9,7 +9,8 @@ package lordoftherings.boardcomponents;
 public enum SuspensionType {
     WON,
     LOST,
-    ATTACK,
-    DEFEND,
-    EFFECT
+    PLAYER_ATTACK,
+    ENEMY_ATTACK,
+    EFFECT,
+    RESPONSE
 }

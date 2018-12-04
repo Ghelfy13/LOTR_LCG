@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Point;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
+import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.gui.AvailableActionsView;
@@ -38,8 +39,9 @@ public class BoardActiveState extends FocusableActiveState {
         currentActionable = newActionable;
         currentActionable.onSetActionable();
         Point locationOnScreen = currentActionable.getView().getLocationOnScreen();
-        
-        actionsView = availableActionsVC.updateView(locationOnScreen.x + 40, locationOnScreen.y);
+        Point gameManagerLocation = gameManagerVC.getView().getLocationOnScreen();
+        Point difference = new Point(locationOnScreen.x - gameManagerLocation.x, locationOnScreen.y - gameManagerLocation.y);
+        actionsView = availableActionsVC.updateView(difference.x, difference.y);
     }
     
     public void unsetActionable(){
@@ -47,7 +49,7 @@ public class BoardActiveState extends FocusableActiveState {
         Point locationOnScreen = currentActionable.getView().getLocationOnScreen();
         currentActionable.onUnsetActionable();
         currentActionable = null;
-        actionsView = availableActionsVC.updateView(locationOnScreen.x + 20, locationOnScreen.y);
+        actionsView = availableActionsVC.updateView(locationOnScreen.x, locationOnScreen.y);
     }
     
     public AvailableActionsView getAvailableActions(){

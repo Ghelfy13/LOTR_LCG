@@ -3,6 +3,7 @@
 package lordoftherings.manager.actionComponents;
 
 import java.util.ArrayList;
+import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.gui.ActionView;
@@ -18,6 +19,8 @@ public class AvailableActionsViewController{
     private ArrayList<Action> listOfActions;
     private AvailableActionsView view;
     private BoardActiveState boardAS;
+    public static final int EMPTY_BOX_SIZE = ActionView.BOX_DIMENSIONS + scale(10);
+    public static final int X_VALUE = 40;
     
     public AvailableActionsViewController(BoardActiveState boardAS){
         //TODO: FINISH
@@ -32,13 +35,13 @@ public class AvailableActionsViewController{
         return view;
     }
     
-    public AvailableActionsView updateView(int x, int y){
+    public AvailableActionsView updateView(int x, int y){//DON'T SCALE THE X AND Y HERE.  IT IS TAKEN FROM LOCATION ON SCREEN
         Actionable currentActionable = boardAS.getCurrentActionable();
         int yCoordinate = 0;
         if(currentActionable != null){
-            yCoordinate = currentActionable.getActionsYCoordinate();
+            yCoordinate = scale(currentActionable.getActionsYCoordinate());
         }
-        view.setLocation(x, y + yCoordinate);
+        view.setLocation(x, y);
         if(currentActionable == null){
             listOfActions.clear();
             view.removeAll();
@@ -49,13 +52,12 @@ public class AvailableActionsViewController{
             listOfActions.clear();
             currentActionable.getActions(listOfActions, 0, boardState);
             if(listOfActions.isEmpty()){
-                view.setBounds(x, y + yCoordinate, 
-                        ActionView.BOX_DIMENSIONS + 10,
-                        ActionView.BOX_DIMENSIONS + 10);
+                view.setBounds(x, y, 
+                        EMPTY_BOX_SIZE, EMPTY_BOX_SIZE);
             }else{
-                view.setBounds(x, y + yCoordinate,
-                        (ActionView.BOX_DIMENSIONS +5)*listOfActions.size() +5,
-                        ActionView.BOX_DIMENSIONS +10);
+                view.setBounds(x, y,
+                        (ActionView.BOX_DIMENSIONS +scale(5))*listOfActions.size() +scale(5),
+                        EMPTY_BOX_SIZE);
             }
             for(int i = 0; i < listOfActions.size(); ++i){
                 Action currentAction = listOfActions.get(i);
@@ -63,7 +65,7 @@ public class AvailableActionsViewController{
                 int calculatedX = 5;
                 int calculatedY = 5;
                 ActionView actionV = actionVC.makeView(calculatedX*(i+1)+
-                        ActionView.BOX_DIMENSIONS*(i), calculatedY);
+                        X_VALUE*(i), calculatedY);
                 view.add(actionV);
                 actionV.setVisible(true);
             }

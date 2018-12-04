@@ -51,7 +51,7 @@ public class AllyViewController implements Actionable {
         cardView.addMouseListener(new ActionableMouseListener(bas, this));
         view.add(cardView);
         cardView.setVisible(true);
-        damageView = new AllyDamageView(0, HandCardView.CARD_HEIGHT, 0);
+        damageView = new AllyDamageView(0, HeroViewController.POOL_X, 0);
         view.add(damageView);
         damageView.setVisible(true);
         view.setVisible(true);

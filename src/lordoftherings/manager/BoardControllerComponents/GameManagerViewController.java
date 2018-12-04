@@ -100,6 +100,9 @@ public class GameManagerViewController implements GlobalViewController{
         backDrop.setVisible(true);
     }
     
+    public GameManagerView getView(){
+        return view;
+    }
 
     public void deactivateQueryVC() {
         QueryView queryView = queryVC.getView();

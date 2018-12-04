@@ -29,6 +29,7 @@ public class HeroViewController implements Actionable{
     private HeroView view;
     private HeroCardView cardView;
     private BoardActiveState bas;
+    public static final int POOL_X = 200;
     
     
     public HeroViewController(Hero passedInHero, CharacterAreaViewController charAreaVC, BoardActiveState bas){
@@ -47,7 +48,7 @@ public class HeroViewController implements Actionable{
         view.add(cardView);
         cardView.setVisible(true);
         heroPoolVC = new HeroPoolViewController(this);
-        HeroPoolView poolView = heroPoolVC.makeView(0, HandCardView.CARD_HEIGHT, wantedHero.getNumOfResources());
+        HeroPoolView poolView = heroPoolVC.makeView(0, POOL_X, wantedHero.getNumOfResources());
         poolView.setVisible(true);
         view.add(poolView);
         view.setVisible(true);

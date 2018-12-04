@@ -15,7 +15,7 @@ import static lordoftherings.GameConfiguration.scale;
 public class AvailableActionsView extends JLabel {
     public static final Font MESSAGE_FONT = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, scale(36));
     int lengthOfBox;
-    public static final int USED_BOX_LENGTH = scale(ActionView.BOX_DIMENSIONS + 10);
+    public static final int USED_BOX_LENGTH = scale(50);
     
     public AvailableActionsView(int x, int y, int numOfActions){
         if(numOfActions == 0){

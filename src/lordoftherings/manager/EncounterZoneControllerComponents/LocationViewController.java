@@ -28,7 +28,7 @@ public class LocationViewController implements Actionable{
     private BoardActiveState bas;
     private LocationCardView cardView;
     private TokenView tokenView;
-    public static final int ACTIONS_Y_COORDINATE = 180;
+    public static final int ACTIONS_Y_COORDINATE = scale(180);
     public static final int TOKEN_Y_VALUE = 200;
     
     public LocationViewController(Location location, BoardActiveState bas){

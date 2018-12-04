@@ -3,7 +3,6 @@
 package lordoftherings.gui.PlayerZoneComponents;
 
 import java.awt.Color;
-import java.awt.Font;
 import javax.swing.JTextArea;
 import static lordoftherings.GameConfiguration.scale;
 import lordoftherings.gui.EncounterZoneComponents.EnemyDamageView;
