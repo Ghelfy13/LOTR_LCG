@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.query_Handlers;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.PlayerName;
 import lordoftherings.boardcomponents.PlayerZone;
 import lordoftherings.gui.query_components.QueryPlayerNameView;
@@ -20,17 +21,20 @@ public class QueryPlayerNameViewController implements Selectable<PlayerZone>{//p
     private QueryPlayerNameView nameView;
     private boolean isSelected;
     private PlayerZone zone;
+    private GameConfiguration config;
     
     public QueryPlayerNameViewController(String name, 
-            PlayerQueryActiveState playerQAS, PlayerZone zone){
+            PlayerQueryActiveState playerQAS, PlayerZone zone,
+            GameConfiguration config){
         this.playerQAS = playerQAS;
         this.nameOfPlayer = name;
         this.isSelected = false;
         this.zone = zone;
+        this.config = config;
     }
     
     public QueryPlayerNameView makeView(int x, int y){
-        nameView = new QueryPlayerNameView(x, y, nameOfPlayer);
+        nameView = new QueryPlayerNameView(x, y, nameOfPlayer, config);
         nameView.addMouseMotionListener(playerQAS.createMouseFollower());
         nameView.addMouseListener(new SelectableMouseListener<PlayerZone>(playerQAS, this));
         nameView.setVisible(true);

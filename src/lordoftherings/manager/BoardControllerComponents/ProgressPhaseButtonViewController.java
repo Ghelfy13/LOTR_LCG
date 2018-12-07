@@ -3,6 +3,7 @@
 package lordoftherings.manager.BoardControllerComponents;
 
 import java.awt.Color;
+import lordoftherings.GameConfiguration;
 import lordoftherings.gui.ProgressPhaseButtonView;
 
 /**
@@ -12,13 +13,15 @@ import lordoftherings.gui.ProgressPhaseButtonView;
 public class ProgressPhaseButtonViewController {
     private ProgressPhaseButtonView phaseButtonView;
     private GameManagerViewController gameManagerVC;
+    private GameConfiguration config;
     
-    public ProgressPhaseButtonViewController(GameManagerViewController gameManagerVC){
+    public ProgressPhaseButtonViewController(GameManagerViewController gameManagerVC, GameConfiguration config){
         this.gameManagerVC = gameManagerVC;
+        this.config = config;
     }
     
     public ProgressPhaseButtonView makeView(int x, int y){
-        phaseButtonView = new ProgressPhaseButtonView(x,y);
+        phaseButtonView = new ProgressPhaseButtonView(x, y, config);
         phaseButtonView.setVisible(true);
         return phaseButtonView;
     }

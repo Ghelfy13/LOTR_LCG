@@ -3,6 +3,7 @@
 package lordoftherings.manager.BoardControllerComponents;
 
 import java.awt.Point;
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.gui.BoardView;
 import lordoftherings.gui.EndOfGameView;
@@ -33,21 +34,23 @@ public class GameManagerViewController implements GlobalViewController{
     private GlassPaneView glassPane;
     private QueryViewController queryVC;
     private EndOfGameViewController endOfGameVC;
+    private GameConfiguration config;
     
-    public GameManagerViewController(GameManager manager){
+    public GameManagerViewController(GameManager manager, GameConfiguration config){
         this.manager = manager;
         manager.setCustomCharacterQueryHandler(new GuiCharacterQueryHandler(this));
         manager.setCustomPlayerQueryHandler(new GuiPlayerQueryHandler(this));
         manager.setCustomEnemyQueryHandler(new GuiEnemyQueryHandler(this));
         //TODO: add set GUI player query here
-        this.boardVC = new BoardViewController(manager.getBoard(), this);
+        this.boardVC = new BoardViewController(manager.getBoard(), this, config);
         this.glassPane = null;
         this.queryVC = null;
-        this.endOfGameVC = new EndOfGameViewController(manager.getBoard());
+        this.endOfGameVC = new EndOfGameViewController(manager.getBoard(), config);
+        this.config = config;
     }
     
     public GameManagerView makeView(int x, int y){
-        view = new GameManagerView(x, y);
+        view = new GameManagerView(x, y, config);
         glassPane = new GlassPaneView(view.getWidth(), view.getHeight());
         BoardView boardV = boardVC.makeView(x, y);
         EndOfGameView endView = endOfGameVC.makeView();
@@ -80,21 +83,21 @@ public class GameManagerViewController implements GlobalViewController{
     }
 
     public void setUpCharacterQuery(String descriptionOfQuest, CharacterQueryHandle handle) {
-        queryVC = new CharacterQueryViewController(this, handle);
+        queryVC = new CharacterQueryViewController(this, handle, config);
         QueryView backdrop = queryVC.makeView(descriptionOfQuest);
         view.add(backdrop, new Integer(2));
         backdrop.setVisible(true);
     }
     
     public void setUpPlayerQuery(PlayerQueryHandle handle, String descriptionOfAction){
-        queryVC = new PlayerQueryViewController(this, handle);
+        queryVC = new PlayerQueryViewController(this, handle, config);
         QueryView backdrop = queryVC.makeView(descriptionOfAction);
-        view.add(backdrop, new Integer(2));//What does this do?????
+        view.add(backdrop, new Integer(2));
         backdrop.setVisible(true);
     }
     
     public void setUpEnemyQuery(EnemyQueryHandle handle, String descriptionOfAction){
-        queryVC = new EnemyQueryViewController(this, handle);
+        queryVC = new EnemyQueryViewController(this, handle, config);
         QueryView backDrop = queryVC.makeView(descriptionOfAction);
         view.add(backDrop, new Integer(2));
         backDrop.setVisible(true);

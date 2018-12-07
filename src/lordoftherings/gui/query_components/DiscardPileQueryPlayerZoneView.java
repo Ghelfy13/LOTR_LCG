@@ -3,7 +3,7 @@
 package lordoftherings.gui.query_components;
 
 import javax.swing.JPanel;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 
 /**
  *
@@ -11,9 +11,10 @@ import static lordoftherings.GameConfiguration.scale;
  */
 public class DiscardPileQueryPlayerZoneView extends JPanel{
     
-    public DiscardPileQueryPlayerZoneView(int x, int y){
-        setBounds(scale(x), scale(y), QueryPlayerZoneView.ZONE_WIDTH, 
-                QueryPlayerZoneView.ZONE_HEIGHT);
+    public DiscardPileQueryPlayerZoneView(int x, int y, GameConfiguration config){
+        setBounds(config.scale(x), config.scale(y), 
+                config.scale(QueryPlayerZoneView.ZONE_WIDTH), 
+                config.scale(QueryPlayerZoneView.ZONE_HEIGHT));
         setLayout(null);
         setOpaque(false);
         setVisible(true);

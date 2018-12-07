@@ -9,7 +9,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JPanel;
-import static lordoftherings.GameConfiguration.scale;
 
 /**
  *
@@ -23,7 +22,7 @@ public class GlassPaneView  extends JPanel implements MouseListener,
         addMouseListener(this);
         addMouseMotionListener(this);
         addFocusListener(this);
-        this.setBounds(0, 0, scale(width), scale(height));
+        this.setBounds(0, 0, width, height);
         this.setOpaque(false);
         
     }

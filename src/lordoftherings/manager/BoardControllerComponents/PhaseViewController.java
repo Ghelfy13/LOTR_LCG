@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.BoardControllerComponents;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.gui.PhaseView;
 
 /**
@@ -12,14 +13,16 @@ public class PhaseViewController {
     
     private BoardViewController boardVC;
     private PhaseView view;
+    private GameConfiguration config;
     
-    public PhaseViewController(BoardViewController boardVC){
+    public PhaseViewController(BoardViewController boardVC, GameConfiguration config){
         this.boardVC = boardVC;
+        this.config = config;
     }
     
     public PhaseView makeView(int x, int y){
         String currentPhase = boardVC.getCurrentPhase();
-        view = new PhaseView(currentPhase,x, y);
+        view = new PhaseView(currentPhase,x, y, config);
         view.setVisible(true);
         return view;
     }

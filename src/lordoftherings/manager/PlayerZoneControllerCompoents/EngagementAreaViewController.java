@@ -9,13 +9,12 @@ import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.EngagedEnemyArea;
 import lordoftherings.characters.Enemy;
-import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.EncounterZoneComponents.EnemyView;
 import lordoftherings.gui.PlayerZoneComponents.EngagementAreaView;
 import lordoftherings.manager.actionComponents.BoardActiveState;
-import lordoftherings.manager.BoardControllerComponents.BoardViewController;
 import lordoftherings.manager.EncounterZoneControllerComponents.EnemyViewController;
 
 /**
@@ -27,25 +26,32 @@ public class EngagementAreaViewController {
     private BoardActiveState bas;
     private EngagedEnemyArea area;
     private EngagementAreaView view;
+    private GameConfiguration config;
     private HashMap<Enemy, EnemyViewController> controllerMap;
-    public static Border ATTACKING_BORDER = BorderFactory.createMatteBorder(5, 5, 5, 5, Color.RED);
-    public static Border DEFENDING_BORDER = BorderFactory.createMatteBorder(5, 5, 5, 5, Color.BLUE);
-    public static CompoundBorder ATTACKING_ACTIVE_BORDER = new CompoundBorder(BoardActiveState.ACTIVE_BORDER, ATTACKING_BORDER);
-    public static CompoundBorder DEFENDING_ACTIVE_BORDER = new CompoundBorder(BoardActiveState.ACTIVE_BORDER, DEFENDING_BORDER);
+    public static Border ATTACKING_BORDER = BorderFactory.
+            createMatteBorder(5, 5, 5, 5, Color.RED);
+    public static Border DEFENDING_BORDER = BorderFactory.
+            createMatteBorder(5, 5, 5, 5, Color.BLUE);
+    public static CompoundBorder ATTACKING_ACTIVE_BORDER = 
+            new CompoundBorder(BoardActiveState.ACTIVE_BORDER, ATTACKING_BORDER);
+    public static CompoundBorder DEFENDING_ACTIVE_BORDER = 
+            new CompoundBorder(BoardActiveState.ACTIVE_BORDER, DEFENDING_BORDER);
     
     
-    public EngagementAreaViewController(BoardActiveState bas, EngagedEnemyArea zone){
+    public EngagementAreaViewController(BoardActiveState bas, 
+            EngagedEnemyArea zone, GameConfiguration config){
         this.bas = bas;
         this.area = zone;
         this.controllerMap = new HashMap<>();
+        this.config = config;
     }
     
     public EngagementAreaView makeView(int x, int y){
-        view = new EngagementAreaView(x, y, area.getSize());
+        view = new EngagementAreaView(x, y, area.getSize(), config);
         view.addMouseMotionListener(bas.createMouseFollower());
         for(int i = 0; i < area.getSize(); ++i){
             Enemy currentEnemy = area.peek(i);
-            EnemyViewController controller = new EnemyViewController(bas, currentEnemy);
+            EnemyViewController controller = new EnemyViewController(bas, currentEnemy, config);
             controllerMap.put(currentEnemy, controller);
             EnemyView newView = controller.makeView(
                     i*AllyZoneViewController.CARDS_AND_SPACE, 0);
@@ -70,7 +76,7 @@ public class EngagementAreaViewController {
         for(int i = 0; i < len; ++i){
             Enemy currentEnemy = area.peek(i);
             if(!controllerMap.containsKey(currentEnemy)){
-                EnemyViewController eController = new EnemyViewController(bas, currentEnemy);
+                EnemyViewController eController = new EnemyViewController(bas, currentEnemy, config);
                 controllerMap.put(currentEnemy, eController);
                 EnemyView eView = eController.makeView(
                         i*AllyZoneViewController.CARDS_AND_SPACE, 0);

@@ -6,8 +6,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import static lordoftherings.GameConfiguration.scale;
-import lordoftherings.gui.EncounterZoneComponents.StagingAreaThreatTitleView;
+import lordoftherings.GameConfiguration;
 
 /**
  *
@@ -15,14 +14,16 @@ import lordoftherings.gui.EncounterZoneComponents.StagingAreaThreatTitleView;
  */
 public class ThreatDialTitleView extends JLabel{
     
-    public ThreatDialTitleView(int x, int y){
+    public ThreatDialTitleView(int x, int y, GameConfiguration config){
         setText("THREAT DIAL");
-        setBounds(scale(x), scale(y), QuestValueView.QUEST_WIDTH, QuestValueView.QUEST_HEIGHT);
+        setBounds(config.scale(x), config.scale(y), 
+                config.scale(QuestValueView.QUEST_WIDTH), 
+                config.scale(QuestValueView.QUEST_HEIGHT));
         setLayout(null);
         setOpaque(true);
         setBackground(Color.GREEN);
         setVerticalAlignment(SwingConstants.CENTER);
         setHorizontalAlignment(SwingConstants.CENTER);
-        setFont(StagingAreaThreatTitleView.THREAT_FONT);
+        setFont(config.getFonts().getThreatFont());
     }
 }

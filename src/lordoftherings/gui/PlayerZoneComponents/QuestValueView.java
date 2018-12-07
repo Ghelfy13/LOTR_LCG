@@ -6,25 +6,26 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 /**
  *
  * @author Amanda
  */
 public class QuestValueView extends JLabel{
-    public static final Font QUEST_FONT = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, scale(20));
-    public static final int QUEST_WIDTH = scale(200);
-    public static final int QUEST_HEIGHT = scale(50);
     
-    public QuestValueView(int x, int y){
-        setBounds(scale(x), scale(y), QUEST_WIDTH, QUEST_HEIGHT);
+    public static final int QUEST_WIDTH = 200;
+    public static final int QUEST_HEIGHT = 50;
+    
+    public QuestValueView(int x, int y, GameConfiguration config){
+        setBounds(config.scale(x), config.scale(y), config.scale(QUEST_WIDTH), config.scale(QUEST_HEIGHT));
         setLayout(null);
         setOpaque(true);
         setText("" + 0);
         setBackground(Color.CYAN);
-        
-        setFont(QUEST_FONT);
+        setFont(config.getFonts().getQuestValueFont());
         setVerticalAlignment(SwingConstants.CENTER);
         setHorizontalAlignment(SwingConstants.CENTER);
     }
+    
+    
 }

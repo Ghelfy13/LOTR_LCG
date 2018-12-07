@@ -4,7 +4,7 @@ package lordoftherings.gui.query_components;
 
 import java.awt.Color;
 import javax.swing.JTextArea;
-import lordoftherings.gui.PlayerZoneComponents.AllyCardView;
+import lordoftherings.GameConfiguration;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 
 /**
@@ -13,13 +13,14 @@ import lordoftherings.gui.PlayerZoneComponents.HandCardView;
  */
 public class EnemyQueryEnemyCardView extends JTextArea{
     
-    public EnemyQueryEnemyCardView(String enemyInfo){
-        setBounds(0, 0, HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
+    public EnemyQueryEnemyCardView(String enemyInfo, GameConfiguration config){
+        setBounds(0, 0, config.scale(HandCardView.CARD_WIDTH),
+                config.scale(HandCardView.CARD_HEIGHT));
         this.setEditable(false);
         this.insert(enemyInfo,0);
         this.setLineWrap(true);
         this.setWrapStyleWord(true);
-        this.setFont(AllyCardView.CARD_FONT);
+        this.setFont(config.getFonts().getCardFont());
         this.setBackground(Color.LIGHT_GRAY);
     }
 }

@@ -3,9 +3,8 @@
 package lordoftherings.gui.EncounterZoneComponents;
 
 import java.awt.Color;
-import static lordoftherings.GameConfiguration.scale;
 import javax.swing.JTextArea;
-import lordoftherings.gui.PlayerZoneComponents.AllyCardView;
+import lordoftherings.GameConfiguration;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 
 /**
@@ -13,14 +12,15 @@ import lordoftherings.gui.PlayerZoneComponents.HandCardView;
  * @author Amanda
  */
 public class EnemyDamageView extends JTextArea{
-    public static final int DAMAGE_HEIGHT = scale(18);
+    public static final int DAMAGE_HEIGHT = 18;
     
-    public EnemyDamageView(int x, int y, int damage){
-        this.setBounds(scale(x), scale(y), HandCardView.CARD_WIDTH, DAMAGE_HEIGHT);
+    public EnemyDamageView(int x, int y, int damage, GameConfiguration config){
+        this.setBounds(config.scale(x), config.scale(y), 
+                config.scale(HandCardView.CARD_WIDTH), config.scale(DAMAGE_HEIGHT));
         this.insert("Damage: " + damage, 0);
         this.setEditable(false);
         this.setAlignmentX(CENTER_ALIGNMENT);
-        this.setFont(AllyCardView.CARD_FONT);
+        this.setFont(config.getFonts().getCardFont());
         this.setBackground(Color.yellow);
     }
 }

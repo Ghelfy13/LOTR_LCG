@@ -3,7 +3,7 @@
 package lordoftherings.gui.PlayerZoneComponents;
 
 import javax.swing.JPanel;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 import lordoftherings.manager.actionComponents.BoardActiveState;
 import lordoftherings.manager.PlayerZoneControllerCompoents.DeckViewController;
 import lordoftherings.manager.actionComponents.FocusableMouseListener;
@@ -15,11 +15,13 @@ import lordoftherings.manager.actionComponents.FocusableMouseListener;
 public class DeckViewParent extends JPanel{
     private DeckView view;
     
-    public DeckViewParent(DeckViewController controller, int x, int y){
-        view = new DeckView(controller);
+    public DeckViewParent(DeckViewController controller, 
+            int x, int y, GameConfiguration config){
+        view = new DeckView(controller, config);
         this.add(view);
-        this.setBounds(scale(x), scale(y),
-                HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
+        this.setBounds(config.scale(x), config.scale(y),
+                config.scale(HandCardView.CARD_WIDTH), 
+                config.scale(HandCardView.CARD_HEIGHT));
         this.setOpaque(false);
         BoardActiveState bas = controller.getBoardActiveStateController();
         this.addMouseListener(new FocusableMouseListener(bas,controller));

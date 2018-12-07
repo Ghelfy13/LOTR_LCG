@@ -2,14 +2,13 @@
 
 package lordoftherings.manager.PlayerZoneControllerCompoents;
 
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 import lordoftherings.phasemanager.GamePhase;
 import lordoftherings.boardcomponents.PlayerZone;
 import lordoftherings.gui.PlayerZoneComponents.CharacterAreaView;
 import lordoftherings.gui.PlayerZoneComponents.DeckViewParent;
 import lordoftherings.gui.PlayerZoneComponents.DiscardPileView;
 import lordoftherings.gui.PlayerZoneComponents.EngagementAreaView;
-import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.gui.PlayerZoneComponents.HandView;
 import lordoftherings.gui.PlayerZoneComponents.PlayerNameView;
 import lordoftherings.gui.PlayerZoneComponents.PlayerZoneView;
@@ -28,10 +27,10 @@ public class PlayerZoneViewController {
     
     private BoardViewController bvc;
     private PlayerZone playerZone;
-    private HandViewController handvc;
+    private HandViewController handVC;
     private PlayerZoneView playerView;
     private CharacterAreaViewController charAreaVC;
-    private DeckViewController deckvc;
+    private DeckViewController deckVC;
     private BoardActiveState bas;
     private EngagementAreaViewController engageAreaVC;
     private ThreatDialViewController threatDialVC;
@@ -40,6 +39,7 @@ public class PlayerZoneViewController {
     private QuestValueTitleViewController questTitleVC;
     private DiscardPileViewController discardPileVC; 
     private PlayerNameViewController playerNameVC;
+    private GameConfiguration config;
     public static final int DECK_X = 180;
     public static final int Y_HAND_VALUE = 495;
     public static final int DISTANCE_BT_FIELDS = 50;
@@ -55,30 +55,34 @@ public class PlayerZoneViewController {
     public static final int DISCARD_Y = Y_HAND_VALUE - 10;
     
     
-    public PlayerZoneViewController(BoardViewController bvc, PlayerZone pz, BoardActiveState bas){
+    public PlayerZoneViewController(BoardViewController bvc, PlayerZone pz, 
+            BoardActiveState bas, GameConfiguration config){
         this.bvc = bvc;
         this.playerZone = pz;
         this.bas = bas;
-        handvc = new HandViewController(this, pz.getHand(), bas);
-        charAreaVC = new CharacterAreaViewController(this, pz.getCharZone(), bas);
-        deckvc = new DeckViewController(this, pz.getDeck(), bas);
-        this.engageAreaVC = new EngagementAreaViewController(bas, pz.getEngagementArea());
-        this.threatDialVC = new ThreatDialViewController(pz);
-        this.threatTitleVC = new ThreatDialTitleViewController(pz);
-        this.questTitleVC = new QuestValueTitleViewController(this);
-        this.questValueVC = new QuestValueViewController(this);
-        this.playerNameVC = new PlayerNameViewController(pz.getPlayerName(), bas);//TODO actually feed in player's desired name
-        this.discardPileVC = new DiscardPileViewController(pz.getDPile(), this, bas);
+        this.config = config;
+        this.handVC = new HandViewController(this, pz.getHand(), bas, config);
+        this.charAreaVC = new CharacterAreaViewController(this, pz.getCharZone(), 
+                bas, config);
+        this.deckVC = new DeckViewController(this, pz.getDeck(), bas, config);
+        this.engageAreaVC = new EngagementAreaViewController(bas,
+                pz.getEngagementArea(), config);
+        this.threatDialVC = new ThreatDialViewController(pz, config);
+        this.threatTitleVC = new ThreatDialTitleViewController(pz, config);
+        this.questTitleVC = new QuestValueTitleViewController(this, config);
+        this.questValueVC = new QuestValueViewController(this, config);
+        this.playerNameVC = new PlayerNameViewController(pz.getPlayerName(), bas, config);
+        this.discardPileVC = new DiscardPileViewController(pz.getDPile(), this, bas, config);
     }
     
     public PlayerZoneView makeView(int x, int y){
-        playerView = new PlayerZoneView(x,y);
+        playerView = new PlayerZoneView(x, y, config);
         playerView.addMouseMotionListener(bas.createMouseFollower());
-        DeckViewParent myDeck = deckvc.makeView(DECK_X, Y_HAND_VALUE);
+        DeckViewParent myDeck = deckVC.makeView(DECK_X, Y_HAND_VALUE);
         playerView.add(myDeck);
         PlayerNameView nameView = playerNameVC.makeView(NAME_X, NAME_Y);
         playerView.add(nameView);
-        HandView myHand = handvc.makeView(HAND_X, Y_HAND_VALUE);
+        HandView myHand = handVC.makeView(HAND_X, Y_HAND_VALUE);
         playerView.add(myHand);
         CharacterAreaView charView = charAreaVC.makeView(CHAR_AREA_X, CHAR_AREA_Y);
         playerView.add(charView);
@@ -111,9 +115,9 @@ public class PlayerZoneViewController {
     }
     
     public void updateView() {
-        handvc.updateView();
+        handVC.updateView();
         charAreaVC.updateView();
-        deckvc.updateView();
+        deckVC.updateView();
         engageAreaVC.updateView();
         threatDialVC.updateView();
         threatTitleVC.updateView();

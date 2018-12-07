@@ -2,11 +2,10 @@
 
 package lordoftherings.manager.EncounterZoneControllerComponents;
 
-import java.awt.Color;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.EnemyArea;
 import lordoftherings.characters.Enemy;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
@@ -28,19 +27,21 @@ public class EnemyAreaViewController {
     public final static int Y_COORDINATE = 0;
     public static final int SPACING_X_VALUE = 160;
     private int enemyLen;
+    private GameConfiguration config;
     
-    public EnemyAreaViewController(BoardActiveState bas, EnemyArea area){
+    public EnemyAreaViewController(BoardActiveState bas, EnemyArea area, GameConfiguration config){
         this.bas = bas;
         this.area = area;
         this.controllerMap = new HashMap<>();
         enemyLen = area.getNumOfEnemies()*SPACING_X_VALUE;
+        this.config = config;
     }
     
     public EnemyAreaView makeView(int x, int y){
-        view = new EnemyAreaView(x, y, area.getNumOfEnemies(), bas.createMouseFollower());
+        view = new EnemyAreaView(x, y, area.getNumOfEnemies(), bas.createMouseFollower(), config);
         for(int i = 0; i < area.getNumOfEnemies(); ++i){
             Enemy currentEnemy = area.getListOfEnemies().get(i);
-            EnemyViewController currentController = new EnemyViewController(bas,currentEnemy);
+            EnemyViewController currentController = new EnemyViewController(bas, currentEnemy, config);
             controllerMap.put(currentEnemy, currentController);
             EnemyView newView = currentController.makeView(
                     i*SPACING_X_VALUE, Y_COORDINATE);
@@ -55,8 +56,8 @@ public class EnemyAreaViewController {
     }
     
     public void updateView(int x){
-        view.setBounds(scale(x), scale(DISTANCE_FROM_FRAME), ActiveLocationView.PARENT_WIDTH*area.getNumOfEnemies(), 
-                HandCardView.CARD_HEIGHT);
+        view.setBounds(config.scale(x), config.scale(DISTANCE_FROM_FRAME), config.scale(ActiveLocationView.PARENT_WIDTH*area.getNumOfEnemies()), 
+                config.scale(HandCardView.CARD_HEIGHT));
         HashSet<Enemy> cardsToRemove = new HashSet<>();
         for(Map.Entry<Enemy, EnemyViewController> entry: controllerMap.entrySet()){
             if(!area.findCard(entry.getKey())){
@@ -71,7 +72,7 @@ public class EnemyAreaViewController {
         for(int i = 0; i < len; ++i){
             Enemy enemy = area.getEnemyAt(i);
             if(!controllerMap.containsKey(enemy)){
-                EnemyViewController controller = new EnemyViewController(bas, enemy);
+                EnemyViewController controller = new EnemyViewController(bas, enemy, config);
                 EnemyView eView = controller.makeView(
                         i*SPACING_X_VALUE, Y_COORDINATE);
                 view.add(eView);

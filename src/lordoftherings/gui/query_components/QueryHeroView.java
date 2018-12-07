@@ -4,9 +4,8 @@ package lordoftherings.gui.query_components;
 
 import java.awt.Color;
 import javax.swing.JPanel;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
-import lordoftherings.gui.EncounterZoneComponents.EncounterDiscardPileView;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 
 /**
@@ -15,8 +14,10 @@ import lordoftherings.gui.PlayerZoneComponents.HandCardView;
  */
 public class QueryHeroView extends JPanel{
        
-    public QueryHeroView(int x, int y){
-        setBounds(scale(x), scale(y), HandCardView.CARD_HEIGHT, ActiveLocationView.CARD_COUNTER_HEIGHT);
+    public QueryHeroView(int x, int y, GameConfiguration config){
+        setBounds(config.scale(x), config.scale(y), 
+                config.scale(HandCardView.CARD_HEIGHT), 
+                config.scale(ActiveLocationView.CARD_COUNTER_HEIGHT));
         setLayout(null);
         Color backgroundColor = new Color(0x10,0x66,0x1b);
         setBackground(backgroundColor);

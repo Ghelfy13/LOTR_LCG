@@ -3,9 +3,8 @@
 package lordoftherings.gui.PlayerZoneComponents;
 
 import java.awt.Color;
-import java.awt.Font;
 import javax.swing.JTextArea;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 
 /**
  *
@@ -13,13 +12,15 @@ import static lordoftherings.GameConfiguration.scale;
  */
 public class DiscardCardView extends JTextArea{
         
-    public DiscardCardView(int x, int y, String info){
-        setBounds(scale(x), scale(y), HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
+    public DiscardCardView(int x, int y, String info, GameConfiguration config){
+        setBounds(config.scale(x), config.scale(y), 
+                config.scale(HandCardView.CARD_WIDTH), 
+                config.scale(HandCardView.CARD_HEIGHT));
         setText(info);
         setOpaque(true);
         setLayout(null);
         setEditable(false);
         setBackground(Color.LIGHT_GRAY);
-        setFont(AllyCardView.CARD_FONT);
+        setFont(config.getFonts().getCardFont());
     }
 }

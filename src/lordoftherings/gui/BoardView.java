@@ -2,9 +2,8 @@
 
 package lordoftherings.gui;
 
-import lordoftherings.gui.PlayerZoneComponents.PlayerZoneView;
 import javax.swing.JPanel;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 import static lordoftherings.gui.GameManagerView.WINDOW_LENGTH;
 import static lordoftherings.gui.GameManagerView.WINDOW_WIDTH;
 
@@ -16,8 +15,9 @@ import static lordoftherings.gui.GameManagerView.WINDOW_WIDTH;
  */
 public class BoardView extends JPanel{
     
-    public BoardView(int x, int y){
-        this.setBounds(scale(x), scale(y), WINDOW_WIDTH, WINDOW_LENGTH);
+    public BoardView(int x, int y, GameConfiguration config){
+        this.setBounds(config.scale(x), config.scale(y), 
+                config.scale(WINDOW_WIDTH), config.scale(WINDOW_LENGTH));
         this.setLayout(null);
         this.setOpaque(false);
     }

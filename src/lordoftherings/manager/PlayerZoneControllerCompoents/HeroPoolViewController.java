@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.PlayerZoneControllerCompoents;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.gui.PlayerZoneComponents.HeroPoolView;
 
 /**
@@ -11,14 +12,16 @@ import lordoftherings.gui.PlayerZoneComponents.HeroPoolView;
 public class HeroPoolViewController {
     private HeroViewController heroVC;
     private HeroPoolView view;
+    private GameConfiguration config;
     
-    public HeroPoolViewController(HeroViewController heroVC){
+    public HeroPoolViewController(HeroViewController heroVC, GameConfiguration config){
         this.heroVC = heroVC;
         view = null;
+        this.config = config;
     }
     
     public HeroPoolView makeView(int x, int y, int resources){
-        view = new HeroPoolView(x, y, resources, 0);
+        view = new HeroPoolView(x, y, resources, 0, config);
         view.setVisible(true);
         return view;
     }

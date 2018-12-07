@@ -5,6 +5,7 @@ package lordoftherings.manager.PlayerZoneControllerCompoents;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import lordoftherings.GameConfiguration;
 import lordoftherings.characters.Hero;
 import lordoftherings.boardcomponents.HeroArea;
 import lordoftherings.gui.PlayerZoneComponents.HeroZoneView;
@@ -23,24 +24,27 @@ public class HeroZoneViewController {
     private BoardActiveState bas;
     private static final int HERO_VIEW_WIDTH = 200;
     private HashMap<Hero, HeroViewController> controllerMap;
+    private GameConfiguration config;
     
     
-    public HeroZoneViewController(CharacterAreaViewController characterVC, HeroArea heroArea, BoardActiveState bas){
+    public HeroZoneViewController(CharacterAreaViewController characterVC, 
+            HeroArea heroArea, BoardActiveState bas, GameConfiguration config){
         this.characterVC = characterVC;
         this.heroArea = heroArea;
         this.heroVC = null;
         this.controllerMap = new HashMap<>();
         this.bas = bas;
+        this.config = config;
     }
     
     public HeroZoneView makeView(int x, int y){
         int numOfHeros = heroArea.getNumOfHeros();
-        view = new HeroZoneView(x, y, numOfHeros);
+        view = new HeroZoneView(x, y, numOfHeros, config);
         view.addMouseMotionListener(bas.createMouseFollower());
         int num = 0;
         while(num < numOfHeros){
             Hero hero = heroArea.getHeroAt(num);
-            heroVC = new HeroViewController(hero, characterVC, bas);
+            heroVC = new HeroViewController(hero, characterVC, bas, config);
             hero.setPositionInHeroArea(num);
             controllerMap.put(hero, heroVC);
             view.add(heroVC.makeView(num*(HERO_VIEW_WIDTH + 5), 0));

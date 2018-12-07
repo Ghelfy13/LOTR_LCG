@@ -5,25 +5,27 @@ package lordoftherings.gui.PlayerZoneComponents;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextArea;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 
 /**
  *
  * @author Amanda
  */
 public class AllyCardView extends JTextArea{
-    public static final Font CARD_FONT = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, scale(12));
     
-    public AllyCardView(String heroInfo, int x, int y){
+    public AllyCardView(String heroInfo, int x, int y, GameConfiguration config){
         this.setRows(11);
         this.setColumns(1);
         this.insert(heroInfo, 0);
-        this.setFont(CARD_FONT);
+        this.setFont(config.getFonts().getCardFont());
         this.setLineWrap(true);
         this.setWrapStyleWord(true);
         this.setEditable(false);
         this.setBackground(Color.LIGHT_GRAY);
-        setBounds(scale(x), scale(y), HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
+        setBounds(config.scale(x), config.scale(y), 
+                config.scale(HandCardView.CARD_WIDTH), 
+                config.scale(HandCardView.CARD_HEIGHT));
         
     }
+    
 }

@@ -2,6 +2,8 @@
 
 package lordoftherings.gui.query_components;
 
+import lordoftherings.GameConfiguration;
+
 
 /**
  *
@@ -9,5 +11,7 @@ package lordoftherings.gui.query_components;
  */
 public class CharacterQueryView extends QueryView{
     
-    public CharacterQueryView(){}
+    public CharacterQueryView(GameConfiguration config){
+        super(config);
+    }
 }

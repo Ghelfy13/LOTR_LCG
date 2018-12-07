@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.query_Handlers;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.cards.EnemyCard;
 import lordoftherings.characters.Enemy;
 import lordoftherings.gui.query_components.EnemyQueryEnemyCardView;
@@ -17,18 +18,21 @@ public class EnemyQueryEnemyCardViewController {
     private EnemyQueryEnemyViewController enemyVC;
     private EnemyQueryEnemyCardView view;
     private EnemyQueryActiveState enemyQAS;
+    private GameConfiguration config;
     
     public EnemyQueryEnemyCardViewController(Enemy enemy,
             EnemyQueryEnemyViewController enemyVC,
-            EnemyQueryActiveState enemyQAS){
+            EnemyQueryActiveState enemyQAS,
+            GameConfiguration config){
         this.card = enemy.getCard();
         this.enemyVC = enemyVC;
         this.enemyQAS = enemyQAS;
         view = null;
+        this.config = config;
     }
     
     public EnemyQueryEnemyCardView makeView(){
-        view = new EnemyQueryEnemyCardView(card.getIdentity());
+        view = new EnemyQueryEnemyCardView(card.getIdentity(), config);
         view.addMouseMotionListener(enemyQAS.createMouseFollower());
         view.setVisible(true);
         return view;

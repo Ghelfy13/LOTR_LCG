@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.BoardControllerComponents;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.VictoryPointsPile;
 import lordoftherings.gui.VictoryPointsLabelView;
 
@@ -14,15 +15,17 @@ public class VictoryPointsLabelViewController {
     private BoardViewController boardVC;
     private VictoryPointsPile pile;
     private VictoryPointsLabelView view;
+    private GameConfiguration config;
     
     public VictoryPointsLabelViewController(BoardViewController boardVC, 
-            VictoryPointsPile pile){
+            VictoryPointsPile pile, GameConfiguration config){
         this.boardVC = boardVC;
         this.pile = pile;
+        this.config = config;
     }
     
     public VictoryPointsLabelView makeView(int x, int y){
-        view = new VictoryPointsLabelView(x, y, pile.getVictoryPoints());
+        view = new VictoryPointsLabelView(x, y, pile.getVictoryPoints(), config);
         view.setVisible(true);
         return view;
     }

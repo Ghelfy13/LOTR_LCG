@@ -4,6 +4,7 @@ package lordoftherings.manager.EncounterZoneControllerComponents;
 
 import java.util.ArrayList;
 import javax.swing.JComponent;
+import lordoftherings.GameConfiguration;
 import lordoftherings.LocationOnBoard;
 import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
@@ -11,7 +12,6 @@ import lordoftherings.characters.Enemy;
 import lordoftherings.gui.EncounterZoneComponents.EnemyCardView;
 import lordoftherings.gui.EncounterZoneComponents.EnemyDamageView;
 import lordoftherings.gui.EncounterZoneComponents.EnemyView;
-import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.manager.actionComponents.Actionable;
 import lordoftherings.manager.actionComponents.ActionableMouseListener;
 import lordoftherings.manager.actionComponents.BoardActiveState;
@@ -31,16 +31,18 @@ public class EnemyViewController implements Actionable{
     private Enemy enemy;
     private BoardActiveState bas;
     public static final int ENEMY_Y_VALUE = 200;
+    private GameConfiguration config;
     
-    public EnemyViewController(BoardActiveState bas, Enemy card){
+    public EnemyViewController(BoardActiveState bas, Enemy card, GameConfiguration config){
         this.enemy = card;
-        damageVC = new EnemyDamageViewController();
+        damageVC = new EnemyDamageViewController(config);
         this.bas = bas;
-        cardVC = new EnemyCardViewController(card.getCard(), bas);
+        cardVC = new EnemyCardViewController(card.getCard(), bas, config);
+        this.config = config;
     }
     
     public EnemyView makeView(int x, int y){
-        view = new EnemyView(this, x, y);
+        view = new EnemyView(this, x, y, config);
         cardView = cardVC.makeView(0, 0);
         cardView.addMouseListener(new ActionableMouseListener(bas, this));
         view.add(cardView);
@@ -67,7 +69,7 @@ public class EnemyViewController implements Actionable{
             }
         }
         damageVC.updateView(enemy.getDamage());
-        view.setLocation(newX, newY);
+        view.setLocation(config.scale(newX), config.scale(newY));
     }
 
     @Override

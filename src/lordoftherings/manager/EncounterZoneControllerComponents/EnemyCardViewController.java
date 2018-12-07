@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.EncounterZoneControllerComponents;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.cards.EnemyCard;
 import lordoftherings.gui.EncounterZoneComponents.EnemyCardView;
 import lordoftherings.manager.actionComponents.BoardActiveState;
@@ -15,11 +16,13 @@ public class EnemyCardViewController{
     private EnemyCardView view;
     private String enemyInfo;
     private BoardActiveState bas;
+    private GameConfiguration config;
     
-    public EnemyCardViewController(EnemyCard card, BoardActiveState bas){
+    public EnemyCardViewController(EnemyCard card, BoardActiveState bas, GameConfiguration config){
         this.card = card;
         enemyInfo = card.identify();
         this.bas = bas;
+        this.config = config;
     }
     
     public BoardActiveState getBAS(){
@@ -27,14 +30,14 @@ public class EnemyCardViewController{
     }
     
     public EnemyCardView makeView(int x, int y){
-        view = new EnemyCardView(enemyInfo, x, y);
+        view = new EnemyCardView(enemyInfo, x, y, config);
         view.addMouseMotionListener(bas.createMouseFollower());
         view.setVisible(true);
         return view;
     }
     
     public void updateView(int x, int y){
-        view.setLocation(x, y);
+        view.setLocation(config.scale(x), config.scale(y));
         view.setVisible(true);
         view.revalidate();
         view.repaint();

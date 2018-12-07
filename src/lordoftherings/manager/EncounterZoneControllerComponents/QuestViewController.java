@@ -5,6 +5,7 @@
  */
 package lordoftherings.manager.EncounterZoneControllerComponents;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.EncounterZone;
 import lordoftherings.deckcomponents.Quest;
 import lordoftherings.gui.EncounterZoneComponents.QuestCardView;
@@ -28,16 +29,18 @@ public class QuestViewController implements Focusable{
     private QuestTokenView tokenView;
     private BoardActiveState bas;
     public static final int TOKEN_Y_VALUE = 144;
+    private GameConfiguration config;
     
-    public QuestViewController(EncounterZone zone, BoardActiveState bas){
+    public QuestViewController(EncounterZone zone, BoardActiveState bas, GameConfiguration config){
         this.currentQuest = zone.getActiveQuest();
         this.bas = bas;
-        cardVC = new QuestCardViewController(currentQuest.getQuestCard(), bas);
-        tokenVC = new QuestTokenViewController();
+        cardVC = new QuestCardViewController(currentQuest.getQuestCard(), bas, config);
+        tokenVC = new QuestTokenViewController(config);
+        this.config = config;
     }
     
     public QuestView makeView(int x, int y){
-        view = new QuestView(x, y);
+        view = new QuestView(x, y, config);
         cardView = cardVC.makeView(currentQuest.getQuestCard());
         cardView.addMouseListener(new FocusableMouseListener(bas, this));
         cardView.addMouseMotionListener(bas.createMouseFollower());

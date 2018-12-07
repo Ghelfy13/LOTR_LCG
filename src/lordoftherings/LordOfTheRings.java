@@ -160,17 +160,20 @@ public class LordOfTheRings {
         final int PANE_WIDTH = 2500;
         final int PANE_HEIGHT = 1300;
         
+        GameConfiguration config = GameConfiguration.fromValue(0.5);
         JFrame LOTRFrame = new JFrame("LORD OF THE RINGS");
         LOTRFrame.setSize(
-            GameConfiguration.scale(PANE_WIDTH),
-            GameConfiguration.scale(PANE_HEIGHT));
+            config.scale(PANE_WIDTH),
+            config.scale(PANE_HEIGHT));
         LOTRFrame.setLayout(null);
         LOTRFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         LOTRFrame.setResizable(false);
         Color backgroundColor = new Color(0x10,0x66,0x1b);
         LOTRFrame.getContentPane().setBackground(backgroundColor);
         
-        GameManagerViewController managerVC = new GameManagerViewController(manager);
+        
+        
+        GameManagerViewController managerVC = new GameManagerViewController(manager, config);
         GameManagerView managerView = managerVC.makeView(0, 0);
         LOTRFrame.add(managerView);
         LOTRFrame.setVisible(true);

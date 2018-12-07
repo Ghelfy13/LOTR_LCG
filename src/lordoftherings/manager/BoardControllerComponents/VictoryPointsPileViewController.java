@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.BoardControllerComponents;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.VictoryPointsPile;
 import lordoftherings.cards.EncounterCard;
 import lordoftherings.gui.EncounterZoneComponents.EncounterDiscardCardView;
@@ -21,18 +22,19 @@ public class VictoryPointsPileViewController implements Focusable{
     private VictoryPointsPileView view;
     private BoardActiveState bas;
     private EncounterCard topCard;
-    
+    private GameConfiguration config;
     
     public VictoryPointsPileViewController(BoardViewController boardVC, 
-            BoardActiveState bas){
+            BoardActiveState bas, GameConfiguration config){
         this.boardVC = boardVC;
         pile = boardVC.getBoard().getVPPile();
         this.bas = bas;
         topCard = null;
+        this.config = config;
     }
     
     public VictoryPointsPileView makeView(int x, int y){
-        view = new VictoryPointsPileView(x, y);
+        view = new VictoryPointsPileView(x, y, config);
         view.addMouseMotionListener(bas.createMouseFollower());
         view.addMouseListener(new FocusableMouseListener(bas, this));
         view.setVisible(true);
@@ -44,7 +46,7 @@ public class VictoryPointsPileViewController implements Focusable{
         if(topCard != null){
             view.removeAll();
             EncounterDiscardCardView topCardView = 
-                    new EncounterDiscardCardView(5, 5, topCard.getIdentity());
+                    new EncounterDiscardCardView(5, 5, topCard.getIdentity(), config);
             topCardView.addMouseMotionListener(bas.createMouseFollower());
             topCardView.addMouseListener(new FocusableMouseListener(bas, this));
             topCardView.setVisible(true);

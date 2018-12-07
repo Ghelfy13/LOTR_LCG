@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import lordoftherings.GameConfiguration;
 import lordoftherings.actions.Action;
 import lordoftherings.gui.ActionView;
 
@@ -22,20 +23,22 @@ public class ActionViewController implements Focusable {
     private AvailableActionsViewController aaVC;
     private Action wantedAction;
     private BoardActiveState boardAS;
+    private GameConfiguration config;
     
-    public ActionViewController(Action newAction, AvailableActionsViewController aaVC){
+    public ActionViewController(Action newAction, AvailableActionsViewController aaVC, GameConfiguration config){
         this.wantedAction = newAction;
         this.aaVC = aaVC;
         this.boardAS = aaVC.getBAS();
+        this.config = config;
     }
     
     public ActionView makeView(int x, int y){
         if(wantedAction.isExecutable()){
-            view = new ActionView(boardAS, this, wantedAction, availableCardBackImage(40, 40), x, y);
+            view = new ActionView(boardAS, this, wantedAction, availableCardBackImage(40, 40), x, y, config);
         }else if(wantedAction.isAvailable()){
-            view = new ActionView(boardAS, this, wantedAction, visibleCardBackImage(40, 40), x, y);
+            view = new ActionView(boardAS, this, wantedAction, visibleCardBackImage(40, 40), x, y, config);
         }else{
-            view = new ActionView(boardAS, this, wantedAction, null, x, y);
+            view = new ActionView(boardAS, this, wantedAction, null, x, y, config);
         }
         view.setVisible(true);
         return view;

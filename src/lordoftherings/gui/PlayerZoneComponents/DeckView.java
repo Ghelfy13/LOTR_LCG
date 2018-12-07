@@ -11,22 +11,25 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import lordoftherings.GameConfiguration;
 import lordoftherings.manager.actionComponents.BoardActiveState;
 import lordoftherings.manager.PlayerZoneControllerCompoents.DeckViewController;
 import lordoftherings.manager.actionComponents.FocusableMouseListener;
-import static lordoftherings.GameConfiguration.scale;
 
 /**
  *
  * @author Amanda
  */
 public class DeckView extends JLabel{
-    public static final int X_COORDINATE = scale(250);
-    public static final int Y_COORDINATE = scale(300);
+    public static final int X_COORDINATE = 250;
+    public static final int Y_COORDINATE = 300;
     
-    public DeckView(DeckViewController controller){
-        super(cardBackImage(HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT));
-        this.setBounds(X_COORDINATE, Y_COORDINATE, HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
+    public DeckView(DeckViewController controller, GameConfiguration config){
+        super(cardBackImage(config.scale(HandCardView.CARD_WIDTH),
+                config.scale(HandCardView.CARD_HEIGHT)));
+        this.setBounds(config.scale(X_COORDINATE), config.scale(Y_COORDINATE), 
+                config.scale(HandCardView.CARD_WIDTH), 
+                config.scale(HandCardView.CARD_HEIGHT));
         BoardActiveState bas = controller.getBoardActiveStateController();
         this.addMouseListener(new FocusableMouseListener(bas,controller));
     }

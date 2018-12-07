@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.EncounterZoneControllerComponents;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.ActiveLocationArea;
 import lordoftherings.boardcomponents.StagingArea;
 import lordoftherings.boardcomponents.Location;
@@ -23,19 +24,21 @@ public class ActiveLocationViewController {
     private LocationView locationView;
     public static final int X_POSITION = 8;
     public static final int Y_POSITION = 3;
+    private GameConfiguration config;
     
-    public ActiveLocationViewController(BoardActiveState bas, ActiveLocationArea locationArea){
+    public ActiveLocationViewController(BoardActiveState bas, ActiveLocationArea locationArea, GameConfiguration config){
         this.bas = bas;
         this.activeZone= locationArea;
         this.currentLocation = locationArea.getActiveLocation();
         if(currentLocation != null){
-           this.locationVC = new LocationViewController(currentLocation, bas); 
+           this.locationVC = new LocationViewController(currentLocation, bas, config); 
         }
+        this.config = config;
         
     }
     
     public ActiveLocationView makeView(int x, int y){
-        view = new ActiveLocationView(x, y);
+        view = new ActiveLocationView(x, y, config);
         if(locationVC != null){
             locationView = locationVC.makeView(X_POSITION, Y_POSITION);
             view.add(locationView);
@@ -49,7 +52,7 @@ public class ActiveLocationViewController {
         if(currentLocation != activeZone.getActiveLocation()){
             if(activeZone.getActiveLocation() != null){
                 currentLocation = activeZone.getActiveLocation();
-                locationVC = new LocationViewController(currentLocation, bas);
+                locationVC = new LocationViewController(currentLocation, bas, config);
                 locationView = locationVC.makeView(X_POSITION, Y_POSITION);
                 view.add(locationView);
             }else{

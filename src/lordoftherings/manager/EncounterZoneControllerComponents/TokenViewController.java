@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.EncounterZoneControllerComponents;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.gui.EncounterZoneComponents.TokenView;
 
 /**
@@ -11,13 +12,15 @@ import lordoftherings.gui.EncounterZoneComponents.TokenView;
 public class TokenViewController {
     private TokenView tokenView;
     private int tokenCount;
+    private GameConfiguration config;
     
-    public TokenViewController(){
+    public TokenViewController(GameConfiguration config){
         tokenCount = 0;
+        this.config = config;
     }
     
     public TokenView makeView(int x, int y){
-        tokenView = new TokenView(x, y, tokenCount);
+        tokenView = new TokenView(x, y, tokenCount, config);
         tokenView.setVisible(true);
         return tokenView;
     }

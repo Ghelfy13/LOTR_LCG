@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.EncounterZoneControllerComponents;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.QuestSet;
 import lordoftherings.gui.EncounterZoneComponents.QuestSetParentView;
 import lordoftherings.gui.EncounterZoneComponents.QuestSetView;
@@ -17,15 +18,17 @@ public class QuestSetViewController implements Focusable{
     private BoardActiveState bas;
     private QuestSetParentView parentView;
     private QuestSetView setView;
+    private GameConfiguration config;
     
-    public QuestSetViewController(QuestSet questSet, BoardActiveState bas){
+    public QuestSetViewController(QuestSet questSet, BoardActiveState bas, GameConfiguration config){
        this.questSet = questSet;
        this.bas= bas;
+       this.config = config;
     }
     
     public QuestSetParentView makeView(int x, int y){
-        parentView = new QuestSetParentView(x, y);
-        setView = new QuestSetView(bas, this, 0,0);
+        parentView = new QuestSetParentView(x, y, config);
+        setView = new QuestSetView(bas, this, 0, 0, config);
         parentView.add(setView);
         parentView.addMouseMotionListener(bas.createMouseFollower());
         if(questSet.getSizeOfSet()== 0){

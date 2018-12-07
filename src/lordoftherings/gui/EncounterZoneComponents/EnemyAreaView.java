@@ -4,7 +4,7 @@ package lordoftherings.gui.EncounterZoneComponents;
 
 import java.awt.event.MouseMotionListener;
 import javax.swing.JPanel;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 
 /**
@@ -14,9 +14,9 @@ import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 public class EnemyAreaView extends JPanel{
     private int length;
     
-    public EnemyAreaView(int x, int y, int numOfEnemies, MouseMotionListener mmListener){
+    public EnemyAreaView(int x, int y, int numOfEnemies, MouseMotionListener mmListener, GameConfiguration config){
         length = numOfEnemies*ActiveLocationView.PARENT_WIDTH;
-        setBounds(scale(x), scale(y), length, HandCardView.CARD_HEIGHT);
+        setBounds(config.scale(x), config.scale(y), config.scale(length), config.scale(HandCardView.CARD_HEIGHT));
         setLayout(null);
         setOpaque(false);
         this.addMouseMotionListener(mmListener);

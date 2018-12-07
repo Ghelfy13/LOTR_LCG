@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.EncounterZoneControllerComponents;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.phasemanager.GamePhase;
 import lordoftherings.boardcomponents.EncounterZone;
 import lordoftherings.gui.EncounterZoneComponents.StagingAreaThreatTitleView;
@@ -14,10 +15,12 @@ public class StagingAreaThreatTitleViewController {
     private StagingAreaThreatTitleView view;
     private EncounterZone encounterArea;
     private GamePhase currentPhase;
+    private GameConfiguration config;
     
-    public StagingAreaThreatTitleViewController(EncounterZone zone){
+    public StagingAreaThreatTitleViewController(EncounterZone zone, GameConfiguration config){
         this.encounterArea = zone;
         this.currentPhase = null;
+        this.config = config;
     }
     
     public void getCurrentPhase(){
@@ -25,7 +28,7 @@ public class StagingAreaThreatTitleViewController {
     }
     
     public StagingAreaThreatTitleView makeView(int x, int y){
-        view = new StagingAreaThreatTitleView(x, y);
+        view = new StagingAreaThreatTitleView(x, y, config);
         view.setVisible(false);
         return view;
     }

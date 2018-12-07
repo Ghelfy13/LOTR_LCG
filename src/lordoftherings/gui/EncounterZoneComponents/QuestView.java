@@ -3,8 +3,8 @@
 package lordoftherings.gui.EncounterZoneComponents;
 
 import javax.swing.JPanel;
+import lordoftherings.GameConfiguration;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
-import static lordoftherings.GameConfiguration.scale;
 
 /**
  *
@@ -12,8 +12,9 @@ import static lordoftherings.GameConfiguration.scale;
  */
 public class QuestView extends JPanel{
     
-    public QuestView(int x, int y){
-        setBounds(scale(x), scale(y), HandCardView.CARD_HEIGHT, HandCardView.CARD_WIDTH + EnemyDamageView.DAMAGE_HEIGHT);
+    public QuestView(int x, int y, GameConfiguration config){
+        setBounds(config.scale(x), config.scale(y), config.scale(HandCardView.CARD_HEIGHT), 
+                config.scale(HandCardView.CARD_WIDTH + EnemyDamageView.DAMAGE_HEIGHT));
         setLayout(null);
         setOpaque(true);
         

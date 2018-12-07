@@ -2,10 +2,12 @@
 
 package lordoftherings.manager.query_Handlers;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.PlayerZone;
 import lordoftherings.gui.query_components.DiscardPileQueryPileView;
 import lordoftherings.gui.query_components.DiscardPileQueryPlayerZoneView;
 import lordoftherings.manager.PlayerZoneControllerCompoents.PlayerZoneViewController;
+import static lordoftherings.manager.PlayerZoneControllerCompoents.PlayerZoneViewController.DISCARD_Y;
 import lordoftherings.transaction_managers.DiscardPileQueryHandle;
 
 /**
@@ -19,20 +21,21 @@ public class DiscardPileQueryPlayerZoneViewController {
     private PlayerZone playerZone;
     private DiscardPileQueryActiveState dPileQAS;
     private DiscardPileQueryHandle handle;
+    private GameConfiguration config;
     
     public DiscardPileQueryPlayerZoneViewController(DiscardPileQueryViewController queryController,
-            PlayerZone zone, DiscardPileQueryActiveState dPileQAS){
+            PlayerZone zone, DiscardPileQueryActiveState dPileQAS, GameConfiguration config){
         this.playerZone = zone;
         this.dPileQVC = queryController;
         this.handle = (DiscardPileQueryHandle) queryController.handle;
-        this.dPileVC = new DiscardPileQueryPileViewController(dPileQAS, zone.getDPile());
+        this.dPileVC = new DiscardPileQueryPileViewController(dPileQAS, zone.getDPile(), config);
+        this.config = config;
     }
     
     public DiscardPileQueryPlayerZoneView makeView(int x, int y){
-        zoneView = new DiscardPileQueryPlayerZoneView(x,y);
+        zoneView = new DiscardPileQueryPlayerZoneView(x, y, config);
         zoneView.addMouseMotionListener(dPileQAS.createMouseFollower());
-        DiscardPileQueryPileView pileView = dPileVC.makeView(0, 
-                PlayerZoneViewController.Y_HAND_VALUE -10);
+        DiscardPileQueryPileView pileView = dPileVC.makeView(0, DISCARD_Y);
         zoneView.add(pileView);
         zoneView.setVisible(true);
         return zoneView;

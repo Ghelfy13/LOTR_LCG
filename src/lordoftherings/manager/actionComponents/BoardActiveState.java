@@ -6,7 +6,7 @@ import java.awt.Color;
 import java.awt.Point;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.gui.AvailableActionsView;
@@ -25,11 +25,11 @@ public class BoardActiveState extends FocusableActiveState {
     public static final Border ACTIVE_BORDER = BorderFactory.createMatteBorder(5,5,5,5,Color.YELLOW);
     public static final Border INACTIVE_BORDER = BorderFactory.createEmptyBorder();
     
-    public BoardActiveState(GameManagerViewController gameManagerVC) {
+    public BoardActiveState(GameManagerViewController gameManagerVC, GameConfiguration config) {
         super(gameManagerVC);
         this.gameManagerVC = gameManagerVC;
         currentActionable = null;
-        availableActionsVC = new AvailableActionsViewController(this);
+        availableActionsVC = new AvailableActionsViewController(this, config);
         actionsView = availableActionsVC.makeView(2250, 100);
     }
     

@@ -6,12 +6,12 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
-import static lordoftherings.GameConfiguration.scale;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import lordoftherings.GameConfiguration;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.manager.actionComponents.BoardActiveState;
 import lordoftherings.manager.EncounterZoneControllerComponents.EncounterDeckViewController;
@@ -22,11 +22,13 @@ import lordoftherings.manager.actionComponents.FocusableMouseListener;
  * @author Amanda
  */
 public class EncounterDeckView extends JLabel{
-    public static final int DIMENSIONS = scale(10);
+    public static final int DIMENSIONS = 10;
     
-    public EncounterDeckView(EncounterDeckViewController controller){
-        super(cardBackImage(HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT));
-        this.setBounds(DIMENSIONS, DIMENSIONS, HandCardView.CARD_WIDTH, HandCardView.CARD_HEIGHT);
+    public EncounterDeckView(EncounterDeckViewController controller, GameConfiguration config){
+        super(cardBackImage(config.scale(HandCardView.CARD_WIDTH),
+                config.scale(HandCardView.CARD_HEIGHT)));
+        this.setBounds(config.scale(DIMENSIONS), config.scale(DIMENSIONS), 
+                config.scale(HandCardView.CARD_WIDTH), config.scale(HandCardView.CARD_HEIGHT));
         BoardActiveState bas = controller.getBoardActiveStateController();
         this.addMouseListener(new FocusableMouseListener(bas,controller));
         this.addMouseMotionListener(bas.createMouseFollower());

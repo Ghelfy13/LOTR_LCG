@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.query_Handlers;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.characters.GameCharacter;
 import lordoftherings.characters.Hero;
 import lordoftherings.gui.query_components.QueryHeroCardView;
@@ -20,23 +21,26 @@ public class QueryHeroViewController implements Selectable<GameCharacter>{
     private QueryHeroPoolViewController poolController;
     private Hero myHero;
     private QueryHeroView view;
+    private GameConfiguration config;
     private CharacterQueryActiveState charQAS;
     private static final int CARD_LENGTH = 200;
     private boolean isSelected;
     
     public QueryHeroViewController(Hero passedInHero, 
-            QueryHeroAreaViewController areaController, CharacterQueryActiveState charQAS){
+            QueryHeroAreaViewController areaController, 
+            CharacterQueryActiveState charQAS, 
+            GameConfiguration config){
         this.areaController = areaController;
         this.myHero = passedInHero;
-        cardController = new QueryHeroCardViewController(myHero, charQAS);
-        poolController = new QueryHeroPoolViewController(this);
+        cardController = new QueryHeroCardViewController(myHero, charQAS, config);
+        poolController = new QueryHeroPoolViewController(this, config);
         this.charQAS = charQAS;
         view = null;
         isSelected = false;
     }
     
     public QueryHeroView makeView(int x, int y){
-        view = new QueryHeroView(x, y);
+        view = new QueryHeroView(x, y, config);
         view.addMouseMotionListener(charQAS.createMouseFollower());
         QueryHeroCardView cardView = cardController.makeView();
         cardView.addMouseListener(new SelectableMouseListener<>(charQAS, this));

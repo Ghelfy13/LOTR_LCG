@@ -4,17 +4,18 @@ package lordoftherings.gui.EncounterZoneComponents;
 
 import java.awt.Color;
 import javax.swing.JPanel;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 /**
  *
  * @author Amanda
  */
 public class ActiveLocationView extends JPanel{
-    public static final int CARD_COUNTER_HEIGHT = scale(225);
-    public static final int PARENT_WIDTH = scale(160);
+    public static final int CARD_COUNTER_HEIGHT = 225;
+    public static final int PARENT_WIDTH = 160;
     
-    public ActiveLocationView(int x, int y){
-        setBounds(scale(x), scale(y), PARENT_WIDTH, CARD_COUNTER_HEIGHT);
+    public ActiveLocationView(int x, int y, GameConfiguration config){
+        setBounds(config.scale(x), config.scale(y), config.scale(PARENT_WIDTH), 
+                config.scale(CARD_COUNTER_HEIGHT));
         setLayout(null);
         setOpaque(true);
         setBackground(Color.MAGENTA);

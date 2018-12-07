@@ -3,7 +3,7 @@
 package lordoftherings.manager.actionComponents;
 
 import java.util.ArrayList;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.gui.ActionView;
@@ -19,28 +19,26 @@ public class AvailableActionsViewController{
     private ArrayList<Action> listOfActions;
     private AvailableActionsView view;
     private BoardActiveState boardAS;
-    public static final int EMPTY_BOX_SIZE = ActionView.BOX_DIMENSIONS + scale(10);
+    private GameConfiguration config;
     public static final int X_VALUE = 40;
+    public static final int EMPTY_BOX_SIZE = ActionView.BOX_DIMENSIONS + 10;
     
-    public AvailableActionsViewController(BoardActiveState boardAS){
+    public AvailableActionsViewController(BoardActiveState boardAS, GameConfiguration config){
         //TODO: FINISH
         this.listOfActions = new ArrayList<>();
         this.boardAS = boardAS;
         this.view = null;
+        this.config = config;
     }
     
     public AvailableActionsView makeView(int x, int y){
-        view = new AvailableActionsView(x, y, 1);
+        view = new AvailableActionsView(x, y, 1, config);
         updateView(x, y);
         return view;
     }
     
     public AvailableActionsView updateView(int x, int y){//DON'T SCALE THE X AND Y HERE.  IT IS TAKEN FROM LOCATION ON SCREEN
         Actionable currentActionable = boardAS.getCurrentActionable();
-        int yCoordinate = 0;
-        if(currentActionable != null){
-            yCoordinate = scale(currentActionable.getActionsYCoordinate());
-        }
         view.setLocation(x, y);
         if(currentActionable == null){
             listOfActions.clear();
@@ -52,16 +50,16 @@ public class AvailableActionsViewController{
             listOfActions.clear();
             currentActionable.getActions(listOfActions, 0, boardState);
             if(listOfActions.isEmpty()){
-                view.setBounds(x, y, 
-                        EMPTY_BOX_SIZE, EMPTY_BOX_SIZE);
+                view.setBounds(config.scale(x), config.scale(y), 
+                        config.scale(EMPTY_BOX_SIZE), config.scale(EMPTY_BOX_SIZE));
             }else{
                 view.setBounds(x, y,
-                        (ActionView.BOX_DIMENSIONS +scale(5))*listOfActions.size() +scale(5),
+                        (ActionView.BOX_DIMENSIONS +5)*listOfActions.size() +5,
                         EMPTY_BOX_SIZE);
             }
             for(int i = 0; i < listOfActions.size(); ++i){
                 Action currentAction = listOfActions.get(i);
-                ActionViewController actionVC = new ActionViewController(currentAction, this);
+                ActionViewController actionVC = new ActionViewController(currentAction, this, config);
                 int calculatedX = 5;
                 int calculatedY = 5;
                 ActionView actionV = actionVC.makeView(calculatedX*(i+1)+

@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.PlayerZoneControllerCompoents;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.DiscardPile;
 import lordoftherings.cards.PlayerCard;
 import lordoftherings.gui.PlayerZoneComponents.DiscardCardView;
@@ -21,17 +22,20 @@ public class DiscardPileViewController implements Focusable{
     private PlayerCard topCard;
     private BoardActiveState bas;
     public static final int DISCARD_DISTANCE = 5;
+    private GameConfiguration config;
     
-    public DiscardPileViewController(DiscardPile dPile, PlayerZoneViewController zoneVC, BoardActiveState bas){
+    public DiscardPileViewController(DiscardPile dPile, PlayerZoneViewController zoneVC, 
+            BoardActiveState bas, GameConfiguration config){
         this.dPile = dPile;
         this.playerZoneVC = zoneVC;
         this.view = null;
         this.topCard = null;
         this.bas = bas;
+        this.config = config;
     }
     
     public DiscardPileView makeView(int x, int y){
-        view = new DiscardPileView(x, y);
+        view = new DiscardPileView(x, y, config);
         view.addMouseMotionListener(bas.createMouseFollower());
         view.addMouseListener(new FocusableMouseListener(bas, this));
         view.setVisible(true);
@@ -42,7 +46,8 @@ public class DiscardPileViewController implements Focusable{
         topCard = dPile.getTopCard();
         
         if(topCard != null){
-            DiscardCardView topCardView = new DiscardCardView(DISCARD_DISTANCE, DISCARD_DISTANCE, topCard.getIdentity());
+            DiscardCardView topCardView = new DiscardCardView(DISCARD_DISTANCE,
+                    DISCARD_DISTANCE, topCard.getIdentity(), config);
             topCardView.addMouseMotionListener(bas.createMouseFollower());
             topCardView.addMouseListener(new FocusableMouseListener(bas, this));
             topCardView.setVisible(true);

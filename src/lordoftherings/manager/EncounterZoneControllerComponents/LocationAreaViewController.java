@@ -5,7 +5,7 @@ package lordoftherings.manager.EncounterZoneControllerComponents;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.LocationArea;
 import lordoftherings.boardcomponents.Location;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
@@ -25,18 +25,23 @@ public class LocationAreaViewController{
     private HashMap<Location, LocationViewController> controllerMap;
     public static final int AREA_X_VALUE = 225;
     public static final int AREA_SPACING = 160;
+    private GameConfiguration config;
     
-    public LocationAreaViewController(LocationArea area, BoardActiveState bas){
+    public LocationAreaViewController(LocationArea area, 
+            BoardActiveState bas, GameConfiguration config){
         this.area = area;
         this.bas = bas;
         this.controllerMap = new HashMap<>();
+        this.config = config;
     }
     
     public LocationAreaView makeView(int x, int y){
-        view = new LocationAreaView(x, y, area.getSizeOfList(), bas.createMouseFollower());
+        view = new LocationAreaView(x, y, area.getSizeOfList(), 
+                bas.createMouseFollower(), config);
         for(int i = 0; i < area.getSizeOfList(); ++i){
             Location current = area.getLocationAt(i);
-            LocationViewController locationVC = new LocationViewController(area.getLocationAt(i), bas);
+            LocationViewController locationVC = new LocationViewController(
+                    area.getLocationAt(i), bas, config);
             controllerMap.put(current, locationVC);
             LocationView locationV = locationVC.makeView(
                     i*AREA_X_VALUE, 0);
@@ -47,8 +52,9 @@ public class LocationAreaViewController{
     }
     
     public void updateView(int x){
-        view.setBounds(scale(x), scale(DISTANCE_FROM_FRAME), area.getSizeOfList()*scale(AREA_SPACING),
-                ActiveLocationView.CARD_COUNTER_HEIGHT);
+        view.setBounds(config.scale(x), config.scale(DISTANCE_FROM_FRAME), 
+                config.scale(area.getSizeOfList()*AREA_SPACING),
+                config.scale(ActiveLocationView.CARD_COUNTER_HEIGHT));
         HashSet<Location> locationsToRemove = new HashSet<>();
         for(Map.Entry<Location, LocationViewController> entry: controllerMap.entrySet()){
             if(!area.findLocation(entry.getKey())){
@@ -63,7 +69,8 @@ public class LocationAreaViewController{
         for( int i = 0; i < len; ++i){
             Location current = area.getLocationAt(i);
             if(!controllerMap.containsKey(current)){
-                LocationViewController controller = new LocationViewController(current, bas);
+                LocationViewController controller = new LocationViewController(
+                        current, bas, config);
                 controllerMap.put(current, controller);
                 LocationView locationView = controller.makeView(
                         i*AREA_SPACING, 0);

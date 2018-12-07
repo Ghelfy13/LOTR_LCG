@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.AllyArea;
 import lordoftherings.characters.Ally;
 import lordoftherings.gui.query_components.QueryAllyView;
@@ -23,26 +24,30 @@ public class QueryAllyZoneViewController {
     private QueryAllyZoneView view;
     private HashMap<Ally, QueryAllyViewController> controllerMap;
     private CharacterQueryActiveState charQAS;
+    private GameConfiguration config;
     
     public QueryAllyZoneViewController(AllyArea allyZone, 
-            QueryCharacterAreaViewController charAreaVC, CharacterQueryActiveState charQAS){
+            QueryCharacterAreaViewController charAreaVC,
+            CharacterQueryActiveState charQAS, 
+            GameConfiguration config){
         this.allyZone = allyZone;
         this.charAreaVC = charAreaVC;
         view = null;
         controllerMap = new HashMap<>();
         this.charQAS = charQAS;
+        this.config = config;
     }
     
     public QueryAllyZoneView makeView(int x, int y){
         CharacterQueryHandle handle = charAreaVC.getHandle();
-        view = new QueryAllyZoneView(x, y);
+        view = new QueryAllyZoneView(x, y, config);
         view.addMouseMotionListener(charQAS.createMouseFollower());
         ArrayList<Ally> listOfAllies = allyZone.getAllies();
-        QueryAllyViewController allyVC;
         for(int i = 0; i < listOfAllies.size(); ++i){
             Ally currentAlly = listOfAllies.get(i);
             if(handle.getMatcher().matches(currentAlly)){
-                allyVC = new QueryAllyViewController(currentAlly, charQAS);
+                QueryAllyViewController allyVC = new 
+                QueryAllyViewController(currentAlly, charQAS, config);
                 controllerMap.put(currentAlly, allyVC);
                 QueryAllyView allyView = allyVC.makeView(i*AllyZoneViewController.CARDS_AND_SPACE, 0);
                 allyView.setVisible(true);
@@ -69,8 +74,10 @@ public class QueryAllyZoneViewController {
         for(int i = 0; i < allyZone.getSize(); ++i){
             Ally existingAlly = allyZone.getAllyAt(i);
             if(!controllerMap.containsKey(existingAlly)){
-                QueryAllyViewController allyVC = new QueryAllyViewController(existingAlly, charQAS);
-                QueryAllyView newAllyView = allyVC.makeView(i*AllyZoneViewController.CARDS_AND_SPACE, 0);
+                QueryAllyViewController allyVC = new 
+                QueryAllyViewController(existingAlly, charQAS, config);
+                QueryAllyView newAllyView = allyVC.
+                        makeView(i*AllyZoneViewController.CARDS_AND_SPACE, 0);
                 view.add(newAllyView);
                 controllerMap.put(existingAlly, allyVC);
             }else{

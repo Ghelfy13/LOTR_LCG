@@ -5,6 +5,7 @@ package lordoftherings.manager.PlayerZoneControllerCompoents;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.Hand;
 import lordoftherings.cards.PlayerCard;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
@@ -22,23 +23,26 @@ public class HandViewController{
     private HashMap<PlayerCard, HandCardViewController> controllerMap;
     private HandView view;
     private BoardActiveState bas;
+    private GameConfiguration config;
     
-    public HandViewController(PlayerZoneViewController playerViewController, Hand playersHand, BoardActiveState bas){
+    public HandViewController(PlayerZoneViewController playerViewController, 
+            Hand playersHand, BoardActiveState bas, GameConfiguration config){
         this.playerVC = playerViewController;
         this.playersHand = playersHand;
         this.controllerMap = new HashMap<>();
         this.view = null;
         this.bas = bas;
+        this.config = config;
     }
     //TODO: write methods for onSetActionable() and onUnSetActionalbe();
     
-    public HandView makeView(int xValue, int yValue){
+    public HandView makeView(int x, int y){
         int size = playersHand.getSizeOfHand();
-        view = new HandView(xValue, yValue);
+        view = new HandView(x, y, config);
         view.addMouseMotionListener(bas.createMouseFollower());
         for(int i = 0; i < size; ++i){
             PlayerCard card = playersHand.getCardAt(i);
-            HandCardViewController controller = new HandCardViewController(this, card, bas);
+            HandCardViewController controller = new HandCardViewController(this, card, bas, config);
             HandCardView cardView = controller.makeView(ActiveLocationView.PARENT_WIDTH*i, 0);
             view.add(cardView);
             controllerMap.put(card, controller);
@@ -63,7 +67,7 @@ public class HandViewController{
         for(int i = 0; i < size; ++i){//adds new cards in hand to the hashmap
             PlayerCard card = playersHand.getCardAt(i);
             if(!controllerMap.containsKey(card)){
-                HandCardViewController controller = new HandCardViewController(this, card, bas);
+                HandCardViewController controller = new HandCardViewController(this, card, bas, config);
                 HandCardView newCardView = controller.makeView(ActiveLocationView.PARENT_WIDTH*i, 0);
                 view.add(newCardView);
                 controllerMap.put(card, controller);

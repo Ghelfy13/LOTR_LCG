@@ -3,19 +3,20 @@
 package lordoftherings.gui.PlayerZoneComponents;
 
 import javax.swing.JPanel;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 
 /**
  *
  * @author Amanda
  */
 public class PlayerZoneView extends JPanel {
-    public static final int ZONE_WIDTH = scale(2400);
-    public static final int ZONE_HEIGHT = scale(700);
+    public static final int ZONE_WIDTH = 2400;
+    public static final int ZONE_HEIGHT = 700;
     
-    public PlayerZoneView(int x, int y){
+    public PlayerZoneView(int x, int y, GameConfiguration config){
         setLayout(null);
-        setBounds(scale(x), scale(y), ZONE_WIDTH, ZONE_HEIGHT);
+        setBounds(config.scale(x), config.scale(y), config.scale(ZONE_WIDTH),
+                config.scale(ZONE_HEIGHT));
         setOpaque(false);
     }
 }

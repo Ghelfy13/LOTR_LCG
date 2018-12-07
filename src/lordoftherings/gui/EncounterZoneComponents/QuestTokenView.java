@@ -4,22 +4,23 @@ package lordoftherings.gui.EncounterZoneComponents;
 
 import java.awt.Color;
 import javax.swing.JTextArea;
-import lordoftherings.gui.PlayerZoneComponents.AllyCardView;
+import lordoftherings.GameConfiguration;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
-import static lordoftherings.GameConfiguration.scale;
 
 /**
  *
  * @author Amanda
  */
 public class QuestTokenView extends JTextArea{
+    
      
-    public QuestTokenView(int x, int y, int tokenNum){
-        this.setBounds(scale(x), scale(y), HandCardView.CARD_HEIGHT, EnemyDamageView.DAMAGE_HEIGHT);
+    public QuestTokenView(int x, int y, int tokenNum, GameConfiguration config){
+        this.setBounds(config.scale(x), config.scale(y), config.scale(HandCardView.CARD_HEIGHT),
+                config.scale(EnemyDamageView.DAMAGE_HEIGHT));
         this.insert("Tokens: " + tokenNum, 0);
         this.setEditable(false);
         this.setAlignmentX(CENTER_ALIGNMENT);
-        this.setFont(AllyCardView.CARD_FONT);
+        this.setFont(config.getFonts().getCardFont());
         this.setBackground(Color.yellow);
     }
 }

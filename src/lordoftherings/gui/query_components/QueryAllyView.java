@@ -4,7 +4,7 @@ package lordoftherings.gui.query_components;
 
 import java.awt.Color;
 import javax.swing.JPanel;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 import lordoftherings.gui.PlayerZoneComponents.AllyView;
 
 /**
@@ -13,8 +13,9 @@ import lordoftherings.gui.PlayerZoneComponents.AllyView;
  */
 public class QueryAllyView extends JPanel{
         
-    public QueryAllyView(int x, int y){
-        setBounds(scale(x), scale(y), AllyView.VIEW_WIDTH, AllyView.VIEW_HEIGHT);
+    public QueryAllyView(int x, int y, GameConfiguration config){
+        setBounds(config.scale(x), config.scale(y), config.scale(AllyView.VIEW_WIDTH), 
+                config.scale(AllyView.VIEW_HEIGHT));
         setLayout(null);
         Color backgroundColor = new Color(0x10,0x66,0x1b);
         setBackground(backgroundColor);

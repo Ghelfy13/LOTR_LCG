@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.PlayerZoneControllerCompoents;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.PlayerDeck;
 import lordoftherings.gui.PlayerZoneComponents.DeckViewParent;
 import lordoftherings.manager.actionComponents.BoardActiveState;
@@ -16,19 +17,21 @@ public class DeckViewController implements Focusable{
     private PlayerZoneViewController playerZoneVC;
     private DeckViewParent deckParent;
     private BoardActiveState bas;
+    private GameConfiguration config;
     
     public DeckViewController(){}
     
     public DeckViewController(PlayerZoneViewController playerZoneViewController, 
-            PlayerDeck playerDeck, BoardActiveState bas){
+            PlayerDeck playerDeck, BoardActiveState bas, GameConfiguration config){
         this.playerDeck = playerDeck;
         this.playerZoneVC = playerZoneViewController;
         this.deckParent = null;
         this.bas = bas;
+        this.config = config;
     }
            
     public DeckViewParent makeView(int x, int y){
-        deckParent = new DeckViewParent(this, x, y);
+        deckParent = new DeckViewParent(this, x, y, config);
         deckParent.addMouseMotionListener(bas.createMouseFollower());
         deckParent.setVisible(true);
         deckParent.getView().setVisible(true);

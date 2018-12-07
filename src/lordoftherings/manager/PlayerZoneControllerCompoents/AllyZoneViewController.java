@@ -5,6 +5,7 @@ package lordoftherings.manager.PlayerZoneControllerCompoents;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.AllyArea;
 import lordoftherings.characters.Ally;
 import lordoftherings.gui.PlayerZoneComponents.AllyView;
@@ -21,24 +22,26 @@ public class AllyZoneViewController{
     private AllyZoneView view;
     private HashMap<Ally, AllyViewController> controllerMap;
     private BoardActiveState bas;
+    private GameConfiguration config;
     public static final int CARDS_AND_SPACE = 205;
     
     public AllyZoneViewController(CharacterAreaViewController charAreaVC,
-            AllyArea allyZone, BoardActiveState bas){
+            AllyArea allyZone, BoardActiveState bas, GameConfiguration config){
         this.characterAreaVC = charAreaVC;
         this.myAllyArea = allyZone;
         this.view = null;
         this.controllerMap = new HashMap<>();
         this.bas = bas;
+        this.config = config;
     }
     
     public AllyZoneView makeView(int x, int y){
-        view = new AllyZoneView(x, y);
+        view = new AllyZoneView(x, y, config);
         view.addMouseMotionListener(bas.createMouseFollower());
         for(int i = 0; i < myAllyArea.getSize(); ++i){
             Ally card = myAllyArea.getAllyAt(i);
             AllyViewController allyViewController = new AllyViewController(
-                    myAllyArea.getAllyAt(i), this, bas);
+                    myAllyArea.getAllyAt(i), this, bas, config);
             controllerMap.put(card, allyViewController);
             AllyView allyView = allyViewController.makeView(i*CARDS_AND_SPACE, 0);
             view.add(allyView);   
@@ -66,7 +69,7 @@ public class AllyZoneViewController{
         for(int i = 0; i < myAllyArea.getSize(); ++i){
             Ally existingAlly = myAllyArea.getAllyAt(i);
             if(!controllerMap.containsKey(existingAlly)){
-                AllyViewController allyVC = new AllyViewController(existingAlly, this, bas);
+                AllyViewController allyVC = new AllyViewController(existingAlly, this, bas, config);
                 AllyView newAllyView = allyVC.makeView(i*CARDS_AND_SPACE, 0);
                 view.add(newAllyView);
                 controllerMap.put(existingAlly, allyVC);

@@ -2,9 +2,9 @@
 
 package lordoftherings.manager.query_Handlers;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.DiscardPile;
 import lordoftherings.gui.query_components.DiscardPileQueryPileView;
-import lordoftherings.gui.query_components.DiscardPileQueryView;
 import lordoftherings.manager.actionComponents.BoardActiveState;
 import lordoftherings.manager.actionComponents.Selectable;
 
@@ -17,16 +17,18 @@ public class DiscardPileQueryPileViewController implements Selectable<DiscardPil
     private DiscardPile pile;
     private DiscardPileQueryActiveState dPileQAS;
     private boolean isSelected;
+    private GameConfiguration config;
     
     public DiscardPileQueryPileViewController(DiscardPileQueryActiveState dPileQAS, 
-            DiscardPile pile){
+            DiscardPile pile, GameConfiguration config){
         this.pile = pile;
         this.dPileQAS = dPileQAS;
         this.isSelected = false;
+        this.config = config;
     }
     
     public DiscardPileQueryPileView makeView(int x, int y){
-        view = new DiscardPileQueryPileView(x, y);
+        view = new DiscardPileQueryPileView(x, y, config);
         view.setVisible(true);
         return view;
     }

@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.EncounterZoneControllerComponents;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.gui.EncounterZoneComponents.EnemyDamageView;
 
 /**
@@ -12,13 +13,15 @@ public class EnemyDamageViewController {
     
     private EnemyDamageView view;
     protected int damage;
+    private GameConfiguration config;
     
-    public EnemyDamageViewController(){
+    public EnemyDamageViewController(GameConfiguration config){
         damage = 0;
+        this.config = config;
     }
     
     public EnemyDamageView makeView(int x, int y){
-        view = new EnemyDamageView(x, y, damage);
+        view = new EnemyDamageView(x, y, damage, config);
         view.setVisible(true);
         return view;
     }

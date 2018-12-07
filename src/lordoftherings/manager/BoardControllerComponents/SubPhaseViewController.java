@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.BoardControllerComponents;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.phasemanager.SubPhase;
 import lordoftherings.gui.SubPhaseView;
 
@@ -13,14 +14,16 @@ public class SubPhaseViewController {
     private SubPhaseView view;
     private BoardViewController boardVC;
     private SubPhase phase;
+    private GameConfiguration config;
     
-    public SubPhaseViewController(BoardViewController boardVC){
+    public SubPhaseViewController(BoardViewController boardVC, GameConfiguration config){
         this.boardVC= boardVC;
         this.phase = boardVC.getBoard().getPhaseManagerGovenor().getCurrentSubPhase();
+        this.config = config;
     }
     
     public SubPhaseView makeView(int x, int y){
-        view = new SubPhaseView(boardVC.getCurrentSubPhase(),x, y);
+        view = new SubPhaseView(boardVC.getCurrentSubPhase(),x, y, config);
         view.setVisible(true);
         return view;
     }

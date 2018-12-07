@@ -6,7 +6,7 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 import lordoftherings.manager.BoardControllerComponents.ActionExecutor;
 import lordoftherings.actions.Action;
 import lordoftherings.manager.actionComponents.ActionViewController;
@@ -18,11 +18,13 @@ import lordoftherings.manager.actionComponents.FocusableMouseListener;
  * @author Amanda
  */
 public class ActionView extends JButton{
-    public static final int BOX_DIMENSIONS = scale(40);
+    public static final int BOX_DIMENSIONS = 40;
     
-    public ActionView(BoardActiveState boardAS, ActionViewController controller, Action playableAction,ImageIcon icon, int x, int y){
+    public ActionView(BoardActiveState boardAS, ActionViewController controller, 
+            Action playableAction,ImageIcon icon, int x, int y, GameConfiguration config){
         super(icon);
-        setBounds(scale(x), scale(y), BOX_DIMENSIONS, BOX_DIMENSIONS);
+        setBounds(config.scale(x), config.scale(y), config.scale(BOX_DIMENSIONS),
+                config.scale(BOX_DIMENSIONS));
         setHorizontalAlignment(SwingConstants.CENTER);
         setVerticalAlignment(SwingConstants.CENTER);
         setLayout(null);

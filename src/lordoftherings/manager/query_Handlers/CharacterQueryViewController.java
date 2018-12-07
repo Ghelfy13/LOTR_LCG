@@ -3,15 +3,16 @@
 package lordoftherings.manager.query_Handlers;
 
 import java.awt.Point;
+import lordoftherings.GameConfiguration;
 import lordoftherings.gui.query_components.QueryMessageView;
 import lordoftherings.gui.query_components.CharacterQueryView;
 import lordoftherings.manager.BoardControllerComponents.GameManagerViewController;
 import lordoftherings.transaction_managers.CharacterQueryHandle;
 import lordoftherings.characters.GameCharacter;
-import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.query_components.QueryPlayerZoneView;
 import lordoftherings.gui.query_components.QueryView;
-import lordoftherings.manager.BoardControllerComponents.BoardViewController;
+import static lordoftherings.manager.BoardControllerComponents.BoardViewController.DISTANCE_FROM_FRAME;
+import static lordoftherings.manager.BoardControllerComponents.BoardViewController.PLAYERZONE_Y_COORDINATE;
 import lordoftherings.manager.actionComponents.GlobalViewController;
 
 /**
@@ -24,27 +25,26 @@ public class CharacterQueryViewController extends QueryViewController<GameCharac
     private CharacterQueryPlayerZoneViewController playerZoneVC;
     private CharacterQueryActiveState charQAS;
     private CharacterQueryView view;
+    public static final int MESSAGE_X = 1995;
     
     public CharacterQueryViewController(GameManagerViewController gameMVC, 
-            CharacterQueryHandle handle){
-        super(gameMVC, handle);
+            CharacterQueryHandle handle, GameConfiguration config){
+        super(gameMVC, handle, config);
         this.charQAS = new CharacterQueryActiveState(this);
         this.playerZoneVC = new CharacterQueryPlayerZoneViewController(this, 
-                gameMVC.getBoard().getCurrentPlayerZone(), charQAS);
+                gameMVC.getBoard().getCurrentPlayerZone(), charQAS, config);
         
     }
     
     @Override
     public QueryView makeView(String description){
-        view = new CharacterQueryView();
+        view = new CharacterQueryView(config);
         view.add(charQAS.getFocusableText());
         view.addMouseMotionListener(charQAS.createMouseFollower());
-        QueryMessageView messageView = messageVC.makeView(1995, 0, description);
+        QueryMessageView messageView = messageVC.makeView(MESSAGE_X, 0, description);
         view.add(messageView);
         QueryPlayerZoneView playerZoneView = playerZoneVC.makeView(
-                BoardViewController.DISTANCE_FROM_FRAME, 
-                ActiveLocationView.CARD_COUNTER_HEIGHT + BoardViewController.
-                        DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE);
+                DISTANCE_FROM_FRAME, PLAYERZONE_Y_COORDINATE);
         view.add(playerZoneView);
         view.setVisible(true);
         return view;

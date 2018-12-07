@@ -4,14 +4,13 @@ package lordoftherings.manager.EncounterZoneControllerComponents;
 
 import java.util.ArrayList;
 import javax.swing.JComponent;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.boardcomponents.Location;
 import lordoftherings.gui.EncounterZoneComponents.LocationCardView;
 import lordoftherings.gui.EncounterZoneComponents.TokenView;
 import lordoftherings.gui.EncounterZoneComponents.LocationView;
-import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.manager.actionComponents.Actionable;
 import lordoftherings.manager.actionComponents.ActionableMouseListener;
 import lordoftherings.manager.actionComponents.BoardActiveState;
@@ -28,18 +27,20 @@ public class LocationViewController implements Actionable{
     private BoardActiveState bas;
     private LocationCardView cardView;
     private TokenView tokenView;
-    public static final int ACTIONS_Y_COORDINATE = scale(180);
+    public static final int ACTIONS_Y_COORDINATE = 180;
     public static final int TOKEN_Y_VALUE = 200;
+    private GameConfiguration config;
     
-    public LocationViewController(Location location, BoardActiveState bas){
+    public LocationViewController(Location location, BoardActiveState bas, GameConfiguration config){
         this.location = location;
         this.bas = bas;
-        cardVC = new LocationCardViewController(location.getCard(), bas);
-        tokenVC = new TokenViewController();
+        cardVC = new LocationCardViewController(location.getCard(), bas, config);
+        tokenVC = new TokenViewController(config);
+        this.config = config;
     }
     
     public LocationView makeView(int x, int y){
-        view = new LocationView(x, y);
+        view = new LocationView(x, y, config);
         cardView = cardVC.makeView(0,0);
         cardView.addMouseListener(new ActionableMouseListener(bas, this));
         view.add(cardView);
@@ -51,7 +52,7 @@ public class LocationViewController implements Actionable{
     }
     
     public void updateView(int x, int y){
-        view.setLocation(scale(x), scale(y));
+        view.setLocation(config.scale(x), config.scale(y));
         cardVC.updateView();
         tokenVC.updateView(location.getNumOfTokens());
         view.revalidate();

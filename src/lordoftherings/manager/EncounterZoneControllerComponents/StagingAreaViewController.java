@@ -3,13 +3,13 @@
 package lordoftherings.manager.EncounterZoneControllerComponents;
 
 import java.util.ArrayList;
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.StagingArea;
 import lordoftherings.characters.Enemy;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.EncounterZoneComponents.EnemyAreaView;
 import lordoftherings.gui.EncounterZoneComponents.LocationAreaView;
 import lordoftherings.gui.EncounterZoneComponents.StagingAreaView;
-import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import static lordoftherings.manager.EncounterZoneControllerComponents.EncounterZoneViewController.DISTANCE_FROM_FRAME;
 import lordoftherings.manager.actionComponents.BoardActiveState;
 
@@ -27,19 +27,20 @@ public class StagingAreaViewController {
     private ActiveLocationViewController activeLocationVC;
     private ArrayList<Enemy> myEnemies;
     public static final int AREA_X_VALUE = 225;
+    private GameConfiguration config;
     
-    public  StagingAreaViewController(BoardActiveState bas, StagingArea stage){
+    public  StagingAreaViewController(BoardActiveState bas, StagingArea stage, GameConfiguration config){
         this.bas = bas;
         this.stage = stage;
-        this.enemyAreaVC = new EnemyAreaViewController(bas, stage.getEnemyArea());
-        this.locationAreaVC = new LocationAreaViewController(stage.getLocationArea(), bas);
-        this.activeLocationVC = new ActiveLocationViewController(bas, stage.getActiveLocationArea());
+        this.enemyAreaVC = new EnemyAreaViewController(bas, stage.getEnemyArea(), config);
+        this.locationAreaVC = new LocationAreaViewController(stage.getLocationArea(), bas, config);
+        this.activeLocationVC = new ActiveLocationViewController(bas, stage.getActiveLocationArea(), config);
         this.myEnemies = new ArrayList<>(stage.getEnemyArea().getNumOfEnemies());
-        
+        this.config = config;
     }
     
     public StagingAreaView makeView(int x, int y){
-        view = new StagingAreaView(x, y, bas.createMouseFollower());
+        view = new StagingAreaView(x, y, bas.createMouseFollower(), config);
         EnemyAreaView enemyView = enemyAreaVC.makeView(AREA_X_VALUE, DISTANCE_FROM_FRAME);
         view.add(enemyView);
         LocationAreaView locationView = locationAreaVC.makeView(

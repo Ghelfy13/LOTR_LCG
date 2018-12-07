@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.query_Handlers;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.characters.Hero;
 import lordoftherings.gui.query_components.QueryHeroCardView;
 import lordoftherings.manager.actionComponents.BoardActiveState;
@@ -17,15 +18,19 @@ public class QueryHeroCardViewController {
     private static final int CARD_HEIGHT = 200;
     private static final int CARD_WIDTH = 144;
     private CharacterQueryActiveState charQAS;
+    private GameConfiguration config;
        
-    public QueryHeroCardViewController(Hero myHero, CharacterQueryActiveState charQAS){
+    public QueryHeroCardViewController(Hero myHero, 
+            CharacterQueryActiveState charQAS,
+            GameConfiguration config){
         this.myHero = myHero;
         this.heroInfo = myHero.getInfo();
         this.charQAS = charQAS;
+        this.config = config;
     }
     
     public QueryHeroCardView makeView(){
-        cardView = new QueryHeroCardView(heroInfo,myHero.isExhausted());
+        cardView = new QueryHeroCardView(heroInfo,myHero.isExhausted(), config);
         cardView.addMouseMotionListener(charQAS.createMouseFollower());
         cardView.setEditable(false);
         cardView.setVisible(true);
@@ -34,9 +39,11 @@ public class QueryHeroCardViewController {
     
     public QueryHeroCardView updateView(boolean isSelected){
         if(myHero.isExhausted()){
-            cardView.setBounds(0, CARD_HEIGHT - CARD_WIDTH, CARD_HEIGHT, CARD_WIDTH);
+            cardView.setBounds(0, config.scale(CARD_HEIGHT - CARD_WIDTH),
+                    config.scale(CARD_HEIGHT), config.scale(CARD_WIDTH));
         }else if(!myHero.isExhausted()){
-            cardView.setBounds(0, 0, CARD_WIDTH, CARD_HEIGHT);
+            cardView.setBounds(0, 0, config.scale(CARD_WIDTH), 
+                    config.scale(CARD_HEIGHT));
         }if(isSelected){
             cardView.setBorder(BoardActiveState.ACTIVE_BORDER);
         }else{

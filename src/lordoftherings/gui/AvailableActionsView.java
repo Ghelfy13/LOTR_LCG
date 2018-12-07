@@ -3,30 +3,29 @@
 package lordoftherings.gui;
 
 import java.awt.Color;
-import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 
 /**
  *
  * @author Amanda
  */
 public class AvailableActionsView extends JLabel {
-    public static final Font MESSAGE_FONT = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, scale(36));
-    int lengthOfBox;
-    public static final int USED_BOX_LENGTH = scale(50);
+    public int lengthOfBox;
+    public static final int USED_BOX_LENGTH = 50;
     
-    public AvailableActionsView(int x, int y, int numOfActions){
+    public AvailableActionsView(int x, int y, int numOfActions, GameConfiguration config){
         if(numOfActions == 0){
             lengthOfBox = ActionView.BOX_DIMENSIONS;
         }else{
             lengthOfBox = USED_BOX_LENGTH*numOfActions;
         }
-        setBounds(scale(x), scale(y), lengthOfBox, USED_BOX_LENGTH);//width of card = 180, need to change that to fit the number of buttons needed
+        setBounds(config.scale(x), config.scale(y), config.scale(lengthOfBox), 
+                config.scale(USED_BOX_LENGTH));//width of card = 180, need to change that to fit the number of buttons needed
         //button separation will be 10 - 40 - 10 again, where the button is 40 in width
         setBackground(Color.ORANGE);
-        setFont(MESSAGE_FONT);
+        setFont(config.getFonts().getMessageFont());
         setBorder(BorderFactory.createLineBorder(Color.BLACK));
         setOpaque(true);
         setLayout(null);

@@ -5,7 +5,7 @@ package lordoftherings.manager.PlayerZoneControllerCompoents;
 import lordoftherings.manager.actionComponents.Actionable;
 import java.util.ArrayList;
 import javax.swing.JComponent;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 import lordoftherings.LocationOnBoard;
 import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
@@ -13,7 +13,6 @@ import lordoftherings.characters.Ally;
 import lordoftherings.gui.PlayerZoneComponents.AllyCardView;
 import lordoftherings.gui.PlayerZoneComponents.AllyDamageView;
 import lordoftherings.gui.PlayerZoneComponents.AllyView;
-import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.manager.EncounterZoneControllerComponents.LocationViewController;
 import lordoftherings.manager.actionComponents.ActionableMouseListener;
 import lordoftherings.manager.actionComponents.BoardActiveState;
@@ -31,27 +30,30 @@ public class AllyViewController implements Actionable {
     private AllyDamageView damageView;
     private AllyCardView cardView;
     private BoardActiveState bas;
-    public static final int ALLY_ACTIONS_Y_COORDINATE = scale(165);
+    private GameConfiguration config;
+    public static final int ALLY_ACTIONS_Y_COORDINATE = 165;
     
     
-    public AllyViewController(Ally passedInAlly, AllyZoneViewController allyZoneVC, BoardActiveState bas){
+    public AllyViewController(Ally passedInAlly, AllyZoneViewController allyZoneVC, 
+            BoardActiveState bas, GameConfiguration config){
         this.wantedAlly = passedInAlly;
         this.view = null;
         this.damageView = null;
         this.allyZoneVC = allyZoneVC;
         this.cardView = null;
         this.bas = bas;
+        this.config = config;
     }
     
     public AllyView makeView(int x, int y){
-        view = new AllyView(x, y);
+        view = new AllyView(x, y, config);
         view.addMouseMotionListener(bas.createMouseFollower());
-        allyCardVC = new AllyCardViewController(wantedAlly, this, bas);
+        allyCardVC = new AllyCardViewController(wantedAlly, this, bas, config);
         cardView = allyCardVC.makeView(0,0);
         cardView.addMouseListener(new ActionableMouseListener(bas, this));
         view.add(cardView);
         cardView.setVisible(true);
-        damageView = new AllyDamageView(0, HeroViewController.POOL_X, 0);
+        damageView = new AllyDamageView(0, HeroViewController.POOL_X, 0, config);
         view.add(damageView);
         damageView.setVisible(true);
         view.setVisible(true);

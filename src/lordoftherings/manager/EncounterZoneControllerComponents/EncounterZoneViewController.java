@@ -2,8 +2,7 @@
 
 package lordoftherings.manager.EncounterZoneControllerComponents;
 
-import static lordoftherings.GameConfiguration.scale;
-import lordoftherings.deckcomponents.Quest;
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.EncounterZone;
 import lordoftherings.gui.EncounterZoneComponents.EncounterDeckParentView;
 import lordoftherings.gui.EncounterZoneComponents.EncounterDiscardPileView;
@@ -14,8 +13,6 @@ import lordoftherings.gui.EncounterZoneComponents.QuestView;
 import lordoftherings.gui.EncounterZoneComponents.StagingAreaThreatTitleView;
 import lordoftherings.gui.EncounterZoneComponents.StagingAreaThreatView;
 import lordoftherings.gui.EncounterZoneComponents.StagingAreaView;
-import lordoftherings.gui.PlayerZoneComponents.HandCardView;
-import lordoftherings.manager.PlayerZoneControllerCompoents.PlayerZoneViewController;
 import lordoftherings.manager.actionComponents.BoardActiveState;
 
 /**
@@ -31,6 +28,7 @@ public class EncounterZoneViewController {
     private EncounterZone encounterZone;
     private StagingAreaViewController stagingVC;
     private EncounterZoneView view;
+    private GameConfiguration config;
     private BoardActiveState bas;
     private StagingAreaThreatViewController threatVC;
     private StagingAreaThreatTitleViewController threatTitleVC;
@@ -48,21 +46,24 @@ public class EncounterZoneViewController {
     public static final int DECK_X = 180;
     
     
-    public EncounterZoneViewController(BoardActiveState boardAS, EncounterZone zone){
+    public EncounterZoneViewController(BoardActiveState boardAS, EncounterZone zone, GameConfiguration config){
         this.encounterZone = zone;
         this.bas = boardAS;
-        this.enemyDeckVC = new EncounterDeckViewController(encounterZone.getEncounterDeck(), this);
-        this.enemyDPileVC = new EncounterDiscardPileViewController(this, bas, encounterZone.getEnemyDiscardPile());
-        this.questSetVC = new QuestSetViewController(zone.getQuestSet(), bas);
-        this.questVC = new QuestViewController(encounterZone, bas);
-        this.stagingVC = new StagingAreaViewController(boardAS, encounterZone.getStagingArea());
-        this.threatTitleVC = new StagingAreaThreatTitleViewController(zone);
-        this.threatVC = new StagingAreaThreatViewController(zone);
-        this.questDPileVC = new QuestDiscardPileViewController(this, bas, encounterZone.getQuestDiscardPile());
+        this.enemyDeckVC = new EncounterDeckViewController(encounterZone.getEncounterDeck(),
+                this, config);
+        this.enemyDPileVC = new EncounterDiscardPileViewController(this, bas, 
+                encounterZone.getEnemyDiscardPile(), config);
+        this.questSetVC = new QuestSetViewController(zone.getQuestSet(), bas, config);
+        this.questVC = new QuestViewController(encounterZone, bas, config);
+        this.stagingVC = new StagingAreaViewController(boardAS, encounterZone.getStagingArea(), config);
+        this.threatTitleVC = new StagingAreaThreatTitleViewController(zone, config);
+        this.threatVC = new StagingAreaThreatViewController(zone, config);
+        this.questDPileVC = new QuestDiscardPileViewController(this, bas, encounterZone.getQuestDiscardPile(), config);
+        this.config = config;
     }
     
     public EncounterZoneView makeView(int x, int y){
-        view = new EncounterZoneView(x, y);
+        view = new EncounterZoneView(x, y, config);
         view.addMouseMotionListener(bas.createMouseFollower());
         EncounterDeckParentView deckView = enemyDeckVC.makeView(
                 bas.createMouseFollower(), DECK_X, 

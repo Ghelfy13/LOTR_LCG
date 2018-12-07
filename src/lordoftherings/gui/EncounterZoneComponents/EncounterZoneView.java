@@ -2,8 +2,8 @@
 
 package lordoftherings.gui.EncounterZoneComponents;
 
-import static lordoftherings.GameConfiguration.scale;
 import javax.swing.JPanel;
+import lordoftherings.GameConfiguration;
 import lordoftherings.manager.EncounterZoneControllerComponents.EncounterZoneViewController;
 
 /**
@@ -11,11 +11,13 @@ import lordoftherings.manager.EncounterZoneControllerComponents.EncounterZoneVie
  * @author Amanda
  */
 public class EncounterZoneView extends JPanel {
-    public static final int ZONE_WIDTH = scale(2000);
+    public static final int ZONE_WIDTH = 2000;
+    public static final int ZONE_HEIGHT =  2*ActiveLocationView.CARD_COUNTER_HEIGHT +
+                EncounterZoneViewController.DISTANCE_FROM_FRAME;
     
-    public EncounterZoneView(int x, int y){
-        setBounds(scale(x), scale(y), ZONE_WIDTH, 2*ActiveLocationView.CARD_COUNTER_HEIGHT +
-                EncounterZoneViewController.DISTANCE_FROM_FRAME);
+    public EncounterZoneView(int x, int y, GameConfiguration config){
+        setBounds(config.scale(x), config.scale(y), 
+                config.scale(ZONE_WIDTH), config.scale(ZONE_HEIGHT));
         setLayout(null);
         setOpaque(false);
     }

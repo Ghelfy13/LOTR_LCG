@@ -5,9 +5,9 @@ package lordoftherings.gui.query_components;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import static lordoftherings.GameConfiguration.scale;
-import lordoftherings.gui.PlayerZoneComponents.QuestValueView;
-import lordoftherings.gui.ProgressPhaseButtonView;
+import lordoftherings.GameConfiguration;
+import static lordoftherings.gui.ProgressPhaseButtonView.PROGRESS_BUTTON_HEIGHT;
+import static lordoftherings.gui.ProgressPhaseButtonView.PROGRESS_BUTTON_WIDTH;
 
 /**
  *
@@ -15,15 +15,15 @@ import lordoftherings.gui.ProgressPhaseButtonView;
  */
 public class QueryPlayerNameView extends JLabel{
     
-     public QueryPlayerNameView(int x, int y, String name){
-        setBounds(scale(x), scale(y), 
-                ProgressPhaseButtonView.PROGRESS_BUTTON_WIDTH, 
-                ProgressPhaseButtonView.PROGRESS_BUTTON_HEIGHT);
+     public QueryPlayerNameView(int x, int y, String name, GameConfiguration config){
+        setBounds(config.scale(x), config.scale(y), 
+                config.scale(PROGRESS_BUTTON_WIDTH), 
+                config.scale(PROGRESS_BUTTON_HEIGHT));
         setText(name);
         setVerticalAlignment(SwingConstants.CENTER);
         setHorizontalAlignment(SwingConstants.CENTER);
         setLayout(null);
-        setFont(QuestValueView.QUEST_FONT);
+        setFont(config.getFonts().getQuestValueFont());
         setBackground(Color.CYAN);
         setOpaque(true);
     }

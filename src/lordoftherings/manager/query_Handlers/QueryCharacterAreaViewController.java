@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.query_Handlers;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.AllyArea;
 import lordoftherings.boardcomponents.HeroArea;
 import lordoftherings.gui.query_components.QueryAllyZoneView;
@@ -21,23 +22,25 @@ public class QueryCharacterAreaViewController {
     private QueryCharacterAreaView charAreaView;
     private CharacterQueryPlayerZoneViewController playerZoneVC;
     private CharacterQueryActiveState charQAS;
-   
+    private GameConfiguration config;
     
     public QueryCharacterAreaViewController(
             CharacterQueryPlayerZoneViewController playerZoneVC, 
             HeroArea heroArea,
             AllyArea allyArea,
-            CharacterQueryActiveState charQAS){
+            CharacterQueryActiveState charQAS, 
+            GameConfiguration config){
         this.charQAS = charQAS;
         this.heroArea = heroArea;
         this.allyArea = allyArea;
         this.playerZoneVC = playerZoneVC;
-        heroAreaVC = new QueryHeroAreaViewController(this, heroArea, charQAS);
-        allyAreaVC = new QueryAllyZoneViewController(allyArea, this, charQAS);
+        this.config = config;
+        heroAreaVC = new QueryHeroAreaViewController(this, heroArea, charQAS, config);
+        allyAreaVC = new QueryAllyZoneViewController(allyArea, this, charQAS, config);
     }
     
     public QueryCharacterAreaView makeView(int x, int y){
-        charAreaView = new QueryCharacterAreaView(x, y);
+        charAreaView = new QueryCharacterAreaView(x, y, config);
         charAreaView.addMouseMotionListener(charQAS.createMouseFollower());
         QueryHeroAreaView heroAreaView = heroAreaVC.makeView(0, 0);
         heroAreaView.setVisible(true);

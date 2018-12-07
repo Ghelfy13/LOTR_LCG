@@ -3,10 +3,9 @@
 package lordoftherings.gui.PlayerZoneComponents;
 
 import java.awt.Color;
-import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 import lordoftherings.gui.EncounterZoneComponents.StagingAreaThreatTitleView;
 
 /**
@@ -15,13 +14,13 @@ import lordoftherings.gui.EncounterZoneComponents.StagingAreaThreatTitleView;
  */
 public class QuestValueTitleView extends JLabel{
     
-    public QuestValueTitleView(int x, int y){
-        setBounds(scale(x), scale(y), QuestValueView.QUEST_WIDTH, QuestValueView.QUEST_HEIGHT);
+    public QuestValueTitleView(int x, int y, GameConfiguration config){
+        setBounds(config.scale(x), config.scale(y), config.scale(QuestValueView.QUEST_WIDTH), config.scale(QuestValueView.QUEST_HEIGHT));
         setLayout(null);
         setOpaque(true);
         setText("QUEST VALUE");
         setBackground(Color.CYAN);
-        setFont(StagingAreaThreatTitleView.THREAT_FONT);
+        setFont(config.getFonts().getThreatFont());
         setVerticalAlignment(SwingConstants.CENTER);
         setHorizontalAlignment(SwingConstants.CENTER);
     }

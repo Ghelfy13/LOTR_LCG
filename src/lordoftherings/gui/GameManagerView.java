@@ -2,19 +2,20 @@
 
 package lordoftherings.gui;
 
-import static lordoftherings.GameConfiguration.scale;
 import javax.swing.JLayeredPane;
+import lordoftherings.GameConfiguration;
 
 /**
  *
  * @author Amanda
  */
 public class GameManagerView extends JLayeredPane{
-     public static final int WINDOW_WIDTH = scale(2500);
-    public static final int WINDOW_LENGTH = scale(1300);
+     public static final int WINDOW_WIDTH = 2500;
+    public static final int WINDOW_LENGTH = 1300;
     
-    public GameManagerView(int x, int y){
-        setBounds(scale(x), scale(y), WINDOW_WIDTH, WINDOW_LENGTH);
+    public GameManagerView(int x, int y, GameConfiguration config){
+        setBounds(config.scale(x), config.scale(y), config.scale(WINDOW_WIDTH), 
+                config.scale(WINDOW_LENGTH));
         setLayout(null);
         setOpaque(false);
     }

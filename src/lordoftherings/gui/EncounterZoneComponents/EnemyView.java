@@ -3,8 +3,8 @@
 package lordoftherings.gui.EncounterZoneComponents;
 
 import javax.swing.JPanel;
+import lordoftherings.GameConfiguration;
 import lordoftherings.manager.EncounterZoneControllerComponents.EnemyViewController;
-import static lordoftherings.GameConfiguration.scale;
 
 /**
  *
@@ -12,9 +12,9 @@ import static lordoftherings.GameConfiguration.scale;
  */
 public class EnemyView extends JPanel{
     
-    public EnemyView(EnemyViewController controller, int x, int y){
-        setBounds(scale(x), scale(y), ActiveLocationView.PARENT_WIDTH,
-                ActiveLocationView.CARD_COUNTER_HEIGHT);
+    public EnemyView(EnemyViewController controller, int x, int y, GameConfiguration config){
+        setBounds(config.scale(x), config.scale(y), config.scale(ActiveLocationView.PARENT_WIDTH),
+                config.scale(ActiveLocationView.CARD_COUNTER_HEIGHT));
         setLayout(null);
         setOpaque(false);
         

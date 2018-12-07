@@ -3,6 +3,7 @@
 package lordoftherings.manager.PlayerZoneControllerCompoents;
 
 import java.awt.Color;
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.PlayerZone;
 import lordoftherings.gui.PlayerZoneComponents.ThreatDialTitleView;
 
@@ -14,13 +15,15 @@ public class ThreatDialTitleViewController {
     
     private PlayerZone zone;
     private ThreatDialTitleView titleView;
+    private GameConfiguration config;
     
-    public ThreatDialTitleViewController(PlayerZone zone){
+    public ThreatDialTitleViewController(PlayerZone zone, GameConfiguration config){
         this.zone = zone;
+        this.config = config;
     }
     
     public ThreatDialTitleView makeView(int x, int y){
-        titleView = new ThreatDialTitleView(x, y);
+        titleView = new ThreatDialTitleView(x, y, config);
         titleView.setVisible(true);
         return titleView;
     }

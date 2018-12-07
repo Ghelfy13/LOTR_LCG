@@ -5,8 +5,8 @@
  */
 package lordoftherings.manager.query_Handlers;
 
-import java.awt.Point;
 import java.util.ArrayList;
+import lordoftherings.GameConfiguration;
 import lordoftherings.gui.query_components.QueryView;
 import lordoftherings.manager.BoardControllerComponents.GameManagerViewController;
 import lordoftherings.manager.actionComponents.GlobalViewController;
@@ -22,12 +22,15 @@ public abstract class QueryViewController<T> implements CancellableQueryViewCont
     protected QueryMessageViewController messageVC;
     private ArrayList<T> resultList;
     protected QueryHandle<T> handle;
+    protected GameConfiguration config;
     
-    public QueryViewController(GameManagerViewController gameMVC, QueryHandle handle){
-        this.messageVC = new QueryMessageViewController(this, handle);
+    public QueryViewController(GameManagerViewController gameMVC, 
+            QueryHandle handle, GameConfiguration config){
+        this.messageVC = new QueryMessageViewController(this, handle, config);
         this.handle = handle;
         this.gameMVC = gameMVC;
         this.resultList = new ArrayList<>();
+        this.config = config;
     }
     
     public abstract QueryView makeView(String description);

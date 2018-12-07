@@ -11,12 +11,12 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import lordoftherings.GameConfiguration;
 import static lordoftherings.gui.EncounterZoneComponents.EncounterDiscardPileView.CARD_BORDER;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.manager.actionComponents.BoardActiveState;
 import lordoftherings.manager.EncounterZoneControllerComponents.QuestSetViewController;
 import lordoftherings.manager.actionComponents.FocusableMouseListener;
-import static lordoftherings.GameConfiguration.scale;
 
 /**
  *
@@ -25,11 +25,11 @@ import static lordoftherings.GameConfiguration.scale;
 public class QuestSetView extends JLabel{
     private BoardActiveState bas;
     
-    public QuestSetView(BoardActiveState bas, QuestSetViewController setVC,  int x, int y){
-        super(cardBackImage(HandCardView.CARD_HEIGHT + CARD_BORDER, 
-                HandCardView.CARD_WIDTH + CARD_BORDER));
-        this.setBounds(scale(x), scale(y), HandCardView.CARD_HEIGHT + CARD_BORDER, 
-                HandCardView.CARD_WIDTH + CARD_BORDER);
+    public QuestSetView(BoardActiveState bas, QuestSetViewController setVC,  int x, int y, GameConfiguration config){
+        super(cardBackImage(config.scale(HandCardView.CARD_HEIGHT + CARD_BORDER), 
+                config.scale(HandCardView.CARD_WIDTH + CARD_BORDER)));
+        this.setBounds(config.scale(x), config.scale(y), config.scale(HandCardView.CARD_HEIGHT + CARD_BORDER), 
+                config.scale(HandCardView.CARD_WIDTH + CARD_BORDER));
         this.bas = bas;
         this.addMouseListener(new FocusableMouseListener(bas, setVC));
         this.addMouseMotionListener(bas.createMouseFollower());

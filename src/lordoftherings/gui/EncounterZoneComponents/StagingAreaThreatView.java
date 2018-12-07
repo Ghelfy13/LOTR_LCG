@@ -5,26 +5,27 @@ package lordoftherings.gui.EncounterZoneComponents;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import lordoftherings.GameConfiguration;
 import lordoftherings.gui.PlayerZoneComponents.QuestValueView;
-import static lordoftherings.GameConfiguration.scale;
 
 /**
  *
  * @author Amanda
  */
 public class StagingAreaThreatView extends JLabel{
-    public static final int THREAT_WIDTH = scale(150);
-    public static final int THREAT_HEIGHT = scale(50);
+    public static final int THREAT_WIDTH = 150;
+    public static final int THREAT_HEIGHT = 50;
     
-    public StagingAreaThreatView(int x, int y, int threat){
+    public StagingAreaThreatView(int x, int y, int threat, GameConfiguration config){
         setText("" + threat);
-        setBounds(scale(x), scale(y), THREAT_WIDTH, THREAT_HEIGHT);
+        setBounds(config.scale(x), config.scale(y), 
+                config.scale(THREAT_WIDTH), config.scale(THREAT_HEIGHT));
         setLayout(null);
         setBackground(Color.ORANGE);
         setOpaque(true);
         setVerticalAlignment(SwingConstants.CENTER);
         setHorizontalAlignment(SwingConstants.CENTER);
-        setFont(QuestValueView.QUEST_FONT);
+        setFont(config.getFonts().getQuestValueFont());
     }
     
 }

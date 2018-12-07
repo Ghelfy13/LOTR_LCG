@@ -1,6 +1,7 @@
 //Copyright Amanda V. Harris 2018-present. All Rights Reserved.
 package lordoftherings.manager.PlayerZoneControllerCompoents;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.phasemanager.GamePhase;
 import lordoftherings.gui.PlayerZoneComponents.QuestValueTitleView;
 
@@ -12,10 +13,12 @@ public class QuestValueTitleViewController {
     private PlayerZoneViewController zoneVC;
     private GamePhase currentPhase;
     private QuestValueTitleView titleView;
+    private GameConfiguration config;
     
-    public QuestValueTitleViewController(PlayerZoneViewController zoneVC){
+    public QuestValueTitleViewController(PlayerZoneViewController zoneVC, GameConfiguration config){
         this.zoneVC = zoneVC;
         this.currentPhase = null;
+        this.config = config;
     }
     
     public void getCurrentPhase(){
@@ -23,7 +26,7 @@ public class QuestValueTitleViewController {
     }
     
     public QuestValueTitleView makeView(int x, int y){
-        titleView = new QuestValueTitleView(x, y);
+        titleView = new QuestValueTitleView(x, y, config);
         titleView.setVisible(false);
         return titleView;
     }

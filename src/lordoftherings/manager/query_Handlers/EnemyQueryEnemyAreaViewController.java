@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.EncounterZone;
 import lordoftherings.boardcomponents.EnemyArea;
 import lordoftherings.characters.Enemy;
@@ -28,22 +29,23 @@ public class EnemyQueryEnemyAreaViewController {
     private HashMap<Enemy, EnemyQueryEnemyViewController> controllerMap;
     private EnemyArea enemyArea;
     private EnemyQueryEnemyViewController enemyVC;
-    
+    private GameConfiguration config;
     
     public EnemyQueryEnemyAreaViewController(EnemyQueryViewController queryVC,
-            EncounterZone encounterZone, EnemyQueryActiveState enemyQAS){
+            EncounterZone encounterZone, EnemyQueryActiveState enemyQAS,
+            GameConfiguration config){
         this.encounterZone = encounterZone;
         this.queryVC = queryVC;
         this.enemyQAS = enemyQAS;
         this.handle = (EnemyQueryHandle) queryVC.getHandle();
         controllerMap = new HashMap<>();
         this.enemyArea = encounterZone.getStagingArea().getEnemyArea();
-        
+        this.config = config;
     }
     
     public EnemyQueryEnemyAreaView makeView(int x, int y){
         view = new EnemyQueryEnemyAreaView(x, y, encounterZone.getStagingArea().
-                getEnemyArea().getNumOfEnemies());
+                getEnemyArea().getNumOfEnemies(), config);
         view.add(enemyQAS.getFocusableText());
         view.addMouseMotionListener(enemyQAS.createMouseFollower());
         ArrayList<Enemy> listOfEnemies = enemyArea.getListOfEnemies();
@@ -51,7 +53,7 @@ public class EnemyQueryEnemyAreaViewController {
         for(int i = 0; i < listOfEnemies.size(); ++i){
             Enemy current = listOfEnemies.get(i);
             if(handle.getMatcher().matches(current)){
-                enemyVC = new EnemyQueryEnemyViewController(current, enemyQAS);
+                enemyVC = new EnemyQueryEnemyViewController(current, enemyQAS, config);
                 controllerMap.put(current, enemyVC);
                 EnemyQueryEnemyView enemyView = enemyVC.makeView(i*AllyZoneViewController.CARDS_AND_SPACE, 0);
                 enemyView.setVisible(true);
@@ -79,7 +81,7 @@ public class EnemyQueryEnemyAreaViewController {
         for(int i = 0; i < enemyArea.getNumOfEnemies(); ++i){
             Enemy current = enemyArea.getEnemyAt(i);
             if(!controllerMap.containsKey(current)){
-                enemyVC = new EnemyQueryEnemyViewController(current, enemyQAS);
+                enemyVC = new EnemyQueryEnemyViewController(current, enemyQAS, config);
                 controllerMap.put(current, enemyVC);
                 EnemyQueryEnemyView enemyView = enemyVC.makeView(i*AllyZoneViewController.CARDS_AND_SPACE, 0);
                 enemyView.setVisible(true);

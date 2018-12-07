@@ -3,7 +3,7 @@
 package lordoftherings.gui.PlayerZoneComponents;
 
 import javax.swing.JPanel;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 
 /**
@@ -12,9 +12,10 @@ import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
  */
 public class HeroView extends JPanel{
         
-    public HeroView(int x, int y){
-        setBounds(scale(x), scale(y), HandCardView.CARD_HEIGHT,
-                ActiveLocationView.CARD_COUNTER_HEIGHT);
+    public HeroView(int x, int y, GameConfiguration config){
+        setBounds(config.scale(x), config.scale(y), 
+                config.scale(HandCardView.CARD_HEIGHT),
+                config.scale(ActiveLocationView.CARD_COUNTER_HEIGHT));
         setLayout(null);
         setOpaque(false);
     }

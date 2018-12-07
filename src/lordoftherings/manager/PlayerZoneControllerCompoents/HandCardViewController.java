@@ -5,6 +5,7 @@ package lordoftherings.manager.PlayerZoneControllerCompoents;
 import lordoftherings.manager.actionComponents.Actionable;
 import java.util.ArrayList;
 import javax.swing.JComponent;
+import lordoftherings.GameConfiguration;
 import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.cards.PlayerCard;
@@ -20,16 +21,18 @@ public class HandCardViewController implements Actionable{
     private PlayerCard card;
     private HandCardView view;
     private BoardActiveState bas;
+    private GameConfiguration config;    
     
-    
-    public HandCardViewController(HandViewController hvc, PlayerCard wantedCard, BoardActiveState bas){
+    public HandCardViewController(HandViewController hvc, PlayerCard wantedCard, 
+            BoardActiveState bas, GameConfiguration config){
         this.handvc = hvc;
         this.card = wantedCard;
         this.bas = bas;
+        this.config = config;
     }
     
     public HandCardView makeView(int x, int y){
-        view = new HandCardView(this, card.getIdentity(),x,y);
+        view = new HandCardView(this, card.getIdentity(), x, y, config);
         view.addMouseMotionListener(bas.createMouseFollower());
         view.setEditable(false);
         view.setVisible(true);
@@ -41,7 +44,7 @@ public class HandCardViewController implements Actionable{
     }
     
     void updateView(int newX, int newY) {
-        view.setLocation(newX, newY);
+        view.setLocation(config.scale(newX), config.scale(newY));
     }
     
     @Override

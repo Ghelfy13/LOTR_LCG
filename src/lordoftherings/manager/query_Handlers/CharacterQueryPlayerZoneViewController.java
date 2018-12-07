@@ -2,11 +2,12 @@
 
 package lordoftherings.manager.query_Handlers;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.PlayerZone;
-import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.gui.query_components.QueryCharacterAreaView;
 import lordoftherings.gui.query_components.QueryPlayerZoneView;
-import lordoftherings.manager.PlayerZoneControllerCompoents.PlayerZoneViewController;
+import static lordoftherings.manager.PlayerZoneControllerCompoents.PlayerZoneViewController.CHAR_AREA_X;
+import static lordoftherings.manager.PlayerZoneControllerCompoents.PlayerZoneViewController.CHAR_AREA_Y;
 import lordoftherings.transaction_managers.CharacterQueryHandle;
 
 /**
@@ -20,27 +21,27 @@ public class CharacterQueryPlayerZoneViewController {
     private QueryCharacterAreaViewController charAreaVC;
     private CharacterQueryActiveState charQAS;
     private CharacterQueryHandle handle;
+    private GameConfiguration config;
     
     
     public CharacterQueryPlayerZoneViewController(CharacterQueryViewController queryController,
-            PlayerZone playerZone, CharacterQueryActiveState charQAS){
+            PlayerZone playerZone, CharacterQueryActiveState charQAS, GameConfiguration config){
         this.playerZone = playerZone;
         this.queryVC = queryController;
         this.charAreaVC = new QueryCharacterAreaViewController(
                 this, playerZone.getCharZone().getHeroArea(), 
                 playerZone.getCharZone().getAllyArea(),
-                charQAS);
+                charQAS, config);
         this.charQAS = charQAS;
         this.handle = (CharacterQueryHandle) queryController.getHandle();
+        this.config = config;
     }
     
     public QueryPlayerZoneView makeView(int x, int y){
-        zoneView = new QueryPlayerZoneView(x, y);
+        zoneView = new QueryPlayerZoneView(x, y, config);
         zoneView.addMouseMotionListener(charQAS.createMouseFollower());
-        QueryCharacterAreaView charAreaView = charAreaVC.makeView(
-                PlayerZoneViewController.DECK_X + HandCardView.CARD_WIDTH + 20, 
-                HandCardView.CARD_HEIGHT + 
-                PlayerZoneViewController.DISTANCE_BT_FIELDS);
+        QueryCharacterAreaView charAreaView = charAreaVC.makeView(CHAR_AREA_X, 
+                CHAR_AREA_Y);
         zoneView.add(charAreaView);
         charAreaView.setVisible(true);
         zoneView.setVisible(true);

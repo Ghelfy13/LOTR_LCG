@@ -3,11 +3,10 @@
 package lordoftherings.gui.query_components;
 
 import java.awt.Color;
-import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 import lordoftherings.gui.AvailableActionsView;
 
 /**
@@ -15,17 +14,18 @@ import lordoftherings.gui.AvailableActionsView;
  * @author Amanda
  */
 public class QueryMessageView extends JTextArea{
-    public static final int MESSAGE_DIMENSIONS = scale(500);
+    public static final int MESSAGE_DIMENSIONS = 500;
     
-    public QueryMessageView(int x, int y, String description){
-        setBounds(scale(x), scale(y), MESSAGE_DIMENSIONS, MESSAGE_DIMENSIONS);
+    public QueryMessageView(int x, int y, String description, GameConfiguration config){
+        setBounds(config.scale(x), config.scale(y), config.scale(MESSAGE_DIMENSIONS), 
+                config.scale(MESSAGE_DIMENSIONS));
         setText(description);
         setBackground(Color.white);
         setLayout(null);
         setOpaque(true);
         setAlignmentX(CENTER_ALIGNMENT);
         setAlignmentY(CENTER_ALIGNMENT);
-        setFont(AvailableActionsView.MESSAGE_FONT);
+        setFont(config.getFonts().getMessageFont());
         setLineWrap(true);
         setWrapStyleWord(true);
         Border queryBorder = BorderFactory.createMatteBorder(5,5,5,5,Color.BLACK);

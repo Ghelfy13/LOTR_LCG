@@ -5,7 +5,7 @@ package lordoftherings.gui.query_components;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-import static lordoftherings.GameConfiguration.scale;
+import lordoftherings.GameConfiguration;
 import lordoftherings.gui.EncounterZoneComponents.EncounterDiscardPileView;
 import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 
@@ -15,9 +15,12 @@ import lordoftherings.gui.PlayerZoneComponents.HandCardView;
  */
 public class DiscardPileQueryPileView extends JPanel{
     
-    public DiscardPileQueryPileView(int x, int y){
-        setBounds(scale(x), scale(y), HandCardView.CARD_WIDTH + EncounterDiscardPileView.CARD_BORDER,
-                HandCardView.CARD_HEIGHT + EncounterDiscardPileView.CARD_BORDER);
+    public DiscardPileQueryPileView(int x, int y, GameConfiguration config){
+        setBounds(config.scale(x), config.scale(y), 
+                config.scale(HandCardView.CARD_WIDTH + 
+                        EncounterDiscardPileView.CARD_BORDER),
+                config.scale(HandCardView.CARD_HEIGHT + 
+                        EncounterDiscardPileView.CARD_BORDER));
         setOpaque(true);
         setLayout(null);
         Color background = new Color(164, 117, 170);

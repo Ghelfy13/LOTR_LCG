@@ -2,6 +2,7 @@
 
 package lordoftherings.manager.BoardControllerComponents;
 
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.gui.EndOfGameMessageView;
 import lordoftherings.gui.EndOfGameView;
@@ -13,11 +14,13 @@ public class EndOfGameViewController {
     private EndOfGameMessageView messageView;
     private EndOfGameView view;
     private Board board;
+    private GameConfiguration config;
     public static final int X_VALUE = 300;
     public static final int Y_VALUE = 300;
     
-    public EndOfGameViewController(Board myBoard){
+    public EndOfGameViewController(Board myBoard, GameConfiguration config){
         this.board = myBoard;
+        this.config = config;
     }
     
     public EndOfGameView makeView(){
@@ -47,9 +50,9 @@ public class EndOfGameViewController {
                         " = " + baseWithVPAndRounds + "\n";
                 String totalScore = "Total Score: " + board.calculateEndGameScore();
                 messageView = new EndOfGameMessageView(X_VALUE, Y_VALUE, firstLine +
-                        secondLine + score + victoryPoints + rounds + totalScore);
+                        secondLine + score + victoryPoints + rounds + totalScore, config);
             }else{
-                messageView = new EndOfGameMessageView(X_VALUE, Y_VALUE, "Heros Failed");
+                messageView = new EndOfGameMessageView(X_VALUE, Y_VALUE, "Heros Failed", config);
             }
             view.add(messageView);
             view.setVisible(true);

@@ -6,25 +6,26 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import static lordoftherings.GameConfiguration.scale;
-import static lordoftherings.gui.SubPhaseView.SUBPHASE_FONT_SIZE;
+import lordoftherings.GameConfiguration;
 
 /**
  *
  * @author Amanda
  */
 public class VictoryPointsLabelView extends JLabel{
-    public static final Font PHASE_FONT = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, scale(25));
-    public static final int VPLABEL_HEIGHT = scale(50);
     
-    public VictoryPointsLabelView(int x, int y, int numOfPoints){
-        setBounds(scale(x), scale(y), PhaseView.PHASE_BUTTON_WIDTH, VPLABEL_HEIGHT);
+    public static final int VPLABEL_HEIGHT = 50;
+    
+    public VictoryPointsLabelView(int x, int y, int numOfPoints, GameConfiguration config){
+        setBounds(config.scale(x), config.scale(y), 
+                config.scale(PhaseView.PHASE_BUTTON_WIDTH), 
+                config.scale(VPLABEL_HEIGHT));
         setText("Total Victory Points: " + numOfPoints);
         setLayout(null);
         setOpaque(true);
         setBackground(Color.CYAN);
         setVerticalAlignment(SwingConstants.CENTER);
         setHorizontalAlignment(SwingConstants.CENTER);
-        setFont(PHASE_FONT);
+        setFont(config.getFonts().getVictoryPointsLabelFont());
     }
 }

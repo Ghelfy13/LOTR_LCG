@@ -3,15 +3,17 @@
 package lordoftherings.manager.query_Handlers;
 
 import java.awt.Point;
+import lordoftherings.GameConfiguration;
 import lordoftherings.boardcomponents.DiscardPile;
-import lordoftherings.gui.EncounterZoneComponents.ActiveLocationView;
 import lordoftherings.gui.query_components.DiscardPileQueryPlayerZoneView;
 import lordoftherings.gui.query_components.DiscardPileQueryView;
 import lordoftherings.gui.query_components.QueryMessageView;
 import lordoftherings.gui.query_components.QueryView;
-import lordoftherings.manager.BoardControllerComponents.BoardViewController;
+import static lordoftherings.manager.BoardControllerComponents.BoardViewController.DISTANCE_FROM_FRAME;
+import static lordoftherings.manager.BoardControllerComponents.BoardViewController.PLAYERZONE_Y_COORDINATE;
 import lordoftherings.manager.BoardControllerComponents.GameManagerViewController;
 import lordoftherings.manager.actionComponents.GlobalViewController;
+import static lordoftherings.manager.query_Handlers.CharacterQueryViewController.MESSAGE_X;
 import lordoftherings.transaction_managers.DiscardPileQueryHandle;
 
 /**
@@ -25,20 +27,20 @@ public class DiscardPileQueryViewController extends QueryViewController<DiscardP
     private DiscardPileQueryActiveState dPileQAS;
     private DiscardPileQueryPlayerZoneViewController playerZoneVC;
 
-    public DiscardPileQueryViewController(GameManagerViewController gameMVC, DiscardPileQueryHandle handle) {
-        super(gameMVC, handle);
+    public DiscardPileQueryViewController(GameManagerViewController gameMVC, 
+            DiscardPileQueryHandle handle, GameConfiguration config) {
+        super(gameMVC, handle, config);
     }
 
     @Override
     public QueryView makeView(String description) {
-        view = new DiscardPileQueryView();
+        view = new DiscardPileQueryView(config);
         view.add(dPileQAS.getFocusableText());
         view.addMouseMotionListener(dPileQAS.createMouseFollower());
-        QueryMessageView messageView = messageVC.makeView(1995, 0, description);
+        QueryMessageView messageView = messageVC.makeView(MESSAGE_X, 0, description);
         view.add(messageView);
-        DiscardPileQueryPlayerZoneView playerZoneView = playerZoneVC.makeView(BoardViewController.DISTANCE_FROM_FRAME, 
-                ActiveLocationView.CARD_COUNTER_HEIGHT + BoardViewController.
-                DISTANCE_BETWEEN_ENCOUNTER_PLAYER_ZONE);
+        DiscardPileQueryPlayerZoneView playerZoneView = 
+                playerZoneVC.makeView(DISTANCE_FROM_FRAME, PLAYERZONE_Y_COORDINATE);
         view.add(playerZoneView);
         view.setVisible(true);
         return view;

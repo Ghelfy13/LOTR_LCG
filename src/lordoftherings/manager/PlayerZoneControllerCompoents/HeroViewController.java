@@ -6,10 +6,10 @@ import lordoftherings.manager.actionComponents.Actionable;
 import lordoftherings.manager.actionComponents.ActionableMouseListener;
 import java.util.ArrayList;
 import javax.swing.JComponent;
+import lordoftherings.GameConfiguration;
 import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.characters.Hero;
-import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 import lordoftherings.gui.PlayerZoneComponents.HeroCardView;
 import lordoftherings.gui.PlayerZoneComponents.HeroPoolView;
 import lordoftherings.gui.PlayerZoneComponents.HeroView;
@@ -30,24 +30,26 @@ public class HeroViewController implements Actionable{
     private HeroCardView cardView;
     private BoardActiveState bas;
     public static final int POOL_X = 200;
+    private GameConfiguration config;
     
-    
-    public HeroViewController(Hero passedInHero, CharacterAreaViewController charAreaVC, BoardActiveState bas){
+    public HeroViewController(Hero passedInHero, CharacterAreaViewController charAreaVC, 
+            BoardActiveState bas, GameConfiguration config){
         this.wantedHero = passedInHero;
         this.characterAreaVC = charAreaVC;
         this.view = null;
-        this.heroCardVC = new HeroCardViewController(wantedHero, bas);
+        this.heroCardVC = new HeroCardViewController(wantedHero, bas, config);
         this.bas = bas;
+        this.config = config;
     }
     
     public HeroView makeView(int x, int y){
-        view = new HeroView(x, y);
+        view = new HeroView(x, y, config);
         view.addMouseMotionListener(bas.createMouseFollower());
         cardView = heroCardVC.makeView(0,0);
         cardView.addMouseListener(new ActionableMouseListener(bas, this));
         view.add(cardView);
         cardView.setVisible(true);
-        heroPoolVC = new HeroPoolViewController(this);
+        heroPoolVC = new HeroPoolViewController(this, config);
         HeroPoolView poolView = heroPoolVC.makeView(0, POOL_X, wantedHero.getNumOfResources());
         poolView.setVisible(true);
         view.add(poolView);
