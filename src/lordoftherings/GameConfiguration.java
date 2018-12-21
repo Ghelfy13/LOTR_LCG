@@ -25,7 +25,17 @@ public class GameConfiguration {//Creates the scaling factor for the size of the
     }
     
     public int scaleFont(int value) {
-        // TODO change later.
+        if(value == 30){
+            if(scalar >= 0.75 && scalar < 1){
+                return 20;
+            }else if(scalar < 0.75 && scalar > 0.5){
+                return 16;
+            }else if(scalar <= 0.5 && scalar > 0.25){
+                return 12;
+            }else if(scalar <= 0.25){
+                return 10;
+            }
+        }
         return scale(value); 
     }
     

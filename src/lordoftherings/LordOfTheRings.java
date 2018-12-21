@@ -124,12 +124,12 @@ public class LordOfTheRings {
         Identification GleowineID = new Identification(ExpansionName.CORE, 62);
         
         mockDeck.add(PlayerCardDatabase.get(GleowineID), 3);
-        //mockDeck.add(PlayerCardDatabase.get(QuickStrikeID), 2);
-        //mockDeck.add(PlayerCardDatabase.get(FeintID), 1);
-        //mockDeck.add(PlayerCardDatabase.get(WillOfWestID), 1);
-        //mockDeck.add(PlayerCardDatabase.get(GrimResolveID), 2);
-        //mockDeck.add(PlayerCardDatabase.get(LoreOfImladrisID), 3);
-        PlayerDeckBuild mockBuild = new PlayerDeckBuild(mockDeck, "Duck OverLord");
+        mockDeck.add(PlayerCardDatabase.get(QuickStrikeID), 2);
+        mockDeck.add(PlayerCardDatabase.get(FeintID), 1);
+        mockDeck.add(PlayerCardDatabase.get(WillOfWestID), 1);
+        mockDeck.add(PlayerCardDatabase.get(GrimResolveID), 2);
+        mockDeck.add(PlayerCardDatabase.get(LoreOfImladrisID), 3);
+        PlayerDeckBuild mockBuild = new PlayerDeckBuild(mockDeck);
         mockBuild.addHero(first);
         mockBuild.addHero((HeroCardModel)PlayerCardDatabase.get(DunhereID));
         Identification BeravorID = new Identification(ExpansionName.CORE, 12);
@@ -139,7 +139,7 @@ public class LordOfTheRings {
         
         EncounterDeckBuild encounterDB = new EncounterDeckBuild();
         QuestSetBuild questSB = new QuestSetBuild();
-        //questSB.addQuestCard(secondQuest);
+        questSB.addQuestCard(secondQuest);
         questSB.addQuestCard(firstQuest);
         EncounterBuild enemyBuild = new EncounterBuild(encounterDB, questSB);
         Enemy enemy = new Enemy(firstEnemy.createCard());

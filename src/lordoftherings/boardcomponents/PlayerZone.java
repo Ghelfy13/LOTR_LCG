@@ -34,7 +34,7 @@ public class PlayerZone {
         this.ownerID = ownerID;
         this.board = board;
         this.playerIsAlive = true;
-        this.name = new PlayerName(name, ownerID, this);
+        this.name = new PlayerName(ownerID, this, name);
         this.threatDial = new ThreatDial(field.getInitinalThreat(), ownerID, this);
         deadHeros = new ArrayList<>();
     }

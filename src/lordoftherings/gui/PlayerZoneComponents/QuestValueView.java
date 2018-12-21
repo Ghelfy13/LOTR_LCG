@@ -22,7 +22,7 @@ public class QuestValueView extends JLabel{
         setOpaque(true);
         setText("" + 0);
         setBackground(Color.CYAN);
-        setFont(config.getFonts().getQuestValueFont());
+        setFont(config.getFonts().getQuestPhaseFont());
         setVerticalAlignment(SwingConstants.CENTER);
         setHorizontalAlignment(SwingConstants.CENTER);
     }

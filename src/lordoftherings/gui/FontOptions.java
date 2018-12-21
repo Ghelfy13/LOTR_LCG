@@ -17,27 +17,27 @@ public class FontOptions {
     private Font messageFont;
     private Font cardFont;
     private Font endOfGameFont;
-    private Font phaseFont;
+    private Font questPhaseFont;
     private Font threatFont;
-    private Font questValueFont;
     private Font victoryPointsLabelFont;
+    private Font subPhaseFont;
 
     public FontOptions(GameConfiguration configuration) {
         messageFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, configuration.scaleFont(36));
         cardFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, configuration.scaleFont(12));
         endOfGameFont = new Font(Font.SERIF, Font.BOLD, configuration.scaleFont(50));
-        phaseFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, configuration.scaleFont(30));
+        questPhaseFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, configuration.scaleFont(30));
         threatFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, configuration.scaleFont(24));
-        questValueFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, configuration.scaleFont(20));
         victoryPointsLabelFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, configuration.scaleFont(25));
+        subPhaseFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, configuration.scaleFont(20));
+    }
+    
+    public Font getSubPhaseFont(){
+        return subPhaseFont;
     }
     
     public Font getVictoryPointsLabelFont(){
         return victoryPointsLabelFont;
-    }
-    
-    public Font getQuestValueFont(){
-        return questValueFont;
     }
     
     public Font getThreatFont(){
@@ -56,8 +56,8 @@ public class FontOptions {
         return endOfGameFont;
     }
     
-    public Font getPhaseFont(){
-        return phaseFont;
+    public Font getQuestPhaseFont(){
+        return questPhaseFont;
     }
     
      /*public Font getFont(){

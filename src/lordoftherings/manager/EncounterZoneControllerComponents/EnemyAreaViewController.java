@@ -57,7 +57,7 @@ public class EnemyAreaViewController {
     
     public void updateView(int x){
         view.setBounds(config.scale(x), config.scale(DISTANCE_FROM_FRAME), config.scale(ActiveLocationView.PARENT_WIDTH*area.getNumOfEnemies()), 
-                config.scale(HandCardView.CARD_HEIGHT));
+                config.scale(ActiveLocationView.CARD_COUNTER_HEIGHT));
         HashSet<Enemy> cardsToRemove = new HashSet<>();
         for(Map.Entry<Enemy, EnemyViewController> entry: controllerMap.entrySet()){
             if(!area.findCard(entry.getKey())){

@@ -29,6 +29,7 @@ public class PhaseViewController {
     
     public PhaseView updateView(){
         view.setText(boardVC.getCurrentPhase());
+        
         view.revalidate();
         view.repaint();
         return view;

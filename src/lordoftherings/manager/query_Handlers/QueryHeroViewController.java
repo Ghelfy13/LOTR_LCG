@@ -37,6 +37,7 @@ public class QueryHeroViewController implements Selectable<GameCharacter>{
         this.charQAS = charQAS;
         view = null;
         isSelected = false;
+        this.config = config;
     }
     
     public QueryHeroView makeView(int x, int y){

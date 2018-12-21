@@ -3,7 +3,6 @@
 package lordoftherings.gui.PlayerZoneComponents;
 
 import java.awt.Color;
-import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import lordoftherings.GameConfiguration;
@@ -20,7 +19,7 @@ public class ThreatDialView extends JLabel{
         setOpaque(true);
         setText("" + initialThreat);
         setBackground(Color.GREEN);
-        setFont(config.getFonts().getQuestValueFont());
+        setFont(config.getFonts().getQuestPhaseFont());
         setVerticalAlignment(SwingConstants.CENTER);
         setHorizontalAlignment(SwingConstants.CENTER);
     }

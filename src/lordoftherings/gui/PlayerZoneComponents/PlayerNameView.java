@@ -23,7 +23,7 @@ public class PlayerNameView extends JLabel{
         setVerticalAlignment(SwingConstants.CENTER);
         setHorizontalAlignment(SwingConstants.CENTER);
         setLayout(null);
-        setFont(config.getFonts().getQuestValueFont());
+        setFont(config.getFonts().getQuestPhaseFont());
         setBackground(Color.CYAN);
         setOpaque(true);
     }

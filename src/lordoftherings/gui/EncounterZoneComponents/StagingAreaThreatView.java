@@ -25,7 +25,7 @@ public class StagingAreaThreatView extends JLabel{
         setOpaque(true);
         setVerticalAlignment(SwingConstants.CENTER);
         setHorizontalAlignment(SwingConstants.CENTER);
-        setFont(config.getFonts().getQuestValueFont());
+        setFont(config.getFonts().getQuestPhaseFont());
     }
     
 }

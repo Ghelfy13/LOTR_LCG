@@ -25,7 +25,7 @@ public class ContinueButtonView extends JButton {
         setVerticalAlignment(SwingConstants.CENTER);
         setLayout(null);
         setOpaque(true);
-        setFont(config.getFonts().getQuestValueFont());
+        setFont(config.getFonts().getQuestPhaseFont());
         if(canContinue){
            setBackground(Color.LIGHT_GRAY); 
         }

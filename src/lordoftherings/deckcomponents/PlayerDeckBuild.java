@@ -4,6 +4,7 @@ package lordoftherings.deckcomponents;
 import lordoftherings.cards.HeroCard;
 import lordoftherings.cardmodel.HeroCardModel;
 import java.util.ArrayList;
+import java.util.Scanner;
 /**
  *
  * @author Amanda
@@ -14,10 +15,10 @@ public class PlayerDeckBuild {
     private String playerName;
     
     
-    public PlayerDeckBuild(DeckBuild deck, String name){
+    public PlayerDeckBuild(DeckBuild deck){
         this.playersDeck = deck;
         listOfHeros = new ArrayList(); 
-        playerName = name;
+        this.playerName = "Ducky Overlord";
     }
     
     public DeckBuild getPlayersDeck(){

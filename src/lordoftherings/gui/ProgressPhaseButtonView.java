@@ -25,7 +25,7 @@ public class ProgressPhaseButtonView extends JButton{
         setVerticalAlignment(SwingConstants.CENTER);
         setLayout(null);
         setOpaque(true);
-        setFont(config.getFonts().getQuestValueFont());
+        setFont(config.getFonts().getQuestPhaseFont());
         setBackground(Color.CYAN);
     }
     

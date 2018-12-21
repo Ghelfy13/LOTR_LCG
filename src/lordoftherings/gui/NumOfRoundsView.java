@@ -24,7 +24,7 @@ public class NumOfRoundsView extends JLabel{
         setOpaque(true);
         setText("" + numOfRounds);
         setBackground(Color.ORANGE);
-        setFont(config.getFonts().getQuestValueFont());
+        setFont(config.getFonts().getQuestPhaseFont());
         setVerticalAlignment(SwingConstants.CENTER);
         setHorizontalAlignment(SwingConstants.CENTER);
     }

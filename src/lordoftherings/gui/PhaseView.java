@@ -3,7 +3,6 @@
 package lordoftherings.gui;
 
 import java.awt.Color;
-import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import lordoftherings.GameConfiguration;
@@ -25,6 +24,6 @@ public class PhaseView extends JLabel {
         setBackground(Color.ORANGE);
         setVerticalAlignment(SwingConstants.CENTER);
         setHorizontalAlignment(SwingConstants.CENTER);
-        setFont(config.getFonts().getPhaseFont());
+        setFont(config.getFonts().getQuestPhaseFont());
     }
 }

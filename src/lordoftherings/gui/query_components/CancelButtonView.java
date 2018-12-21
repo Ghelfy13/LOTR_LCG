@@ -24,7 +24,7 @@ public class CancelButtonView extends JButton{
         setVerticalAlignment(SwingConstants.CENTER);
         setLayout(null);
         setOpaque(true);
-        setFont(config.getFonts().getQuestValueFont());
+        setFont(config.getFonts().getQuestPhaseFont());
         if(canCancel){
             setBackground(Color.LIGHT_GRAY);
         }

@@ -8,6 +8,7 @@ import lordoftherings.actions.Action;
 import lordoftherings.boardcomponents.Board;
 import lordoftherings.gui.ActionView;
 import lordoftherings.gui.AvailableActionsView;
+import lordoftherings.gui.PlayerZoneComponents.HandCardView;
 
 /**
  *
@@ -50,12 +51,12 @@ public class AvailableActionsViewController{
             listOfActions.clear();
             currentActionable.getActions(listOfActions, 0, boardState);
             if(listOfActions.isEmpty()){
-                view.setBounds(config.scale(x), config.scale(y), 
+                view.setBounds(x, y, 
                         config.scale(EMPTY_BOX_SIZE), config.scale(EMPTY_BOX_SIZE));
             }else{
                 view.setBounds(x, y,
-                        (ActionView.BOX_DIMENSIONS +5)*listOfActions.size() +5,
-                        EMPTY_BOX_SIZE);
+                        config.scale((ActionView.BOX_DIMENSIONS +5)*listOfActions.size() +5),
+                        config.scale(EMPTY_BOX_SIZE));
             }
             for(int i = 0; i < listOfActions.size(); ++i){
                 Action currentAction = listOfActions.get(i);

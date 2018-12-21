@@ -13,7 +13,6 @@ import lordoftherings.GameConfiguration;
  * @author Amanda
  */
 public class SubPhaseView extends JLabel{
-    public static final int SUBPHASE_FONT_SIZE = 20;
     public static final int SUBPHASE_WIDTH = 
             ProgressPhaseButtonView.PROGRESS_BUTTON_WIDTH + PhaseView.PHASE_BUTTON_WIDTH;
     public static final int SUBPHASE_HEIGHT = 40;
@@ -27,7 +26,6 @@ public class SubPhaseView extends JLabel{
         setBackground(Color.GREEN);
         setVerticalAlignment(SwingConstants.CENTER);
         setHorizontalAlignment(SwingConstants.CENTER);
-        Font phaseFont = new Font(Font.SERIF, Font.BOLD|Font.ITALIC, SUBPHASE_FONT_SIZE);
-        setFont(phaseFont);
+        setFont(config.getFonts().getSubPhaseFont());
     }
 }

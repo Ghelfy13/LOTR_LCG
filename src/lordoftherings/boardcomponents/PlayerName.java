@@ -2,6 +2,9 @@
 
 package lordoftherings.boardcomponents;
 
+import java.io.IOException;
+import java.util.Scanner;
+
 /**
  *
  * @author Amanda
@@ -11,11 +14,12 @@ public class PlayerName {
     private PlayerZone zone;
     private String name;
     private int ownerID;
+    private Scanner screen;
     
-    public PlayerName(String name, int ownerID, PlayerZone zone){
+    public PlayerName(int ownerID, PlayerZone zone, String name){
         this.zone = zone;
-        this.name = name;
         this.ownerID = ownerID;
+        this.name = name;
     }
     
     public String getPlayerName(){
