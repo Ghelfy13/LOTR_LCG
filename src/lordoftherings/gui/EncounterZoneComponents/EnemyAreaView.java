@@ -18,7 +18,7 @@ public class EnemyAreaView extends JPanel{
         setBounds(config.scale(x), config.scale(y), config.scale(length),
                 config.scale(ActiveLocationView.CARD_COUNTER_HEIGHT));
         setLayout(null);
-        setOpaque(true);
+        setOpaque(false);
         this.addMouseMotionListener(mmListener);
         
     }

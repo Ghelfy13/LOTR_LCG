@@ -43,12 +43,7 @@ public class Field {//Is subPart of the PlayerZone where all the faceup cards go
         int numResources = characterZone.getTotalNumResources();
         return (cost <= numResources);
     }
-    
-    public String setReason(AllyCard myAlly){
-        return "";
-        //TODO
-    }
-    
+        
     public boolean addAllyToCharacterZone(AllyCard newCard){
         return characterZone.addAllyToAllyZone(newCard);
     }

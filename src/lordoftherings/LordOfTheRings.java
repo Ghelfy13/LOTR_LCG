@@ -160,7 +160,7 @@ public class LordOfTheRings {
         final int PANE_WIDTH = 2500;
         final int PANE_HEIGHT = 1300;
         
-        GameConfiguration config = GameConfiguration.fromValue(0.5);
+        GameConfiguration config = GameConfiguration.fromValue(1.0);
         JFrame LOTRFrame = new JFrame("LORD OF THE RINGS");
         LOTRFrame.setSize(
             config.scale(PANE_WIDTH),

@@ -25,7 +25,6 @@ public class AvailableActionsViewController{
     public static final int EMPTY_BOX_SIZE = ActionView.BOX_DIMENSIONS + 10;
     
     public AvailableActionsViewController(BoardActiveState boardAS, GameConfiguration config){
-        //TODO: FINISH
         this.listOfActions = new ArrayList<>();
         this.boardAS = boardAS;
         this.view = null;

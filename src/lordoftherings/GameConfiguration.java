@@ -10,7 +10,7 @@ import lordoftherings.gui.FontOptions;
  */
 public class GameConfiguration {//Creates the scaling factor for the size of the game on someones scream
     
-    private static final double DEFAULT_SCALE = 0.5;
+    private static final double DEFAULT_SCALE = 1.0;
     
     private double scalar;
     private FontOptions fonts;
