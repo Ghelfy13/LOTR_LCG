@@ -45,7 +45,7 @@ public class ExhaustToDrawEffect implements Effect {
         board.handlePlayerZoneQuery(new PlayerQueryHandle(requirements,
             new ExhaustToDrawHandler(board, character, drawValue),
             new ClearSuspensionHandler(board)),
-            "Choose a player to draw " + drawValue + " cards.");
+            "Choose a player to draw " + drawValue + " card.");
         return true;
     }
 
@@ -79,7 +79,7 @@ public class ExhaustToDrawEffect implements Effect {
 
     @Override
     public String createDescription(PlayerCard card) {
-        return "Exhaust Beravor to allow a selected player to draw 2 cards";
+        return "Exhaust Gleowine to allow a selected player to draw a card";
     }
 
     @Override

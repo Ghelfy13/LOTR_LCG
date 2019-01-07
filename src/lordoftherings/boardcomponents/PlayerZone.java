@@ -29,6 +29,7 @@ public class PlayerZone {
     public PlayerZone(PlayerDeckBuild playerDeckAndHeros, int ownerID, Board board, String name){
         playersHand = new Hand(ownerID);
         playersDeck = new PlayerDeck(ownerID, playerDeckAndHeros.getPlayersDeck());
+        playersDeck.shuffle();
         dPile = new DiscardPile(ownerID);
         field = new Field(playerDeckAndHeros.getHeros(), ownerID, this);
         this.ownerID = ownerID;
