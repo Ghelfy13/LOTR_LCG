@@ -18,6 +18,7 @@ public abstract class CharacterCardModel extends PlayerCardModel{
     protected int attack;
     protected int defense;
     protected int hitPoints;
+    protected ArrayList<KeyWords> keyWords;
     
     public CharacterCardModel(
         String title, 
@@ -31,12 +32,18 @@ public abstract class CharacterCardModel extends PlayerCardModel{
         int hitPoints,
         String effect,
         ArrayList<Effect> list,
-        boolean isUnique){
+        boolean isUnique,
+        ArrayList<KeyWords> characteristics){
         super(title, sphereOfInfluence, type, trait, cardID, effect, list, isUnique);
         this.willPower = willPower;
         this.attack = attack;
         this.defense = defense;
         this.hitPoints = hitPoints;
+        this.keyWords = characteristics;
+    }
+    
+    public ArrayList<KeyWords> getKeyWords(){
+        return keyWords;
     }
     
     public int getWillPower(){

@@ -10,6 +10,7 @@ import lordoftherings.boardcomponents.Board;
 import lordoftherings.boardcomponents.Location;
 import lordoftherings.cardmodel.EnemyCardModel;
 import lordoftherings.cardmodel.HeroCardModel;
+import lordoftherings.cardmodel.KeyWords;
 import lordoftherings.cardmodel.LocationCardModel;
 import lordoftherings.cardmodel.PlayerCardModel;
 import lordoftherings.cardmodel.QuestCardModel;
@@ -49,6 +50,8 @@ public class LordOfTheRings {
         }
         
         Identification LocationID = new Identification(ExpansionName.CORE, 113);
+        ArrayList<KeyWords> anduinKeyWords = new ArrayList<>();
+        anduinKeyWords.add(KeyWords.FORCED);
         LocationCardModel firstLocation = new LocationCardModel(
         "Banks of the Anduin", 
         EncounterType.LOCATION, 
@@ -57,11 +60,12 @@ public class LordOfTheRings {
         1,
         3,
         2,
-        "");
+        "",
+        anduinKeyWords);
         
-        Identification OrcsID = new Identification (ExpansionName.CORE, 3);
+        Identification OrcsID = new Identification (ExpansionName.CORE, 89);
         EnemyCardModel firstEnemy = new EnemyCardModel(
-            "Orcs of Dol Guldur", 
+            "Dol Guldur Orcs", 
             EncounterType.ENEMY,
             new String[]{"Orc", "Dol Guldur"},
             OrcsID,
@@ -71,9 +75,13 @@ public class LordOfTheRings {
             2,
             1,
             2,
-            "");
+            "",
+            new ArrayList<>());
         
         Identification AragornID = new Identification(ExpansionName.CORE, 1);
+        ArrayList<KeyWords> aragornKeyWords = new ArrayList<>();
+        aragornKeyWords.add(KeyWords.SENTINEL);
+        aragornKeyWords.add(KeyWords.RESPONSE);
         HeroCardModel first = new HeroCardModel(
                 "Aragorn",
                 SphereOfInfluence.LEADERSHIP,
@@ -87,7 +95,8 @@ public class LordOfTheRings {
                 12,
                 0,
                 "",
-                new ArrayList<>());
+                new ArrayList<>(),
+                aragornKeyWords);
         
         Identification QuestID2 = new Identification(ExpansionName.CORE, 122);
         QuestCardModel firstQuest = new QuestCardModel(

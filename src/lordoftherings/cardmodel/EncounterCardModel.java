@@ -2,6 +2,7 @@
 
 package lordoftherings.cardmodel;
 
+import java.util.ArrayList;
 import lordoftherings.EncounterType;
 import lordoftherings.Identification;
 import lordoftherings.cards.EncounterCard;
@@ -17,19 +18,26 @@ public abstract class EncounterCardModel {
     protected Identification cardID;
     protected String effect;
     protected int victoryPoints;
+    protected ArrayList<KeyWords> keyWords;
     
     public EncounterCardModel(String title, 
             EncounterType type, 
             String [] traits, 
             Identification cardID,
             String effect,
-            int victoryPoints){
+            int victoryPoints,
+            ArrayList<KeyWords> characteristics){
         this.title = title;
         this.type = type;
         this.traits = traits;
         this.cardID = cardID;
         this.effect = effect;
         this.victoryPoints = victoryPoints;
+        this.keyWords = characteristics;
+    }
+    
+    protected ArrayList<KeyWords> getKeyWords(){
+        return keyWords;
     }
     
     protected String identifyTraits(){

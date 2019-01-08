@@ -2,6 +2,7 @@
 
 package lordoftherings.cardmodel;
 
+import java.util.ArrayList;
 import lordoftherings.EncounterType;
 import lordoftherings.Identification;
 import lordoftherings.cards.EnemyCard;
@@ -28,8 +29,9 @@ public class EnemyCardModel extends EncounterCardModel{
     int defense,
     int hitPoints,
     int victoryPoints,
-    String effect){
-        super(title, type, traits, cardID, effect, victoryPoints);
+    String effect,
+    ArrayList<KeyWords> keyWords){
+        super(title, type, traits, cardID, effect, victoryPoints, keyWords);
         this.engagementCost = engagementCost;
         this.threat = threat;
         this.attack = attack;

@@ -2,6 +2,7 @@
 
 package lordoftherings.cardmodel;
 
+import java.util.ArrayList;
 import lordoftherings.EncounterType;
 import lordoftherings.Identification;
 import lordoftherings.cards.LocationCard;
@@ -16,8 +17,9 @@ public class LocationCardModel extends EncounterCardModel{
             
     
     public LocationCardModel(String title, EncounterType type, String[] traits,
-            Identification cardID, int threat, int questPoints, int victoryPoints, String effect) {
-        super(title, type, traits, cardID, effect, victoryPoints);
+            Identification cardID, int threat, int questPoints, int victoryPoints, 
+            String effect, ArrayList<KeyWords> keyWords) {
+        super(title, type, traits, cardID, effect, victoryPoints, keyWords);
         this.threat = threat;
         this.questPoints = questPoints;
     }

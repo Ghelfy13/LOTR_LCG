@@ -30,7 +30,8 @@ public class HeroCardModel extends CharacterCardModel{
         int threatCost, 
         int resourcePool,
         String effect,
-        ArrayList<Effect> list){
+        ArrayList<Effect> list,
+        ArrayList<KeyWords> keyWords){
         super(
             title,
             sphereOfInfluence,
@@ -43,7 +44,8 @@ public class HeroCardModel extends CharacterCardModel{
             hitPoints,
             effect,
             list,
-            true);
+            true,
+            keyWords);
          this.threatCost = threatCost;
          this.resourcePool = resourcePool;
      }

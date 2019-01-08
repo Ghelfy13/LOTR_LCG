@@ -29,7 +29,8 @@ public class AllyCardModel extends CharacterCardModel {
         int cost,
         String effect,
         ArrayList<Effect> list,
-        boolean isUnique){
+        boolean isUnique,
+        ArrayList<KeyWords> keyWords){
         super(
             title,
             sphereOfInfluence,
@@ -42,7 +43,8 @@ public class AllyCardModel extends CharacterCardModel {
             hitPoints,
             effect,
             list,
-            isUnique);
+            isUnique,
+            keyWords);
         this.cost = cost;
     }
     
