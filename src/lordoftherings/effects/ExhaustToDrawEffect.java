@@ -29,7 +29,7 @@ import lordoftherings.transaction_managers.PlayerQueryRequirements;
  */
 public class ExhaustToDrawEffect implements Effect {
     
-    private int drawValue = 0;
+    private int drawValue;
     
     public ExhaustToDrawEffect(int num){
         drawValue = num;
@@ -45,7 +45,7 @@ public class ExhaustToDrawEffect implements Effect {
         board.handlePlayerZoneQuery(new PlayerQueryHandle(requirements,
             new ExhaustToDrawHandler(board, character, drawValue),
             new ClearSuspensionHandler(board)),
-            "Choose a player to draw " + drawValue + " card.");
+            "Choose a player to draw " + drawValue + " card(s).");
         return true;
     }
 
@@ -79,7 +79,8 @@ public class ExhaustToDrawEffect implements Effect {
 
     @Override
     public String createDescription(PlayerCard card) {
-        return "Exhaust Gleowine to allow a selected player to draw a card";
+        return "Exhaust " + card.getTitle() + " to allow a selected player to draw " + drawValue + " card(s)";
+        
     }
 
     @Override
