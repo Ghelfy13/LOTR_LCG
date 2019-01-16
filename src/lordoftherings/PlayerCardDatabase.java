@@ -3,10 +3,12 @@
 package lordoftherings;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import lordoftherings.cardmodel.AllyCardModel;
 import lordoftherings.cardmodel.EventCardModel;
 import lordoftherings.cardmodel.HeroCardModel;
+import lordoftherings.cardmodel.KeyWords;
 import lordoftherings.cardmodel.PlayerCardModel;
 import lordoftherings.deckcomponents.ExpansionName;
 import lordoftherings.deckcomponents.SphereOfInfluence;
@@ -58,6 +60,7 @@ public class PlayerCardDatabase {
         ArrayList<Effect> list = new ArrayList<>();
         list.add(healHero);
         Identification DaughterID = new Identification(ExpansionName.CORE, 23);
+        ArrayList<KeyWords> daughterList = new ArrayList<>(Arrays.asList(KeyWords.ACTION));
         AllyCardModel second = new AllyCardModel(
             "Daughter of Nimrodel",
             SphereOfInfluence.LORE,
@@ -71,7 +74,8 @@ public class PlayerCardDatabase {
             3,
             "Exhaust Daughter of Nimrodel to heal up to 2 damage on any 1 hero",
             list,
-            false);
+            false,
+            daughterList);
         cardMap.put(DaughterID, second);
         
         ReadyAllyToDiscardCardEffect discardToReady = new ReadyAllyToDiscardCardEffect();
@@ -123,6 +127,7 @@ public class PlayerCardDatabase {
         ArrayList<Effect> list5 = new ArrayList<>();
         list5.add(exhaustToDraw);
         Identification BeravorID = new Identification(ExpansionName.CORE, 12);
+        ArrayList<KeyWords> beravorList = new ArrayList<>(Arrays.asList(KeyWords.ACTION));
         HeroCardModel beravor = new HeroCardModel(
             "Beravor",
             SphereOfInfluence.LORE,
@@ -136,10 +141,12 @@ public class PlayerCardDatabase {
             10,
             4,
             "",
-            list5);
+            list5,
+            beravorList);
         cardMap.put(BeravorID, beravor);
         
         Identification DunhereID = new Identification(ExpansionName.CORE, 9);
+        ArrayList<KeyWords> dunhereList = new ArrayList<>(Arrays.asList(KeyWords.ACTION));
         HeroCardModel dunhere = new HeroCardModel(
             "Dunhere",
             SphereOfInfluence.SPIRIT,
@@ -153,7 +160,8 @@ public class PlayerCardDatabase {
             8,
             2,
             "",
-            new ArrayList<>());
+            new ArrayList<>(),
+            dunhereList);
         cardMap.put(DunhereID, dunhere);
         
         
@@ -162,6 +170,7 @@ public class PlayerCardDatabase {
         ArrayList<Effect> list6 = new ArrayList<>();
         list6.add(exhaustToRaiseWillPower);
         Identification FaramirID = new Identification(ExpansionName.CORE, 14);
+        ArrayList<KeyWords> faramirList = new ArrayList<>(Arrays.asList(KeyWords.ACTION));
         AllyCardModel faramir = new AllyCardModel(
             "Faramir",
             SphereOfInfluence.LEADERSHIP,
@@ -176,13 +185,15 @@ public class PlayerCardDatabase {
             "Exhaust Faramir to choose a player.  Each character controlled "
                     + "by the player gets +1 Willpower until the end of the phase.",
             list6,
-            true);
+            true,
+            faramirList);
         cardMap.put(FaramirID, faramir);
         
         ExhaustToDrawEffect exhaustToDrawGleowine = new ExhaustToDrawEffect(1);
         ArrayList<Effect> list7 = new ArrayList<>();
         list7.add(exhaustToDrawGleowine);
         Identification GleowineID = new Identification(ExpansionName.CORE, 62);
+        ArrayList<KeyWords> gleowineList = new ArrayList<>(Arrays.asList(KeyWords.ACTION));
         AllyCardModel gleowine = new AllyCardModel(
             "Gleowine",
             SphereOfInfluence.LORE,
@@ -196,7 +207,8 @@ public class PlayerCardDatabase {
             2,
             "Exhaust Gleowine to choose a player.  That player draws 1 card.",
             list7,
-            true);
+            true,
+            gleowineList);
         cardMap.put(GleowineID, gleowine);
         
         Modifier attack = new Modifier(1, TypeOfModifier.ATTACK, LifeSpanOfModifier.ENDOFPHASE);
