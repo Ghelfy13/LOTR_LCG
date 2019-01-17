@@ -5,7 +5,7 @@ import lordoftherings.cardmodel.PlayerCardModel;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
-import lordoftherings.PlayerCardIdentificationComparator;
+import lordoftherings.game_engine.GameData.PlayerCardIdentificationComparator;
 
 /**
  *

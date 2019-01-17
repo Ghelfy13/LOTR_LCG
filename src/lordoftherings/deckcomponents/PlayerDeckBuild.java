@@ -4,6 +4,7 @@ package lordoftherings.deckcomponents;
 import lordoftherings.cards.HeroCard;
 import lordoftherings.cardmodel.HeroCardModel;
 import java.util.ArrayList;
+import lordoftherings.NameInput;
 
 /**
  *
@@ -18,7 +19,12 @@ public class PlayerDeckBuild {
     public PlayerDeckBuild(DeckBuild deck){
         this.playersDeck = deck;
         listOfHeros = new ArrayList(); 
-        this.playerName = "Player 1";
+        this.playerName = getPlayerNameFromPlayer();
+    }
+    
+    public String getPlayerNameFromPlayer(){
+        NameInput input = new NameInput();
+        return input.getPlayerName();
     }
     
     public DeckBuild getPlayersDeck(){

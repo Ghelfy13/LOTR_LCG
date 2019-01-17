@@ -1,10 +1,11 @@
 //Copyright Amanda V. Harris 2018-present. All Rights Reserved.
 
-package lordoftherings;
+package lordoftherings.game_engine.GameData;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import lordoftherings.PlayerCardType;
 import lordoftherings.cardmodel.AllyCardModel;
 import lordoftherings.cardmodel.EventCardModel;
 import lordoftherings.cardmodel.HeroCardModel;

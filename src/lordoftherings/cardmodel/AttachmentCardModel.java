@@ -3,7 +3,7 @@
 package lordoftherings.cardmodel;
 
 import java.util.ArrayList;
-import lordoftherings.Identification;
+import lordoftherings.game_engine.GameData.Identification;
 import lordoftherings.PlayerCardType;
 import lordoftherings.deckcomponents.SphereOfInfluence;
 import lordoftherings.effects.Effect;

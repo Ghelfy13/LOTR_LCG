@@ -4,7 +4,7 @@ package lordoftherings.cardmodel;
 
 import java.util.ArrayList;
 import lordoftherings.EncounterType;
-import lordoftherings.Identification;
+import lordoftherings.game_engine.GameData.Identification;
 import lordoftherings.cards.EnemyCard;
 
 /**

@@ -3,6 +3,8 @@
 
 package lordoftherings;
 
+import lordoftherings.game_engine.GameData.Identification;
+import lordoftherings.game_engine.GameData.PlayerCardDatabase;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JFrame;

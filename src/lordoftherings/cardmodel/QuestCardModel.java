@@ -2,7 +2,7 @@
 
 package lordoftherings.cardmodel;
 
-import lordoftherings.Identification;
+import lordoftherings.game_engine.GameData.Identification;
 import lordoftherings.deckcomponents.ScenarioSymbol;
 
 /**

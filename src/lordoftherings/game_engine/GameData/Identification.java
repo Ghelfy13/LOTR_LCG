@@ -1,6 +1,6 @@
 //Copyright Amanda V. Harris 2018-present. All Rights Reserved.
 
-package lordoftherings;
+package lordoftherings.game_engine.GameData;
 import lordoftherings.deckcomponents.ExpansionName;
 /**
  *

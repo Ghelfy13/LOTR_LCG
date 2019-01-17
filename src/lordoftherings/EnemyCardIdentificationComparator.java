@@ -2,6 +2,7 @@
 
 package lordoftherings;
 
+import lordoftherings.game_engine.GameData.Identification;
 import java.util.Comparator;
 import lordoftherings.cardmodel.EnemyCardModel;
 
